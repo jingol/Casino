@@ -1,7 +1,7 @@
 /**
  * 
  */
-package slots;
+package texas;
 
 /**
  * @author Student6
