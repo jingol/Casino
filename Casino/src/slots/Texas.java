@@ -4,7 +4,7 @@
 package slots;
 
 /**
- * @author Student6
+ * @author Kristy Lo
  *
  */
 public class Texas {
