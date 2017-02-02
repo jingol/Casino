@@ -1,7 +1,7 @@
 /**
  * 
  */
-package slots;
+package bingo;
 
 /**
  * @author Sharon Wong
