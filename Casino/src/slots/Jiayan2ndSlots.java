@@ -4,7 +4,7 @@
 package slots;
 
 /**
- * @author Student 6
+ * @author Jiayan
  *
  */
 public class Jiayan2ndSlots {
