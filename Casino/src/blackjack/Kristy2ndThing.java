@@ -7,12 +7,12 @@ package blackjack;
  * @author Kristy Tan
  *
  */
-public class KristyThing {
+public class Kristy2ndThing {
 
 	/**
 	 * 
 	 */
-	public KristyThing() {
+	public Kristy2ndThing() {
 		// TODO Auto-generated constructor stub
 	}
 
