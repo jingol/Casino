@@ -4,9 +4,9 @@
 package texas;
 
 /**
- * @author Kristy Lo
+ * @author Kristy and Ray
  *
  */
 public class Texas {
-
+	
 }
