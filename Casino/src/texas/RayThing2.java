@@ -4,7 +4,7 @@
 package texas;
 
 /**
- * @author Ray
+ * @author Ray o-o
  *
  */
 public class RayThing2 {
