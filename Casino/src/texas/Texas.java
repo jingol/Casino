@@ -31,7 +31,4 @@ public class Texas extends ClickableScreen{
 		// TODO Auto-generated method stub
 		
 	}
-	private ArrayList<CardInterface> generateDeck(){
-		return null;
-	}
 }
