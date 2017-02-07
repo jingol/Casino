@@ -7,12 +7,12 @@ package bingo;
  * @author Sharon Wong
  *
  */
-public class Bingo {
+public class SharonBingo {
 
 	/**
 	 * 
 	 */
-	public Bingo() {
+	public SharonBingo() {
 		// TODO Auto-generated constructor stub
 	}
 
