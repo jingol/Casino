@@ -33,8 +33,8 @@ public class SharonBingoButton extends Component implements Clickable {
 	 * @see guiCompononets.Clickable#act()
 	 */
 	@Override
-	public void act() {
-		//what happens when clicked
+	public void act() {//what happens when clicked
+		//if value of the button is the same as the last random bingo number generated, change the color of the button
 		if (value==BingoScreenSharon.randBingoNum.get(BingoScreenSharon.randBingoNum.size()-1)){
 			
 		}
