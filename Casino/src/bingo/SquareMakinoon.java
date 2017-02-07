@@ -22,7 +22,7 @@ public class SquareMakinoon {
 		return color;
 	}
 	public void setColor(Color color) {
-		this.color = color;
+		this.color = color;//
 	}
 	public boolean isClicked() {
 		return isClicked;
