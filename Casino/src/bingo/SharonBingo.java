@@ -4,16 +4,16 @@
 package bingo;
 
 /**
- * @author Makinoon
+ * @author Sharon Wong
  *
  */
-public class MakinoonBingo {
+public class SharonBingo {
 
 	/**
 	 * 
 	 */
-	public MakinoonBingo() {
+	public SharonBingo() {
 		// TODO Auto-generated constructor stub
 	}
-
+//sadfl
 }
