@@ -1,7 +1,9 @@
 package bingo;
 
 import java.awt.Color;
-
+/**
+ * @author Makinoon
+ */
 //arraylist, button
 public class SquareMakinoon {
 	private Color color; 

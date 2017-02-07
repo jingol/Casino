@@ -1,5 +1,8 @@
 package bingo;
 
+/**
+ * @author Makinoon
+ */
 public class MakinoonDisplay {
 	//arraylist of buttons 
 	//draw the board 
