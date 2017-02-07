@@ -4,16 +4,15 @@
 package texas;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import guiCompononets.Visible;
-import guiScreens.ClickableScreen;
+import gui.components.Visible;
+import gui.screens.ClickableScreen;
 
 /**
  * @author Kristy and Ray
  *
  */
-public class Texas extends ClickableScreen{
+public class Texas extends ClickableScreen implements Runnable{
 
 	public Texas(int width, int height) {
 		super(width, height);
@@ -21,14 +20,19 @@ public class Texas extends ClickableScreen{
 	}
 
 	@Override
-	public void initAllObjects(List<Visible> arg0) {
+	public void run() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void initObjects(ArrayList<Visible> arg0) {
+	public void initAllObjects(ArrayList<Visible> arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
+
 }

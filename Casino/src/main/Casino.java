@@ -4,13 +4,14 @@
 package main;
 
 import gui.GUIapp;
+import texas.Texas;
 
 /**
  * @author Jason Lau
  *
  */
 public class Casino extends GUIapp {
-
+	public static Texas texas;
 	/**
 	 * STATIC FIELDS
 	 */
@@ -22,7 +23,6 @@ public class Casino extends GUIapp {
 	 */
 	public Casino(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -30,8 +30,8 @@ public class Casino extends GUIapp {
 	 */
 	@Override
 	public void initScreen() {
-		// TODO Auto-generated method stub
-
+		texas = new Texas(getWidth(), getHeight());
+		setScreen(texas);
 	}
 
 	/**
