@@ -15,8 +15,8 @@ import gui.components.Component;
 public class PlayingCard extends Component implements Card {
 	
 	private boolean faceDown;
-	public static final int WIDTH = 40;
-	public static final int HEIGHT= 80;
+	public static final int WIDTH = 60;
+	public static final int HEIGHT= 100;
 	
 	public PlayingCard(int x, int y) {
 		super(x, y, WIDTH, HEIGHT);
@@ -51,8 +51,8 @@ public class PlayingCard extends Component implements Card {
 		// draws the card
 		if (faceDown)
 		{
-			g.setColor(Color.pink);
-			g.drawOval(0, 0, 10, 10);
+			g.setColor(Color.red);
+			g.fillRect(0, 0, 100, 100);
 		}
 		else{
 			

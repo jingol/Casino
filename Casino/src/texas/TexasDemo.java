@@ -6,7 +6,7 @@ package texas;
 import gui.GUIApplication;
 
 /**
- * @author Student6
+ * @author Kristy L.
  *
  */
 public class TexasDemo extends GUIApplication {
