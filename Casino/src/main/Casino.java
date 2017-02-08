@@ -3,14 +3,14 @@
  */
 package main;
 
-import gui.GUIapp;
+import gui.GUIApplication;
 import texas.Texas;
 
 /**
  * @author Jason Lau
  *
  */
-public class Casino extends GUIapp {
+public class Casino extends GUIApplication {
 	public static Texas texas;
 	/**
 	 * STATIC FIELDS
