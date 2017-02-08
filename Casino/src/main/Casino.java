@@ -16,13 +16,15 @@ public class Casino extends GUIApplication {
 	 * STATIC FIELDS
 	 */
 	public static Casino game;
-	
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 600;
 	/**
 	 * @param width
 	 * @param height
 	 */
 	public Casino(int width, int height) {
 		super(width, height);
+		setTitle("Dat Casino Tho");
 	}
 
 	/* (non-Javadoc)
