@@ -26,8 +26,14 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> arg0) {
-		// TODO Auto-generated method stub
+	public void initAllObjects(ArrayList<Visible> view) {
+		int x = 53;
+		for (int i = 0; i<52;i++ )
+		{
+			PlayingCard c = new PlayingCard(x,60);
+			view.add(c);	
+//			x += PlayingCard.WIDTH + 5;
+		}
 		
 	}
 
