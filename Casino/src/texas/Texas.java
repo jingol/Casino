@@ -5,28 +5,30 @@ package texas;
 
 import java.util.ArrayList;
 
+import gui.components.Graphic;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import main.Casino;
 
 /**
  * @author Kristy and Ray
  *
  */
 public class Texas extends ClickableScreen implements Runnable{
-
+	private Graphic bg;
 	public Texas(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> view) {
+		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "images/greenbg.jpg");
+		view.add(bg);
 		int x = 53;
 		for (int i = 0; i<52;i++ )
 		{
@@ -36,6 +38,8 @@ public class Texas extends ClickableScreen implements Runnable{
 		}
 		
 	}
+		
+
 
 
 
