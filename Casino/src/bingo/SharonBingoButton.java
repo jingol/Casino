@@ -10,7 +10,7 @@ import guiCompononets.Clickable;
 import guiCompononets.Component;
 
 /**
- * @author Period 6 2.0
+ * @author Sharon
  *
  */
 public class SharonBingoButton extends Component implements Clickable {
@@ -36,7 +36,10 @@ public class SharonBingoButton extends Component implements Clickable {
 	public void act() {//what happens when clicked
 		//if value of the button is the same as the last random bingo number generated, change the color of the button
 		if (value==BingoScreenSharon.randBingoNum.get(BingoScreenSharon.randBingoNum.size()-1)){
-			
+			//change color of button value belongs to
+		}
+		else if (value!=BingoScreenSharon.randBingoNum.get(BingoScreenSharon.randBingoNum.size()-1)){
+			//display "GAME OVER"
 		}
 	}
 
