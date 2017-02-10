@@ -12,7 +12,9 @@ import java.util.ArrayList;
 public class JiayanWinningCombos {
 	//public ArrayList<>imageList = new ArrayList<>();
 	public int [] reward = new int [6];
-	private int betAmount;
+	private static int betAmount;
+	private boolean comboFound = false;
+	private static int roundReward;
 	//public ArrayList<Reward>RewardHistory = new ArrayList<Reward>(RewardHistory);
 	//
 	/**
@@ -25,18 +27,37 @@ public class JiayanWinningCombos {
 	 */
 	public JiayanWinningCombos() {
 		// TODO Auto-generated constructor stub
+		roundReward = 0;
 	}
 	
-	public static void checkHorizontal()
+	public static boolean checkHorizontal()
 	{
 		
+		return false;
 	}
-	public static void checkVertical()
+	public static boolean checkVertical()
 	{
 		
+		return false;
 	}
-	public static void checkDiagonal()
+	public static boolean checkDiagonal()
 	{
 		
+		return false;
+	}
+	public static void generateReward()
+	{
+		if(checkHorizontal())
+		{
+			roundReward = 100 + betAmount;
+		}
+		else if(checkVertical())
+		{
+			roundReward = 200 + betAmount;
+		}
+		else if(checkDiagonal())
+		{
+			roundReward = 300 + betAmount;
+		}
 	}
 }
