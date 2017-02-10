@@ -16,6 +16,7 @@ import guiScreens.ClickableScreen;
  */
 public class BingoScreenSharon extends ClickableScreen implements Runnable{
 public static ArrayList<Integer> randBingoNum;
+private SquaresInterfaceSharonWong[] squares;
 	/**
 	 * @param width
 	 * @param height
@@ -39,6 +40,7 @@ public static ArrayList<Integer> randBingoNum;
 		//create ArrayList of the squares on the bingo board
 		int numberOfSquares = 25;
 		squares = new SquaresInterfaceSharonWong[numberOfSquares];
+		
 	}
 
 	/* (non-Javadoc)
