@@ -1,23 +1,56 @@
 package bingo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import guiCompononets.Visible;
+import guiScreens.ClickableScreen;
+
 /**
  * @author Makinoon
  */
-public class MakinoonDisplay {
-	//arraylist of buttons 
-	//draw the board 
-	//action for the buttons 
-	//see the numbers, clicked - color changes
+public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	
-	public MakinoonDisplay() {
-		// TODO Auto-generated constructor stub
+	private MakinoonBingoBoard userBoard; 
+	
+	public MakinoonDisplay(MakinoonBingoBoard userBoard, 
+			int width, int height) {
+		
+		super(width, height);
+		
+		this.userBoard = userBoard; 
+		
+		 
+		Thread app = new Thread(this);
+		
+		app.start();
 	}
 
-	public static void main(String[] args) {
-		int[][] testArray = { {0, 0,0,0,0} , {1,1,1,1,1}, {2,2,2,2,2},
-								{3,3,3,3,3}, {4,4,4,4,4}};
-		MakinoonBingoBoard testBoard = new MakinoonBingoBoard(testArray);
-		System.out.println(testBoard.getGrid()[2][1].getNumber()); 
+	
+
+	@Override
+	public void initAllObjects(List<Visible> lst) {
+		SquareMakinoon[][] grid = userBoard.getGrid();
+		
+		for(int r = 0 ; r < grid.length; r++ ){ 
+			for(int c = 0; c < grid[0].length; c ++){ 
+				lst.add(grid[r][c]);
+			}
+		}
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void initObjects(ArrayList<Visible> ) {
+		super.initObjects(lst);
 		
 	}
 
