@@ -1,5 +1,7 @@
 package blackjack;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,11 @@ public class BlackjackScreen extends ClickableScreen {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> arg0) {
-		
+
 	}
 
+	public void drawBackground(Graphics2D g){
+		g.setColor(Color.green);
+		g.fillRect(0, 0, getWidth(), getHeight());
+	}
 }
