@@ -40,7 +40,7 @@ private SquaresInterfaceSharonWong[] squares;
 		//create ArrayList of the squares on the bingo board
 		int numberOfSquares = 25;
 		squares = new SquaresInterfaceSharonWong[numberOfSquares];
-		//asdsd whyyyyy
+		//asdsd whyyyyysdfsdfsdf
 	}
 
 	/* (non-Javadoc)
