@@ -1,9 +1,20 @@
 package slots;
 
-public class SpinSlots {
+import java.util.ArrayList;
 
-	public SpinSlots() {
-		// TODO Auto-generated constructor stub
+public abstract class SpinSlots implements Runnable {
+	
+	public ArrayList<Slotpic> slot1;
+	public ArrayList<Slotpic> slot2;
+	public ArrayList<Slotpic> slot3;
+	
+	
+	public void run(){
+		
 	}
+	
+	
+	
+
 
 }
