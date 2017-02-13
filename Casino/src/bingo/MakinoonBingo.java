@@ -1,18 +1,18 @@
 /**
  * 
  */
-package blackjack;
+package bingo;
 
 /**
- * @author Kristy Tan
+ * @author Makinoon
  *
  */
-public class KristyThing {
+public class MakinoonBingo {
 
 	/**
 	 * 
 	 */
-	public KristyThing() {
+	public MakinoonBingo() {
 		// TODO Auto-generated constructor stub
 	}
 
