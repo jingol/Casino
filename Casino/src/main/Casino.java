@@ -3,13 +3,13 @@
  */
 package main;
 
-import gui.GUIapp;
+import gui.GUIApplication;
 
 /**
  * @author Jason Lau
  *
  */
-public class Casino extends GUIapp {
+public class Casino extends GUIApplication {
 
 	/**
 	 * STATIC FIELDS
