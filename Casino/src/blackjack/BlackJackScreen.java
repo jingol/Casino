@@ -9,13 +9,13 @@ import guiScreens.ClickableScreen;
 /*
  * David Szymanski
  */
-public class Player extends ClickableScreen implements Runnable{
+public class BlackJackScreen extends ClickableScreen implements Runnable{
 	
 	private TextArea score;
 	private ArrayList<CardInterface> hand; 
 	private ButtonInterface[] button;
 
-	public Player(int width, int height) {
+	public BlackJackScreen(int width, int height) {
 		super(width, height);
 		Thread bj = new Thread(this);
 		bj.start();
