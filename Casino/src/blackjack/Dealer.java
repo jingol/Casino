@@ -13,7 +13,21 @@ public class Dealer {
 	public boolean dealerPlaying;
 	
 	public Dealer() {
-	//dealer passes out initial 2 cards
+		initialStart();
+		while(dealerPlaying){
+			checkValue();
+			if(currentTotal == 21 || currentTotal > 21){
+				stay();
+			}else if(currentTotal < 17){
+				hit();
+			}
+		}
+	}
+	
+	/**
+	 * dealer passes 2 cards to itself and the player
+	 */
+	public void initialStart(){
 		for(int i = 0; i < 2; i++){
 			dealerHand.add(Deck.deck.get(0));
 			Deck.deck.remove(0);
@@ -22,6 +36,10 @@ public class Dealer {
 		}
 	}
 	
+	/**
+	 * adds up all the card values  
+	 * @return current total value of cards 
+	 */
 	public int checkValue(){
 		if(dealerPlaying){
 			for(int i = 0; i < dealerHand.size(); i++){
@@ -31,19 +49,30 @@ public class Dealer {
 		return currentTotal;
 	}
 	
+	/**
+	 * give card to dealer
+	 */
 	public void hit(){
-		if(dealerPlaying && currentTotal < 17){
-			dealerHand.add(Deck.deck.get(0));
-			Deck.deck.remove(0);
-		}
-		else{
-			stay();
-		}
+		dealerHand.add(Deck.deck.get(0));
+		Deck.deck.remove(0);
 	}
 	
+	/**
+	 * if 21 or >21 dealerPlaying is false  
+	 * if 17+, dealer can take a risk and hit
+	 */
 	public void stay(){
-		if(currentTotal > 17 ||  currentTotal > 21){
+		if(currentTotal == 21 || currentTotal > 21){
 			dealerPlaying = false;
+		}
+		else if(currentTotal >= 17){
+			int chance = (int) (Math.random() * 100);
+			if(chance >= 75){
+				dealerPlaying = true;
+			}
+			else{
+				dealerPlaying = false;
+			}
 		}
 	}
 }
