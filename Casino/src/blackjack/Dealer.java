@@ -6,13 +6,14 @@ import java.util.ArrayList;
  * @author Kristy Tan
  *
  */
+
 public class Dealer {
 
 	public ArrayList <Card> dealerHand;
 	private int currentTotal = 0;
 	public boolean dealerPlaying;
 	public int rewards; 
-	
+	 
 	public Dealer() {
 		//need to take bets
 		initialStart(); 

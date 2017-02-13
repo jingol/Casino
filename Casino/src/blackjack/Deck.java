@@ -29,7 +29,7 @@ public class Deck {
 			}
 		}
 	}
-	
+	 
 	public void shuffleDeck(){
 		for(int i = 0; i < deck.size(); i++){
 			int randNum = (int) (Math.random() * deck.size());
