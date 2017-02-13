@@ -1,11 +1,12 @@
 package blackjack;
 
-import gui.GUIapp;
+import gui.GUIApplication;
+
 
 /*
  * David Szymanski
  */
-public class BlackJackGame extends GUIapp{
+public class BlackJackGame extends GUIApplication{
 
 	public BlackJackGame(int width, int height) {
 		super(width, height);
@@ -25,7 +26,7 @@ public class BlackJackGame extends GUIapp{
 	@Override
 	public void initScreen() {
 		// TODO Auto-generated method stub
-		BlackJackScreen bjs = new BlackJackScreen(getHeight(), getWidth());
+		BlackjackScreen bjs = new BlackjackScreen(getHeight(), getWidth());
 		setScreen(bjs);
 	}
 	

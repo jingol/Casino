@@ -1,6 +1,6 @@
 package blackjack;
 
-import guiCompononets.Clickable;
+import gui.components.Clickable;
 
 public interface CardInterface extends Clickable {
 

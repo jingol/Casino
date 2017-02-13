@@ -2,7 +2,7 @@ package blackjack;
 
 import java.awt.image.BufferedImage;
 
-import guiCompononets.Clickable;
+import gui.components.Clickable;
 
 public class Button implements Clickable {
 

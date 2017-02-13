@@ -2,8 +2,8 @@ package blackjack;
 
 import java.awt.image.BufferedImage;
 
-import guiCompononets.Action;
-import guiCompononets.Clickable;
+import gui.components.Action;
+import gui.components.Clickable;
 
 public interface ButtonInterface extends Clickable {
 	BufferedImage getImage();
