@@ -13,7 +13,7 @@ public class Dealer {
 	public boolean dealerPlaying;
 	
 	public Dealer() {
-		initialStart();
+		initialStart(); 
 		while(dealerPlaying){
 			checkValue();
 			if(currentTotal == 21 || currentTotal > 21){
