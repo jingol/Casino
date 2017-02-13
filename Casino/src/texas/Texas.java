@@ -3,8 +3,10 @@
  */
 package texas;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
+import gui.components.Button;
 import gui.components.Graphic;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
@@ -14,8 +16,16 @@ import main.Casino;
  * @author Kristy and Ray
  *
  */
+
 public class Texas extends ClickableScreen implements Runnable{
 	private Graphic bg;
+	private ArrayList<PlayingCard> deck;
+	private Button fold;
+	private Button raise;
+	private Button call;
+	private Button allIn;
+	private Button bet;
+			
 	public Texas(int width, int height) {
 		super(width, height);
 	}
@@ -29,15 +39,34 @@ public class Texas extends ClickableScreen implements Runnable{
 	public void initAllObjects(ArrayList<Visible> view) {
 		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "images/greenbg.jpg");
 		view.add(bg);
+		deck = new ArrayList<PlayingCard>();
 		int x = 53;
-		for (int i = 0; i<52;i++ )
+		String[] suits = {"Spades", "Hearts", "Clovers", "Diamonds"};
+		for (int j = 0; j<13;j++)
 		{
-			PlayingCard c = new PlayingCard(x,60);
-			view.add(c);	
-//			x += PlayingCard.WIDTH + 5;
+			for (int k = 0;k<4;k++)
+			{
+				PlayingCard c = new PlayingCard(53, 53, j, suits[k]);
+				deck.add(c);
+				view.add(c);
+			}
 		}
+		fold = new Button(60, 70, 75, 50, "fold", Color.green, null);
+		view.add(fold);
 		
+		call = new Button(60, 75, 75, 50, "call", Color.green, null);
+		view.add(call);
+		
+		raise = new Button(60, 80, 75, 50, "raise", Color.green, null);
+		view.add(raise);
+		
+		bet = new Button(60, 85, 75, 50, "bet", Color.green, null);
+		view.add(bet);
+		
+		allIn = new Button(60, 85, 75, 50, "All In", Color.green, null);
+		view.add(allIn);
 	}
+
 		
 
 

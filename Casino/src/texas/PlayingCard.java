@@ -17,10 +17,14 @@ public class PlayingCard extends Component implements Card {
 	private boolean faceDown;
 	public static final int WIDTH = 60;
 	public static final int HEIGHT= 100;
+	private String suit;
+	private int value;
 	
-	public PlayingCard(int x, int y) {
+	public PlayingCard(int x, int y, int value, String suit) {
 		super(x, y, WIDTH, HEIGHT);
 		faceDown = true;
+		this.value = value;
+		this.suit = suit;
 		update();
 	}
 

@@ -5,7 +5,6 @@ package texas;
  */
 
 public interface Dealer {
-	void newCard();
-	void playersHand();
-
+	void millCard(int i);
+	void setPile();
 }
