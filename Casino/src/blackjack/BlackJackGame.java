@@ -26,7 +26,7 @@ public class BlackJackGame extends GUIApplication{
 	@Override
 	public void initScreen() {
 		// TODO Auto-generated method stub
-		BlackjackScreen bjs = new BlackjackScreen(getHeight(), getWidth());
+		BlackJackScreen bjs = new BlackJackScreen(getHeight(), getWidth());
 		setScreen(bjs);
 	}
 	
