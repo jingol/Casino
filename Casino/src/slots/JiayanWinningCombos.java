@@ -14,6 +14,7 @@ public class JiayanWinningCombos {
 	public int [] reward = new int [6];
 	private boolean comboFound = false;
 	private static int rewardType;
+	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
 	//public ArrayList<Reward>RewardHistory = new ArrayList<Reward>(RewardHistory);
 	//
@@ -33,58 +34,90 @@ public class JiayanWinningCombos {
 	
 	public static boolean checkHorizontal(List<Slotpic>slots)
 	{
-		/*
+		
 		 for(int row=0; row<slots.size();row++)
 		{
 			for(int col=0; col<slots.get(0).size();col++)
 			{
-				if(slots.get(row).get(col)==)
+				if(slots.get(row).get(col)==  && slots.get(row).get(col-1)==  && slots.get(row).get(col+1)== )
 				{
-					
+					rewardType = 100;
+				}
+			}
+		}
+		
+		return false;
+	}
+	public static boolean checkVertical(List<Slotpic>slots)
+	{
+		 /*for(int row = 0; row<slots.size(); row++)
+			{
+				for(int col = 0; col<slots.get(0).size(); col++)
+				{
+					if(slots.get(row).get(col)==  && slots.get(row-1).get(col)== && slots.get(row+1)(col)== )
+					{
+						rewardType = 200;
+					}
+				}
+			}
+			*/
+		return false;
+	}
+	public static boolean checkDownDiagonal(List<Slotpic>slots)
+	{
+		/*
+		 ******* this diagonal is \
+		for(int row = 0; row<slots.size(); row++)
+		{
+			for(int col = 0; col<slots.get(0).size(); col++)
+			{
+				if(slots.get(row).get(col)==  && slots.get(row+1).get(col+1)== && slots.get(row+2)(col+2)== )
+				{
+					rewardType = 300;
 				}
 			}
 		}
 		*/
 		return false;
 	}
-	public static boolean checkVertical(List<Slotpic>slots)
+	public static boolean checkUpDiagonal(List<Slotpic>slots)
 	{
-		 for(int row = 0; row<slots.size(); row++)
+		/*
+		 ******* this diagonal is /
+		for(int row = 0; row<slots.size(); row++)
+		{
+			for(int col = 0; col<slots.get(0).size(); col++)
 			{
-				for(int col = 0; col<slots.get(0).size(); col++)
+				if(slots.get(row).get(col)==  && slots.get(row-1).get(col+1)== && slots.get(row-2)(col+2)== )
 				{
-					if()
-					{
-						
-					}
+					rewardType = 300;
 				}
 			}
+		}
+		*/
 		return false;
 	}
-	public static boolean checkDiagonal(List<Slotpic>slots)
+	public static void generateReward()
 	{
-		
-		return false;
-	}
-	public static void generateReward()//betAmount)
-	{
-		if(checkHorizontal(null))
+		roundReward = rewardType * betAmount;
+		/* if(checkHorizontal(null))
 		{
-			//roundReward = 100 * betAmount;
+			
 		}
 		else 
 		{
 			if(checkVertical(null))
 			{
-				//roundReward = 200 * betAmount;
+				
 			}
 			else 
 			{
-				if(checkDiagonal(null))
+				if(checkDownDiagonal(null) || checkUpDiagonal(null))
 				{
-					//roundReward = 300 * betAmount;
+					
 				}
 			}
 		}
+		*/
 	}
 }
