@@ -9,7 +9,7 @@ package slots;
  */
 public class MatthewSlots {
 	
-	public int betAmount;
+	public static int betAmount;
 
 	/**
 	 * 
