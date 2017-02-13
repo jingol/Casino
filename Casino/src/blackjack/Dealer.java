@@ -38,7 +38,7 @@ public class Dealer {
 //			Deck.deck.remove(0);
 		}
 	}
-	
+	 
 	/**
 	 * adds up all the card values  
 	 * @return current total value of cards  
