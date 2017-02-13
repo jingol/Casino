@@ -31,7 +31,7 @@ public class Dealer {
 		for(int i = 0; i < 2; i++){
 			dealerHand.add(Deck.deck.get(0));
 			Deck.deck.remove(0);
-//			playerHand.add(Deck.deck.get(0));
+//			Player.hand.add(Deck.deck.get(0));
 //			Deck.deck.remove(0);
 		}
 	}
