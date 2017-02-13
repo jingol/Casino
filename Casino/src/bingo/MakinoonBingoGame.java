@@ -5,6 +5,7 @@ package bingo;
 public class MakinoonBingoGame extends GUIApplication{
 	private MakinoonBingoBoard userBoard;
 	private static MakinoonBingoGame bingoGame;
+	// all three other games 
 	
 	
 	public MakinoonBingoGame(MakinoonBingoBoard userBoard, int width, int height) {

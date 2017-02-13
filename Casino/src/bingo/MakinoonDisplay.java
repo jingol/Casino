@@ -53,6 +53,14 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		
 	}
 
+
+
+	@Override
+	public void initAllObjects(ArrayList<Visible> lst) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 
