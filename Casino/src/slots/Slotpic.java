@@ -1,6 +1,6 @@
 package slots;
 
-import guiCompononets.Graphic;
+import gui.components.Graphic;
 
 public class Slotpic extends Graphic {
 
