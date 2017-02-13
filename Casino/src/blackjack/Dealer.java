@@ -38,7 +38,7 @@ public class Dealer {
 	
 	/**
 	 * adds up all the card values  
-	 * @return current total value of cards 
+	 * @return current total value of cards  
 	 */
 	public int checkValue(){
 		if(dealerPlaying){
