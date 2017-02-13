@@ -7,12 +7,14 @@ package slots;
  * @author Matthew Yarmolinsky
  *
  */
-public class MatthewsThing {
+public class MatthewSlots {
+	
+	public int betAmount;
 
 	/**
 	 * 
 	 */
-	public MatthewsThing() {
+	public MatthewSlots() {
 		// TODO Auto-generated constructor stub
 	}
 
