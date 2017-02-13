@@ -16,6 +16,7 @@ import guiScreens.ClickableScreen;
  */
 public class BingoScreenSharon extends ClickableScreen implements Runnable{
 public static ArrayList<Integer> randBingoNum;
+private SquaresInterfaceSharonWong[] squares;
 	/**
 	 * @param width
 	 * @param height
@@ -31,14 +32,20 @@ public static ArrayList<Integer> randBingoNum;
 	 * @see guiScreens.ClickableScreen#initAllObjects(java.util.List)
 	 */
 	@Override
-	public void initAllObjects(List<Visible> square) {
-		addSquare(square);
+	public void initAllObjects(ArrayList<Visible> square) {
+		addSquares(square);
 	}
 
-	private void addSquare(List<Visible> square) {
+	private void addSquares(ArrayList<Visible> square) {
 		//create ArrayList of the squares on the bingo board
 		int numberOfSquares = 25;
 		squares = new SquaresInterfaceSharonWong[numberOfSquares];
+		//place all squares
+				for(int i =0; i < numberOfSquares; i++){
+					squares[i] = getASquare();
+					final SquaresInterfaceSharonWong b = squares[i];
+				
+				}
 	}
 
 	/* (non-Javadoc)
@@ -52,6 +59,15 @@ public static ArrayList<Integer> randBingoNum;
 
 	@Override
 	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+	private SquaresInterfaceSharonWong getASquare() {
+		return new Square();
+	}
+
+	@Override
+	public void initAllObjects(List<Visible> arg0) {
 		// TODO Auto-generated method stub
 		
 	}
