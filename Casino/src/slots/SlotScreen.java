@@ -2,7 +2,8 @@ package slots;
 
 import java.util.ArrayList;
 
-import guiScreens.ClickableScreen;
+import gui.screens.ClickableScreen;
+
 
 public abstract class SlotScreen extends ClickableScreen implements Runnable {
 	
