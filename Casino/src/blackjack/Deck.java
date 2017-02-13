@@ -13,7 +13,6 @@ public class Deck {
 	
 	public Deck() {
 		generateDeck();
-		System.out.println(deck);
 		shuffleDeck();
 	}
 	
