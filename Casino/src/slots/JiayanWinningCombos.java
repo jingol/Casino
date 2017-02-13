@@ -4,17 +4,17 @@
 package slots;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jiayan
  *
  */
 public class JiayanWinningCombos {
-	//public ArrayList<>imageList = new ArrayList<>();
 	public int [] reward = new int [6];
-	private static int betAmount;
 	private boolean comboFound = false;
-	private static int roundReward;
+	private static int rewardType;
+	private static int betAmount = MatthewSlots.betAmount;
 	//public ArrayList<Reward>RewardHistory = new ArrayList<Reward>(RewardHistory);
 	//
 	/**
@@ -25,39 +25,66 @@ public class JiayanWinningCombos {
 	 * some faces appear more often compared to others
 	 * 
 	 */
-	public JiayanWinningCombos() {
+	public JiayanWinningCombos() 
+	{
 		// TODO Auto-generated constructor stub
-		roundReward = 0;
+		rewardType = 0;
 	}
 	
-	public static boolean checkHorizontal()
+	public static boolean checkHorizontal(List<Slotpic>slots)
 	{
-		
-		return false;
-	}
-	public static boolean checkVertical()
-	{
-		
-		return false;
-	}
-	public static boolean checkDiagonal()
-	{
-		
-		return false;
-	}
-	public static void generateReward()
-	{
-		if(checkHorizontal())
+		/*
+		 for(int row=0; row<slots.size();row++)
 		{
-			roundReward = 100 + betAmount;
+			for(int col=0; col<slots.get(0).size();col++)
+			{
+				if(slots.get(row).get(col)==)
+				{
+					
+				}
+			}
 		}
-		else if(checkVertical())
+		*/
+		return false;
+	}
+	public static boolean checkVertical(List<Slotpic>slots)
+	{
+		 for(int row = 0; row<slots.size(); row++)
+			{
+				for(int col = 0; col<slots.get(0).size(); col++)
+				{
+					if()
+					{
+						
+					}
+				}
+			}
+		return false;
+	}
+	public static boolean checkDiagonal(List<Slotpic>slots)
+	{
+		
+		return false;
+	}
+	public static void generateReward()//betAmount)
+	{
+		if(checkHorizontal(null))
 		{
-			roundReward = 200 + betAmount;
+			//roundReward = 100 * betAmount;
 		}
-		else if(checkDiagonal())
+		else 
 		{
-			roundReward = 300 + betAmount;
+			if(checkVertical(null))
+			{
+				//roundReward = 200 * betAmount;
+			}
+			else 
+			{
+				if(checkDiagonal(null))
+				{
+					//roundReward = 300 * betAmount;
+				}
+			}
 		}
 	}
 }
