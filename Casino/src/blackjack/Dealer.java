@@ -26,7 +26,7 @@ public class Dealer extends DealtHand {
 		}
 	}
 	
-	@Override
+	@Override 
 	public int checkValue() {
 		if(dealerPlaying){
 			for(int i = 0; i < dealerHand.size(); i++){

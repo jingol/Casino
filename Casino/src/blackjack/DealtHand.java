@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Kristy Tan
  *
  */
-
+ 
 public abstract class DealtHand {
 	
 	public void initialStart(){
