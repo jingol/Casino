@@ -9,13 +9,12 @@ import java.util.ArrayList;
 
 public class Dealer extends DealtHand {
 
-	public ArrayList <Card> dealerHand;
+	public static ArrayList <Card> dealerHand;
 	private int currentTotal = 0;
 	public boolean dealerPlaying;
 	public int rewards; 
 	 
 	public Dealer() {
-		//need to take bets
 		initialStart(); 
 		while(dealerPlaying){
 			checkValue();
@@ -26,15 +25,37 @@ public class Dealer extends DealtHand {
 			}
 		}
 	}
+	
+	@Override
+	public int checkValue() {
+		if(dealerPlaying){
+			for(int i = 0; i < dealerHand.size(); i++){
+				currentTotal += dealerHand.get(0).value;
+			}
+		}
+		return currentTotal;
+	}
 
 	@Override
 	public void hit() {
-		// TODO Auto-generated method stub
+		dealerHand.add(Deck.deck.get(0));
+		Deck.deck.remove(0);
 		
 	}
-	
-	/**
-	 * dealer passes 2 cards to itself and the player
-	 */
 
+	@Override
+	public void stay() {
+		if(currentTotal == 21 || currentTotal > 21){
+			dealerPlaying = false;
+		}
+		else if(currentTotal >= 17){
+			int chance = (int) (Math.random() * 100);
+			if(chance >= 75){
+				dealerPlaying = true;
+			}
+			else{
+				dealerPlaying = false;
+			}
+		}
+	}
 }
