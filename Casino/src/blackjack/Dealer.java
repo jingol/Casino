@@ -18,14 +18,54 @@ public class Dealer extends DealtHand {
 		initialStart(); 
 		while(dealerPlaying){
 			checkValue();
-			if(currentTotal == 21 || currentTotal > 21){
-				stay();
-			}else if(currentTotal < 17){
-				hit();
-			}
+			chance();
 		}
 	}
 	
+	public void chance(){
+		int chance = (int) (Math.random() * 100);;
+		if(currentTotal == 21 || currentTotal > 21){
+			stay();
+		}else if(currentTotal < 17){
+			hit();
+		}
+		else if(currentTotal == 17){
+			if(chance >= 75){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+		else if(currentTotal == 18){
+			if(chance >= 85){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+		else if(currentTotal == 19){
+			if(chance >= 90){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+		else if(currentTotal == 20){
+			if(chance >= 95){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+	}
 	@Override 
 	public int checkValue() {
 		if(dealerPlaying){
@@ -45,17 +85,6 @@ public class Dealer extends DealtHand {
 
 	@Override
 	public void stay() {
-		if(currentTotal == 21 || currentTotal > 21){
-			dealerPlaying = false;
-		}
-		else if(currentTotal >= 17){
-			int chance = (int) (Math.random() * 100);
-			if(chance >= 75){
-				dealerPlaying = true;
-			}
-			else{
-				dealerPlaying = false;
-			}
-		}
+		dealerPlaying = false;
 	}
 }
