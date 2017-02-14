@@ -15,23 +15,29 @@ import guiCompononets.Component;
  */
 public class SharonBingoButton extends Component implements Clickable {
 
+	//private int value;
+	//private Color color;
+	public static final int WIDTH = 100;
+	public static final int HEIGHT = 100;
 	private int value;
-	private Color color;
+	private Object color;
+	
+	
 	/**
 	 * @param x
 	 * @param y
 	 * @param w
 	 * @param h
 	 */
-	public SharonBingoButton(int x, int y, int w, int h) {
-		super(x, y, w, h);
+	public SharonBingoButton(int x, int y, int value, Color c) {
+		super(x, y, WIDTH, HEIGHT);
+		this.value=value;
+		this.color=c;
+		update();
 		
 		//init value & color
 	}
 
-	/* (non-Javadoc)
-	 * @see guiCompononets.Clickable#act()
-	 */
 	@Override
 	public void act() {//what happens when clicked
 		//if value of the button is the same as the last random bingo number generated, change the color of the button
@@ -43,18 +49,14 @@ public class SharonBingoButton extends Component implements Clickable {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see guiCompononets.Clickable#isHovered(int, int)
-	 */
+	
 	@Override
 	public boolean isHovered(int x, int y) {
 		
 		return x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight();
 	}
 
-	/* (non-Javadoc)
-	 * @see guiCompononets.Component#update(java.awt.Graphics2D)
-	 */
+	
 	@Override
 	public void update(Graphics2D arg0) {
 		
