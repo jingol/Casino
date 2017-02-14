@@ -3,8 +3,8 @@ package bingo;
 import java.util.ArrayList;
 import java.util.List;
 
+import guiCasino.screens.ClickableScreen;
 import guiCompononets.Visible;
-import guiScreens.ClickableScreen;
 
 /**
  * @author Makinoon
@@ -48,11 +48,27 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 
 
 
+	public void initObjects(ArrayList<Visible> lst) {
+		//super.initObjects(lst);
+		
+	}
+
+
+
 	@Override
-	public void initObjects(ArrayList<Visible> ) {
-		super.initObjects(lst);
+	public void initAllObjects(ArrayList<Visible> lst) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	
-}
+
+
+
+//
+//	@Override
+//	public void initObjects(ArrayList<Visible> arg0) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+	}
