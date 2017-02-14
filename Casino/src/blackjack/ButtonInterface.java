@@ -5,8 +5,7 @@ import java.awt.image.BufferedImage;
 import gui.components.Action;
 import gui.components.Clickable;
 
-public interface ButtonInterface extends Clickable {
-	BufferedImage getImage();
+public interface ButtonInterface extends Clickable{
 	int getX();
 	int getY();
 	void setAction(Action a);

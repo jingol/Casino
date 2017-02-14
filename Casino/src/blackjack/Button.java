@@ -1,11 +1,23 @@
 package blackjack;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import gui.components.Action;
 import gui.components.Clickable;
+import gui.components.Components;
 
-public class Button implements Clickable {
-
+public class Button extends Components implements ButtonInterface{
+	
+	private static int x;
+	private static int y;
+	private static int h = 60;
+	private static int w = 80;
+	private Action act;
+	
+	public Button(){
+		super(x,y,w,h);
+	}
 	@Override
 	public int getHeight() {
 		// TODO Auto-generated method stub
@@ -51,13 +63,26 @@ public class Button implements Clickable {
 	@Override
 	public void act() {
 		// TODO Auto-generated method stub
-		
+		if(act != null){
+			act.act();
+		}
 	}
 
 	@Override
 	public boolean isHovered(int arg0, int arg1) {
 		// TODO Auto-generated method stub
-		return false;
+		return x>getX() && x<getX()+getWidth() && 
+				y > getY() && y<getY()+getHeight();
 	}
 
+	@Override
+	public void setAction(Action a) {
+		// TODO Auto-generated method stub
+		this.act = a;
+	}
+	@Override
+	public void update(Graphics2D arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -32,6 +32,10 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 		score = new TextArea(130, 230, 300, 40, getScore());
 		hand.add(drawCard());
 		hand.add(drawCard());
+		viewObjects.add(score);
+		for(int i = 0; i < hand.size(); i++){
+			
+		}
 	}
 	
 		
@@ -46,6 +50,8 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 
 	public void addButtons(ArrayList<Visible> viewObjects) {
 		// TODO Auto-generated method stub
+		int numButtons = 3;
+		int[] x = {};
 		
 	}
 
