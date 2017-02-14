@@ -11,113 +11,110 @@ import java.util.List;
  *
  */
 public class JiayanWinningCombos {
-	public int [] reward = new int [6];
-	private boolean comboFound = false;
-	private static int rewardType;
+	public ArrayList<Slotpic> slots = SlotScreen.slots;
+	public static int [] reward = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
-	//public ArrayList<Reward>RewardHistory = new ArrayList<Reward>(RewardHistory);
+	public static ArrayList<History>rewardHistory = new ArrayList<History>();
 	//
 	/**
-	 * use constants to store value of a slot image?
-	 * rewards generated from slot images produced by Jason
-	 * multiple wins
+	 * use constants to store value of a slot image??
+	 * reward array will contain the rewards available/multiplier
+	 *loop thru reward array to get final rewards
 	 * rewards vary depending on nockles' faces
 	 * some faces appear more often compared to others
-	 * 
+	 *  multiple wins
 	 */
 	public JiayanWinningCombos() 
 	{
 		// TODO Auto-generated constructor stub
-		rewardType = 0;
+		
 	}
 	
-	public static boolean checkHorizontal(List<Slotpic>slots)
+	public static boolean checkHorizontal(ArrayList<Slotpic>list)
 	{
 		
-		 for(int row=0; row<slots.size();row++)
+		for(int row=0; row<list.size();row++)
 		{
-			for(int col=0; col<slots.get(0).size();col++)
+			for(int col=0; col<list.get(0).size();col++)
 			{
-				if(slots.get(row).get(col)==  && slots.get(row).get(col-1)==  && slots.get(row).get(col+1)== )
+				if(list.get(row).get(col)==  && list.get(row).get(col-1)==  && list.get(row).get(col+1)== )
 				{
-					rewardType = 100;
+					return true;
 				}
 			}
 		}
 		
 		return false;
 	}
-	public static boolean checkVertical(List<Slotpic>slots)
+	public static boolean checkVertical(ArrayList<Slotpic> list)
 	{
-		 /*for(int row = 0; row<slots.size(); row++)
+		 for(int row = 0; row<list.size(); row++)
 			{
-				for(int col = 0; col<slots.get(0).size(); col++)
+				for(int col = 0; col<list.get(0).size(); col++)
 				{
-					if(slots.get(row).get(col)==  && slots.get(row-1).get(col)== && slots.get(row+1)(col)== )
+					if(list.get(row).get(col)==  && list.get(row-1).get(col)== && list.get(row+1)(col)== )
 					{
-						rewardType = 200;
+						return true;
 					}
 				}
 			}
-			*/
+			
 		return false;
 	}
-	public static boolean checkDownDiagonal(List<Slotpic>slots)
+	public static boolean checkDownDiagonal(ArrayList<Slotpic> list)
 	{
-		/*
-		 ******* this diagonal is \
-		for(int row = 0; row<slots.size(); row++)
+		
+		//this diagonal is \
+		for(int row = 0; row<list.size(); row++)
 		{
-			for(int col = 0; col<slots.get(0).size(); col++)
+			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(slots.get(row).get(col)==  && slots.get(row+1).get(col+1)== && slots.get(row+2)(col+2)== )
+				if(list.get(row).get(col)==  && list.get(row+1).get(col+1)== && list.get(row+2)(col+2)== )
 				{
-					rewardType = 300;
+					return true;
 				}
 			}
 		}
-		*/
+		
 		return false;
 	}
-	public static boolean checkUpDiagonal(List<Slotpic>slots)
+	public static boolean checkUpDiagonal(ArrayList<Slotpic> list)
 	{
-		/*
-		 ******* this diagonal is /
-		for(int row = 0; row<slots.size(); row++)
+		 // this diagonal is /
+		for(int row = 0; row<list.size(); row++)
 		{
-			for(int col = 0; col<slots.get(0).size(); col++)
+			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(slots.get(row).get(col)==  && slots.get(row-1).get(col+1)== && slots.get(row-2)(col+2)== )
+				if(list.get(row).get(col)==  && list.get(row-1).get(col+1)== && list.get(row-2)(col+2)== )
 				{
-					rewardType = 300;
+					return true;
 				}
 			}
 		}
-		*/
+		
 		return false;
 	}
 	public static void generateReward()
 	{
-		roundReward = rewardType * betAmount;
-		/* if(checkHorizontal(null))
-		{
-			
-		}
-		else 
-		{
-			if(checkVertical(null))
+			 if(checkHorizontal(ArrayList<Slotpic> slots))
 			{
-				
+				roundReward = reward[0] * betAmount;
+				// rewardHistory.add(roundReward);
 			}
 			else 
 			{
-				if(checkDownDiagonal(null) || checkUpDiagonal(null))
+				if(checkVertical(ArrayList<Slotpic> slots))
 				{
-					
+					roundReward = reward[3] * betAmount;
 				}
-			}
+				else 
+				{
+					if(checkDownDiagonal(ArrayList<Slotpic> slots) || checkUpDiagonal(ArrayList<Slotpic> slots))
+					{
+						roundReward = reward[6] * betAmount;
+					}
+				}
 		}
-		*/
 	}
 }
