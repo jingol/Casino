@@ -29,7 +29,7 @@ public abstract class SlotScreen extends ClickableScreen implements Runnable {
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		slots = new ArrayList<Slotpic>();
-		
+		title = new TextLabel(350,220,100,40,"Slots");
 
 	}
 	
