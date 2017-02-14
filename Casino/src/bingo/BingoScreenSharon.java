@@ -12,7 +12,7 @@ import guiScreens.ClickableScreen;
 
 /**
  * @author Sharon
- *publ
+ *publ asdf
  */
 public class BingoScreenSharon extends ClickableScreen implements Runnable{
 public static ArrayList<Integer> randBingoNum;
