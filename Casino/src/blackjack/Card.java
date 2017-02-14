@@ -1,5 +1,10 @@
 package blackjack;
 
+/**
+ * @author Kristy Tan
+ *
+ */
+ 
 public class Card {
 
 	public int value;
@@ -10,5 +15,5 @@ public class Card {
 		this.value = value;
 		this.faceValue = fValue;
 		this.suit = suit;
-	}
+	} 
 }
