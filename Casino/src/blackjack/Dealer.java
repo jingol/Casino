@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Kristy Tan
  *
  */
-
+ 
 public class Dealer extends DealtHand {
 
 	public static ArrayList <Card> dealerHand;

@@ -1,7 +1,7 @@
 package blackjack;
 
 import java.util.ArrayList;
-
+ 
 public class PlayerHand extends DealtHand{
 
 	public static ArrayList <Card> hand;
