@@ -54,12 +54,12 @@ public class Button extends Components implements ButtonInterface{
 	}
 	
 	public void setX(int x){
-		this.x = x;
+		Button.x = x;
 		update();
 	}
 	
 	public void setY(int y){
-		this.y = y;
+		Button.y = y;
 		update();
 	}
 
@@ -69,10 +69,10 @@ public class Button extends Components implements ButtonInterface{
 		return false;
 	}
 	
-	public void setText(String text){
-		this.text = text;
-		update();
-	}
+//	public void setText(String text){
+//		Button.text = text;
+//		update();
+//	}
 
 //	@Override
 //	public void update() {
@@ -89,7 +89,7 @@ public class Button extends Components implements ButtonInterface{
 	}
 
 	@Override
-	public boolean isHovered(int arg0, int arg1) {
+	public boolean isHovered(int x, int y) {
 		// TODO Auto-generated method stub
 		return x>getX() && x<getX()+getWidth() && 
 				y > getY() && y<getY()+getHeight();
@@ -108,6 +108,5 @@ public class Button extends Components implements ButtonInterface{
 		g.fillRect(x,y,w,h);
 		g.setColor(Color.black);
 		g.drawRect(x,y,w-1,h-1);
-		g.drawString(text,x,y);
 	}
 }

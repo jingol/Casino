@@ -1,5 +1,6 @@
 package blackjack;
 
+import blackjack.BlackjackScreen;
 import gui.GUIApplication;
 
 

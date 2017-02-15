@@ -7,6 +7,7 @@ import java.util.List;
 
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import gui.components.Action;
 import gui.components.TextArea;
 
 
@@ -31,6 +32,7 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 		}
 //		hand = new ArrayList<CardInterface>();
 //		score = new TextArea(130, 230, 300, 40, getScore());
+		label = new TextArea(600, 100, 300, 40, "");
 //		hand.add(drawCard());
 //		hand.add(drawCard());
 //		viewObjects.add(score);
@@ -52,37 +54,37 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 	public void addButtons(ArrayList<Visible> viewObjects) {
 		// TODO Auto-generated method stub
 		buttons = new ButtonInterface[3];
+		int[]x = {50, 130, 210};
 		for(int i = 0; i < buttons.length; i++) {
 			buttons[i] = getAButton();
+			buttons[i].setX(x[i]);
+			buttons[i].setY(50);
+			final ButtonInterface b = buttons[i];
+//			if(i == 0){
+//				buttons[i].setAction(new Action(){
+//					public void act(){
+//						
+//					}
+//				});
+//			}
+//			if(i == 1){
+//			buttons[i].setAction(new Action(){
+//				public void act(){
+//					
+//				}
+//			});
+//		}
+//			if(i == 2){
+//			buttons[i].setAction(new Action(){
+//				public void act(){
+//					
+//				}
+//			});
+//		}
+			buttons[i] = b;
+			viewObjects.add(b);
 		}
 		
-		buttons[0].setX(50);
-		buttons[0].setY(50);
-		buttons[0].setText("BINGO");
-//		buttons[0].setAction(new Action() { 
-//			public void act(){
-//				BingoGame.game.setScreen();
-//			}
-//		});
-		buttons[1].setX(130);
-		buttons[1].setY(50);
-		buttons[1].setText("SLOTS");
-//		buttons[1].setAction(new Action() { 
-//			public void act(){
-//				SlotGame.game.setScreen();
-//			}
-//	});
-		buttons[2].setX(210);
-		buttons[2].setY(50);
-		buttons[2].setText("POKER");
-//		buttons[2].setAction(new Action() { 
-//			public void act(){
-//				PokerGame.game.setScreen();
-//			}
-//	});
-		viewObjects.add(buttons[0]);
-		viewObjects.add(buttons[1]);
-		viewObjects.add(buttons[2]);
 	}
 
 
@@ -96,10 +98,10 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 	@Override
 	public void run() {
 		label.setText("BLACKJACK");
-		nextRound();
+//		nextRound();
 	}
 
-	private void nextRound() {
-		
-	}
+//	private void nextRound() {
+//		
+//	}
 }

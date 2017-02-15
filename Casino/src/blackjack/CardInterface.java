@@ -1,7 +1,5 @@
 package blackjack;
 
-import gui.components.Clickable;
-
 public interface CardInterface {
 	int getY();
 	int getX();

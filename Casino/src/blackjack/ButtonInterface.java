@@ -11,6 +11,6 @@ public interface ButtonInterface extends Clickable{
 	void setX(int x);
 	void setY(int y);
 	void setAction(Action a);
-	void setText(String text);
+//	void setText(String text);
 	boolean isHovered(int arg0, int arg1);
 }
