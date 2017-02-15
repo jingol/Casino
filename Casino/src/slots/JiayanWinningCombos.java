@@ -10,35 +10,36 @@ import java.util.List;
  * @author Jiayan
  *
  */
-public class JiayanWinningCombos {
+public class JiayanWinningCombos implements RewardHistory{
 	public ArrayList<Slotpic> slots = SlotScreen.slots;
-	public static int [] reward = new int [6];
+	private boolean nextRound;
+	private static int [] reward = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
-	public static ArrayList<History>rewardHistory = new ArrayList<History>();
+	public static ArrayList<RewardHistory>rewardHistory = new ArrayList<RewardHistory>();
 	//
 	/**
-	 * use constants to store value of a slot image??
-	 * reward array will contain the rewards available/multiplier
+	 * reward array will contain the rewards available/multiplier(has to be decided on)
 	 *loop thru reward array to get final rewards
-	 * rewards vary depending on nockles' faces
-	 * some faces appear more often compared to others
+	 * switching between rounds(boolean?)
+	 * 
+	 * 
 	 *  multiple wins
 	 */
 	public JiayanWinningCombos() 
 	{
 		// TODO Auto-generated constructor stub
-		
+		  
 	}
 	
-	public static boolean checkHorizontal(ArrayList<Slotpic>list)
+	public static boolean checkHorizontal(ArrayList<Slotpic> list)
 	{
 		
 		for(int row=0; row<list.size();row++)
 		{
 			for(int col=0; col<list.get(0).size();col++)
 			{
-				if(list.get(row).get(col)==  && list.get(row).get(col-1)==  && list.get(row).get(col+1)== )
+				if(list.get(row).get(col).equals(list.get(row).get(col-1)) && list.get(row).get(col).equals(list.get(row).get(col+1)))
 				{
 					return true;
 				}
@@ -53,7 +54,7 @@ public class JiayanWinningCombos {
 			{
 				for(int col = 0; col<list.get(0).size(); col++)
 				{
-					if(list.get(row).get(col)==  && list.get(row-1).get(col)== && list.get(row+1)(col)== )
+					if(list.get(row).get(col).equals(list.get(row-1).get(col)) && list.get(row).get(col).equals(list.get(row+1).get(col)))
 					{
 						return true;
 					}
@@ -64,13 +65,12 @@ public class JiayanWinningCombos {
 	}
 	public static boolean checkDownDiagonal(ArrayList<Slotpic> list)
 	{
-		
 		//this diagonal is \
 		for(int row = 0; row<list.size(); row++)
 		{
 			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(list.get(row).get(col)==  && list.get(row+1).get(col+1)== && list.get(row+2)(col+2)== )
+				if(list.get(row).get(col).equals(list.get(row+1).get(col+1)) && list.get(row).get(col).equals(list.get(row+2)(col+2)))
 				{
 					return true;
 				}
@@ -86,7 +86,7 @@ public class JiayanWinningCombos {
 		{
 			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(list.get(row).get(col)==  && list.get(row-1).get(col+1)== && list.get(row-2)(col+2)== )
+				if(list.get(row).get(col).equals(list.get(row-1).get(col+1)) && list.get(row).get(col).equals(list.get(row-2)(col+2)))
 				{
 					return true;
 				}
@@ -97,24 +97,36 @@ public class JiayanWinningCombos {
 	}
 	public static void generateReward()
 	{
-			 if(checkHorizontal(ArrayList<Slotpic> slots))
+			 if(checkHorizontal(slots))
 			{
 				roundReward = reward[0] * betAmount;
 				// rewardHistory.add(roundReward);
 			}
 			else 
 			{
-				if(checkVertical(ArrayList<Slotpic> slots))
+				if(checkVertical( slots))
 				{
 					roundReward = reward[3] * betAmount;
 				}
 				else 
 				{
-					if(checkDownDiagonal(ArrayList<Slotpic> slots) || checkUpDiagonal(ArrayList<Slotpic> slots))
+					if(checkDownDiagonal(slots) || checkUpDiagonal( slots))
 					{
 						roundReward = reward[6] * betAmount;
 					}
 				}
 		}
+	}
+
+	@Override
+	public ArrayList<RewardHistory> getRewardHistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<RewardHistory> setRewardHistory() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
