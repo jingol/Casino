@@ -50,8 +50,7 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 
 	public void addButtons(ArrayList<Visible> viewObjects) {
 		// TODO Auto-generated method stub
-		int numButtons = 3;
-		int[] x = {};
+		
 		
 	}
 
