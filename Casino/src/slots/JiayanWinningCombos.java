@@ -29,7 +29,7 @@ public class JiayanWinningCombos implements RewardHistory{
 	public JiayanWinningCombos() 
 	{
 		// TODO Auto-generated constructor stub
-		
+		  
 	}
 	
 	public static boolean checkHorizontal(ArrayList<Slotpic> list)

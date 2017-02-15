@@ -7,4 +7,6 @@ public interface RewardHistory {
 	ArrayList<RewardHistory> getRewardHistory();
 	ArrayList<RewardHistory> setRewardHistory();
 	
+	
 }
+ 
