@@ -68,6 +68,20 @@ public class Texas extends ClickableScreen implements Runnable{
 		view.add(allIn);
 	}
 
+	@Override
+	public void initAllObjects(List<Visible> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initObjects(ArrayList<Visible> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 		
 
