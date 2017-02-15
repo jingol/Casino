@@ -9,32 +9,82 @@ import java.util.ArrayList;
 
 public class Dealer extends DealtHand {
 
-	public ArrayList <Card> dealerHand;
+	public static ArrayList <Card> dealerHand;
 	private int currentTotal = 0;
 	public boolean dealerPlaying;
 	public int rewards; 
 	 
 	public Dealer() {
-		//need to take bets
 		initialStart(); 
 		while(dealerPlaying){
 			checkValue();
-			if(currentTotal == 21 || currentTotal > 21){
-				stay();
-			}else if(currentTotal < 17){
+			chance();
+		}
+	}
+	
+	public void chance(){
+		int chance = (int) (Math.random() * 100);;
+		if(currentTotal == 21 || currentTotal > 21){
+			stay();
+		}else if(currentTotal < 17){
+			hit();
+		}
+		else if(currentTotal == 17){
+			if(chance >= 75){
 				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
 			}
 		}
+		else if(currentTotal == 18){
+			if(chance >= 85){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+		else if(currentTotal == 19){
+			if(chance >= 90){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+		else if(currentTotal == 20){
+			if(chance >= 95){
+				hit();
+				dealerPlaying = true;
+			}
+			else{
+				stay();
+			}
+		}
+	}
+	@Override 
+	public int checkValue() {
+		if(dealerPlaying){
+			for(int i = 0; i < dealerHand.size(); i++){
+				currentTotal += dealerHand.get(0).value;
+			}
+		}
+		return currentTotal;
 	}
 
 	@Override
 	public void hit() {
-		// TODO Auto-generated method stub
+		dealerHand.add(Deck.deck.get(0));
+		Deck.deck.remove(0);
 		
 	}
-	
-	/**
-	 * dealer passes 2 cards to itself and the player
-	 */
 
+	@Override
+	public void stay() {
+		dealerPlaying = false;
+	}
 }

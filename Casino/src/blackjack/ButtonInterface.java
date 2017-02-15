@@ -8,6 +8,9 @@ import gui.components.Clickable;
 public interface ButtonInterface extends Clickable{
 	int getX();
 	int getY();
+	void setX();
+	void setY();
 	void setAction(Action a);
+	void setText(String text);
 	boolean isHovered(int arg0, int arg1);
 }

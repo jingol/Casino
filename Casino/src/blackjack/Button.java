@@ -1,6 +1,7 @@
 package blackjack;
 
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import gui.components.Action;
@@ -13,15 +14,17 @@ public class Button extends Components implements ButtonInterface{
 	private static int y;
 	private static int h = 60;
 	private static int w = 80;
+	private static String text;
 	private Action act;
 	
 	public Button(){
 		super(x,y,w,h);
 	}
+	
 	@Override
 	public int getHeight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return h;
 	}
 
 	@Override
@@ -33,19 +36,29 @@ public class Button extends Components implements ButtonInterface{
 	@Override
 	public int getWidth() {
 		// TODO Auto-generated method stub
-		return 0;
+		return w;
 	}
 
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return y;
+	}
+	
+	public void setX(int x){
+		this.x = x;
+		update();
+	}
+	
+	public void setY(int y){
+		this.y = y;
+		update();
 	}
 
 	@Override
@@ -53,12 +66,17 @@ public class Button extends Components implements ButtonInterface{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setText(String text){
+		this.text = text;
+		update();
 	}
+
+//	@Override
+//	public void update() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	public void act() {
@@ -83,6 +101,11 @@ public class Button extends Components implements ButtonInterface{
 	@Override
 	public void update(Graphics2D arg0) {
 		// TODO Auto-generated method stub
-		
+		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g.setColor(Color.red);
+		g.fillRect(x,y,w,h);
+		g.setColor(Color.black);
+		g.drawRect(x,y,w-1,h-1);
+		g.drawString(x,y,text);
 	}
 }

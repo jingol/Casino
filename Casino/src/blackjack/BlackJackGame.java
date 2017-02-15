@@ -16,7 +16,7 @@ public class BlackJackGame extends GUIApplication{
 	
 	
 	public static void main(String[] args){
-		BlackJackGame bjg = new BlackJackGame(800,500);
+		BlackJackGame bjg = new BlackJackGame(1000,800);
 		Thread game = new Thread(bjg);
 		game.start();
 	}

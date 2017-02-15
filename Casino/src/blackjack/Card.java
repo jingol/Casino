@@ -2,12 +2,14 @@ package blackjack;
 
 import java.awt.image.BufferedImage;
 
+import gui.components.Components;
+
 /**
  * @author Kristy Tan
  *
  */
  
-public class Card /*extends MovingComponent */implements CardInterface{
+public class Card extends Components /*extends MovingComponent */implements CardInterface{
 
 	public int value;
 	public String faceValue;
@@ -48,15 +50,15 @@ public class Card /*extends MovingComponent */implements CardInterface{
 	}
 
 	@Override
-	public int setX(int x) {
+	public void setX(int x) {
 		// TODO Auto-generated method stub
-		return this.x = x;
+		this.x = x;
 	}
 
 	@Override
-	public int setY(int y) {
+	public void setY(int y) {
 		// TODO Auto-generated method stub
-		return this.y = y;
+		this.y = y;
 	}
 
 	@Override
@@ -70,4 +72,8 @@ public class Card /*extends MovingComponent */implements CardInterface{
 		// TODO Auto-generated method stub
 		return width;
 	} 
+	
+	public void update(Graphics2D g){
+		
+	}
 }
