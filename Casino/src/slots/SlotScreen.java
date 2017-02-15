@@ -1,12 +1,16 @@
 package slots;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
+import gui.components.Action;
+import gui.components.Button;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
 
-public abstract class SlotScreen extends ClickableScreen implements Runnable {
+
+public class SlotScreen extends ClickableScreen implements Runnable {
 	
 	public static ArrayList<Slotpic> slots;
 	private static gui.components.Button button1;
@@ -31,7 +35,33 @@ public abstract class SlotScreen extends ClickableScreen implements Runnable {
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		slots = new ArrayList<Slotpic>();
 		title = new TextLabel(350,220,100,40,"Slots");
-
+		button1 = new Button(20,120,200,40,
+				"STOP",Color.RED,
+				new Action() {
+			
+			public void act() {
+				
+				
+			}
+		});
+		button2 = new Button(20,60,200,40,
+				"STOP",Color.RED,
+				new Action() {
+			
+			public void act() {
+				
+				
+			}
+		});
+		button3 = new Button(20,60,200,40,
+				"STOP",Color.RED,
+				new Action() {
+			
+			public void act() {
+				
+				
+			}
+		});
 	}
 	
 	
