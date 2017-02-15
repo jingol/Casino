@@ -16,8 +16,15 @@ import guiScreens.ClickableScreen;
  *publ asdf
  */
 public class BingoScreenSharon extends ClickableScreen implements Runnable{
+//FIELDS 
+	
 public static ArrayList<Integer> randBingoNum;
 private SquaresInterfaceSharonWong[] squares;
+
+//2D array of player board
+public static Integer[][] playerBoard= new Integer[5][5];
+//2D array of AI board
+public static Integer[][] aiBoard= new Integer[5][5];
 
 
 	public BingoScreenSharon(int width, int height) {
@@ -50,28 +57,60 @@ private SquaresInterfaceSharonWong[] squares;
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public  void playerBoardArray() {
-		Random randomGenerator = new Random();
-		while (.length < ) {
-
-		    int random = randomGenerator .nextInt(4);
-		    if (!numbers.contains(random)) {
-		        numbers.add(random);
-		    }
-		}
+	public int randNumGenerator(){
 		/*
-		//buttons = new ButtonInterfaceSharonWong[5];
-		//code that randomly selects a ButtonInterfaceX
-		int rand = (int)(Math.random()*buttons.length);
-		//if its equal then select rand again
-		while(rand == last){
-			rand = (int) (Math.random()*buttons.length);
-		}
-		last = rand;
-		return new Move(buttons[rand]);
+		double rand= Math.random();
+		int roll=(int)(6*rand); //0 to 5
+		return roll+1; // 1 to 6
 		*/
+		double rand= Math.random();
+		int roll=(int)(51*rand); //0 to 50
+		return roll+1; // 1 to 50
 	}
+	
+	public void aiBoardArray() {
+		
+		for (int i = 0; i < aiBoard.length; i++){
+	        for (int j = 0; j < aiBoard[i].length; j++){
+	        	//generate random number
+	        	int random = randNumGenerator();
+	        	//check to see if board already contains that number
+	        	for (int x = 0; i < aiBoard.length; x++) {
+	        	    for (int y = 0; j < aiBoard[i].length; y++) {
+	        	        if (aiBoard[x][y].equals(random)){
+	        	        	randNumGenerator();
+	        	    }
+	        	}
+	        	    aiBoard[i][j] = random;
+	            
+	        	}
+	        }
+		
+		}
+		
+	}
+public void playerBoardArray() {
+		
+		for (int i = 0; i < playerBoard.length; i++){
+	        for (int j = 0; j < playerBoard[i].length; j++){
+	        	//generate random number
+	        	int random = randNumGenerator();
+	        	//check to see if board already contains that number
+	        	for (int x = 0; i < playerBoard.length; x++) {
+	        	    for (int y = 0; j < playerBoard[i].length; y++) {
+	        	        if (playerBoard[x][y].equals(random)){
+	        	        	randNumGenerator();
+	        	    }
+	        	}
+	        	playerBoard[i][j] = random;
+	            
+	        	}
+	        }
+		
+		}
+		
+	}
+	
 	
 	// Generate ball spin of random number : used to check if value of button clicked is this number
 	public int randNumBallGenerator(int n)
