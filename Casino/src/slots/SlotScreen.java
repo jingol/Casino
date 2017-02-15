@@ -2,32 +2,45 @@ package slots;
 
 import java.util.ArrayList;
 
-public abstract class SlotScreen implements Runnable {
+import gui.components.TextLabel;
+import gui.components.Visible;
+import gui.screens.ClickableScreen;
+
+public abstract class SlotScreen extends ClickableScreen implements Runnable {
 	
-	public ArrayList<Slotpic> slot1;
-	public ArrayList<Slotpic> slot2;
-	public ArrayList<Slotpic> slot3;
-	
-	public SlotScreen(){
+	private static ArrayList<Slotpic> slots;
+	private static Button button1;
+	private static Button button2;
+	private static Button button3;
+	private TextLabel title;
+	private static TextLabel balance;
+
+	public SlotScreen(int width, int height) {
+		super(width, height);
 		
 	}
-	
-	public void run(){
-		
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
 	}
+
+	@Override
+	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		slots = new ArrayList<Slotpic>();
+		title = new TextLabel(350,220,100,40,"Slots");
+
+	}
+	
+	
 	
 	public void spin(){
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	public void update(){
+		
+	}
 
 }
