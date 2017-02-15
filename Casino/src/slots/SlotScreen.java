@@ -8,10 +8,11 @@ import gui.screens.ClickableScreen;
 
 public abstract class SlotScreen extends ClickableScreen implements Runnable {
 	
-	private static ArrayList<Slotpic> slots;
-	private static Button button1;
-	private static Button button2;
-	private static Button button3;
+	public static ArrayList<Slotpic> slots;
+	private static gui.components.Button button1;
+	private static gui.components.Button button2;
+	private static gui.components.Button button3;
+	private static gui.components.Button start;
 	private TextLabel title;
 	private static TextLabel balance;
 
