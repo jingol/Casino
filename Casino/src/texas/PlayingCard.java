@@ -20,8 +20,9 @@ import gui.components.Component;
 public class PlayingCard extends Component implements PlayingCardInterface {
 	
 	private boolean faceDown;
-	public static final int WIDTH = 60;
-	public static final int HEIGHT= 100;
+	//ratio is 500: 726
+	public static final int WIDTH = 70;
+	public static final int HEIGHT= 102;
 	private String suit;
 	private int value;
 	
@@ -45,14 +46,16 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 		if (faceDown)
 		{
 			g.setColor(Color.red);
-			g.fillRoundRect(0, 0, 100, 100, 5, 5);
+			g.fillRoundRect(0, 0, WIDTH, HEIGHT, 10, 10);
 		}
 		else{
-			BufferedImage img = null;
-			try {
-			    img = ImageIO.read(new File("imag"));
-			} catch (IOException e) {
-			}
+			if(getCardValue() != null && suit != null)
+			    try {
+			    	BufferedImage img = ImageIO.read(new File("images/cardImages/"+getCardValue()+"_of_"+suit+".png"));
+			    	g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
+			    } catch (IOException e) {
+					e.printStackTrace();
+				}
 		}
 			
 

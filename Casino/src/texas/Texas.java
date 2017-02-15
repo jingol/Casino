@@ -20,12 +20,16 @@ import main.Casino;
 
 public class Texas extends ClickableScreen implements Runnable{
 	private Graphic bg;
-	private ArrayList<PlayingCard> deck;
+	
 	private Button fold;
 	private Button raise;
 	private Button call;
 	private Button allIn;
 	private Button bet;
+	
+	private Dealer dealer;
+	
+	private ArrayList<PlayingCard> deck;
 			
 	public Texas(int width, int height) {
 		super(width, height);
@@ -37,47 +41,32 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> view) {
+	public void initAllObjects(List<Visible> view) {
 		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "images/greenbg.jpg");
 		view.add(bg);
-		deck = new ArrayList<PlayingCard>();
-		int x = 53;
-		String[] suits = {"Spades", "Hearts", "Clovers", "Diamonds"};
-		for (int j = 0; j<13;j++)
-		{
-			for (int k = 0;k<4;k++)
-			{
-				PlayingCard c = new PlayingCard(53, 53, j, suits[k]);
-				deck.add(c);
-				view.add(c);
-			}
-		}
-		fold = new Button(60, 70, 75, 50, "fold", Color.green, null);
+		
+		dealer = new Dealer();
+		deck = dealer.getDeck();
+		view.addAll(deck);
+		
+		PlayingCard c = deck.get(0);
+		c.setX(c.getX()+100);
+		c.flipCard();
+		
+		fold = new Button(60, 175, 75, 50, "fold", Color.green, null);
 		view.add(fold);
 		
-		call = new Button(60, 75, 75, 50, "call", Color.green, null);
+		call = new Button(60, 225, 75, 50, "call", Color.green, null);
 		view.add(call);
 		
-		raise = new Button(60, 80, 75, 50, "raise", Color.green, null);
+		raise = new Button(60, 275, 75, 50, "raise", Color.green, null);
 		view.add(raise);
 		
-		bet = new Button(60, 85, 75, 50, "bet", Color.green, null);
+		bet = new Button(60, 325, 75, 50, "bet", Color.green, null);
 		view.add(bet);
 		
-		allIn = new Button(60, 85, 75, 50, "All In", Color.green, null);
+		allIn = new Button(60, 375, 75, 50, "All In", Color.green, null);
 		view.add(allIn);
-	}
-
-	@Override
-	public void initAllObjects(List<Visible> arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void initObjects(ArrayList<Visible> arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 
