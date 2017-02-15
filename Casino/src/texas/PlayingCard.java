@@ -5,6 +5,11 @@ package texas;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import gui.components.Component;
 
@@ -12,7 +17,7 @@ import gui.components.Component;
  * @author Kristy L.
  *
  */
-public class PlayingCard extends Component implements Card {
+public class PlayingCard extends Component implements PlayingCardInterface {
 	
 	private boolean faceDown;
 	public static final int WIDTH = 60;
@@ -28,9 +33,6 @@ public class PlayingCard extends Component implements Card {
 		update();
 	}
 
-	/* (non-Javadoc)
-	 * @see texas.Card#flipCard()
-	 */
 	@Override
 	public void flipCard() {
 		faceDown = !faceDown;
@@ -38,31 +40,54 @@ public class PlayingCard extends Component implements Card {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see texas.Card#popCard()
-	 */
-	@Override
-	public void popCard() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see gui.components.Component#update(java.awt.Graphics2D)
-	 */
 	@Override
 	public void update(Graphics2D g) {
-		// draws the card
 		if (faceDown)
 		{
 			g.setColor(Color.red);
-			g.fillRect(0, 0, 100, 100);
+			g.fillRoundRect(0, 0, 100, 100, 5, 5);
 		}
 		else{
-			
+			BufferedImage img = null;
+			try {
+			    img = ImageIO.read(new File("imag"));
+			} catch (IOException e) {
+			}
 		}
 			
 
 	}
 
+	@Override
+	public String getCardValue() {
+		if(value > 0 && value < 11){
+			return ""+value;
+		}
+		else if(value == 11){
+			return "jack";
+		}
+		else if(value == 12){
+			return "queen";
+		}
+		else if(value == 13){
+			return "king";
+		}
+		return null;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

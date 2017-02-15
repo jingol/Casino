@@ -3,7 +3,7 @@ package texas;
  * @author Ray C.
  *
  */
-public interface Card {
+public interface PlayingCardInterface {
 	void flipCard();
-	void popCard();
+	String getCardValue();
 }

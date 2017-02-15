@@ -10,7 +10,12 @@ import gui.GUIApplication;
  *
  */
 public class TexasDemo extends GUIApplication {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static int WIDTH = 800;
+	public static int HEIGHT = 500;
 	/**
 	 * @param width
 	 * @param height
@@ -34,7 +39,7 @@ public class TexasDemo extends GUIApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		TexasDemo demo = new TexasDemo(800,500);
+		TexasDemo demo = new TexasDemo(WIDTH, HEIGHT);
 		Thread app = new Thread(demo);
 		app.start();
 		
