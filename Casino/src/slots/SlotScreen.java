@@ -64,7 +64,6 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 				
 			}
 		});
-		
 		viewObjects.add(button1);
 		viewObjects.add(button2);
 		viewObjects.add(button3);
