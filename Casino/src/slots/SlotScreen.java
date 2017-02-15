@@ -72,6 +72,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	
 	
 	
+	
 	public void spin(){
 		
 	}
