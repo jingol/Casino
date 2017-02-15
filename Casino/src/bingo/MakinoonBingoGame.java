@@ -28,7 +28,7 @@ public class MakinoonBingoGame extends GUIApplication{
 		MakinoonBingoBoard testBoard = new MakinoonBingoBoard(testArray);
 		System.out.println(testBoard.getGrid()[2][1].getNumber()); 
 		
-		MakinoonBingoGame mbg = new MakinoonBingoGame(testBoard, 800, 500);
+		MakinoonBingoGame mbg = new MakinoonBingoGame(testBoard, 800, 800);
 		Thread game = new Thread(mbg); 
 		game.start();
 		
