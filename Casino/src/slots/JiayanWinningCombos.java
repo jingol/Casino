@@ -38,7 +38,7 @@ public class JiayanWinningCombos{
 		for(int row=0; row<list.size();row++)
 		{
 			for(int col=0; col<((List<Slotpic>) list.get(0)).size();col++)
-			{
+			{ 
 				if(((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row)).get(col-1)) && ((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row)).get(col+1)))
 				{
 					return true;
