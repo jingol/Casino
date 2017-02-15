@@ -11,7 +11,7 @@ import guiCasino.screens.Action;
 import guiCasino.screens.TextLabel;
 import guiCasino.screens.ClickableScreen;
 import guiCompononets.Graphic;
-import guiCompononets.TextArea;
+import guiCasino.screens.TextArea;
 import guiCompononets.Visible;
 
 /**
@@ -22,7 +22,14 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private Graphic bg; 
 	private MakinoonBingoBoard userBoard; 
 	private TextLabel title;
-	private Button switchButton; 
+	private Button startEnd; 
+	private Button switchButton1;
+	private Button switchButton2; 
+	private Button switchButton3; 
+	private TextLabel currentBalance;  
+	private TextArea currentNumber; 
+	private TextArea gameHistoryBox; 
+	
 	//private TextArea gameScreen;
 	
 	
@@ -58,36 +65,68 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	@Override
 	public void initAllObjects(ArrayList<Visible> lst) {
 		//super.initObjects(lst);
-		bg = new Graphic(0, 0, 800, 800, "imagesBingo/casinobg.jpg");
+		bg = new Graphic(0, 0, 1000, 700, "imagesBingo/casinobg.jpg");
 		
 
 		lst.add(bg);
 		//gameScreen = new TextArea(0, 0, 800, 800, "");
 		title = 
-				new TextLabel(330, 50, 500, 40, "BINGO", Color.BLACK);
+				new TextLabel(300, 90, 500, 40, "BINGO", Color.BLACK);
 		title.setSize(45);
 		title.setFont("Calibri");
 
 		lst.add(title);
-		switchButton = new Button(400,400,100,100,
-				"Play BlackJack",Color.GREEN,
+		switchButton1 = new Button(30,580,150,40,
+				"PLAY SLOTS",Color.GREEN,
 				
 				new Action() {
 			
 			public void act() {
-				System.out.print(" Button Pressed! ");
+				System.out.print(" Button Pressed1! ");
 			}
 		});
 		
-				lst.add(switchButton);			
+				lst.add(switchButton1);	
+			/* button 2  */	
+			switchButton2 = new Button(210,580,195,40,
+					"PLAY BLACKJACK",Color.GREEN,
+					
+					new Action() {
+				
+				public void act() {
+					System.out.print(" Button Pressed2! ");
+				}
+			});
+			
+					lst.add(switchButton2);	
+				// button3 		
+			switchButton3 = new Button(430,580,230,40,
+					"PLAY TEXAS HOLD'EM",Color.GREEN,
+					
+					new Action() {
+				
+				public void act() {
+					System.out.print(" Button Pressed3! ");
+				}
+			});
+			
+					lst.add(switchButton3);							
 		
-//		SquareMakinoon[][] grid = userBoard.getGrid();
-//		
-//		for(int r = 0 ; r < grid.length; r++ ){ 
-//			for(int c = 0; c < grid[0].length; c ++){ 
-//				lst.add(grid[r][c]);
-//			}
-//		}
+					
+			startEnd = new Button(30,50,100,50,
+					"BEGIN",Color.GREEN,
+					
+					new Action() {
+				
+				public void act() {
+					System.out.print(" Begin/End ! ");
+				}
+			});
+			
+					lst.add(startEnd);	
+			currentBalance = new TextLabel(500, 80, 100, 50, "CurrentBalance: "
+					, Color.BLACK);
+			lst.add(currentBalance);
 	}
 
 
