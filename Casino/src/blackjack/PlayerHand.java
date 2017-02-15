@@ -5,23 +5,32 @@ import java.util.ArrayList;
 public class PlayerHand extends DealtHand{
 
 	public static ArrayList <Card> hand;
+	public boolean player = true;
+	private int playerTotal = 0;
+	public int finalTotal;
 	
 	@Override
 	public void hit() {
-		// TODO Auto-generated method stub
+		hand.add(Deck.deck.get(0));
+		Deck.deck.remove(0);
 		
 	}
 
 	@Override
 	public int checkValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(player){
+			for(int i = 0; i < hand.size(); i++){
+				playerTotal += hand.get(0).value;
+			}
+		}
+		return playerTotal;
 	}
 
 	@Override
-	public void stay() {
-		// TODO Auto-generated method stub
-		
+	public boolean stay() {
+		finalTotal = playerTotal;
+		player = false;
+		return player;
 	}
 
 }

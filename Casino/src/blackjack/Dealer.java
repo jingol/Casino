@@ -12,6 +12,7 @@ public class Dealer extends DealtHand {
 	public static ArrayList <Card> dealerHand;
 	private int currentTotal = 0;
 	public boolean dealerPlaying;
+	public int finalCTotal;
 	public int rewards; 
 	 
 	public Dealer() {
@@ -19,6 +20,15 @@ public class Dealer extends DealtHand {
 		while(dealerPlaying){
 			checkValue();
 			chance();
+		}
+	}
+	
+	public void initialStart(){
+		for(int i = 0; i < 2; i++){
+			Dealer.dealerHand.add(Deck.deck.get(0));
+			Deck.deck.remove(0);
+			PlayerHand.hand.add(Deck.deck.get(0));
+			Deck.deck.remove(0);
 		}
 	}
 	
@@ -32,7 +42,6 @@ public class Dealer extends DealtHand {
 		else if(currentTotal == 17){
 			if(chance >= 75){
 				hit();
-				dealerPlaying = true;
 			}
 			else{
 				stay();
@@ -41,7 +50,6 @@ public class Dealer extends DealtHand {
 		else if(currentTotal == 18){
 			if(chance >= 85){
 				hit();
-				dealerPlaying = true;
 			}
 			else{
 				stay();
@@ -50,7 +58,6 @@ public class Dealer extends DealtHand {
 		else if(currentTotal == 19){
 			if(chance >= 90){
 				hit();
-				dealerPlaying = true;
 			}
 			else{
 				stay();
@@ -59,7 +66,6 @@ public class Dealer extends DealtHand {
 		else if(currentTotal == 20){
 			if(chance >= 95){
 				hit();
-				dealerPlaying = true;
 			}
 			else{
 				stay();
@@ -84,7 +90,9 @@ public class Dealer extends DealtHand {
 	}
 
 	@Override
-	public void stay() {
+	public boolean stay() {
+		finalCTotal = currentTotal;
 		dealerPlaying = false;
+		return dealerPlaying;
 	}
 }
