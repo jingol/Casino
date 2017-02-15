@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Kristy Tan
  *
  */
-
+ 
 public class Dealer extends DealtHand {
 
 	public static ArrayList <Card> dealerHand;
@@ -33,15 +33,15 @@ public class Dealer extends DealtHand {
 	}
 	
 	public void chance(){
-		int chance = (int) (Math.random() * 100);;
+		int chance = (int) (Math.random() * 100);
 		if(currentTotal == 21 || currentTotal > 21){
 			stay();
 		}else if(currentTotal < 17){
-			hit();
+			hit(dealerHand);
 		}
 		else if(currentTotal == 17){
 			if(chance >= 75){
-				hit();
+				hit(dealerHand);
 			}
 			else{
 				stay();
@@ -49,7 +49,7 @@ public class Dealer extends DealtHand {
 		}
 		else if(currentTotal == 18){
 			if(chance >= 85){
-				hit();
+				hit(dealerHand);
 			}
 			else{
 				stay();
@@ -57,7 +57,7 @@ public class Dealer extends DealtHand {
 		}
 		else if(currentTotal == 19){
 			if(chance >= 90){
-				hit();
+				hit(dealerHand);
 			}
 			else{
 				stay();
@@ -65,7 +65,7 @@ public class Dealer extends DealtHand {
 		}
 		else if(currentTotal == 20){
 			if(chance >= 95){
-				hit();
+				hit(dealerHand);
 			}
 			else{
 				stay();
@@ -82,12 +82,12 @@ public class Dealer extends DealtHand {
 		return currentTotal;
 	}
 
-	@Override
-	public void hit() {
-		dealerHand.add(Deck.deck.get(0));
-		Deck.deck.remove(0);
-		
-	}
+//	@Override
+//	public void hit() {
+//		dealerHand.add(Deck.deck.get(0));
+//		Deck.deck.remove(0);
+//		
+//	}
 
 	@Override
 	public boolean stay() {

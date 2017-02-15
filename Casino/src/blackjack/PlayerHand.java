@@ -1,7 +1,7 @@
 package blackjack;
 
 import java.util.ArrayList;
-
+ 
 public class PlayerHand extends DealtHand{
 
 	public static ArrayList <Card> hand;
@@ -9,12 +9,12 @@ public class PlayerHand extends DealtHand{
 	private int playerTotal = 0;
 	public int finalTotal;
 	
-	@Override
-	public void hit() {
-		hand.add(Deck.deck.get(0));
-		Deck.deck.remove(0);
-		
-	}
+//	@Override
+//	public void hit() {
+//		hand.add(Deck.deck.get(0));
+//		Deck.deck.remove(0);
+//		
+//	}
 
 	@Override
 	public int checkValue() {
