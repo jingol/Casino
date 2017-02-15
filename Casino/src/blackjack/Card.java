@@ -1,7 +1,9 @@
 package blackjack;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import blackjack.CardInterface;
 import gui.components.Components;
 
 /**
@@ -14,12 +16,13 @@ public class Card extends Components /*extends MovingComponent */implements Card
 	public int value;
 	public String faceValue;
 	public String suit;
-	private int y;
-	private int x;
-	private int height;
-	private int width;
+	private static int y;
+	private static int x;
+	private static int h;
+	private static int w;
 	
-	public Card(int value, String fValue, String suit) {
+	public Card(int value, String fValue, String suit){
+		super(x,y,h,w);
 		this.value = value;
 		this.faceValue = fValue;
 		this.suit = suit;
@@ -64,16 +67,18 @@ public class Card extends Components /*extends MovingComponent */implements Card
 	@Override
 	public int getHeight() {
 		// TODO Auto-generated method stub
-		return height;
+		return h;
 	}
 
 	@Override
 	public int getWidth() {
 		// TODO Auto-generated method stub
-		return width;
+		return w;
 	} 
-	
-	public void update(Graphics2D g){
+
+	@Override
+	public void update(Graphics2D g) {
+		// TODO Auto-generated method stub
 		
 	}
 }

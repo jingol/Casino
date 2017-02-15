@@ -1,9 +1,11 @@
 package blackjack;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+import blackjack.ButtonInterface;
 import gui.components.Action;
 import gui.components.Clickable;
 import gui.components.Components;
@@ -99,13 +101,13 @@ public class Button extends Components implements ButtonInterface{
 		this.act = a;
 	}
 	@Override
-	public void update(Graphics2D arg0) {
+	public void update(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setColor(Color.red);
 		g.fillRect(x,y,w,h);
 		g.setColor(Color.black);
 		g.drawRect(x,y,w-1,h-1);
-		g.drawString(x,y,text);
+		g.drawString(text,x,y);
 	}
 }

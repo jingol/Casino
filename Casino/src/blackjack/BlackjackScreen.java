@@ -15,7 +15,7 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 	private TextArea score;
 	private TextArea label;
 	private ArrayList<CardInterface> hand; 
-	private ButtonInterface[] button;
+	private ButtonInterface[] buttons;
 	
 	public BlackjackScreen(int width, int height) {
 		super(width, height);
@@ -27,7 +27,7 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		addButtons(viewObjects);
 		for(int i = 0; i < 3; i++){
-			viewObjects.add(button[i]);
+			viewObjects.add(buttons[i]);
 		}
 //		hand = new ArrayList<CardInterface>();
 //		score = new TextArea(130, 230, 300, 40, getScore());
@@ -88,18 +88,18 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 
 	private ButtonInterface getAButton() {
 		// TODO Auto-generated method stub
-		return new Button();;
+		return new Button();
 	}
 
-//	@Override
-//	public void run() {
-//		// TODO Auto-generated method stub
-//		label.setText("BLACKJACK");
-//		nextRound();
-//	}
-//
-//	private void nextRound() {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
+
+	@Override
+	public void run() {
+		label.setText("BLACKJACK");
+		nextRound();
+	}
+
+	private void nextRound() {
+		
+	}
 }
