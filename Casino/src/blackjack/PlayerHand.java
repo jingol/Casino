@@ -9,12 +9,12 @@ public class PlayerHand extends DealtHand{
 	private int playerTotal = 0;
 	public int finalTotal;
 	
-	@Override
-	public void hit() {
-		hand.add(Deck.deck.get(0));
-		Deck.deck.remove(0);
-		
-	}
+//	@Override
+//	public void hit() {
+//		hand.add(Deck.deck.get(0));
+//		Deck.deck.remove(0);
+//		
+//	}
 
 	@Override
 	public int checkValue() {
