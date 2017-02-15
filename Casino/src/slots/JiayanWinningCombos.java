@@ -44,7 +44,7 @@ public class JiayanWinningCombos{
 					return true;
 				}
 			}
-		}
+		} 
 		
 		return false;
 	}
