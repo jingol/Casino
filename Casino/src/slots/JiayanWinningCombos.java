@@ -10,13 +10,13 @@ import java.util.List;
  * @author Jiayan
  *
  */
-public class JiayanWinningCombos implements RewardHistory{
-	public ArrayList<Slotpic> slots = SlotScreen.slots;
-	private boolean nextRound;
+public class JiayanWinningCombos implements RewardInterface{
+	public static ArrayList<Slotpic> slots = SlotScreen.slots;
+	private static boolean nextRound;
 	private static int [] reward = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
-	public static ArrayList<RewardHistory>rewardHistory = new ArrayList<RewardHistory>();
+	public static ArrayList<RewardInterface>rewardHistory = new ArrayList<RewardInterface>();
 	//
 	/**
 	 * reward array will contain the rewards available/multiplier(has to be decided on)
@@ -39,7 +39,7 @@ public class JiayanWinningCombos implements RewardHistory{
 		{
 			for(int col=0; col<list.get(0).size();col++)
 			{
-				if(list.get(row).get(col).equals(list.get(row).get(col-1)) && list.get(row).get(col).equals(list.get(row).get(col+1)))
+				if(list.get(row).get(col)==list.get(row).get(col-1) && list.get(row).get(col)==list.get(row).get(col+1))
 				{
 					return true;
 				}
@@ -54,7 +54,7 @@ public class JiayanWinningCombos implements RewardHistory{
 			{
 				for(int col = 0; col<list.get(0).size(); col++)
 				{
-					if(list.get(row).get(col).equals(list.get(row-1).get(col)) && list.get(row).get(col).equals(list.get(row+1).get(col)))
+					if(list.get(row).get(col)==list.get(row-1).get(col) && list.get(row).get(col)==list.get(row+1).get(col))
 					{
 						return true;
 					}
@@ -70,7 +70,7 @@ public class JiayanWinningCombos implements RewardHistory{
 		{
 			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(list.get(row).get(col).equals(list.get(row+1).get(col+1)) && list.get(row).get(col).equals(list.get(row+2)(col+2)))
+				if(list.get(row).get(col)==(list.get(row+1).get(col+1)) && list.get(row).get(col)==list.get(row+2).get(col+2))
 				{
 					return true;
 				}
@@ -86,7 +86,7 @@ public class JiayanWinningCombos implements RewardHistory{
 		{
 			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(list.get(row).get(col).equals(list.get(row-1).get(col+1)) && list.get(row).get(col).equals(list.get(row-2)(col+2)))
+				if(list.get(row).get(col)==(list.get(row-1).get(col+1)) && list.get(row).get(col)==list.get(row-2).get(col+2))
 				{
 					return true;
 				}
@@ -100,33 +100,37 @@ public class JiayanWinningCombos implements RewardHistory{
 			 if(checkHorizontal(slots))
 			{
 				roundReward = reward[0] * betAmount;
-				// rewardHistory.add(roundReward);
+				nextRound =true;
 			}
 			else 
 			{
 				if(checkVertical( slots))
 				{
 					roundReward = reward[3] * betAmount;
+					nextRound = true;
 				}
 				else 
 				{
 					if(checkDownDiagonal(slots) || checkUpDiagonal( slots))
 					{
 						roundReward = reward[6] * betAmount;
+						nextRound = true;
 					}
 				}
 		}
 	}
 
 	@Override
-	public ArrayList<RewardHistory> getRewardHistory() {
+	public ArrayList<RewardInterface> getRewardHistory() {
+		// TODO Auto-generated method stub
+		return rewardHistory;
+	}
+
+	@Override
+	public ArrayList<RewardInterface> setRewardHistory() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ArrayList<RewardHistory> setRewardHistory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
