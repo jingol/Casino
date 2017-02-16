@@ -10,14 +10,14 @@ import java.util.List;
  * @author Jiayan
  *
  */
-public class JiayanWinningCombos{
+
+public class JiayanWinningCombos implements RewardInterface{
 	public static ArrayList<Slotpic> slots = SlotScreen.slots;
-	private boolean nextRound;
-	private static int [] rewards = new int [6];
+	private static boolean nextRound;
+	private static int [] reward = new int [6];
 	private static int roundReward;
-	private static int prize;
 	private static int betAmount = MatthewSlots.betAmount;
-	public static ArrayList<int[]> rewardList = new ArrayList<int[]>();
+	public static ArrayList<RewardInterface>rewardHistory = new ArrayList<RewardInterface>();
 	//
 	/**
 	 * reward array will contain the rewards available/multiplier(has to be decided on)
@@ -34,43 +34,11 @@ public class JiayanWinningCombos{
 	}
 	public static boolean checkHorizontal(ArrayList<Slotpic> list)
 	{
-		
 		for(int row=0; row<list.size();row++)
 		{
-			for(int col=0; col<((List<Slotpic>) list.get(0)).size();col++)
-			{ 
-				if(((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row)).get(col-1)) && ((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row)).get(col+1)))
-				{
-					return true;
-				}
-			}
-		} 
-		
-		return false;
-	}
-	public static boolean checkVertical(ArrayList<Slotpic> list)
-	{
-		 for(int row = 0; row<list.size(); row++)
+			for(int col=0; col<list.get(0).size();col++)
 			{
-				for(int col = 0; col<((List<Slotpic>) list.get(0)).size(); col++)
-				{
-					if(((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row-1)).get(col)) && ((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row+1)).get(col)))
-					{
-						return true;
-					}
-				}
-			}
-			
-		return false;
-	}
-	public static boolean checkDownDiagonal(ArrayList<Slotpic> list)
-	{
-		//this diagonal is \
-		for(int row = 0; row<list.size(); row++)
-		{
-			for(int col = 0; col<((List<Slotpic>) list.get(0)).size(); col++)
-			{
-				if(((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row+1)).get(col+1)) && ((List<Slotpic>) list.get(row)).get(col).equals(list.get(row+2)(col+2)))
+				if(list.get(row).get(col)==list.get(row).get(col-1) && list.get(row).get(col)==list.get(row).get(col+1))
 				{
 					return true;
 				}
@@ -79,14 +47,45 @@ public class JiayanWinningCombos{
 		
 		return false;
 	}
+	public static boolean checkVertical(ArrayList<Slotpic> list)
+	{
+		for(int row = 0; row<list.size(); row++)
+		{
+			for(int col = 0; col<list.get(0).size(); col++)
+			{
+				if(list.get(row).get(col)==list.get(row-1).get(col) && list.get(row).get(col)==list.get(row+1).get(col))
+				{
+					return true;
+				}
+			}
+		}
+		
+	return false;
+	}
+	public static boolean checkDownDiagonal(ArrayList<Slotpic> list)
+	{
+		//this diagonal is \
+				for(int row = 0; row<list.size(); row++)
+				{
+					for(int col = 0; col<list.get(0).size(); col++)
+					{
+						if(list.get(row).get(col)==(list.get(row+1).get(col+1)) && list.get(row).get(col)==list.get(row+2).get(col+2))
+						{
+							return true;
+						}
+					}
+				}
+				
+				return false;
+	}
 	public static boolean checkUpDiagonal(ArrayList<Slotpic> list)
 	{
 		 // this diagonal is /
 		for(int row = 0; row<list.size(); row++)
 		{
-			for(int col = 0; col<((List<Slotpic>) list.get(0)).size(); col++)
+			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(((List<Slotpic>) list.get(row)).get(col).equals(((List<Slotpic>) list.get(row-1)).get(col+1)) && ((List<Slotpic>) list.get(row)).get(col).equals(list.get(row-2)(col+2)))
+				if(list.get(row).get(col)==(list.get(row-1).get(col+1)) && list.get(row).get(col)==list.get(row-2).get(col+2))
 				{
 					return true;
 				}
@@ -97,27 +96,41 @@ public class JiayanWinningCombos{
 	}
 	public static void generateReward()
 	{
-			 if(checkHorizontal(slots))
+		 if(checkHorizontal(slots))
 			{
-				roundReward = rewards[0] * betAmount;
-				//rewardList.add(roundReward);
+				roundReward = reward[0] * betAmount;
+				nextRound =true;
 			}
 			else 
 			{
 				if(checkVertical( slots))
 				{
-					roundReward = rewards[3] * betAmount;
+					roundReward = reward[3] * betAmount;
+					nextRound = true;
 				}
 				else 
 				{
 					if(checkDownDiagonal(slots) || checkUpDiagonal( slots))
 					{
-						roundReward = rewards[6] * betAmount;
+						roundReward = reward[6] * betAmount;
+						nextRound = true;
 					}
 				}
 		}
 	}
 	
+
+	@Override
+	public ArrayList<RewardInterface> getRewardHistory() {
+		// TODO Auto-generated method stub
+		return rewardHistory;
+	}
+
+	@Override
+	public ArrayList<RewardInterface> setRewardHistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 }
