@@ -29,6 +29,8 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private TextLabel currentBalance;  
 	private TextArea currentNumber; 
 	private TextArea gameHistoryBox; 
+	private BingoBoxText history; 
+	
 	
 	//private TextArea gameScreen;
 	
@@ -124,9 +126,17 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			});
 			
 					lst.add(startEnd);	
-			currentBalance = new TextLabel(500, 80, 100, 50, "CurrentBalance: "
+					
+					int rightComponentWidth = 250; 
+					
+			currentBalance = new TextLabel(500, 80, rightComponentWidth, 50, "CurrentBalance: "
 					, Color.BLACK);
 			lst.add(currentBalance);
+			
+			history = new BingoBoxText(500, 220, rightComponentWidth, 250, "History", null , true); 
+			lst.add(history);
+			
+			
 	}
 
 
