@@ -7,12 +7,15 @@ import java.util.List;
 
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import main.Casino;
 import gui.components.Action;
+import gui.components.Graphic;
 import gui.components.TextArea;
 
 
 public class BlackjackScreen extends ClickableScreen implements Runnable {
 
+	private Graphic bg;
 	private TextArea score;
 	private TextArea label;
 	private ArrayList<CardInterface> hand; 
@@ -26,6 +29,8 @@ public class BlackjackScreen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "images/background.jpg");
+		viewObjects.add(bg);
 		addButtons(viewObjects);
 		for(int i = 0; i < 3; i++){
 			viewObjects.add(buttons[i]);
