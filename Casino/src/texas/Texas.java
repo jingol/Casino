@@ -49,9 +49,6 @@ public class Texas extends ClickableScreen implements Runnable{
 		deck = dealer.getDeck();
 		view.addAll(deck);
 		
-		PlayingCard c = deck.get(0);
-		c.setX(c.getX()+100);
-		c.flipCard();
 		
 		fold = new Button(60, 175, 75, 50, "fold", Color.green, null);
 		view.add(fold);

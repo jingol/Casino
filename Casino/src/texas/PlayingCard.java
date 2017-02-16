@@ -6,6 +6,7 @@ package texas;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -46,11 +47,12 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 	public void update(Graphics2D g) {
 		if (faceDown)
 		{
+			g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			g.setColor(Color.red);
 			g.fillRoundRect(0, 0, WIDTH, HEIGHT, 17, 17);
 			g.setColor(Color.BLACK);
 			g.setStroke(new BasicStroke(2));
-			g.drawRoundRect(1, 1, WIDTH-2, HEIGHT-2, 10, 10);
+			g.drawRoundRect(0, 0, WIDTH-1, HEIGHT-1, 15, 15);
 		}
 		else{
 			if(getCardValue() != null && suit != null)

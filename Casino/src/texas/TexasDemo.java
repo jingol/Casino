@@ -22,12 +22,8 @@ public class TexasDemo extends GUIApplication {
 	 */
 	public TexasDemo(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see gui.GUIApplication#initScreen()
-	 */
 	@Override
 	public void initScreen() {
 		Texas screen= new Texas(getWidth(),getHeight());
@@ -42,8 +38,6 @@ public class TexasDemo extends GUIApplication {
 		TexasDemo demo = new TexasDemo(WIDTH, HEIGHT);
 		Thread app = new Thread(demo);
 		app.start();
-		
-
 	}
 
 }

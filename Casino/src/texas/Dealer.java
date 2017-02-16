@@ -10,7 +10,7 @@ public class Dealer implements DealerInterface {
 		String[] suits = {"spades", "hearts", "clubs", "diamonds"};
 		for(int i = 1; i<14; i++){
 			for(int j = 0; j<4; j++){
-				deck.add(new PlayingCard(TexasDemo.WIDTH/2-PlayingCard.WIDTH/2, 50, i, suits[j]));
+				deck.add(new PlayingCard(50, TexasDemo.HEIGHT/2-PlayingCard.HEIGHT/2, i, suits[j]));
 			}
 		}
 		shuffleDeck();
