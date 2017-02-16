@@ -3,6 +3,7 @@
  */
 package texas;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -46,7 +47,10 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 		if (faceDown)
 		{
 			g.setColor(Color.red);
-			g.fillRoundRect(0, 0, WIDTH, HEIGHT, 10, 10);
+			g.fillRoundRect(0, 0, WIDTH, HEIGHT, 17, 17);
+			g.setColor(Color.BLACK);
+			g.setStroke(new BasicStroke(2));
+			g.drawRoundRect(1, 1, WIDTH-2, HEIGHT-2, 10, 10);
 		}
 		else{
 			if(getCardValue() != null && suit != null)
@@ -63,8 +67,11 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 
 	@Override
 	public String getCardValue() {
-		if(value > 0 && value < 11){
+		if(value > 1 && value < 11){
 			return ""+value;
+		}
+		else if(value == 1){
+			return "ace";
 		}
 		else if(value == 11){
 			return "jack";
