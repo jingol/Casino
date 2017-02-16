@@ -1,6 +1,10 @@
 package slots;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 
 import gui.components.Action;
@@ -17,8 +21,12 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	private static gui.components.Button button2;
 	private static gui.components.Button button3;
 	private static gui.components.Button start;
+	private Graphics2D g;
 	private TextLabel title;
 	private static TextLabel balance;
+	private Thread barrel1;
+	private Thread barrel;
+	private Thread barrel3;
 
 	public SlotScreen(int width, int height) {
 		super(width, height);
@@ -29,7 +37,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -37,6 +45,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		slots = new ArrayList<Slotpic>();
 		title = new TextLabel(450,20,100,40,"Slots");
+		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		button1 = new Button(275,550,100,40,
 				"STOP",Color.RED,
 				new Action() {
@@ -63,19 +72,20 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		});
 		
 		viewObjects.add(title);
+		viewObjects.add(balance);
 		viewObjects.add(button1);
 		viewObjects.add(button2);
 		viewObjects.add(button3);
 		
+		
 	}
-	
-	
-	
 	
 	
 	public void spin(){
 		
 	}
+	
+	
 	
 	
 
