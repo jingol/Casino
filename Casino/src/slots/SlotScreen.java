@@ -36,8 +36,8 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		slots = new ArrayList<Slotpic>();
-		title = new TextLabel(350,220,100,40,"Slots");
-		button1 = new Button(100,60,100,40,
+		title = new TextLabel(450,20,100,40,"Slots");
+		button1 = new Button(275,550,100,40,
 				"STOP",Color.RED,
 				new Action() {
 			
@@ -45,7 +45,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 				
 			}
 		});
-		button2 = new Button(250,60,100,40,
+		button2 = new Button(425,550,100,40,
 				"STOP",Color.RED,
 				new Action() {
 			
@@ -53,7 +53,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 				
 			}
 		});
-		button3 = new Button(400,60,100,40,
+		button3 = new Button(575,550,100,40,
 				"STOP",Color.RED,
 				new Action() {
 			
