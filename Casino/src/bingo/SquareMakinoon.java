@@ -12,7 +12,7 @@ import guiCompononets.Component;
  */
 //arraylist, button
 public class SquareMakinoon extends Component 
-implements SquareMakinoonInterface {
+implements SquaresInterfaceSharonWong {
 	private Color color; 
 	private boolean isClicked; 
 	private int number; 
@@ -75,39 +75,33 @@ implements SquareMakinoonInterface {
 	}
 
 	@Override
+	public void setX(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setAction(Action a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void highlight() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void setX() {
+	public void setNumber() {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void setY() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setAction(Action action) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void dim() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		
-	} 
 	
 }

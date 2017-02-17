@@ -30,7 +30,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private TextArea currentNumber; 
 	private TextArea gameHistoryBox; 
 	private BingoBoxText history; 
-	
+	private SharonBingoButton sampleButton; 
 	
 	//private TextArea gameScreen;
 	
@@ -108,7 +108,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 					new Action() {
 				
 				public void act() {
-					System.out.print(" Button Pressed3! ");
+					GUIApplication.setScreen(texas.Texas.texas);
 				}
 			});
 			
@@ -136,7 +136,16 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			history = new BingoBoxText(500, 220, rightComponentWidth, 250, "History", null , true); 
 			lst.add(history);
 			
-			
+			sampleButton = new SharonBingoButton(200, 500, 5, Color.WHITE,
+					new Action() {
+				
+				public void act() {
+					SharonBingoButton.highlighted = true; 
+					System.out.print("jj");
+					update(); 
+				}
+			});
+			lst.add(sampleButton);
 	}
 
 

@@ -21,5 +21,7 @@ public interface SquaresInterfaceSharonWong extends Clickable{
 	void setAction(Action a);
 
 	void highlight(); //color turns red
-
+	
+	void setNumber(); 
+	
 }
