@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  */
  
-public class PlayerHand{
+public class PlayerHand {
 
 	public static ArrayList <Card> hand;
 	public static boolean player = true;
@@ -21,11 +21,12 @@ public class PlayerHand{
 	}
 
 
-	public static void checkValue() {
+	public int checkValue() {
 		for(int i = 0; i < hand.size(); i++){
 			playerTotal += hand.get(0).value;
 		}
 		setPlayerTotal(playerTotal);
+		return playerTotal;
 	}
  
 
@@ -47,6 +48,15 @@ public class PlayerHand{
 	}
 
 
+	public static boolean getStandCall(){
+		return player;
+		
+	}
+	
+	public static void setStandCall(){
+		player = false;
+	}
+	
 	public static int getPlayerTotal() {
 		return playerTotal;
 	}

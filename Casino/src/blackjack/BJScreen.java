@@ -64,6 +64,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 			
 			@Override
 			public void act() {
+				if(PlayerHand.getStandCall() == true){
 					PlayerHand.hit();
 					viewObjects.add(new Graphic(positionCount + 85, nextRow, 60,80, PlayerHand.nextCard().image1));
 					positionCount += 85;
@@ -71,12 +72,13 @@ public class BJScreen extends ClickableScreen implements Runnable {
 						positionCount = 15;
 						nextRow += 100;
 					}
+				}
 			}
 		});
 		
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
-			//	PlayerHand.stay();
+				PlayerHand.setStandCall();
 			}
 		});
 		

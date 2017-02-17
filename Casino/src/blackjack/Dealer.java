@@ -86,6 +86,17 @@ public class Dealer implements CallInterface {
 		return dealerPlaying;
 	}
 
+	@Override
+	public boolean getStandCall() {
+		return dealerPlaying;
+	}
+
+	@Override
+	public void setStandCall() {
+		// TODO Auto-generated method stub
+		dealerPlaying = false;
+	}
+
 	
 
 }
