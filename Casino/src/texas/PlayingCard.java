@@ -23,8 +23,8 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 	
 	private boolean faceDown;
 	//ratio is 500: 726
-	public static final int WIDTH = 70;
-	public static final int HEIGHT= 102;
+	public static final int WIDTH = 60;
+	public static final int HEIGHT= 87;
 	private String suit;
 	private int value;
 	
@@ -57,6 +57,7 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 		else{
 			if(getCardValue() != null && suit != null)
 			    try {
+			    	g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			    	BufferedImage img = ImageIO.read(new File("images/cardImages/"+getCardValue()+"_of_"+suit+".png"));
 			    	g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
 			    } catch (IOException e) {

@@ -2,7 +2,7 @@ package texas;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+//Ray
 public class Dealer implements DealerInterface {
 	private ArrayList<PlayingCard> deck;
 	public Dealer() {

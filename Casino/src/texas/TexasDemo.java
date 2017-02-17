@@ -16,6 +16,7 @@ public class TexasDemo extends GUIApplication {
 	private static final long serialVersionUID = 1L;
 	public static int WIDTH = 800;
 	public static int HEIGHT = 500;
+	public static int money = 2000;
 	/**
 	 * @param width
 	 * @param height

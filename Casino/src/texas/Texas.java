@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gui.components.Button;
+import gui.components.Component;
 import gui.components.Graphic;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
@@ -27,6 +28,8 @@ public class Texas extends ClickableScreen implements Runnable{
 	private Button allIn;
 	private Button bet;
 	
+	private ArrayList<PlayingCard> pile;
+	
 	private Dealer dealer;
 	
 	private ArrayList<PlayingCard> deck;
@@ -37,8 +40,10 @@ public class Texas extends ClickableScreen implements Runnable{
 
 	@Override
 	public void run() {
-		
+		//deal hole cards
 	}
+
+	
 
 	@Override
 	public void initAllObjects(List<Visible> view) {
@@ -49,8 +54,11 @@ public class Texas extends ClickableScreen implements Runnable{
 		deck = dealer.getDeck();
 		view.addAll(deck);
 		
+		pile = new ArrayList<PlayingCard>();
 		
-		fold = new Button(60, 175, 75, 50, "fold", Color.green, null);
+		
+		
+		/*fold = new Button(60, 175, 75, 50, "fold", Color.green, null);
 		view.add(fold);
 		
 		call = new Button(60, 225, 75, 50, "call", Color.green, null);
@@ -63,7 +71,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		view.add(bet);
 		
 		allIn = new Button(60, 375, 75, 50, "All In", Color.green, null);
-		view.add(allIn);
+		view.add(allIn);*/
 	}
 
 
