@@ -29,6 +29,8 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	private Thread barrel1;
 	private Thread barrel;
 	private Thread barrel3;
+	
+	
 	public SlotScreen(int width, int height) {
 		super(width, height);
 		Thread play = new Thread(this);
@@ -47,7 +49,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		slots = new ArrayList<Slotpic>();
 		title = new TextLabel(450,20,100,40,"Slots");
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
-		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "resources/back.jpeg");
+		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "resources/back.jpg");
 		button1 = new Button(275,550,100,40,
 				"STOP",Color.RED,
 				new Action() {
