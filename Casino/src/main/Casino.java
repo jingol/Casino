@@ -38,7 +38,7 @@ public class Casino extends GUIApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		game = new Casino(800,600);
+		game = new Casino(1000,800);
 		Thread play = new Thread(game);
 		play.start();
 	}
