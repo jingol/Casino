@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import gui.components.Action;
 import gui.components.Button;
+import gui.components.Graphic;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
@@ -21,7 +22,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	private static gui.components.Button button2;
 	private static gui.components.Button button3;
 	private static gui.components.Button start;
-	private Graphics2D g;
+	private Graphic bg;
 	private TextLabel title;
 	private static TextLabel balance;
 	private Thread barrel1;
@@ -46,6 +47,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		slots = new ArrayList<Slotpic>();
 		title = new TextLabel(450,20,100,40,"Slots");
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
+		bg = new Graphic(0,0,1000,800,"back.jpg");
 		button1 = new Button(275,550,100,40,
 				"STOP",Color.RED,
 				new Action() {
@@ -70,7 +72,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 				
 			}
 		});
-		
+		viewObjects.add(bg);
 		viewObjects.add(title);
 		viewObjects.add(balance);
 		viewObjects.add(button1);
