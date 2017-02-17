@@ -28,7 +28,6 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	private Thread barrel1;
 	private Thread barrel;
 	private Thread barrel3;
-
 	public SlotScreen(int width, int height) {
 		super(width, height);
 		Thread play = new Thread(this);
