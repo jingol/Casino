@@ -73,7 +73,7 @@ public class PlayingCard extends Component implements PlayingCardInterface {
 		if(value > 1 && value < 11){
 			return ""+value;
 		}
-		else if(value == 1){
+		else if(value == 14){
 			return "ace";
 		}
 		else if(value == 11){

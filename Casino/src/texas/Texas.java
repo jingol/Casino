@@ -69,8 +69,14 @@ public class Texas extends ClickableScreen implements Runnable{
 		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green, null);
 		view.add(allIn);
 		
-		pile = new ArrayList<PlayingCard>();
+		for(int i = 0; i<5; i++){	
+			PlayingCard c = dealer.millCard();
+			view.add(c);
+			c.setX(200+c.getX()+100*i);
+			c.flipCard();
+		}
 		
+		pile = new ArrayList<PlayingCard>();
 	}
 
 

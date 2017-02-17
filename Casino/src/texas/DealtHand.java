@@ -3,7 +3,7 @@ package texas;
 public abstract class DealtHand {
 
 	public DealtHand() {
-		// TODO Auto-generated constructor stub
+		//return the type of win of the hand and 
 	}
 
 }
