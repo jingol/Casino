@@ -25,7 +25,8 @@ private SquaresInterfaceSharonWong[] squares;
 public static Integer[][] playerBoard= new Integer[5][5];
 //2D array of AI board
 public static Integer[][] aiBoard= new Integer[5][5];
-
+public static Boolean[][] aiBoolean= new Boolean[5][5];
+public static Boolean[][] playerBoolean= new Boolean[5][5];
 
 	public BingoScreenSharon(int width, int height) {
 		super(width, height);
@@ -78,6 +79,23 @@ public static Integer[][] aiBoard= new Integer[5][5];
 	        	}
 	        	    aiBoard[i][j] = random;
 	            
+	        	    /*
+	        	     * ArrayList = {1,2,3,4,5,6,7,8,9,10}
+	        	     *for (int i = 0; i < aiBoard.length; i++){
+	        			for (int j = 0; j < aiBoard[i].length; j++){
+	        	     * 		int randGenSize = ArrayList.Size();
+	        	     * 		double rand= Math.random();
+							int roll=(int)(randGenSize*rand);
+	        	     * 		aiBoard[i][j] = ArrayList.get(roll);
+	        	     * 		ArrayList.remove(roll);
+	        	     * }
+	        	     * for (int i = 0; i < aiBoard.length; i++){
+	        			for (int j = 0; j < aiBoard[i].length; j++){
+	        			aiboolean[i][j] = false;
+	        			}
+	        			}
+	        	     */
+	        	    
 	        	}
 	        }
 		
