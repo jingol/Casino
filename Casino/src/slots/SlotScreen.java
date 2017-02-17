@@ -76,10 +76,9 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		});
 		addPics();
 		for(Slotpic p : slots){
-			
+			moveToFront(p);
 			viewObjects.add(p);
 		}
-		moveToBack(bg);
 		viewObjects.add(bg);
 		viewObjects.add(title);
 		viewObjects.add(balance);
@@ -87,7 +86,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		viewObjects.add(button2);
 		viewObjects.add(button3);
 		
-		
+		moveToBack(bg);
 	}
 	
 	
@@ -97,22 +96,27 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	
 	public void addPics(){
 		ArrayList<Slotpic> demo = new ArrayList<Slotpic>();
-		demo.add(new Slotpic(0,0,100,100,"resources/evilflow.png"));
-		demo.add(new Slotpic(0,0,100,100,"resources/flow.png"));
-		demo.add(new Slotpic(0,0,100,100,"resources/gabe.png"));
-		demo.add(new Slotpic(0,0,100,100,"resources/java.png"));
-		demo.add(new Slotpic(0,0,100,100,"resources/noc1png"));
-		demo.add(new Slotpic(0,0,100,100,"resources/noc2.png"));
-		demo.add(new Slotpic(0,0,100,100,"resources/noc3.png"));
-		int x = 0;
-		int y = 0;
-		for(int i = 0; i < 7; i++){
+		demo.add(new Slotpic(50,0,100,100,"resources/evilflow.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/gabe.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/java.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc1png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc2.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
+		int x = 325;
+		int y = 200;
+		for(int i = 0; i < 9; i++){
 			Slotpic temp = demo.get(i);
 			temp.setX(x);
 			temp.setY(y);
 			slots.add(demo.get(i));
-			x += 50;
-			y += 50;
+			x += 100;
+			if(i == 2 || i == 5 || i == 8){
+				x = 325;
+				y += 100;
+			}
 		}
 		
 	}
