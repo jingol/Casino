@@ -13,52 +13,51 @@ import gui.components.Visible;
 public abstract class Screen {
 
 	private BufferedImage image;
-	public ArrayList<Visible> viewObjects;
-
-
+	private ArrayList<Visible> viewObjects; //	private List viewObjects; 
+	
 	public Screen(int width, int height) {
 		viewObjects = new ArrayList<Visible>();
 		initObjects(viewObjects);
 		initImage(width, height);
-	}
-
-	public abstract void 
-	initObjects(ArrayList<Visible> viewObjects);
-
+	} 
+	
+	public abstract void initObjects(ArrayList<Visible> viewObjects);
+	
 	public void initImage(int width, int height) {
 		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		update();
 	}
-
+	
 	public BufferedImage getImage(){
 		return image;
-	}
-
+	} 
+	
 	public int getWidth(){
 		return image.getWidth();
 	}
-
+	
 	public int getHeight(){
 		return image.getHeight();
 	}
-
+	
 	public void update() {
+//		for(int i = 0; i < viewObjects.size(); i++){}
+//		g.drawString("hello world", 40, 100);
+//		g.drawOval(20, 60, 100, 70);
 		Graphics2D g = image.createGraphics();
 		//smooth the graphics
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-
-		g.setColor(Color.white);
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(Color.pink);
 		g.fillRect(0, 0, image.getWidth(), image.getHeight());
-		g.setColor(Color.black);
-//		for(int i = 0; i < viewObjects.size(); i++){
-//			
-//		}
-		for(Visible v: viewObjects){
+		g.setColor(Color.white);
+		for(int i = 0; i < viewObjects.size(); i++){
+			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
+//		for(Visible v: viewObjects){
+//			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
+//		}
 	}
-
 	
 	//represents ABILITY to listen to mouse
 	//but isn't actually doing something
@@ -74,78 +73,72 @@ public abstract class Screen {
 		viewObjects.add(v);
 	}
 	
-	public void remove(Visible v) {
+	public void remove(Visible v){
 		/**
-		 * Note: in this implementation, we have
+		 * note: in this implementation, we have
 		 * a very simple command: remove(v)
 		 * however, remove is sorta a big deal on the 
 		 * AP exam. Here's why:
 		 * 
-		 * When an object is removed from a List, every
-		 * other object AFTER that object is moved up
-		 * in order. Therefore, all of their respective
-		 * indices change. You MUST, MUST MUST be aware
-		 * of this.
+		 * When an object is removed from a List, every other 
+		 * object AFTER that object is moved up in order
+		 * Therefore, all of their respective indices change. 
+		 * You MUST MUST MUST be aware of this.
 		 * 
-		 * Here is a CLAAAAAASSIC example:
+		 * Here is a CLAAAAASSIC example:
 		 * 
 		 * The following is WRONG
-		 * Suppose you have a List<Integer> with
+		 * Suppose you have a List <integer> with 
 		 * {4,8,7,1}
-		 * and you want to remove all Integers greater than
-		 * 5. You do this:
+		 * and you want to remove all integers greater than 5. 
+		 * You do this:
 		 * for(int i = 0; i < list.size(); i++){
-		 * 	   if(list.get(i) > 5) list.remove(i)
-		 * }
-		 * YOU FAAAAAAAAAIL!!!!!!!!!!
-		 * 
-		 * Why do you fail?
-		 * i = 0, nothing changes
-		 * i = 1, the '8' is removed
-		 * now we have:
-		 * {4,7,1}
-		 *  i = 2 nothing changes
-		 *  i = 3 exit the for loop. We have
-		 *  {4,7,1}
-		 *  
-		 *  THESE TWO WAYS ARE CORRECT:
-		 *  for(int i = 0; i < list.size(); i++){
-		 * 	   while(list.get(i) > 5) list.remove(i);
-		 * }
-		 * 
-		 * for(int i = 0; i < list.size(); i++){
-		 * 	   if(list.get(i) > 5) {
+		 * 		if(list.get(i) > 5){
 		 * 			list.remove(i);
-		 * 			i--;//compensate for i++
 		 * 		}
 		 * }
+		 * YOU FAAAAAAAAAIL!!!!!!!!!
 		 * 
-		 * for the same reason, this doesn't even work
-		 * (because the size can be changed)
-		 * for(Integer i: list){
-		 * 	if(i > 5) list.remove(i);
-		 * }
+		 * Why do you fail?
+		 * i = 0; nothing changes
+		 * i = 1; the "8" is removed
+		 * {4,7,1}
+		 * i = 2; nothing changes
+		 * i = 3; exit the for loop. We end up with
+		 * {4,7,1}
+		 * 
+		 * THESE TWO WAYS ARE CORRECT:
+		 * 
+		 *  for(int i = 0; i < list.size(); i++){
+		 * 		while(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 			i--; //compensate for i++	
+		 * 		}
+		 * 	}
+		 * 
+		 * for the same reason, this doesn't even work because the size
+		 * of the lists can be changed:
+		 *   for(Integer i: list){
+		 * 		if(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 		}
+		 * 	 }
 		 * 
 		 * ONE MORE NOTE:
-		 * if you call list.remove(int)
-		 * it will return the object being removed at that index
-		 * So you could do something like this
-		 * System.out.println(list.remove(0).toString() +" was removed.");
-		 * 
+		 * if you call list.remove(int) it will return the object
+		 * being removed at that index. so you can do something like this:
+		 * System.out.println(list.remove(0).toString() + "was removed.");
 		 */
 		
 		viewObjects.remove(v);
-		
-		
 	}
-	
 	
 	public void moveToBack(Visible v){
 		if(viewObjects.contains(v)){
 			viewObjects.remove(v);
 			//the "back" is index 0
-			viewObjects.add(0,v);
-			//This moves everything else forward in the list
+			viewObjects.add(0, v);
+			//this moves everything else forward in the list 
 		}
 	}
 	
@@ -155,15 +148,4 @@ public abstract class Screen {
 			viewObjects.add(v);
 		}
 	}
-	
-	
 }
-
-
-
-
-
-
-
-
-

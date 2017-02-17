@@ -2,111 +2,70 @@ package blackjack;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 
-import blackjack.ButtonInterface;
 import gui.components.Action;
-import gui.components.Clickable;
-import gui.components.Components;
+import gui.components.Component;
 
-public class Button extends Components implements ButtonInterface{
+public class Button extends Component implements ButtonInterface{
+ 
+	private Color col;
+	private Color col2;
+	private Action acts;
+	private final static int WIDTH = 65 ;
+	private final static int HEIGHT = 40;
 	
-	private static int x;
-	private static int y;
-	private static int h = 60;
-	private static int w = 80;
-	private static String text;
-	private Action act;
+	private static int count;
 	
-	public Button(){
-		super(x,y,w,h);
+	public Button() {
+		super(70*count + 100, 300, WIDTH, HEIGHT);
+		count++;
 	}
-	
-	@Override
-	public int getHeight() {
-		// TODO Auto-generated method stub
-		return h;
-	}
-
-	@Override
-	public BufferedImage getImage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getWidth() {
-		// TODO Auto-generated method stub
-		return w;
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return x;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return y;
-	}
-	
-	public void setX(int x){
-		Button.x = x;
-		update();
-	}
-	
-	public void setY(int y){
-		Button.y = y;
-		update();
-	}
-
-	@Override
-	public boolean isAnimated() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-//	public void setText(String text){
-//		Button.text = text;
-//		update();
-//	}
-
-//	@Override
-//	public void update() {
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
-		if(act != null){
-			act.act();
-		}
+		acts.act();
+
 	}
 
 	@Override
-	public boolean isHovered(int x, int y) {
-		// TODO Auto-generated method stub
-		return x>getX() && x<getX()+getWidth() && 
-				y > getY() && y<getY()+getHeight();
+	public boolean isHovered(int arg0, int arg1) {
+		double distance = Math.sqrt(Math.pow(arg0-(getX()+WIDTH/2), 2)+Math.pow(arg1-(getY()+HEIGHT/2), 2));
+		return distance < WIDTH/2;
 	}
 
 	@Override
-	public void setAction(Action a) {
-		// TODO Auto-generated method stub
-		this.act = a;
+	public void setColor(Color color) {
+		this.col = color;
+		col2 = col;
+		update();
 	}
+
 	@Override
-	public void update(Graphics2D g) {
+	public void setX(int i) {
 		// TODO Auto-generated method stub
-		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		g.setColor(Color.red);
-		g.fillRect(x,y,w,h);
-		g.setColor(Color.black);
-		g.drawRect(x,y,w-1,h-1);
+
 	}
+
+	@Override
+	public void setY(int i) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setAction(Action action) {
+		this.acts = action;
+	}
+
+ 
+	@Override
+	public void update(Graphics2D arg0) {
+		arg0.setColor(Color.green);
+		arg0.fillRect(0, 0, WIDTH, HEIGHT);
+		arg0.setColor(Color.black);
+		arg0.drawRect(0, 0, WIDTH - 1, HEIGHT - 1);
+	}
+
 }

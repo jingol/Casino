@@ -5,12 +5,13 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-public class TextLabel extends Components {
+public class TextLabel extends Component {
 
-	//FIELDS
+	//fields
 	private String text;
 	private String font;
 	private int size;
+	
 	
 	public TextLabel(int x, int y, int w, int h, String text) {
 		super(x, y, w, h);
@@ -19,13 +20,11 @@ public class TextLabel extends Components {
 		this.size = 20;
 		update();
 	}
-
 	
 	
 	public String getText() {
 		return text;
 	}
-
 
 
 	public void setText(String text) {
@@ -34,11 +33,9 @@ public class TextLabel extends Components {
 	}
 
 
-
 	public String getFont() {
 		return font;
 	}
-
 
 
 	public void setFont(String font) {
@@ -47,11 +44,9 @@ public class TextLabel extends Components {
 	}
 
 
-
 	public int getSize() {
 		return size;
 	}
-
 
 
 	public void setSize(int size) {
@@ -59,32 +54,15 @@ public class TextLabel extends Components {
 		update();
 	}
 
-
-
 	@Override
 	public void update(Graphics2D g) {
-		g = clear();//delete previous text
-		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g = clear(); //deletes previous text 
+		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setColor(Color.black);
-		g.setFont(new Font(font,Font.PLAIN,size));
-		if(text != null) g.drawString(text, 4, getHeight()-5);
+		g.setFont(new Font(font, Font.PLAIN, size));
+		if(text != null){
+			g.drawString(text, 4, getHeight() - 5);
+		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

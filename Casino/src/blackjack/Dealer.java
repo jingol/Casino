@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 /**
  * @author Kristy Tan
- *
+ * 
  */
  
-public class Dealer extends DealtHand {
+public class Dealer implements CallInterface {
 
 	public static ArrayList <Card> dealerHand;
 	private int currentTotal = 0;
@@ -16,59 +16,50 @@ public class Dealer extends DealtHand {
 	public int rewards; 
 	 
 	public Dealer() {
-		initialStart(); 
+		dealerHand = new ArrayList <Card>();
 		while(dealerPlaying){
 			checkValue();
 			chance();
 		}
 	}
 	
-	public void initialStart(){
-		for(int i = 0; i < 2; i++){
-			Dealer.dealerHand.add(Deck.deck.get(0));
-			Deck.deck.remove(0);
-			PlayerHand.hand.add(Deck.deck.get(0));
-			Deck.deck.remove(0);
-		}
-	}
-	
 	public void chance(){
 		int chance = (int) (Math.random() * 100);
 		if(currentTotal == 21 || currentTotal > 21){
-			stay();
+			stand();
 		}else if(currentTotal < 17){
-			hit(dealerHand);
+			hit();
 		}
 		else if(currentTotal == 17){
 			if(chance >= 75){
-				hit(dealerHand);
+				hit();
 			}
 			else{
-				stay();
+				stand();
 			}
 		}
 		else if(currentTotal == 18){
 			if(chance >= 85){
-				hit(dealerHand);
+				hit();
 			}
 			else{
-				stay();
+				stand();
 			}
 		}
 		else if(currentTotal == 19){
 			if(chance >= 90){
-				hit(dealerHand);
+				hit();
 			}
 			else{
-				stay();
+				stand();
 			}
 		}
 		else if(currentTotal == 20){
 			if(chance >= 95){
-				hit(dealerHand);
+				hit();
 			}
 			else{
-				stay();
+				stand();
 			}
 		}
 	}
@@ -82,17 +73,19 @@ public class Dealer extends DealtHand {
 		return currentTotal;
 	}
 
-//	@Override
-//	public void hit() {
-//		dealerHand.add(Deck.deck.get(0));
-//		Deck.deck.remove(0);
-//		
-//	}
+	@Override
+	public void hit() {
+		dealerHand.add(Deck.deck.get(0));
+		Deck.deck.remove(0);
+	}
 
 	@Override
-	public boolean stay() {
+	public boolean stand() {
 		finalCTotal = currentTotal;
 		dealerPlaying = false;
 		return dealerPlaying;
 	}
+
+	
+
 }
