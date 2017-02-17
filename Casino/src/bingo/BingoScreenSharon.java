@@ -46,29 +46,24 @@ public static Integer[][] aiBoard= new Integer[5][5];
 		//place all squares
 				for(int i =0; i < numberOfSquares; i++){
 					squares[i] = getASquare();
+					
 					//final SquaresInterfaceSharonWong b = squares[i];
-				
-				}
-				
+				}			
 	}
+	
 
 	@Override
-	public void initObjects(ArrayList<Visible> arg0) {
+	public void initObjects(ArrayList<Visible> view) {
 		// TODO Auto-generated method stub
 		
 	}
-	public int randNumGenerator(){
-		/*
-		double rand= Math.random();
-		int roll=(int)(6*rand); //0 to 5
-		return roll+1; // 1 to 6
-		*/
+	public int randNumGenerator(){ // generates rand num between 1-50
 		double rand= Math.random();
 		int roll=(int)(51*rand); //0 to 50
 		return roll+1; // 1 to 50
 	}
 	
-	public void aiBoardArray() {
+	public Integer[][] aiBoardArray() {
 		
 		for (int i = 0; i < aiBoard.length; i++){
 	        for (int j = 0; j < aiBoard[i].length; j++){
@@ -87,9 +82,10 @@ public static Integer[][] aiBoard= new Integer[5][5];
 	        }
 		
 		}
+		return aiBoard;
 		
 	}
-public void playerBoardArray() {
+public Integer[][] playerBoardArray() {
 		
 		for (int i = 0; i < playerBoard.length; i++){
 	        for (int j = 0; j < playerBoard[i].length; j++){
@@ -108,6 +104,7 @@ public void playerBoardArray() {
 	        }
 		
 		}
+		return playerBoard;
 		
 	}
 	

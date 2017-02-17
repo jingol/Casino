@@ -40,7 +40,7 @@ public class BingoBoxText extends Component {
 		rectBox = new Rectangle(_BORDER_WIDTH/2 , 20  + _BORDER_WIDTH/2 , w - _BORDER_WIDTH   , h - 20 - _BORDER_WIDTH  );
 		this.boxContent = new ArrayList<String>();
 		if(boxContent != null){ 
-			this.boxContent.addBoxContent();
+			//this.boxContent.addBoxContent();
 		}
 		update();
 		
