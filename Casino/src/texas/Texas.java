@@ -21,7 +21,7 @@ import main.Casino;
 
 public class Texas extends ClickableScreen implements Runnable{
 	private Graphic bg;
-	
+	private Framer buttonFrame;
 	private Button fold;
 	private Button raise;
 	private Button call;
@@ -29,10 +29,14 @@ public class Texas extends ClickableScreen implements Runnable{
 	private Button bet;
 	
 	private ArrayList<PlayingCard> pile;
+	private ArrayList<PlayingCard> deck;
 	
+	private final int PADDING = 20;
+	private final int BHEIGHT = 30;
+	private final int BWIDTH = 60;
 	private Dealer dealer;
 	
-	private ArrayList<PlayingCard> deck;
+	
 			
 	public Texas(int width, int height) {
 		super(width, height);
@@ -48,30 +52,25 @@ public class Texas extends ClickableScreen implements Runnable{
 	@Override
 	public void initAllObjects(List<Visible> view) {
 		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "images/greenbg.jpg");
-		view.add(bg);
-		
+		buttonFrame = new Framer(PADDING, 2*PADDING, Casino.WIDTH/4, Casino.HEIGHT/2-PlayingCard.HEIGHT-3*PADDING, Color.BLACK);
 		dealer = new Dealer();
 		deck = dealer.getDeck();
+		view.add(bg);
 		view.addAll(deck);
+		view.add(buttonFrame);
+		fold = new Button(buttonFrame.getX(), buttonFrame.getY(), BWIDTH, BHEIGHT, "fold", Color.green, null);
+		view.add(fold);
+		call = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY(), BWIDTH, BHEIGHT, "call", Color.green, null);
+		view.add(call);
+		raise = new Button(buttonFrame.getX()+buttonFrame.getWidth()/2-BWIDTH/2, buttonFrame.getY()+buttonFrame.getHeight()/2-BHEIGHT/2, BWIDTH, BHEIGHT, "raise", Color.green, null);
+		view.add(raise);
+		bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green, null);
+		view.add(bet);
+		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green, null);
+		view.add(allIn);
 		
 		pile = new ArrayList<PlayingCard>();
 		
-		
-		
-		/*fold = new Button(60, 175, 75, 50, "fold", Color.green, null);
-		view.add(fold);
-		
-		call = new Button(60, 225, 75, 50, "call", Color.green, null);
-		view.add(call);
-		
-		raise = new Button(60, 275, 75, 50, "raise", Color.green, null);
-		view.add(raise);
-		
-		bet = new Button(60, 325, 75, 50, "bet", Color.green, null);
-		view.add(bet);
-		
-		allIn = new Button(60, 375, 75, 50, "All In", Color.green, null);
-		view.add(allIn);*/
 	}
 
 
