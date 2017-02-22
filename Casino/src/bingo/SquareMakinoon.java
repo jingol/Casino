@@ -1,9 +1,11 @@
 package bingo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+import guiCompononets.Clickable;
 import guiCompononets.Component;
 
 
@@ -12,7 +14,8 @@ import guiCompononets.Component;
  */
 //arraylist, button
 public class SquareMakinoon extends Component 
-implements SquaresInterfaceSharonWong {
+implements Clickable {
+	private boolean highlighted; 
 	private Color color; 
 	private boolean isClicked; 
 	private int number; 
@@ -24,7 +27,7 @@ implements SquaresInterfaceSharonWong {
 		
 		this.color = color;
 		
-		this.isClicked = false; 
+		this.highlighted = false; 
 		
 	}
 	
@@ -49,59 +52,40 @@ implements SquaresInterfaceSharonWong {
 
 	@Override
 	public void update(Graphics2D g) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		if(color != null){
-			g.setColor(color);
-		}
-		else{
-			g.setColor(Color.lightGray);
-		}
-		g.fillOval(0, 0, super.getWidth(), super.getHeight());
-		g.setColor(Color.black);
-		g.drawOval(0, 0, super.getWidth(), super.getHeight());
-		
+//		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//		if(color != null){
+//			g.setColor(color);
+//		}
+//		else{
+//			g.setColor(Color.WHITE);
+//		}
+//		
+//		if(highlighted){
+//			System.out.println("highlighted");
+//			g.setColor(Color.RED);
+//			
+//		}
+//		//g.fillOval(0, 0, super.getWidth(), super.getHeight());
+//		
+//		g.setColor(Color.black);
+		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g.setFont(new Font("Calibri",Font.BOLD,30));
+		g.drawString("hello" + this.number, 0, 0 );
 	}
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
+		System.out.println("act");
+		highlighted = true;
+		update();
 		
 	}
 
-	@Override
-	public boolean isHovered(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isHovered(int x, int y) {
+		
+		return x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight();
 	}
 
-	@Override
-	public void setX(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setY(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setAction(Action a) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void highlight() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setNumber() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

@@ -13,6 +13,7 @@ import guiCasino.screens.ClickableScreen;
 import guiCompononets.Graphic;
 import guiCasino.screens.TextArea;
 import guiCompononets.Visible;
+import main.Casino;
 
 /**
  * @author Makinoon
@@ -39,9 +40,15 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			int width, int height) {
 		
 		super(width, height);
-		
+		System.out.println(userBoard);
 		this.userBoard = userBoard; 
-		
+//		SquareMakinoon[][] temp  = userBoard.getGrid();
+//		
+//		for(int r = 0; r < temp.length; r++){
+//			for( int c = 0; c < temp[0].length; c++ ){
+//				this.addObject(temp[r][c]);
+//			}
+//		}
 		 
 		Thread app = new Thread(this);
 		
@@ -85,6 +92,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			
 			public void act() {
 				System.out.print(" Button Pressed1! ");
+				//Casino.setScreen(Casino.SlotScreen);
 			}
 		});
 		
@@ -108,7 +116,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 					new Action() {
 				
 				public void act() {
-					GUIApplication.setScreen(texas.Texas.texas);
+					//GUIApplication.setScreen(texas.Texas.texas);
 				}
 			});
 			

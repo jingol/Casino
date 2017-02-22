@@ -25,11 +25,12 @@ public class MakinoonBingoBoard {
 	private SquareMakinoon[][] grid = new SquareMakinoon[5][5]; 
 	
 	
-	public MakinoonBingoBoard(int[][] boardNumbers) {
+	public MakinoonBingoBoard(int[][] boardNumbers,
+			int r, int c , int sizeOfButton) {
 		
 		for(int i = 0; i < boardNumbers.length; i ++){ 
 			for(int k = 0; k < boardNumbers[0].length; k++){ 
-				getGrid() [i][k] = new SquareMakinoon(Color.WHITE, boardNumbers[i][k], 100, 100, 20, 20); 
+				getGrid() [i][k] = new SquareMakinoon(Color.WHITE, boardNumbers[i][k], r+ sizeOfButton*i, c + sizeOfButton*k, sizeOfButton, sizeOfButton); 
 				
 			}
 		}
