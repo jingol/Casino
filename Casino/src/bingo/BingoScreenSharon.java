@@ -66,7 +66,8 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 		//return roll + 1; // 1 to 50
 		double rand = Math.random();
 		int roll = (int) ((s+1) * rand);
-		return roll + 1;
+		//return roll + 1;
+		return roll; //NOW::::GENERATES NUM BETWEEN 0-50
 	}
 
 	public void initBoards() {
@@ -77,15 +78,9 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 		for (int i = 0; i < aiBoard.length; i++) {
 			for (int j = 0; j < aiBoard[i].length; j++) {
+				int randGenSize = spinner.size();
+				int roll = randNumGenerator(randGenSize); // get a random index from current length to choose from
 				
-				int roll = randNumGenerator(50);
-				for (int x = 0; i < aiBoard.length; x++) {
-					for (int y = 0; j < aiBoard[i].length; y++) {
-						if (aiBoard[x][y].equals(roll)) {
-							randNumGenerator(50);
-						}
-					}
-				}	
 				aiBoard[i][j] = spinner.get(roll);
 				spinner.remove(roll);
 			}
@@ -126,15 +121,9 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 		for (int i = 0; i < playerBoard.length; i++) {
 			for (int j = 0; j < playerBoard[i].length; j++) {
+				int randGenSize = spinner.size();
+				int roll = randNumGenerator(randGenSize); // get a random index from current length to choose from
 				
-				int roll = randNumGenerator(50);
-				for (int x = 0; i < playerBoard.length; x++) {
-					for (int y = 0; j < playerBoard[i].length; y++) {
-						if (playerBoard[x][y].equals(roll)) {
-							randNumGenerator(50);
-						}
-					}
-				}	
 				playerBoard[i][j] = spinner.get(roll);
 				spinner.remove(roll);
 			}
