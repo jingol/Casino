@@ -59,15 +59,41 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 		// TODO Auto-generated method stub
 
 	}
-
-	public int randNumGenerator() { // generates rand num between 1-50
+	//s=size or length of random
+	public int randNumGenerator(int s) { // generates rand num between 1-50
+		//double rand = Math.random();
+		//int roll = (int) (51 * rand); // 0 to 50
+		//return roll + 1; // 1 to 50
 		double rand = Math.random();
-		int roll = (int) (51 * rand); // 0 to 50
-		return roll + 1; // 1 to 50
+		int roll = (int) ((s+1) * rand);
+		return roll + 1;
 	}
 
 	public void initBoards() {
-	
+		
+		for (int i = 1; i < 51; i++) {
+			spinner.add(i);
+		}
+
+		for (int i = 0; i < aiBoard.length; i++) {
+			for (int j = 0; j < aiBoard[i].length; j++) {
+				
+				int roll = randNumGenerator(50);
+				for (int x = 0; i < aiBoard.length; x++) {
+					for (int y = 0; j < aiBoard[i].length; y++) {
+						if (aiBoard[x][y].equals(roll)) {
+							randNumGenerator(50);
+						}
+					}
+				}	
+				aiBoard[i][j] = spinner.get(roll);
+				spinner.remove(roll);
+			}
+
+		}
+		
+	/*
+		
 		// ArrayList<Visible>values = {1,2,3,4,5,6,7,8,9,10};
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
@@ -83,8 +109,12 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 			}
 
 		}
-		for (int i = 0; i < aiBoard.length; i++) {
-			for (int j = 0; j < aiBoard[i].length; j++) {
+		
+		
+		*/
+		
+		for (int i = 0; i < aiBoolean.length; i++) {
+			for (int j = 0; j < aiBoolean[i].length; j++) {
 				aiBoolean[i][j] = false;
 			}
 		}
@@ -95,50 +125,27 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 		for (int i = 0; i < playerBoard.length; i++) {
 			for (int j = 0; j < playerBoard[i].length; j++) {
-				int randGenSize = spinner.size();
-				double rand = Math.random();
-				int roll = (int) (randGenSize * rand);
+				
+				int roll = randNumGenerator(50);
+				for (int x = 0; i < playerBoard.length; x++) {
+					for (int y = 0; j < playerBoard[i].length; y++) {
+						if (playerBoard[x][y].equals(roll)) {
+							randNumGenerator(50);
+						}
+					}
+				}	
 				playerBoard[i][j] = spinner.get(roll);
 				spinner.remove(roll);
 			}
 
 		}
-		for (int i = 0; i < playerBoard.length; i++) {
-			for (int j = 0; j < playerBoard[i].length; j++) {
+		for (int i = 0; i < playerBoolean.length; i++) {
+			for (int j = 0; j < playerBoolean[i].length; j++) {
 				playerBoolean[i][j] = false;
 			}
 		}
 	}
 
-
-
-	
-/*
-	public Integer[][] playerBoardArray() {
-
-		for (int i = 0; i < playerBoard.length; i++) {
-			for (int j = 0; j < playerBoard[i].length; j++) {
-				// generate random number
-				int random = randNumGenerator();
-				// check to see if board already contains that number
-				for (int x = 0; i < playerBoard.length; x++) {
-					for (int y = 0; j < playerBoard[i].length; y++) {
-						if (playerBoard[x][y].equals(random)) {
-							randNumGenerator();
-						}
-					}
-					playerBoard[i][j] = random;
-
-				}
-			}
-
-		}
-		return playerBoard;
-
-	}
-*/
-	// Generate ball spin of random number : used to check if value of button
-	// clicked is this number
 	
 	public int randNumBallGenerator(int n) {
 		ArrayList<Integer> numBallList = new ArrayList<>();
