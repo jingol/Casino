@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gui.components.Button;
-import gui.components.Component;
 import gui.components.Graphic;
 import gui.components.Visible;
+import gui.components.Action;
 import gui.screens.ClickableScreen;
 import main.Casino;
 
@@ -21,6 +21,7 @@ import main.Casino;
 
 public class Texas extends ClickableScreen implements Runnable{
 	private Graphic bg;
+	private Table table;
 	private Framer buttonFrame;
 	private Button fold;
 	private Button raise;
@@ -46,9 +47,7 @@ public class Texas extends ClickableScreen implements Runnable{
 	public void run() {
 		//deal hole cards
 	}
-
 	
-
 	@Override
 	public void initAllObjects(List<Visible> view) {
 		bg = new Graphic(0, 0, Casino.WIDTH, Casino.HEIGHT, "images/greenbg.jpg");
@@ -95,8 +94,9 @@ public class Texas extends ClickableScreen implements Runnable{
 			c.setX(200+c.getX()+100*i);
 			c.flipCard();
 		}
-		
 		pile = new ArrayList<PlayingCard>();
+		table = new Table(TexasDemo.WIDTH/2-150, TexasDemo.HEIGHT/6-20, 300, 100);
+		view.add(table);
 	}
 
 

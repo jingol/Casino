@@ -9,7 +9,7 @@ public class Table extends Component implements Pot{
 
 	private int money;
 	public Table(int x, int y, int w, int h) {
-		super(100, 100, 100, 100);
+		super(x, y, w, h);
 		money=0;
 	}
 	@Override
@@ -22,9 +22,9 @@ public class Table extends Component implements Pot{
 	@Override
 	public void update(Graphics2D g) {
 		g.setColor(new Color(200,220,255));
-		g.fillOval(0, 0, 99, 99);
+		g.fillRoundRect(0, 0, 200, 100, 10, 10);
 		g.setColor(Color.black);
-		g.drawOval(0, 0, 99, 99);
+		g.drawRoundRect(0, 0, 200, 100, 10, 10);
 		g.drawString("Money bet = "+money, 40, 55);
 	}
 
