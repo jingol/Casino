@@ -21,10 +21,10 @@ public class MatthewSlots implements main.BalanceInterface {
 	public static gui.components.Button blackjackButton;
 	public static gui.components.Button bingoButton;
 	public static int balance;
+	public static ArrayList bets;
 	
 
 	public void initAllObjects(ArrayList<Visible> viewObjects){
-		
 		texasButton = new gui.components.Button(166, 750, 200, 100, "To Texas Hold 'Em", Color.RED, new Action(){
 			public void act() {
 				texas.setFromGame("slots.MatthewSlots");
@@ -45,6 +45,18 @@ public class MatthewSlots implements main.BalanceInterface {
 				gui.GUIApplication.setScreen(bingo.MakinoonBingoGame.md);
 			}
 		});
+	}
+	
+	public void bet(ArrayList bets){
+		betAmount = (int) bets.get(bets.size());
+		balance -= betAmount;
+	}
+	public void reward(){
+		balance += slots.JiayanWinningCombos.getRewardHistory.get(slots.JiayanWinningCombos.getRewardHistory.size());
+	}
+	
+	public void addBet(){
+		bets.add(betAmount);
 	}
 
 	public int getBalance() {
