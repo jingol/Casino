@@ -58,15 +58,35 @@ public class Texas extends ClickableScreen implements Runnable{
 		view.add(bg);
 		view.addAll(deck);
 		view.add(buttonFrame);
-		fold = new Button(buttonFrame.getX(), buttonFrame.getY(), BWIDTH, BHEIGHT, "fold", Color.green, null);
+		fold = new Button(buttonFrame.getX(), buttonFrame.getY(), BWIDTH, BHEIGHT, "fold", Color.green,new Action() {
+			public void act() {
+				
+			}
+			});
 		view.add(fold);
-		call = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY(), BWIDTH, BHEIGHT, "call", Color.green, null);
+		call = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY(), BWIDTH, BHEIGHT, "call", Color.green, new Action() {
+			public void act() {
+				
+			}
+			});
 		view.add(call);
-		raise = new Button(buttonFrame.getX()+buttonFrame.getWidth()/2-BWIDTH/2, buttonFrame.getY()+buttonFrame.getHeight()/2-BHEIGHT/2, BWIDTH, BHEIGHT, "raise", Color.green, null);
+		raise = new Button(buttonFrame.getX()+buttonFrame.getWidth()/2-BWIDTH/2, buttonFrame.getY()+buttonFrame.getHeight()/2-BHEIGHT/2, BWIDTH, BHEIGHT, "raise", Color.green,new Action() {
+			public void act() {
+				
+			}
+			});
 		view.add(raise);
-		bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green, null);
+		bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,new Action() {
+			public void act() {
+				
+			}
+			});
 		view.add(bet);
-		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green, null);
+		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green,new Action() {
+			public void act() {
+				
+			}
+			});
 		view.add(allIn);
 		
 		for(int i = 0; i<5; i++){	
