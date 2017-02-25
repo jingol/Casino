@@ -5,5 +5,5 @@ package texas;
  */
 public interface PlayingCardInterface {
 	void flipCard();
-	String getCardValue();
+	String getCardName();
 }

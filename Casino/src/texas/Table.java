@@ -22,9 +22,9 @@ public class Table extends Component implements Pot{
 	@Override
 	public void update(Graphics2D g) {
 		g.setColor(new Color(200,220,255));
-		g.fillRoundRect(0, 0, 200, 100, 10, 10);
+		g.fillRoundRect(25, 25, 120, 50, 10, 10);
 		g.setColor(Color.black);
-		g.drawRoundRect(0, 0, 200, 100, 10, 10);
+		g.drawRoundRect(25, 25, 120, 50, 10, 10);
 		g.drawString("Money bet = "+money, 40, 55);
 	}
 

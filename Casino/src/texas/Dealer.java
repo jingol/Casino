@@ -8,7 +8,7 @@ public class Dealer implements DealerInterface {
 	public Dealer() {
 		deck = new ArrayList<PlayingCard>();
 		String[] suits = {"spades", "hearts", "clubs", "diamonds"};
-		for(int i = 1; i<14; i++){
+		for(int i = 2; i<15; i++){
 			for(int j = 0; j<4; j++){
 				deck.add(new PlayingCard(50, TexasDemo.HEIGHT/2-PlayingCard.HEIGHT/2, i, suits[j]));
 			}
