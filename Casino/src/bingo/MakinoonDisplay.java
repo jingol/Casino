@@ -33,16 +33,19 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private BingoBoxText history; 
 	private SharonBingoButton sampleButton; 
 	
+	private ArrayList<BingoGameHistory> gameHistoryList; 
 	//private TextArea gameScreen;
 	
 	
-	public MakinoonDisplay(MakinoonBingoBoard userBoard, 
+	public MakinoonDisplay(MakinoonBingoBoard userBoard,
+			ArrayList<BingoGameHistory> gameHistoryList,
 			int width, int height) {
-		
 		super(width, height);
-		System.out.println(userBoard);
+		
+		System.out.println("this is Makinoon Display" + userBoard);
 		this.userBoard = userBoard; 
-//		SquareMakinoon[][] temp  = userBoard.getGrid();
+		this.gameHistoryList = new ArrayList<BingoGameHistory>();
+//	SquareMakinoon[][] temp  = userBoard.getGrid();
 //		
 //		for(int r = 0; r < temp.length; r++){
 //			for( int c = 0; c < temp[0].length; c++ ){
@@ -140,23 +143,21 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			currentBalance = new TextLabel(500, 80, rightComponentWidth, 50, "CurrentBalance: "
 					, Color.BLACK);
 			lst.add(currentBalance);
+			ArrayList<String> testStrings = new ArrayList<String>();
+			testStrings.add("Winner" );
 			
-			history = new BingoBoxText(500, 220, rightComponentWidth, 250, "History", null , true); 
+			history = new BingoBoxText(500, 220, rightComponentWidth, 250, "History", testStrings, true); 
 			lst.add(history);
 			
-			sampleButton = new SharonBingoButton(200, 500, 5, Color.WHITE,
-					new Action() {
-				
-				public void act() {
-					SharonBingoButton.highlighted = true; 
-					System.out.print("jj");
-					update(); 
-				}
-			});
-			lst.add(sampleButton);
+			
+			
 	}
 
-
+	public void addGameHistory(BingoGameHistory gameHistory ){ 
+		this.gameHistoryList.add(gameHistory); 
+		history.addLine(gameHistory.getSummary());
+		
+	}
 
 
 

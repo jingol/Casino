@@ -34,14 +34,13 @@ public class BingoBoxText extends Component {
 	 * @param w
 	 * @param h
 	 */
-	public BingoBoxText(int x, int y, int w, int h, String boxTitle, String boxContent, boolean multipleLines) {
+	public BingoBoxText(int x, int y, int w, int h, String boxTitle, ArrayList<String> boxContent, boolean multipleLines) {
 		super(x, y, w, h);
 		this.boxTitle = boxTitle; 
+		
 		rectBox = new Rectangle(_BORDER_WIDTH/2 , 20  + _BORDER_WIDTH/2 , w - _BORDER_WIDTH   , h - 20 - _BORDER_WIDTH  );
-		this.boxContent = new ArrayList<String>();
-		if(boxContent != null){ 
-			//this.boxContent.addBoxContent();
-		}
+		this.boxContent = boxContent;
+		System.out.println(boxContent);
 		update();
 		
 		
@@ -64,10 +63,31 @@ public class BingoBoxText extends Component {
 			g.setStroke(new BasicStroke(_BORDER_WIDTH));
 			g.draw(rectBox);
 			
-			
 		} 
+		if(boxContent != null){ 
+			
+			System.out.println("BoxContent is not null");
+			for(int i = 0; i < this.boxContent.size(); i ++){ 
+				
+				FontMetrics fm = g.getFontMetrics();  
+			
+				
+				
+				g.setColor(Color.BLACK); 
+				g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+						RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+				g.setFont(new Font("Calibri",Font.BOLD, 20));
+				g.drawString(this.boxContent.get(i), (getWidth() - fm.stringWidth(this.boxContent.get(i))) /2 , 40 + 20*i);
+				
+			//g.drawString(this.boxContent.get(i), getWidth()+30, 40);
+			
+				}	
+		}
 		
 		
 	}
-
+	public void addLine(String temp ){ 
+		this.boxContent.add(temp);
+		update(); 
+	}
 }
