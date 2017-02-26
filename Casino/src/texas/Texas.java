@@ -65,25 +65,28 @@ public class Texas extends ClickableScreen implements Runnable{
 		view.add(fold);
 		call = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY(), BWIDTH, BHEIGHT, "call", Color.green, new Action() {
 			public void act() {
-				
+				Player.
 			}
 			});
 		view.add(call);
 		raise = new Button(buttonFrame.getX()+buttonFrame.getWidth()/2-BWIDTH/2, buttonFrame.getY()+buttonFrame.getHeight()/2-BHEIGHT/2, BWIDTH, BHEIGHT, "raise", Color.green,new Action() {
 			public void act() {
-				
+				Player.
 			}
 			});
 		view.add(raise);
+		//if the array turn is 1 then this will be able to click if not then it will be null
 		bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,new Action() {
 			public void act() {
 				
 			}
 			});
+		else
+			bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,null);	
 		view.add(bet);
 		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green,new Action() {
 			public void act() {
-				Table.increaseScore(money);
+				Table.increaseScore(TexasDemo.money);
 				money = 0;
 				
 			}
