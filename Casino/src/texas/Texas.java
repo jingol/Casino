@@ -83,6 +83,8 @@ public class Texas extends ClickableScreen implements Runnable{
 		view.add(bet);
 		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green,new Action() {
 			public void act() {
+				Table.increaseScore(money);
+				money = 0;
 				
 			}
 			});
