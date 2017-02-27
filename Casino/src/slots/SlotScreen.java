@@ -74,6 +74,16 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 				
 			}
 		});
+		start = new Button(75,375,100,40,
+				"Spin!",Color.PINK,
+				new Action() {
+			
+			public void act() {
+				
+			}
+		});
+		
+		
 		addPics();
 		for(Slotpic p : slots){
 			moveToFront(p);
@@ -82,6 +92,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		viewObjects.add(bg);
 		viewObjects.add(title);
 		viewObjects.add(balance);
+		viewObjects.add(start);
 		viewObjects.add(button1);
 		viewObjects.add(button2);
 		viewObjects.add(button3);
@@ -100,7 +111,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/gabe.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/java.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/noc1png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc1.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc2.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
