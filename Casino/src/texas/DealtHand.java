@@ -17,6 +17,12 @@ public abstract class DealtHand {
 	public DealtHand() {
 		hand = new ArrayList<PlayingCard>();
 	}
+	public void addCard(PlayingCard c){
+		hand.add(c);
+	}
+	public void addCard(PlayingCard c, int index){
+		hand.add(index, c);
+	}
 	public int getWinHand(ArrayList<PlayingCard> pileCards){
 		//returns the highest poker hand that can be won given an arraylist and players current hand
 		//first get the entire list of cards being used
@@ -108,5 +114,6 @@ public abstract class DealtHand {
 		}
 		return chain;
 	}
+	abstract ArrayList<PlayingCard> getTieHand();
 
 }

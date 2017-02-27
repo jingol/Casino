@@ -17,6 +17,7 @@ public class TexasDemo extends GUIApplication {
 	public static int WIDTH = 800;
 	public static int HEIGHT = 500;
 	public static int money = 2000;
+	public static TexasDemo demo;
 	/**
 	 * @param width
 	 * @param height
@@ -36,7 +37,7 @@ public class TexasDemo extends GUIApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		TexasDemo demo = new TexasDemo(WIDTH, HEIGHT);
+		demo = new TexasDemo(WIDTH, HEIGHT);
 		Thread app = new Thread(demo);
 		app.start();
 	}

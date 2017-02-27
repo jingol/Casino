@@ -20,6 +20,7 @@ import main.Casino;
  */
 
 public class Texas extends ClickableScreen implements Runnable{
+	private Dealer dealer;
 	private Graphic bg;
 	private Table table;
 	private Framer buttonFrame;
@@ -31,21 +32,62 @@ public class Texas extends ClickableScreen implements Runnable{
 	
 	private ArrayList<PlayingCard> pile;
 	private ArrayList<PlayingCard> deck;
+	private int[] players;
+	private boolean game;
+	private int counter = 0;
 	
 	private final int PADDING = 20;
 	private final int BHEIGHT = 30;
 	private final int BWIDTH = 60;
-	private Dealer dealer;
 	
 	
 			
 	public Texas(int width, int height) {
 		super(width, height);
+		Thread t = new Thread(this);
+		t.start();
 	}
 
 	@Override
 	public void run() {
-		//deal hole cards
+		int iter;
+		for(iter = 0; iter<3; iter++){	
+			PlayingCard c = dealer.millCard();
+			addObject(c);
+			c.setX(200+c.getX()+100*iter);
+			c.flipCard();
+		}
+		while(game && iter <5)
+		{
+			for(int i = 1; i<players.length+1; i++){
+				if (i==1)
+				{
+					
+				}
+				if (i==2)
+				{
+					
+				}
+				if (i==3)
+				{
+					
+				}
+				if(i==4)
+				{
+					
+				}
+				iter++;
+			}
+		}
+		
+	}
+	
+	private void showBetButton(){
+		addObject(new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,null));
+	}
+	
+	private void hideBetButton(){
+		remove(new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,null));
 	}
 	
 	@Override
@@ -59,49 +101,50 @@ public class Texas extends ClickableScreen implements Runnable{
 		view.add(buttonFrame);
 		fold = new Button(buttonFrame.getX(), buttonFrame.getY(), BWIDTH, BHEIGHT, "fold", Color.green,new Action() {
 			public void act() {
+				game = false;
+				TexasDemo.money = 0;
 				
 			}
 			});
 		view.add(fold);
 		call = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY(), BWIDTH, BHEIGHT, "call", Color.green, new Action() {
 			public void act() {
-				Player.
+				//Player.
 			}
 			});
 		view.add(call);
 		raise = new Button(buttonFrame.getX()+buttonFrame.getWidth()/2-BWIDTH/2, buttonFrame.getY()+buttonFrame.getHeight()/2-BHEIGHT/2, BWIDTH, BHEIGHT, "raise", Color.green,new Action() {
 			public void act() {
-				Player.
+				//Player.
 			}
 			});
 		view.add(raise);
 		//if the array turn is 1 then this will be able to click if not then it will be null
-		bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,new Action() {
+		/*bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,new Action() {
 			public void act() {
 				
 			}
 			});
 		else
-			bet = new Button(buttonFrame.getX(), buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "bet", Color.green,null);	
-		view.add(bet);
+		bet = 	
+		view.add(bet);*/
 		allIn = new Button(buttonFrame.getX()+buttonFrame.getWidth()-BWIDTH, buttonFrame.getY()+buttonFrame.getHeight()-BHEIGHT, BWIDTH, BHEIGHT, "All In", Color.green,new Action() {
 			public void act() {
-				Table.increaseScore(TexasDemo.money);
-				money = 0;
+				table.increaseValue(TexasDemo.money);
+				TexasDemo.money = 0;
 				
 			}
 			});
 		view.add(allIn);
-		
-		for(int i = 0; i<5; i++){	
-			PlayingCard c = dealer.millCard();
-			view.add(c);
-			c.setX(200+c.getX()+100*i);
-			c.flipCard();
-		}
 		pile = new ArrayList<PlayingCard>();
 		table = new Table(TexasDemo.WIDTH/2-150, TexasDemo.HEIGHT/6-20, 300, 100);
 		view.add(table);
+		
+		players = new int[4];
+		for(int i = 0; i<players.length; i++){
+			players[i] = i+1;
+		}
+		
 	}
 
 

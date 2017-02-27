@@ -12,7 +12,6 @@ public class Table extends Component implements Pot{
 		super(x, y, w, h);
 		money=0;
 	}
-	@Override
 	public void increaseValue(int i) {
 		money += i;
 		update();
