@@ -40,9 +40,9 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> square) {
-		addSquares(square);
+		//addSquares(square);
 	}
-
+/*
 	private void addSquares(ArrayList<Visible> square) {
 		// create ArrayList of the squares on the bingo board
 		int numberOfSquares = 25;
@@ -53,6 +53,7 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 		}
 	}
+	*/
 
 	@Override
 	public void initObjects(ArrayList<Visible> view) {
@@ -60,7 +61,6 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 	}
 	
-	//s=size or length of random
 	public int randNumGenerator(int s) { 
 		//random.nextInt(max - min + 1) + min
 	
@@ -69,9 +69,8 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 		
 		return roll; //if s=50, this GENERATES NUM BETWEEN 0-50
 	}
-
-	public void initBoards() {
-		
+	
+	public void createAiNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
 		}
@@ -87,13 +86,16 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 		}
 		
-		
+	}
+	public void createAiBoolBoard(){
 		for (int i = 0; i < aiBoolean.length; i++) {
 			for (int j = 0; j < aiBoolean[i].length; j++) {
 				aiBoolean[i][j] = false;
 			}
 		}
-
+	}
+	
+	public void createPlayerNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
 		}
@@ -108,13 +110,19 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 			}
 
 		}
+	}
+	public void createPlayerBoolBoard(){
 		for (int i = 0; i < playerBoolean.length; i++) {
 			for (int j = 0; j < playerBoolean[i].length; j++) {
 				playerBoolean[i][j] = false;
 			}
 		}
-	}
 	
+	}
+/*
+	public void initBoards() {	
+	}
+*/	
 	public void initBingoCage(){ //add 50 balls to bingo cage
 		for (int i = 1; i < 51; i++) {
 			numBallList.add(i);

@@ -8,6 +8,7 @@ public class MakinoonBingoGame extends GUIApplication{
 	private static MakinoonDisplay md;
 	private ArrayList<BingoGameHistory> gameHistory; 
 	
+	
 	// all three other games 
 	
 	

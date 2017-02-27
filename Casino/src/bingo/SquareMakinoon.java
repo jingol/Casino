@@ -106,8 +106,8 @@ implements Clickable {
 	public void act() {
 		System.out.println("act" + this.number);
 		highlighted = true;
+		//checking function bingosharonscreen.initbingocage();
 		update();
-		
 	}
 
 	public boolean isHovered(int x, int y) {
