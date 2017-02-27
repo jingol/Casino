@@ -8,12 +8,13 @@ import java.util.ArrayList;
 
 import gui.components.Action;
 import gui.components.Visible;
+import main.Balance;
 
 /**
  * @author Matthew Yarmolinsky
  *
  */
-public class MatthewSlots implements main.BalanceInterface {
+public class MatthewSlots {
 	
 	public static int betAmount;
 	public static String fromGame;
@@ -52,7 +53,7 @@ public class MatthewSlots implements main.BalanceInterface {
 		balance -= betAmount;
 	}
 	public void reward(){
-		balance += slots.JiayanWinningCombos.getRewardHistory.get(slots.JiayanWinningCombos.getRewardHistory.size());
+		Balance.setBalance(balance += slots.JiayanWinningCombos.getRewardHistory.get(slots.JiayanWinningCombos.getRewardHistory.size()));
 	}
 	
 	public void addBet(){
@@ -66,9 +67,4 @@ public class MatthewSlots implements main.BalanceInterface {
 	public int setBalance() {
 		balance = fromGame.balance;
 	}
-	
-	public void setFromGame(String game){
-		fromGame = game;
-	}
-
 }
