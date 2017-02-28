@@ -6,7 +6,7 @@ public class Balance implements BalanceInterface {
 	 * by Matthew Yarmolinsky
 	 */
 	
-	public static int balance;
+	public int balance;
 	
 	public int getBalance() {
 		return balance;
