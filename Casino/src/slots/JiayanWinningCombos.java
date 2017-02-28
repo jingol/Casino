@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 public class JiayanWinningCombos implements RewardInterface{
-	public static ArrayList<Slotpic> slots = SlotScreen.slots;
+	public static ArrayList<List<Slotpic>> slotsList = SlotScreen.slots;
 	private static boolean nextRound;
 	private static int [] reward = new int [6];
 	private static int roundReward;
@@ -96,21 +96,21 @@ public class JiayanWinningCombos implements RewardInterface{
 	}
 	public static void generateReward()
 	{
-		 if(checkHorizontal(slots))
+		 if(checkHorizontal(slotsList))
 			{
 				roundReward = reward[0] * betAmount;
 				nextRound =true;
 			}
 			else 
 			{
-				if(checkVertical( slots))
+				if(checkVertical(slotsList))
 				{
 					roundReward = reward[3] * betAmount;
 					nextRound = true;
 				}
 				else 
 				{
-					if(checkDownDiagonal(slots) || checkUpDiagonal( slots))
+					if(checkDownDiagonal(slotsList) || checkUpDiagonal(slotsList))
 					{
 						roundReward = reward[6] * betAmount;
 						nextRound = true;
