@@ -82,8 +82,10 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
 				PlayerHand.setStandCall();
-				//dealer turn goes here
+				dealer1.dealerTurn();
 			}
+
+
 		});
 		
 		viewObjects.add(name);

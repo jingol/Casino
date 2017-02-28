@@ -17,7 +17,7 @@ public class Dealer implements CallInterface {
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
-		//dealerTurn();
+		dealerTurn();
 	}
 	
 	public void dealerTurn(){
