@@ -24,7 +24,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	public Dealer dealer1;
 	public Button hit;
 	public Button stand;
-	private TextLabel name;
+	private Graphic name;
 	private Graphic background;
 	public Graphic card1;
 	public Graphic card2;
@@ -52,18 +52,16 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		player1 = new PlayerHand();
 		dealer1 = new Dealer();
 		deck1 = new Deck();
-		
 //		cards = new Graphic(15,200, 60,80, deck1.deck.get(0).image1);
 		card1 = new Graphic(15,200, 60,80, PlayerHand.hand.get(0).image1);
 		card2 = new Graphic(100,200, 60,80, PlayerHand.hand.get(1).image1);
 		viewObjects.add(card1);
 		viewObjects.add(card2);
-		
-		name = new TextLabel(350, 50, 300, 60, "Blackjack");
-		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
+		name = new Graphic(250, 50,	300, 100, "resources/sampleImages/BlackJack.png");
+		hit = new Button(20, 400,65,45,"Hit", Color.green, new Action() {
 			
 			@Override
-			public void act() {
+			public void act(){
 				if(PlayerHand.getStandCall() == true){
 					PlayerHand.hit();
 					viewObjects.add(new Graphic(positionCount + 85, nextRow, 60,80, PlayerHand.nextCard().image1));
@@ -76,7 +74,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 			}
 		});
 		
-		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
+		stand = new Button(20,450,90,45,"Stand", Color.green, new Action(){
 			public void act(){
 				PlayerHand.setStandCall();
 			}
