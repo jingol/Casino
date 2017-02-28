@@ -44,7 +44,8 @@ public abstract class Screen {
 //		for(int i = 0; i < viewObjects.size(); i++){}
 //		g.drawString("hello world", 40, 100);
 //		g.drawOval(20, 60, 100, 70);
-		Graphics2D g = image.createGraphics();
+		BufferedImage buffer = new BufferedImage(image.getWidth(), image.getHeight(),BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = buffer.createGraphics();
 		//smooth the graphics
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.pink);
@@ -54,6 +55,8 @@ public abstract class Screen {
 			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
+		Graphics2D g2 = image.createGraphics();
+		g2.drawImage(buffer, 0, 0, null);
 //		for(Visible v: viewObjects){
 //			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 //		}
