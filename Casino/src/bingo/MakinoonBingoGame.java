@@ -42,7 +42,7 @@ public class MakinoonBingoGame extends GUIApplication{
 	public static void main(String[] args) {
 		int[][] testArray = { {0, 0,0,0,0} , {1,1,1,1,1}, {2,2,2,2,2},
 				{3,3,3,3,3}, {4,4,4,4,4}};
-		MakinoonBingoBoard testBoard = new MakinoonBingoBoard(testArray,
+		MakinoonBingoBoard testBoard = new MakinoonBingoBoard(new BingoScreenSharon().createAiNumBoard(),
 				100, 300, 40);
 		ArrayList <BingoGameHistory> gameHistory = new ArrayList<>();
 		BingoGameHistory testGame = new BingoGameHistory("Mak", 

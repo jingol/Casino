@@ -14,7 +14,7 @@ import guiScreens.ClickableScreen;
 /**
  * @author Sharon
  */
-public class BingoScreenSharon extends MakinoonBingoGame{
+public class BingoScreenSharon{
 	// FIELDS
 
 	public static ArrayList<Integer> spinner;
@@ -25,45 +25,19 @@ public class BingoScreenSharon extends MakinoonBingoGame{
 	// 2D array of player board to add numbers
 	public static Integer[][] playerBoard = new Integer[5][5];
 	// 2D array of AI board
-	public static Integer[][] aiBoard = new Integer[5][5];
+	public static int[][] aiBoard = new int[5][5];
 
 	// 2D arrays for checking if clicked, change color
 	public static Boolean[][] aiBoolean = new Boolean[5][5];
 	public static Boolean[][] playerBoolean = new Boolean[5][5];
 	private static ArrayList<BingoGameHistory> gameHistory;
 
-	public BingoScreenSharon(int width, int height) {
-		super(playerBoard, gameHistory, width, height);
-
-		//Thread bingoBegin = new Thread(this);
-		//bingoBegin.start();
+	public BingoScreenSharon(){
+		spinner= new ArrayList<Integer>();
+		numBallList= new ArrayList<Integer>();
+		gameHistory= new ArrayList<BingoGameHistory>();
 	}
 
-/*
-	@Override
-	public void initAllObjects(ArrayList<Visible> square) {
-		//addSquares(square);
-	}
-*/	
-/*
-	private void addSquares(ArrayList<Visible> square) {
-		// create ArrayList of the squares on the bingo board
-		int numberOfSquares = 25;
-		squares = new SquaresInterfaceSharonWong[numberOfSquares];
-		// place all squares
-		for (int i = 0; i < numberOfSquares; i++) {
-			squares[i] = getASquare();
-
-		}
-	}
-	
-
-	@Override
-	public void initObjects(ArrayList<Visible> view) {
-		// TODO Auto-generated method stub
-
-	}
-	*/
 	public int randNumGenerator(int s) { 
 		//random.nextInt(max - min + 1) + min
 	
@@ -73,7 +47,7 @@ public class BingoScreenSharon extends MakinoonBingoGame{
 		return roll; //if s=50, this GENERATES NUM BETWEEN 0-50
 	}
 	
-	public Integer[][] createAiNumBoard(){
+	public int[][] createAiNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
 		}
@@ -149,25 +123,6 @@ public class BingoScreenSharon extends MakinoonBingoGame{
 		numBallList.remove(randomIndex);
 		return spinResult;
 	}
-/*
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
 
-	}
-
-	private SquaresInterfaceSharonWong getASquare() {
-		return null;
-		// return new Square();
-	}
-
-	@Override
-	public void initAllObjects(List<Visible> arg0) {
-		// TODO Auto-generated method stub
-
-	}
-*/
-	
-	
 }
 
