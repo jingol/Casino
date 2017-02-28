@@ -32,7 +32,7 @@ public class JiayanWinningCombos implements RewardInterface{
 		// TODO Auto-generated constructor stub
 		  
 	}
-	public static boolean checkHorizontal(ArrayList<Slotpic> list)
+	public static boolean checkHorizontal(ArrayList<List<Slotpic>> list)
 	{
 		for(int row=0; row<list.size();row++)
 		{
@@ -47,7 +47,7 @@ public class JiayanWinningCombos implements RewardInterface{
 		
 		return false;
 	}
-	public static boolean checkVertical(ArrayList<Slotpic> list)
+	public static boolean checkVertical(ArrayList<List<Slotpic>> list)
 	{
 		for(int row = 0; row<list.size(); row++)
 		{
@@ -62,7 +62,7 @@ public class JiayanWinningCombos implements RewardInterface{
 		
 	return false;
 	}
-	public static boolean checkDownDiagonal(ArrayList<Slotpic> list)
+	public static boolean checkDownDiagonal(ArrayList<List<Slotpic>> list)
 	{
 		//this diagonal is \
 				for(int row = 0; row<list.size(); row++)
@@ -78,7 +78,7 @@ public class JiayanWinningCombos implements RewardInterface{
 				
 				return false;
 	}
-	public static boolean checkUpDiagonal(ArrayList<Slotpic> list)
+	public static boolean checkUpDiagonal(ArrayList<List<Slotpic>> list)
 	{
 		 // this diagonal is /
 		for(int row = 0; row<list.size(); row++)
