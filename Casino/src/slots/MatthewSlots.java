@@ -57,7 +57,7 @@ public class MatthewSlots {
 			}
 		}
 		for(int i = bets.size(); i < 10; i++){
-			int tempBet = (int) bets.get(bets.size());
+			int tempBet = (int) rewards.get(rewards.size());
 			
 			if(tempBet > 0){
 				gameHistory[i][i] = (int) rewards.get(i);
