@@ -15,19 +15,19 @@ public abstract class DealtHand {
 	private final int BOMB = 7;
 	private final int STRAIGHT_FLUSH = 8;
 	public DealtHand() {
-		hand = new ArrayList<PlayingCard>();
+		setHand(new ArrayList<PlayingCard>());
 	}
 	public void addCard(PlayingCard c){
-		hand.add(c);
+		getHand().add(c);
 	}
 	public void addCard(PlayingCard c, int index){
-		hand.add(index, c);
+		getHand().add(index, c);
 	}
 	public int getWinHand(ArrayList<PlayingCard> pileCards){
 		//returns the highest poker hand that can be won given an arraylist and players current hand
 		//first get the entire list of cards being used
 		ArrayList<PlayingCard> cHand = new ArrayList<PlayingCard>();
-		cHand.addAll(hand);
+		cHand.addAll(getHand());
 		cHand.addAll(pileCards);
 		//next get the face values of each of them and put them in order to compare
 		//also an array for suits is helpful
@@ -61,6 +61,12 @@ public abstract class DealtHand {
 		if(consecutives == 2)
 			return PAIR;
 		return HIGH_CARD;
+	}
+	public ArrayList<PlayingCard> getHand() {
+		return hand;
+	}
+	public void setHand(ArrayList<PlayingCard> hand) {
+		this.hand = hand;
 	}
 	//checks if two pair
 	private boolean hasTwoPairs(int[] arr) {

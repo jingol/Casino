@@ -10,14 +10,16 @@ public class Table extends Component implements Pot{
 	private int money;
 	public Table(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		money=0;
+		money = 0;
 	}
 	public void increaseValue(int i) {
 		money += i;
 		update();
 		
 	}
-
+	public int getMoney(){
+		return money;
+	}
 	@Override
 	public void update(Graphics2D g) {
 		g.setColor(new Color(200,220,255));
