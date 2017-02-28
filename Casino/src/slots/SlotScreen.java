@@ -6,6 +6,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
+import java.util.List;
 
 import gui.components.Action;
 import gui.components.Button;
@@ -18,7 +19,7 @@ import main.Casino;
 
 public class SlotScreen extends ClickableScreen implements Runnable {
 	
-	public static ArrayList<Slotpic> slots;
+	public static ArrayList <ArrayList<List<Slotpic>>> slots;
 	private static gui.components.Button button1;
 	private static gui.components.Button button2;
 	private static gui.components.Button button3;
@@ -46,7 +47,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		slots = new ArrayList<Slotpic>();
+		slots = new ArrayList <ArrayList<List<Slotpic>>>();
 		title = new TextLabel(450,20,100,40,"Slots");
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
@@ -85,9 +86,15 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		
 		
 		addPics();
-		for(Slotpic p : slots){
-			moveToFront(p);
-			viewObjects.add(p);
+		ArrayList<Slotpic> array1;
+		ArrayList<Slotpic> array2;
+		ArrayList<Slotpic> array3;
+		for(int i = 0; i < slots.size(); i++){
+			a
+			for(Slotpic s :{
+				moveToFront(p);
+				viewObjects.add(p);
+			}
 		}
 		viewObjects.add(bg);
 		viewObjects.add(title);
@@ -118,15 +125,17 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
 		int x = 325;
 		int y = 200;
+		int arrayidx = 0;
 		for(int i = 0; i < 9; i++){
 			Slotpic temp = demo.get(i);
 			temp.setX(x);
 			temp.setY(y);
-			slots.add(demo.get(i));
+			slots.get(arrayidx).add(demo.get(i));
 			x += 100;
 			if(i == 2 || i == 5 || i == 8){
 				x = 325;
 				y += 100;
+				arrayidx++;
 			}
 		}
 		
