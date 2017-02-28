@@ -19,14 +19,18 @@ import main.Casino;
 
 public class SlotScreen extends ClickableScreen implements Runnable {
 	
-	public static ArrayList <ArrayList<List<Slotpic>>> slots;
-	private static gui.components.Button button1;
-	private static gui.components.Button button2;
-	private static gui.components.Button button3;
-	private static gui.components.Button start;
+	public static ArrayList <List<Slotpic>> slots;
+	private static Button button1;
+	private static Button button2;
+	private static Button button3;
+	private static Button start;
+	private static Button plus;
+	private static Button minus;
 	private Graphic bg;
 	private TextLabel title;
 	private static TextLabel balance;
+	private static TextLabel bet;
+	private static int betamount;
 	private Thread barrel1;
 	private Thread barrel;
 	private Thread barrel3;
@@ -41,22 +45,39 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		
-
+	
 	}
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		slots = new ArrayList <ArrayList<List<Slotpic>>>();
+		slots = new ArrayList <List<Slotpic>>();
 		title = new TextLabel(450,20,100,40,"Slots");
+		bet = new TextLabel(830,435,100,100,Integer.toString(betamount));
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
+		plus =  new Button(900,500,40,40,
+				"+",Color.BLACK,
+				new Action() {
+			
+			public void act() {
+				betamount += 50;
+				changeText(Integer.toString(betamount));
+			}
+		});
+		minus =  new Button(775,500,40,40,
+				"-",Color.RED,
+				new Action() {
+			
+			public void act() {
+				betamount += 50;
+			}
+		});
 		button1 = new Button(275,575,100,40,
 				"STOP",Color.RED,
 				new Action() {
 			
 			public void act() {
-				
+				betamount += 50;
 			}
 		});
 		button2 = new Button(425,575,100,40,
@@ -90,14 +111,13 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		ArrayList<Slotpic> array2;
 		ArrayList<Slotpic> array3;
 		for(int i = 0; i < slots.size(); i++){
-			a
-			for(Slotpic s :{
-				moveToFront(p);
-				viewObjects.add(p);
-			}
+			
 		}
 		viewObjects.add(bg);
+		viewObjects.add(plus);
+		viewObjects.add(minus);
 		viewObjects.add(title);
+		viewObjects.add(bet);
 		viewObjects.add(balance);
 		viewObjects.add(start);
 		viewObjects.add(button1);
@@ -110,6 +130,15 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	
 	public void spin(){
 		
+	}
+	
+	private void changeText(String string) {
+		bet.setText(string);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void addPics(){
@@ -126,19 +155,20 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		int x = 325;
 		int y = 200;
 		int arrayidx = 0;
-		for(int i = 0; i < 9; i++){
-			Slotpic temp = demo.get(i);
-			temp.setX(x);
-			temp.setY(y);
-			slots.get(arrayidx).add(demo.get(i));
-			x += 100;
-			if(i == 2 || i == 5 || i == 8){
-				x = 325;
-				y += 100;
-				arrayidx++;
-			}
-		}
-		
+//		for(int i = 0; i < 9; i++){
+//			Slotpic temp = demo.get(i);
+//			temp.setX(x);
+//			temp.setY(y);
+//			slots.get(arrayidx).add(demo.get(i));
+//			x += 100;
+//			if(i == 2 || i == 5 || i == 8){
+//				x = 325;
+//				y += 100;
+//				arrayidx++;
+//			}
+//			
+//		}
+
 	}
 	
 	
