@@ -77,7 +77,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 						PlayerHand.checkValue();
 						nextTotal();
 					}
-					else{
+					else{ 
 						dealer1.checkWinner();
 					}
 				}
