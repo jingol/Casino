@@ -23,7 +23,7 @@ public class MatthewSlots {
 	public static int balance;
 	public static ArrayList bets;
 	public static ArrayList rewards;
-	public static ArrayList<ArrayList> gamehistory;
+	public static int[][] gameHistory;
 	public Balance number = new Balance();
 
 	public void initAllObjects(ArrayList<Visible> viewObjects){
@@ -49,7 +49,20 @@ public class MatthewSlots {
 	}
 	
 	public void gameHistory(){
-		
+		for(int i = bets.size(); i < 10; i++){
+			int tempBet = (int) bets.get(bets.size());
+			
+			if(tempBet > 0){
+				gameHistory[i] = (int[]) bets.get(i);
+			}
+		}
+		for(int i = bets.size(); i < 10; i++){
+			int tempBet = (int) bets.get(bets.size());
+			
+			if(tempBet > 0){
+				gameHistory[i][i] = (int) rewards.get(i);
+			}
+		}
 	}
 	
 	public void bet(ArrayList bets){
