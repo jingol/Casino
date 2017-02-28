@@ -22,6 +22,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	
 	private Graphic bg; 
 	private MakinoonBingoBoard userBoard; 
+	private MakinoonBingoBoard aiBoard; 
 	private TextLabel title;
 	private Button startEnd; 
 	private Button switchButton1;
@@ -37,13 +38,14 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	//private TextArea gameScreen;
 	
 	
-	public MakinoonDisplay(MakinoonBingoBoard userBoard,
+	public MakinoonDisplay(MakinoonBingoBoard userBoard, MakinoonBingoBoard aiBoard, 
 			ArrayList<BingoGameHistory> gameHistoryList,
 			int width, int height) {
 		super(width, height);
 		
 		System.out.println("this is Makinoon Display" + userBoard);
 		this.userBoard = userBoard; 
+		this.aiBoard = aiBoard; 
 		this.gameHistoryList = new ArrayList<BingoGameHistory>();
 //	SquareMakinoon[][] temp  = userBoard.getGrid();
 //		
@@ -146,7 +148,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			ArrayList<String> testStrings = new ArrayList<String>();
 			testStrings.add("Winner" );
 			
-			history = new BingoBoxText(500, 220, rightComponentWidth, 250, "History", testStrings, true); 
+			history = new BingoBoxText(600, 230, rightComponentWidth, 250, "History", testStrings, true); 
 			lst.add(history);
 			
 			

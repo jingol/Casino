@@ -23,7 +23,7 @@ public class BingoScreenSharon{
 	//private SquaresInterfaceSharonWong[] squares;
 
 	// 2D array of player board to add numbers
-	public static Integer[][] playerBoard = new Integer[5][5];
+	public static int[][] playerBoard = new int[5][5];
 	// 2D array of AI board
 	public static int[][] aiBoard = new int[5][5];
 
@@ -74,7 +74,7 @@ public class BingoScreenSharon{
 		return aiBoolean;
 	}
 	
-	public Integer[][] createPlayerNumBoard(){
+	public int[][] createPlayerNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
 		}
