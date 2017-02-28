@@ -9,6 +9,8 @@ public interface CallInterface {
 	public boolean stand();
 	public boolean getStandCall();
 	public void setStandCall();
+	public int getTotal();
+	public void setTotal();
 	
 }
  

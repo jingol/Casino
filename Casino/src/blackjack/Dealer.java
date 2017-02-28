@@ -2,6 +2,8 @@ package blackjack;
 
 import java.util.ArrayList;
 
+import k.PlayerHand;
+
 /**
  * @author Kristy Tan
  * 
@@ -17,9 +19,26 @@ public class Dealer implements CallInterface {
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
-		while(dealerPlaying){
-			checkValue();
-			chance();
+	}
+	
+	public void dealerTurn(){
+		while(dealerPlaying){ //computer plays
+			checkValue(); //checkValue
+			chance(); //take a chance
+		}
+	}
+	
+	public void checkWinner(){
+		if(!dealerPlaying && !PlayerHand.getStandCall()){
+			if(getTotal() > PlayerHand.getPlayerTotal()){
+				//computer wins and player loses money
+			}
+			else if(getTotal() < PlayerHand.getPlayerTotal()){
+				//player wins and player wins money
+			}
+			else if(getTotal() == PlayerHand.getPlayerTotal()){
+				//tie 
+			}
 		}
 	}
 	
@@ -66,8 +85,9 @@ public class Dealer implements CallInterface {
 	@Override 
 	public int checkValue() {
 		if(dealerPlaying){
+			currentTotal = 0;
 			for(int i = 0; i < dealerHand.size(); i++){
-				currentTotal += dealerHand.get(0).value;
+				currentTotal += dealerHand.get(i).value;
 			}
 		}
 		return currentTotal;
@@ -97,6 +117,15 @@ public class Dealer implements CallInterface {
 		dealerPlaying = false;
 	}
 
+	@Override
+	public int getTotal() {
+		return finalCTotal;
+	}
+
+	@Override
+	public void setTotal() {
+		finalCTotal = currentTotal;
+	}
 	
 
 }
