@@ -17,7 +17,7 @@ public class JiayanWinningCombos implements RewardInterface{
 	private static int [] reward = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
-	public static ArrayList<RewardInterface>rewardHistory = new ArrayList<RewardInterface>();
+	public static ArrayList<Integer>rewardHistory = new ArrayList<Integer>();
 	//
 	/**
 	 * reward array will contain the rewards available/multiplier(has to be decided on)
@@ -121,15 +121,15 @@ public class JiayanWinningCombos implements RewardInterface{
 	
 
 	@Override
-	public ArrayList<RewardInterface> getRewardHistory() {
+	public ArrayList<Integer> getRewardHistory() {
 		// TODO Auto-generated method stub
 		return rewardHistory;
 	}
 
 	@Override
-	public ArrayList<RewardInterface> setRewardHistory() {
+	public ArrayList<Integer> setRewardHistory() {
 		// TODO Auto-generated method stub
-		return null;
+		//rewardHistory =;
 	}
 
 	
