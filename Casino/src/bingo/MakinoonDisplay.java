@@ -32,7 +32,8 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private TextArea currentNumber; 
 	private TextArea gameHistoryBox; 
 	private BingoBoxText history; 
-	private SharonBingoButton sampleButton; 
+	private TextLabel numberCalled; 
+	//private SharonBingoButton sampleButton; 
 	
 	private ArrayList<BingoGameHistory> gameHistoryList; 
 	//private TextArea gameScreen;
@@ -90,6 +91,12 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		title.setFont("Calibri");
 
 		lst.add(title);
+		numberCalled = 
+				new TextLabel(300, 150, 500, 40, "Number Called: ", Color.BLACK);
+		numberCalled.setSize(45);
+		numberCalled.setFont("Calibri");
+
+		lst.add(numberCalled);
 		switchButton1 = new Button(30,580,150,40,
 				"PLAY SLOTS",Color.GREEN,
 				
