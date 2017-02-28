@@ -14,13 +14,13 @@ import guiScreens.ClickableScreen;
 /**
  * @author Sharon
  */
-public class BingoScreenSharon extends ClickableScreen implements Runnable {
+public class BingoScreenSharon extends MakinoonBingoGame{
 	// FIELDS
 
 	public static ArrayList<Integer> spinner;
 	public static ArrayList<Integer> numBallList;
-	//public static Integer randBingoNum;
-	private SquaresInterfaceSharonWong[] squares;
+
+	//private SquaresInterfaceSharonWong[] squares;
 
 	// 2D array of player board to add numbers
 	public static Integer[][] playerBoard = new Integer[5][5];
@@ -30,18 +30,21 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 	// 2D arrays for checking if clicked, change color
 	public static Boolean[][] aiBoolean = new Boolean[5][5];
 	public static Boolean[][] playerBoolean = new Boolean[5][5];
+	private static ArrayList<BingoGameHistory> gameHistory;
 
 	public BingoScreenSharon(int width, int height) {
-		super(width, height);
+		super(playerBoard, gameHistory, width, height);
 
-		Thread bingoBegin = new Thread(this);
-		bingoBegin.start();
+		//Thread bingoBegin = new Thread(this);
+		//bingoBegin.start();
 	}
 
+/*
 	@Override
 	public void initAllObjects(ArrayList<Visible> square) {
 		//addSquares(square);
 	}
+*/	
 /*
 	private void addSquares(ArrayList<Visible> square) {
 		// create ArrayList of the squares on the bingo board
@@ -53,14 +56,14 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 
 		}
 	}
-	*/
+	
 
 	@Override
 	public void initObjects(ArrayList<Visible> view) {
 		// TODO Auto-generated method stub
 
 	}
-	
+	*/
 	public int randNumGenerator(int s) { 
 		//random.nextInt(max - min + 1) + min
 	
@@ -70,7 +73,7 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 		return roll; //if s=50, this GENERATES NUM BETWEEN 0-50
 	}
 	
-	public void createAiNumBoard(){
+	public Integer[][] createAiNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
 		}
@@ -85,17 +88,19 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 			}
 
 		}
+		return aiBoard;
 		
 	}
-	public void createAiBoolBoard(){
+	public Boolean[][] createAiBoolBoard(){
 		for (int i = 0; i < aiBoolean.length; i++) {
 			for (int j = 0; j < aiBoolean[i].length; j++) {
 				aiBoolean[i][j] = false;
 			}
 		}
+		return aiBoolean;
 	}
 	
-	public void createPlayerNumBoard(){
+	public Integer[][] createPlayerNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
 		}
@@ -110,14 +115,15 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 			}
 
 		}
+		return playerBoard;
 	}
-	public void createPlayerBoolBoard(){
+	public Boolean[][] createPlayerBoolBoard(){
 		for (int i = 0; i < playerBoolean.length; i++) {
 			for (int j = 0; j < playerBoolean[i].length; j++) {
 				playerBoolean[i][j] = false;
 			}
 		}
-	
+		return playerBoolean;
 	}
 /*
 	public void initBoards() {	
@@ -143,7 +149,7 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 		numBallList.remove(randomIndex);
 		return spinResult;
 	}
-
+/*
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -160,6 +166,8 @@ public class BingoScreenSharon extends ClickableScreen implements Runnable {
 		// TODO Auto-generated method stub
 
 	}
-
+*/
+	
+	
 }
-//comment
+
