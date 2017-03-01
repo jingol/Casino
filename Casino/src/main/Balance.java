@@ -1,13 +1,13 @@
 package main;
 
 public class Balance implements BalanceInterface {
-	
-	/*
-	 * by Matthew Yarmolinsky
+
+	/**
+	 * @author Matthew Yarmolinsky
 	 */
-	
+
 	public int balance;
-	
+
 	public int getBalance() {
 		return balance;
 	}
