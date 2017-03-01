@@ -105,6 +105,7 @@ implements Clickable {
 	@Override
 	public void act() {
 		System.out.println("act" + this.number);
+		//check if number is correctly clicked
 		highlighted = true;
 		//checking function bingosharonscreen.initbingocage();
 		update();

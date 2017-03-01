@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class MakinoonBingoGame extends GUIApplication{
 	private MakinoonBingoBoard userBoard;
 	private MakinoonBingoBoard aiBoard;
-	private static MakinoonBingoGame bingoGame;
-	private static MakinoonDisplay md;
+	public static BingoScreenSharon backend;
+	private  MakinoonBingoGame bingoGame;
+	public static MakinoonDisplay md;
 	private ArrayList<BingoGameHistory> gameHistory; 
 	
 	
@@ -48,10 +49,10 @@ public class MakinoonBingoGame extends GUIApplication{
 	}
 
 	public static void main(String[] args) {
-		
-		MakinoonBingoBoard compBoard = new MakinoonBingoBoard(new BingoScreenSharon().createAiNumBoard(),
+		backend= new BingoScreenSharon();
+		MakinoonBingoBoard compBoard = new MakinoonBingoBoard(backend.createAiNumBoard(),
 				 80, 250, 40);
-		MakinoonBingoBoard playerBoard = new MakinoonBingoBoard(new BingoScreenSharon().createPlayerNumBoard(),
+		MakinoonBingoBoard playerBoard = new MakinoonBingoBoard(backend.createPlayerNumBoard(),
 				330, 250, 40);
 		ArrayList <BingoGameHistory> gameHistory = new ArrayList<>();
 		BingoGameHistory testGame = new BingoGameHistory("Mak", 

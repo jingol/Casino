@@ -124,5 +124,10 @@ public class BingoScreenSharon{
 		return spinResult;
 	}
 
+	public void drawNumbers() {
+		MakinoonBingoGame.md.showNumber(randNumBallGenerator());
+		
+	}
+	
 }
 

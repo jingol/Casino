@@ -142,6 +142,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 				
 				public void act() {
 					System.out.print(" Begin/End ! ");
+					MakinoonBingoGame.backend.drawNumbers();
 				}
 			});
 			
@@ -165,6 +166,15 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	public void addGameHistory(BingoGameHistory gameHistory ){ 
 		this.gameHistoryList.add(gameHistory); 
 		history.addLine(gameHistory.getSummary());
+		
+	}
+
+
+
+
+
+	public void showNumber(int randNumBallGenerator) {
+		// TODO Auto-generated method stub
 		
 	}
 
