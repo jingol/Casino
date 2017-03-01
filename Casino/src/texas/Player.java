@@ -9,6 +9,7 @@ public class Player extends DealtHand{
 	private int width;
 	private int height;
 	private int playernum;
+	private boolean isPlaying;
 	
 	public Player(int x, int y, int width, int height, int money, int playernum) {
 		this.money = money;
@@ -17,6 +18,15 @@ public class Player extends DealtHand{
 		this.width = width;
 		this.height = height;
 		this.playernum = playernum;
+		isPlaying = true;
+	}
+
+	public boolean isPlaying() {
+		return isPlaying;
+	}
+
+	public void setPlaying(boolean isPlaying) {
+		this.isPlaying = isPlaying;
 	}
 
 	public int getPlayerNum(){
