@@ -40,7 +40,7 @@ public class PlayerHand {
 		
 		set2ndTotal(secondPlayerTotal);
 		setPlayerTotal(playerTotal);
-		if(secondPlayerTotal > 21 || playerTotal > 21){
+		if(secondPlayerTotal > 21 && playerTotal > 21){
 			setStandCall();
 		}
 	}
