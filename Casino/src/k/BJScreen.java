@@ -24,8 +24,10 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	public Dealer dealer1;
 	public Button hit;
 	public Button stand;
-	private TextLabel name;
+	private Button restart;
+	private Graphic name;
 	private TextLabel playerCT;
+	private Box box;
 	private Graphic background;
 	public Graphic card1;
 	public Graphic card2;
@@ -60,11 +62,11 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		viewObjects.add(backCard1);
 		viewObjects.add(backCard2);
 		
-		name = new TextLabel(350, 50, 300, 60, "Blackjack");
+		name = new Graphic(250, 50,	300, 100, "resources/sampleImages/BlackJack.png");
 		
 		PlayerHand.checkValue(); //adds the values of the first 2 cards
 		playerCT = new TextLabel(300, 50, 250, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
-	
+		box = new Box(278, 318, 250, 40, Color.green);
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
 			public void act() {
@@ -93,6 +95,14 @@ public class BJScreen extends ClickableScreen implements Runnable {
 			}
 		});
 		
+		restart = new Button(700, 350, 75, 40, "Restart", Color.green, new Action() {
+			public void act(){
+				initAllObjects(viewObjects);
+			}
+		});
+		
+		viewObjects.add(restart);
+		viewObjects.add(box);
 		viewObjects.add(name);
 		viewObjects.add(hit);
 		viewObjects.add(stand);
