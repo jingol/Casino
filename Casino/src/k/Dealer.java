@@ -26,6 +26,7 @@ public class Dealer implements CallInterface {
 			checkValue(); //checkValue
 			chance(); //take a chance
 		}
+		checkWinner();
 	}
 	
 	public void checkWinner(){

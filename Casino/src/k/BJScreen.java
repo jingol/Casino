@@ -63,8 +63,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		name = new TextLabel(350, 50, 300, 60, "Blackjack");
 		
 		PlayerHand.checkValue(); //adds the values of the first 2 cards
-		playerCT = new TextLabel(300, 50, 250, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
-	
+		playerCT = new TextLabel(300, 50, 400, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
+		
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
 			public void act() {
@@ -75,10 +75,13 @@ public class BJScreen extends ClickableScreen implements Runnable {
 						viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, PlayerHand.nextCard().image1));
 						checkPosition();
 						PlayerHand.checkValue();
-						nextTotal();
-					}
-					else{ 
-						dealer1.checkWinner();
+						if(PlayerHand.getPlayerTotal() > 21 && PlayerHand.get2ndTotal() > 21){
+							//dealer1.checkWinner();
+							playerCT.setText("");
+							changeText("Your total is over 21. You Lose.");
+						}else{
+							nextTotal();
+						}
 					}
 				}
 			} 
