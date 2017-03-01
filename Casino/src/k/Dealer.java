@@ -31,10 +31,18 @@ public class Dealer implements CallInterface {
 	
 	public void checkWinner(){
 		if(!dealerPlaying && !PlayerHand.getStandCall()){
-			if(getTotal() > PlayerHand.getPlayerTotal() || getTotal() > PlayerHand.get2ndTotal() || get2ndTotal() > PlayerHand.getPlayerTotal() || get2ndTotal() > PlayerHand.get2ndTotal()){
+			if(getTotal() > PlayerHand.getPlayerTotal() && getTotal() > PlayerHand.get2ndTotal()){
 				//computer wins and player loses money
 			}
-			else if(getTotal() < PlayerHand.getPlayerTotal() || getTotal() < PlayerHand.get2ndTotal() || get2ndTotal() < PlayerHand.getPlayerTotal() || get2ndTotal() < PlayerHand.get2ndTotal()){
+			else if(get2ndTotal() > PlayerHand.getPlayerTotal() && get2ndTotal() > PlayerHand.get2ndTotal()){
+				//computer wins and player loses money
+			}
+			else if(getTotal() < PlayerHand.getPlayerTotal() && get2ndTotal() < PlayerHand.getPlayerTotal()){
+
+				//player wins and player wins money
+			}
+			else if(get2ndTotal() < PlayerHand.get2ndTotal() && getTotal() < PlayerHand.get2ndTotal()){
+
 				//player wins and player wins money
 			}
 			else if(getTotal() == PlayerHand.getPlayerTotal() || getTotal() == PlayerHand.get2ndTotal() || get2ndTotal() == PlayerHand.getPlayerTotal() || get2ndTotal() == PlayerHand.get2ndTotal()){
