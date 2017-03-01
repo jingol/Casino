@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public interface RewardInterface {
 	
-	ArrayList<Integer> getRewardHistory();
-	ArrayList<Integer> setRewardHistory();
+	public ArrayList<Integer> getRewardHistory();
+    public void setRewardHistory(ArrayList<Integer> rewardList);
 	
 	
 }

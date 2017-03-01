@@ -125,12 +125,12 @@ public class JiayanWinningCombos implements RewardInterface{
 		// TODO Auto-generated method stub
 		return rewardHistory; 
 	}
-
 	@Override
-	public ArrayList<Integer> setRewardHistory() {
+	public void setRewardHistory(ArrayList<Integer> rewardList) {
 		// TODO Auto-generated method stub
-		return null;
+		rewardList = rewardHistory;
 	}
+
 
 	
 }
