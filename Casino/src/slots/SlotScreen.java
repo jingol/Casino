@@ -116,6 +116,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		for(int i = 0; i < 3; i++){
 			slots.add(set);
 			System.out.println("hi");
+			System.out.println(slots.size());
 		}
 		
 		addPics();
@@ -125,6 +126,16 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 				viewObjects.add(slots.get(i).get(a));
 			}
 		}
+	
+//		for(int a = 0; a < 3 ; a++){
+//			for(int i = 0; i < 3; i++){
+//				viewObjects.add(slots.get(a).get(i));
+//				System.out.println("meh");
+//			}
+//			System.out.println("wa");
+//		}
+//		
+		
 		
 		viewObjects.add(bg);
 		viewObjects.add(plus);
@@ -160,22 +171,22 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		demo.add(new Slotpic(50,0,100,100,"resources/noc1.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc2.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
-		int x = 325;
+		demo.add(new Slotpic(50,0,100,100,"resources/cherry.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/bar.png"));
+		int x = 290;
 		int y = 200;
 		int arrayidx = 0;
 		for(int i = 0; i < 9; i++){
 			Slotpic temp = demo.get(i);
 			temp.setX(x);
 			temp.setY(y);
-			//add some size to slots
 			slots.get(arrayidx).add(temp);
-			x += 100;
+			y += 110;
 			if(i == 2 || i == 5 || i == 8){
-				x = 325;
-				y += 100;
+				x += 120;
+				y = 200;
 				arrayidx++;
+				System.out.println(arrayidx);
 			}
 			
 		}
