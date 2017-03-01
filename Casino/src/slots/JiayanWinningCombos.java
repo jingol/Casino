@@ -17,10 +17,10 @@ public class JiayanWinningCombos implements RewardInterface{
 	private static int [] reward = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
-	public static ArrayList<RewardInterface>rewardHistory = new ArrayList<RewardInterface>();
+	public static ArrayList<Integer>rewardHistory = new ArrayList<Integer>();
 	//
 	/**
-	 * reward array will contain the rewards available/multiplier(has to be decided on)
+	 * reward array will contain the multiplier: noc1 = 1.1, noc2 = 1.3/1.5, noc3 = 5, 
 	 *loop thru reward array to get final rewards
 	 * switching between rounds(boolean?)
 	 * 
@@ -29,10 +29,10 @@ public class JiayanWinningCombos implements RewardInterface{
 	 */
 	public JiayanWinningCombos() 
 	{
-		// TODO Auto-generated constructor stub
-		  
+		generateReward();	  
 	}
-	public static boolean checkHorizontal(ArrayList<List<Slotpic>> list)
+
+	public static boolean checkHorizontalCombo(ArrayList<List<Slotpic>> list)
 	{
 		for(int row=0; row<list.size();row++)
 		{
@@ -44,10 +44,9 @@ public class JiayanWinningCombos implements RewardInterface{
 				}
 			}
 		}
-		
 		return false;
 	}
-	public static boolean checkVertical(ArrayList<List<Slotpic>> list)
+	public static boolean checkVerticalCombo(ArrayList<List<Slotpic>> list)
 	{
 		for(int row = 0; row<list.size(); row++)
 		{
@@ -62,7 +61,7 @@ public class JiayanWinningCombos implements RewardInterface{
 		
 	return false;
 	}
-	public static boolean checkDownDiagonal(ArrayList<List<Slotpic>> list)
+	public static boolean checkDownDiagonalCombo(ArrayList<List<Slotpic>> list)
 	{
 		//this diagonal is \
 				for(int row = 0; row<list.size(); row++)
@@ -78,7 +77,7 @@ public class JiayanWinningCombos implements RewardInterface{
 				
 				return false;
 	}
-	public static boolean checkUpDiagonal(ArrayList<List<Slotpic>> list)
+	public static boolean checkUpDiagonalCombo(ArrayList<List<Slotpic>> list)
 	{
 		 // this diagonal is /
 		for(int row = 0; row<list.size(); row++)
@@ -96,21 +95,21 @@ public class JiayanWinningCombos implements RewardInterface{
 	}
 	public static void generateReward()
 	{
-		 if(checkHorizontal(slotsList))
+		 if(checkHorizontalCombo(slotsList))
 			{
 				roundReward = reward[0] * betAmount;
 				nextRound =true;
 			}
 			else 
 			{
-				if(checkVertical(slotsList))
+				if(checkVerticalCombo(slotsList))
 				{
 					roundReward = reward[3] * betAmount;
 					nextRound = true;
 				}
 				else 
 				{
-					if(checkDownDiagonal(slotsList) || checkUpDiagonal(slotsList))
+					if(checkDownDiagonalCombo(slotsList) || checkUpDiagonalCombo(slotsList))
 					{
 						roundReward = reward[6] * betAmount;
 						nextRound = true;
@@ -121,16 +120,16 @@ public class JiayanWinningCombos implements RewardInterface{
 	
 
 	@Override
-	public ArrayList<RewardInterface> getRewardHistory() {
+	public ArrayList<Integer> getRewardHistory() {
 		// TODO Auto-generated method stub
-		return rewardHistory;
+		return rewardHistory; 
+	}
+	@Override
+	public void setRewardHistory(ArrayList<Integer> rewardList) {
+		// TODO Auto-generated method stub
+		rewardList = rewardHistory;
 	}
 
-	@Override
-	public ArrayList<RewardInterface> setRewardHistory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 }
