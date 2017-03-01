@@ -112,13 +112,20 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		});
 		
 		
-		addPics();
-		ArrayList<Slotpic> array1;
-		ArrayList<Slotpic> array2;
-		ArrayList<Slotpic> array3;
-		for(int i = 0; i < slots.size(); i++){
-			
+		ArrayList<Slotpic> set = new ArrayList<Slotpic>();
+		for(int i = 0; i < 3; i++){
+			slots.add(set);
+			System.out.println("hi");
 		}
+		
+		addPics();
+		
+		for(int i = 0; i < slots.size(); i++){
+			for(int a = 0; a < 9; a++){
+				viewObjects.add(slots.get(i).get(a));
+			}
+		}
+		
 		viewObjects.add(bg);
 		viewObjects.add(plus);
 		viewObjects.add(minus);
@@ -163,7 +170,7 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 			temp.setX(x);
 			temp.setY(y);
 			//add some size to slots
-			slots.get(0);
+			slots.get(arrayidx).add(temp);
 			x += 100;
 			if(i == 2 || i == 5 || i == 8){
 				x = 325;
