@@ -137,6 +137,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 //		}
 //		
 		
+		Table table = new Table(0,0,500,800);
+		viewObjects.add(table);
+		
 		
 		viewObjects.add(bg);
 		viewObjects.add(plus);
