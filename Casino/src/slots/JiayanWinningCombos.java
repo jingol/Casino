@@ -94,7 +94,7 @@ public class JiayanWinningCombos implements RewardInterface{
 	}
 	public static void generateReward()
 	{
-		double nums [] = {0, 1.00, 1.25, 1.50, 1.75, 2.00, 5};
+		double nums [] = {0, 1.00, 1.25, 1.50, 1.75, 2.00, 10};
 		int i=0;
 		for(double n:nums)
 		{
