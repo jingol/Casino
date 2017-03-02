@@ -25,11 +25,12 @@ public class MatthewSlots {
 	public static gui.components.Button blackjackButton;
 	public static gui.components.Button bingoButton;
 	public static int balance;
-	public static ArrayList bets;
+	public static ArrayList<Integer> bets;
 	public static int[][] gameHistory;
 	public Balance number = new Balance();
 
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		bets = new ArrayList<Integer>();
 		balance = number.getBalance();
 
 		texasButton = new gui.components.Button(166, 750, 200, 100, "To Texas Hold 'Em", Color.RED, new Action() {
