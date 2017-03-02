@@ -121,7 +121,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 						viewObjects.add(new Box(pos, 200,60, 80, Color.black, false));
 						pos += 30;
 					}
-				}
+				} 
 			}
 		});
 		
