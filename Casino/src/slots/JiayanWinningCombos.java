@@ -18,11 +18,10 @@ public class JiayanWinningCombos implements RewardInterface{
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
 	public static ArrayList<Integer>rewardHistory = new ArrayList<Integer>();
-	//
+	
 	/**
 	 * reward array will contain the multiplier: noc1 = 1.1, noc2 = 1.3/1.5, noc3 = 5, 
 	 *loop thru reward array to get final rewards
-	 * switching between rounds(boolean?)
 	 * 
 	 * 
 	 *  multiple wins
@@ -108,7 +107,7 @@ public class JiayanWinningCombos implements RewardInterface{
 				nextRound =true;
 			}
 			else 
-			{
+			{ 
 				if(checkVerticalCombo(slotsList))
 				{
 					roundReward = multipliers[5] * betAmount;
