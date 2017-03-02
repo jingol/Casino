@@ -65,7 +65,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,BalanceInter
 		bet = new TextLabel(830,435,100,100,Integer.toString(betamount));
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
-		plus =  new Button(900,500,40,40,
+		plus =  new Button(900,575,40,40,
 				"+",Color.BLACK,
 				new Action() {
 			
@@ -73,7 +73,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,BalanceInter
 				changeText(Integer.toString(betamount));
 			}
 		});
-		minus =  new Button(775,500,40,40,
+		minus =  new Button(775,575,40,40,
 				"-",Color.RED,
 				new Action() {
 			
