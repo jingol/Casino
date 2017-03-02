@@ -37,6 +37,8 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private BingoBoxText history; 
 	private BingoBoxText numberCalled; 
 	
+	public boolean playerTurn=false;
+	
 	//private TextLabel numberCalled; 
 	//private SharonBingoButton sampleButton; 
 	
@@ -67,21 +69,39 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	}
 
 	
-
+/*
+ * 
+ * 
+ * 
+ * 
+ *------------ HAVE TO WORK ON THE ROUNDS---------------
+ * 
+ * 
+ * 
+ */
 
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		//once opened, the game starts.
+		nextRound();
 		
 	}
 
+	private void nextRound() {
+		playerTurn=false;
+		//change the display of numberball
+		//ai sets that number to true on aiBoolean & highlights that number on its board
+		SharonCheckForBingo(aiBoolean); // aiBoolean has not been connected to the buttons
+		//update history
+		playerTurn=true;
+		SharonCheckForBingo(playerBoolean); //playerBooean has not been connected to the buttons
+	}
 
 
-
-
-
-
+	
+	
+	
 	@Override
 	public void initAllObjects(ArrayList<Visible> lst) {
 		//super.initObjects(lst);
@@ -190,23 +210,6 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
 	}
+
+
