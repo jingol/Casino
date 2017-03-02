@@ -222,7 +222,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 
 
 	public void showNumber(int randNumBallGenerator) {
-		numberCalled.addLine(randNumBallGenerator + "");
+		numberCalled.clearAndAddLine( randNumBallGenerator + "");
 	}
 
 

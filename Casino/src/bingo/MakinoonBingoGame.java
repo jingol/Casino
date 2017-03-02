@@ -65,7 +65,7 @@ public class MakinoonBingoGame extends GUIApplication{
 				gameHistory , 1000, 700);
 		Thread game = new Thread(mbg); 
 		game.start();
-		
+		backend.start();
 
 	}
 

@@ -90,4 +90,13 @@ public class BingoBoxText extends Component {
 		this.boxContent.add(temp);
 		update(); 
 	}
+
+	public void clearAndAddLine( String string) {
+			clear();
+			this.boxContent.clear();
+			
+			
+			this.boxContent.add(string);
+			update(); 
+	}
 }
