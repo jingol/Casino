@@ -37,6 +37,11 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private BingoBoxText history; 
 	private BingoBoxText numberCalled; 
 	
+	public static BingoScreenSharon sharonScreen;
+	
+	
+	public static ArrayList<String> numbers;
+	
 	public boolean playerTurn=false;
 	
 	//private TextLabel numberCalled; 
@@ -46,8 +51,8 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	//private TextArea gameScreen;
 	
 	
-	private Object aiBoolean;
-	private Object playerBoolean;
+	boolean[][] aiBoolean;
+	boolean[][] playerBoolean;
 	
 	
 	public MakinoonDisplay(MakinoonBingoBoard userBoard, MakinoonBingoBoard aiBoard, 
@@ -86,27 +91,26 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 
 
 	@Override
-	public void run() {
-		//once opened, the game starts.
-		nextRound();
-		
-	}
+//	public void run() {
+//		//once opened, the game starts.
+//		nextRound();
+//		
+//	}
 
-	private void nextRound() {
-		playerTurn=false;
-		//change the display of numberball
-		//ai sets that number to true on aiBoolean & highlights that number on its board
-		SharonCheckForBingo(aiBoolean); // aiBoolean has not been connected to the buttons
-		//update history
-		playerTurn=true;
-		SharonCheckForBingo(playerBoolean); //playerBooean has not been connected to the buttons
-	}
+//	private void nextRound() {
+//		playerTurn=false;
+//		//change the display of numberball
+//		//ai sets that number to true on aiBoolean & highlights that number on its board
+//		SharonCheckForBingo(aiBoolean); // aiBoolean has not been connected to the buttons
+//		//update history
+//		playerTurn=true;
+//		SharonCheckForBingo(playerBoolean); //playerBooean has not been connected to the buttons
+//	}
 
 
 	
 	
 	
-	@Override
 	public void initAllObjects(ArrayList<Visible> lst) {
 		//super.initObjects(lst);
 		bg = new Graphic(0, 0, 1000, 700, "imagesBingo/casinobg.jpg");
@@ -194,10 +198,10 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			lst.add(history);
 			
 			ArrayList<String> numbers = new ArrayList<String>();
-			numbers.add("4");
+			numbers.add(BingoScreenSharon.randNumBallGenerator() + "");
 			
 			numberCalled = 
-					new BingoBoxText(600, 100, 100, 100, "Number Called",numbers, false);
+					new BingoBoxText(650, 120, 100, 100, "Number", numbers, false);
 			lst.add(numberCalled);
 			
 			
@@ -209,7 +213,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		history.addLine(gameHistory.getSummary());
 		
 	}
-
+	
 	public int getNumberFromString(String number){
 		return Integer.parseInt(number);
 		
@@ -219,6 +223,19 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 
 	public void showNumber(int randNumBallGenerator) {
 		numberCalled.addLine(randNumBallGenerator + "");
+	}
+
+
+	@Override
+	public void run() {
+		playerTurn=false;
+		//change the display of numberball
+		//ai sets that number to true on aiBoolean & highlights that number on its board
+		SharonCheckForBingo.isBingo(aiBoolean); // aiBoolean has not been connected to the buttons
+		//update history
+		playerTurn=true;
+		SharonCheckForBingo.isBingo(playerBoolean); 
+		
 	}
 
 }

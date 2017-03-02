@@ -28,8 +28,8 @@ public class BingoScreenSharon{
 	public static int[][] aiBoard = new int[5][5];
 
 	// 2D arrays for checking if clicked, change color
-	public static Boolean[][] aiBoolean = new Boolean[5][5];
-	public static Boolean[][] playerBoolean = new Boolean[5][5];
+	public static boolean[][] aiBoolean = new boolean[5][5];
+	public static boolean[][] playerBoolean = new boolean[5][5];
 	private static ArrayList<BingoGameHistory> gameHistory;
 
 	public BingoScreenSharon(){
@@ -38,7 +38,7 @@ public class BingoScreenSharon{
 		gameHistory= new ArrayList<BingoGameHistory>();
 	}
 
-	public int randNumGenerator(int s) { 
+	public static int randNumGenerator(int s) { 
 		//random.nextInt(max - min + 1) + min
 	
 		Random rand = new Random();
@@ -65,7 +65,7 @@ public class BingoScreenSharon{
 		return aiBoard;
 		
 	}
-	public Boolean[][] createAiBoolBoard(){
+	public boolean[][] createAiBoolBoard(){
 		for (int i = 0; i < aiBoolean.length; i++) {
 			for (int j = 0; j < aiBoolean[i].length; j++) {
 				aiBoolean[i][j] = false;
@@ -91,7 +91,7 @@ public class BingoScreenSharon{
 		}
 		return playerBoard;
 	}
-	public Boolean[][] createPlayerBoolBoard(){
+	public boolean[][] createPlayerBoolBoard(){
 		for (int i = 0; i < playerBoolean.length; i++) {
 			for (int j = 0; j < playerBoolean[i].length; j++) {
 				playerBoolean[i][j] = false;
@@ -109,7 +109,7 @@ public class BingoScreenSharon{
 		}
 	}
 	
-	public int randNumBallGenerator() {//Once a number ball is called, it is removed from the bingo cage.
+	public static int randNumBallGenerator() {//Once a number ball is called, it is removed from the bingo cage.
 		//ArrayList<Integer> numBallList = new ArrayList<>();
 		/*
 		for (int i = 1; i < 51; i++) {

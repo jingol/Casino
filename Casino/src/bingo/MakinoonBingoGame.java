@@ -3,12 +3,12 @@ package bingo;
 import java.util.ArrayList;
 
 public class MakinoonBingoGame extends GUIApplication{
-	private MakinoonBingoBoard userBoard;
-	private MakinoonBingoBoard aiBoard;
+	public MakinoonBingoBoard userBoard;
+	public MakinoonBingoBoard aiBoard;
 	public static BingoScreenSharon backend;
-	private  MakinoonBingoGame bingoGame;
+	public  MakinoonBingoGame bingoGame;
 	public static MakinoonDisplay md;
-	private ArrayList<BingoGameHistory> gameHistory; 
+	public static ArrayList<BingoGameHistory> gameHistory; 
 	
 	
 	// all three other games 
@@ -48,11 +48,14 @@ public class MakinoonBingoGame extends GUIApplication{
 
 	}
 
+
 	public static void main(String[] args) {
 		backend= new BingoScreenSharon();
-		MakinoonBingoBoard compBoard = new MakinoonBingoBoard(backend.createAiNumBoard(),
+		MakinoonBingoBoard compBoard = new MakinoonBingoBoard(backend.createAiNumBoard(), 
+				backend.createAiBoolBoard(),
 				 80, 250, 40);
 		MakinoonBingoBoard playerBoard = new MakinoonBingoBoard(backend.createPlayerNumBoard(),
+				backend.createPlayerBoolBoard(),
 				330, 250, 40);
 		ArrayList <BingoGameHistory> gameHistory = new ArrayList<>();
 		BingoGameHistory testGame = new BingoGameHistory("Mak", 

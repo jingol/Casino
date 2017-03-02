@@ -8,7 +8,7 @@ package bingo;
  *
  */
 public class SharonCheckForBingo {
-	public boolean isBingo(boolean[][] board){
+	public static boolean isBingo(boolean[][] board){
 
 	    // horizontalCheck 
 	    for (int j = 0; j< board.length ; j++ ){
