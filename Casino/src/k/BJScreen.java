@@ -115,7 +115,6 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		restart = new Button(700, 350, 75, 40, "Restart", Color.green, new Action() {
 			public void act(){
 				initAllObjects(viewObjects);
-				PlayerHand.setStandCall();
 			}
 		});
 		
