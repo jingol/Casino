@@ -123,12 +123,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		}
 		
 		addPics();
-		
-//		for(int i = 0; i < slots.size(); i++){
-//			for(int a = 0; a < 9; a++){
-//				viewObjects.add(slots.get(i).get(a));
-//			}
-//		}
+	
 		
 		
 		Table table = new Table(0,0,500,800);
