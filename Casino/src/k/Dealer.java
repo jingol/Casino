@@ -18,6 +18,7 @@ public class Dealer implements CallInterface {
 	}
 	
 	public void dealerTurn(){
+		dealerPlaying = true;
 		while(dealerPlaying){ //computer plays
 			checkValue(); //checkValue
 			chance(); //take a chance
@@ -26,6 +27,7 @@ public class Dealer implements CallInterface {
 	}
 	
 	public void checkWinner(){
+		checkValue();
 		if(!dealerPlaying && ! playerhand.getStandCall()){
 			if(getTotal() >  playerhand.getPlayerTotal() && getTotal() >  playerhand.get2ndTotal()){
 				//computer wins and player loses money
@@ -49,12 +51,12 @@ public class Dealer implements CallInterface {
 	
 	public void chance(){
 		int chance = (int) (Math.random() * 100);
-		if(currentTotal == 21 || currentTotal > 21){
+		if(currentTotal == 21 || secondTotal == 21 || currentTotal > 21 || secondTotal > 21){
 			stand();
-		}else if(currentTotal < 17){
+		}else if(currentTotal < 17 || secondTotal < 17){
 			hit();
 		}
-		else if(currentTotal == 17){
+		else if(currentTotal == 17 || secondTotal == 17){
 			if(chance >= 75){
 				hit();
 			}
@@ -62,7 +64,7 @@ public class Dealer implements CallInterface {
 				stand();
 			}
 		}
-		else if(currentTotal == 18){
+		else if(currentTotal == 18 || secondTotal == 18){
 			if(chance >= 85){
 				hit();
 			}
@@ -70,7 +72,7 @@ public class Dealer implements CallInterface {
 				stand();
 			}
 		}
-		else if(currentTotal == 19){
+		else if(currentTotal == 19 || secondTotal == 19){
 			if(chance >= 90){
 				hit();
 			}
@@ -78,7 +80,7 @@ public class Dealer implements CallInterface {
 				stand();
 			}
 		}
-		else if(currentTotal == 20){
+		else if(currentTotal == 20 || secondTotal == 20){
 			if(chance >= 95){
 				hit();
 			}
