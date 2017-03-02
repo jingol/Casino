@@ -3,26 +3,28 @@
  */
 package main;
 
-import gui.GUIapp;
+import gui.GUIApplication;
+import texas.Texas;
 
 /**
  * @author Jason Lau
  *
  */
-public class Casino extends GUIapp {
-
+public class Casino extends GUIApplication {
+	public static Texas texas;
 	/**
 	 * STATIC FIELDS
 	 */
 	public static Casino game;
-	
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 600;
 	/**
 	 * @param width
 	 * @param height
 	 */
 	public Casino(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
+		setTitle("Dat Casino Tho");
 	}
 
 	/* (non-Javadoc)
@@ -30,8 +32,8 @@ public class Casino extends GUIapp {
 	 */
 	@Override
 	public void initScreen() {
-		// TODO Auto-generated method stub
-
+		texas = new Texas(getWidth(), getHeight());
+		setScreen(texas);
 	}
 
 	/**
