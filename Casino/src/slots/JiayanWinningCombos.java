@@ -24,6 +24,20 @@ public class JiayanWinningCombos implements RewardInterface{
 		rewardHistory = new ArrayList<Integer>();
 		generateReward();
 	}
+	public static boolean checkIndividual(ArrayList<ArrayList<Slotpic>> list, String source)
+	{
+		for(int row = 0; row<list.size(); row++)
+		{
+			for(int col = 0; col<list.get(0).size(); col++)
+			{
+				if(list.get(row).get(col).)
+					//how should i continue the statement to compare the sources?
+			}
+		}
+		
+		return false;
+		
+	}
 	public static boolean checkHorizontalCombo(ArrayList<ArrayList<Slotpic>> list)
 	{
 		for(int row=0; row<list.size();row++)
