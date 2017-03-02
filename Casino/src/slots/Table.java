@@ -57,8 +57,8 @@ public class Table extends Component {
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 160;
-				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size()) != null) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size());
+				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1) != null) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1);
 				} else {
 					text = "";
 				}
