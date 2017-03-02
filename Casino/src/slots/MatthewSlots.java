@@ -26,7 +26,6 @@ public class MatthewSlots {
 	public static gui.components.Button bingoButton;
 	public static int balance;
 	public static ArrayList bets;
-	public static ArrayList rewards;
 	public static int[][] gameHistory;
 	public Balance number = new Balance();
 
@@ -52,32 +51,13 @@ public class MatthewSlots {
 		});
 	}
 
-	public Table gameHistory() {
-		for (int i = bets.size(); i < 10; i++) {
-			int tempBet = (int) bets.get(bets.size());
-
-			if (tempBet > 0) {
-				gameHistory[i] = (int[]) bets.get(i);
-			}
-		}
-		for (int i = bets.size(); i < 10; i++) {
-			int tempBet = (int) rewards.get(rewards.size());
-
-			if (tempBet > 0) {
-				gameHistory[i][i] = (int) rewards.get(i);
-			}
-		}
-		return null;
-	}
-
 	public void bet(ArrayList bets) {
 		betAmount = (int) bets.get(bets.size());
 		balance -= betAmount;
 	}
 
 	public void reward() {
-		Balance.setBalance(balance += slots.JiayanWinningCombos.getRewardHistory
-				.get(slots.JiayanWinningCombos.getRewardHistory.size()));
+		Balance.balance = balance += JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size());
 	}
 
 	public void addBet() {
