@@ -50,14 +50,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		Thread play = new Thread(this);
 		play.start();
 		
-		for(int a = 0; a < 3 ; a++){
-			for(int i = 0; i < 3; i++){
-				Slotpic sp = slots.get(a).get(i);
-				sp.setX(290+a*120);
-				System.out.println("the pic that was added has coordinates "+sp.getX()+", "+sp.getY());
-			}
-			System.out.println("wa");
-		}
+
 		
 	}
 
@@ -138,9 +131,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 //		}
 		
 		
-//		Table table = new Table(0,0,500,800);
-//		System.out.println("k u");
-//		viewObjects.add(table);
+		Table table = new Table(0,0,500,800);
+		System.out.println("k u");
+		viewObjects.add(table);
 		
 		
 		viewObjects.add(bg);
@@ -162,7 +155,6 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				Slotpic sp = slots.get(a).get(i);
 				viewObjects.add(sp);
 			}
-			System.out.println("wa");
 		}
 	}
 	

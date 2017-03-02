@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 import gui.components.Component;
+import gui.components.TextLabel;
 
 /**
  * @author Matthew Yarmolinsky
@@ -18,7 +19,7 @@ import gui.components.Component;
 public class Table extends Component {
 
 	private int boxes;
-	private String text;
+	private TextLabel text;
 	private int boxDimensionX;
 	private int boxDimensionY;
 
@@ -33,34 +34,35 @@ public class Table extends Component {
 			if (boxes == 1) {
 				boxDimensionX = 100;
 				boxDimensionY = 100;
-				text = "Game History";
+				text.setText("Game History");
 				update();
 				boxes++;
 			} else if (boxes == 2) {
 				boxDimensionX = 100;
 				boxDimensionY = 130;
-				text = "Bets";
+				text.setText("Bets");
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 130;
-				text = "Rewards";
+				text.setText("Rewards");
 				update();
 				boxes++;
 			} else if (boxes == 3) {
 				boxDimensionX = 100;
 				boxDimensionY = 160;
 				if (MatthewSlots.bets != null) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 1);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 1));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 160;
 				if (JiayanWinningCombos.rewardHistory != null) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -68,17 +70,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 190;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 3) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 2);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 2));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 190;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 3) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 2);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 2));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -86,17 +89,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 220;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 4) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 3);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 3));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 220;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 4) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 3);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 3));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -104,17 +108,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 250;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 5) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 4);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 4));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 250;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 5) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 4);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 4));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -122,17 +127,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 280;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 6) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 5);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 5));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 280;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 6) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 5);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 5));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -140,17 +146,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 310;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 7) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 6);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 6));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 310;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 7) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 6);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 6));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -158,17 +165,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 340;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 8) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 7);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 7));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 340;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 8) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 7);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 7));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -176,17 +184,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 370;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 9) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 8);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 8));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 370;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 9) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 8);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 8));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -194,17 +203,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 400;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 10) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 9);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 9));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 400;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 10) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 9);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 9));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -212,17 +222,18 @@ public class Table extends Component {
 				boxDimensionX = 100;
 				boxDimensionY = 430;
 				if (MatthewSlots.bets != null && MatthewSlots.bets.size() < 11) {
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 10);
+					text.setText("" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 10));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 430;
 				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.size() < 11) {
-					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 10);
+					text.setText(
+							"" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 10));
 				} else {
-					text = "";
+					text.setText("");
 				}
 				update();
 				boxes++;
@@ -245,16 +256,15 @@ public class Table extends Component {
 		}
 		g.setFont(new Font("Helvetica", Font.PLAIN, 15));
 		FontMetrics fm = g.getFontMetrics();
-		if (text != null) {
-			g.setColor(Color.white);
-			String t = text;
-			int cutoff = t.length();
-			while (cutoff > 0 && fm.stringWidth(t) > getWidth()) {
-				cutoff--;
-				t = t.substring(0, cutoff);
-			}
-			g.drawString(t, (50 - fm.stringWidth(t)) / 2, (30 + fm.getDescent()) / 2);
+		g.setColor(Color.white);
+		System.out.println(text.getText());
+		String t = text.getText();
+		int cutoff = t.length();
+		while (cutoff > 0 && fm.stringWidth(t) > getWidth()) {
+			cutoff--;
+			t = t.substring(0, cutoff);
 		}
+		g.drawString(t, (50 - fm.stringWidth(t)) / 2, (30 + fm.getDescent()) / 2);
 	}
 
 }
