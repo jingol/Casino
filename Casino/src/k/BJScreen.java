@@ -72,12 +72,12 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		player1.checkValue(); //adds the values of the first 2 cards
 
 		if(player1.getPlayerTotal() == player1.get2ndTotal()){
-			playerCT = new TextLabel(280, 50, 260, 300, "Your current total is " + player1.getPlayerTotal()); //text label to show the total
+			playerCT = new TextLabel(280, 50, 290, 300, "Your current total is " + player1.getPlayerTotal()); //text label to show the total
 		}
 		else{
-			playerCT = new TextLabel(280, 50, 260, 300, "Your current total is " + player1.getPlayerTotal() + " or " + player1.get2ndTotal());
+			playerCT = new TextLabel(280, 50, 290, 300, "Your current total is " + player1.getPlayerTotal() + " or " + player1.get2ndTotal());
 		}
-		box = new Box(278, 318, 280, 40, Color.green, true);
+		box = new Box(278, 318, 290, 40, Color.green, true);
 
 		//playerCT = new TextLabel(300, 50, 400, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
