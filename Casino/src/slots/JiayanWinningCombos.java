@@ -28,9 +28,8 @@ public class JiayanWinningCombos implements RewardInterface{
 	 */
 	public JiayanWinningCombos() 
 	{
-		
+		generateReward();
 	}
-	
 	public static boolean checkHorizontalCombo(ArrayList<ArrayList<Slotpic>> list)
 	{
 		for(int row=0; row<list.size();row++)
@@ -101,26 +100,20 @@ public class JiayanWinningCombos implements RewardInterface{
 			multipliers[i] += n;
 			i++;
 		}
-		 if(checkHorizontalCombo(slotsList))
-			{
-				roundReward = multipliers[1] * betAmount;
-				nextRound =true;
-			}
-			else 
-			{ 
-				if(checkVerticalCombo(slotsList))
-				{
-					roundReward = multipliers[5] * betAmount;
-					nextRound = true;
-				}
-				else 
-				{
-					if(checkDownDiagonalCombo(slotsList) || checkUpDiagonalCombo(slotsList))
-					{
-						roundReward = multipliers[6] * betAmount;
-						nextRound = true;
-					}
-				}
+		if(checkHorizontalCombo(slotsList))
+		{
+			roundReward = multipliers[1] * betAmount;
+			nextRound =true;
+		}
+		if(checkVerticalCombo(slotsList))
+		{
+			roundReward = multipliers[5] * betAmount;
+			nextRound = true;
+		}
+		if(checkDownDiagonalCombo(slotsList) || checkUpDiagonalCombo(slotsList))
+		{
+			roundReward = multipliers[6] * betAmount;
+			nextRound = true;
 		}
 	}
 	
