@@ -49,8 +49,8 @@ public class Table extends Component {
 			} else if (boxes == 3) {
 				boxDimensionX = 100;
 				boxDimensionY = 160;
-				if (MatthewSlots.bets != null){
-					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size()-1);
+				if (MatthewSlots.bets != null) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 1);
 				} else {
 					text = "";
 				}
@@ -64,178 +64,169 @@ public class Table extends Component {
 				}
 				update();
 				boxes++;
-			}// else if (boxes == 4) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 190;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 1) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 1);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 190;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 5) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 220;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 2) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 2);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 220;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 2) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 2)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 6) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 250;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 3) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 3);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 250;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 3) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 3)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 7) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 280;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 4) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 4);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 280;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 4) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 4)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 8) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 310;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 5) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 5);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 310;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 5) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 5)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 9) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 340;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 6) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 6);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 340;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 6) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 6)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 10) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 370;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 7) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 7);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 370;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 7) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 7)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 11) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 400;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 8) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 8);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 400;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 8) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 8)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			} else if (boxes == 12) {
-//				boxDimensionX = 100;
-//				boxDimensionY = 430;
-//				if (MatthewSlots.bets.get(MatthewSlots.bets.size() - 9) != null) {
-//					text = (String) MatthewSlots.bets.get(MatthewSlots.bets.size() - 9);
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxDimensionX = 150;
-//				boxDimensionY = 430;
-//				if (JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 9) != null) {
-//					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 9)
-//							+ "";
-//				} else {
-//					text = "";
-//				}
-//				update();
-//				boxes++;
-//			}
+			} else if (boxes == 4) {
+				boxDimensionX = 100;
+				boxDimensionY = 190;
+				if (MatthewSlots.bets.size() < 3) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 2);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 190;
+				if (JiayanWinningCombos.rewardHistory.size() < 3) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 2);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 5) {
+				boxDimensionX = 100;
+				boxDimensionY = 220;
+				if (MatthewSlots.bets.size() < 4) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 3);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 220;
+				if (JiayanWinningCombos.rewardHistory.size() < 4) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 3);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 6) {
+				boxDimensionX = 100;
+				boxDimensionY = 250;
+				if (MatthewSlots.bets.size() < 5) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 4);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 250;
+				if (JiayanWinningCombos.rewardHistory.size() < 5) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 4);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 7) {
+				boxDimensionX = 100;
+				boxDimensionY = 280;
+				if (MatthewSlots.bets.size() < 6) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 5);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 280;
+				if (JiayanWinningCombos.rewardHistory.size() < 6) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 5);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 8) {
+				boxDimensionX = 100;
+				boxDimensionY = 310;
+				if (MatthewSlots.bets.size() < 7) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 6);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 310;
+				if (JiayanWinningCombos.rewardHistory.size() < 7) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 6);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 9) {
+				boxDimensionX = 100;
+				boxDimensionY = 340;
+				if (MatthewSlots.bets.size() < 8) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 7);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 340;
+				if (JiayanWinningCombos.rewardHistory.size() < 8) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 7);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 10) {
+				boxDimensionX = 100;
+				boxDimensionY = 370;
+				if (MatthewSlots.bets.size() < 9) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 8);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 370;
+				if (JiayanWinningCombos.rewardHistory.size() < 9) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 8);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 11) {
+				boxDimensionX = 100;
+				boxDimensionY = 400;
+				if (MatthewSlots.bets.size() < 10) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 9);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 400;
+				if (JiayanWinningCombos.rewardHistory.size() < 10) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 9);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			} else if (boxes == 12) {
+				boxDimensionX = 100;
+				boxDimensionY = 430;
+				if (MatthewSlots.bets.size() < 11) {
+					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size() - 10);
+				} else {
+					text = "";
+				}
+				update();
+				boxDimensionX = 150;
+				boxDimensionY = 430;
+				if (JiayanWinningCombos.rewardHistory.size() < 11) {
+					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 10);
+				} else {
+					text = "";
+				}
+				update();
+				boxes++;
+			}
 		}
 	}
 
