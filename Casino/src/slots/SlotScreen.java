@@ -14,10 +14,11 @@ import gui.components.Graphic;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import main.BalanceInterface;
 import main.Casino;
 
 
-public class SlotScreen extends ClickableScreen implements Runnable {
+public class SlotScreen extends ClickableScreen implements Runnable,BalanceInterface,RewardInterface{
 	
 	public static ArrayList <ArrayList<Slotpic>> slots;
 	
@@ -41,6 +42,8 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 	private Thread barrel3;
 	
 	private volatile boolean running = false;
+	
+	private static Table table;
 	
 	
 	public SlotScreen(int width, int height) {
@@ -116,7 +119,6 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 		for(int i = 0; i < 3; i++){
 			slots.add(set);
 			System.out.println("hi");
-			System.out.println(slots.size());
 		}
 		
 		addPics();
@@ -191,6 +193,30 @@ public class SlotScreen extends ClickableScreen implements Runnable {
 			
 		}
 
+	}
+
+	@Override
+	public ArrayList<Integer> getRewardHistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRewardHistory(ArrayList<Integer> rewardList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getBalance() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setBalance(int newBalance) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

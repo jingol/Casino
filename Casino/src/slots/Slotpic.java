@@ -9,6 +9,11 @@ public class Slotpic extends Graphic {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void set(Slotpic temp) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 	
