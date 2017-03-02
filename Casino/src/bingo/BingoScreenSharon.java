@@ -14,12 +14,12 @@ import guiScreens.ClickableScreen;
 /**
  * @author Sharon
  */
-public class BingoScreenSharon{
+public class BingoScreenSharon implements Runnable{
 	// FIELDS
 
 	public static ArrayList<Integer> spinner;
 	public static ArrayList<Integer> numBallList;
-
+	public static ArrayList<Integer> pickedNumBalls;
 	//private SquaresInterfaceSharonWong[] squares;
 
 	// 2D array of player board to add numbers
@@ -38,6 +38,7 @@ public class BingoScreenSharon{
 		spinner= new ArrayList<Integer>();
 		numBallList= new ArrayList<Integer>();
 		gameHistory= new ArrayList<BingoGameHistory>();
+		pickedNumBalls = new ArrayList<Integer>();
 	}
 
 	public static int randNumGenerator(int s) { 
@@ -124,28 +125,50 @@ public class BingoScreenSharon{
 		
 		int spinResult= numBallList.get(randomIndex);
 		numBallList.remove(randomIndex);
+		pickedNumBalls.add(spinResult);
 		return spinResult;
 	}
 
 	public void start() {
-		Thread bingoStart=new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				while(true){
-					MakinoonBingoGame.md.showNumber(randNumBallGenerator());
-					
-					try {
-						Thread.sleep((long)(2000));
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
-					}
-			}
-		});
-		bingoStart.start();
+//		Thread bingoStart=new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				while(true){
+//					MakinoonBingoGame.md.showNumber(randNumBallGenerator());
+//					
+//					try {
+//						Thread.sleep((long)(2000));
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//					
+//					}
+//			}
+//		});
+//		bingoStart.start();
+		drawNewNumber();
+	}
+	
+	public void drawNewNumber(){
+		MakinoonBingoGame.md.showNumber(randNumBallGenerator());
+	}
+
+	public void buttonClick(int numOfSpace){ //numOfSpace= number on button clicked
+		System.out.println("Drawn =" +pickedNumBalls.get(pickedNumBalls.size()-1)+", numSpace ="+numOfSpace);
+		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()==numOfSpace){
+			//if number is the num ball
+		drawNewNumber();
+		}
+		
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
 		
 	}
 }
+
+
 

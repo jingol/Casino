@@ -107,6 +107,7 @@ implements Clickable {
 		System.out.println("act" + this.number);
 		//check if number is correctly clicked
 		highlighted = true;
+		MakinoonBingoGame.backend.buttonClick(number);
 		//checking function bingosharonscreen.initbingocage();
 		update();
 	}
