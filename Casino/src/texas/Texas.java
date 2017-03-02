@@ -85,10 +85,14 @@ public class Texas extends ClickableScreen implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		postFlopBetting();
+		if(gameRunning)
+			postFlopBetting();
+		else
+			flipAllCards();
 	}
 
-	private void determineWinner(){
+	private void finalTurn(){
+		
 		for(int i = 0; i<PLAYERS; i++){
 			if(players[i].isPlaying()){
 				//idk ill look at this lator
@@ -113,6 +117,10 @@ public class Texas extends ClickableScreen implements Runnable{
 				//make each player choose bet, raise, fold using dealt hand method??
 			}
 		}
+		if(gameRunning)
+			theTurn();
+		else
+			flipAllCards();
 	}
 
 	//when round num is 4
@@ -135,6 +143,10 @@ public class Texas extends ClickableScreen implements Runnable{
 				//make each player choose bet, raise, fold using dealt hand method??
 			}
 		}
+		if(gameRunning)
+			theRiver();
+		else
+			flipAllCards();
 	}
 	
 	//when round num is 5
@@ -157,7 +169,8 @@ public class Texas extends ClickableScreen implements Runnable{
 				//make each player choose bet, raise, fold using dealt hand method??
 			}
 		}
-		flipAllCards();
+			flipAllCards();
+			finalTurn();
 	}
 	
 	private void preflop(){
@@ -167,7 +180,10 @@ public class Texas extends ClickableScreen implements Runnable{
 			players[i].setMoney(players[i].getMoney()-bigBlind);
 			table.increaseValue(bigBlind);
 		}
-		theFlop();
+		if(gameRunning)
+			theFlop();
+		else
+			flipAllCards();
 	}
 	
 	private void forcedBets(){
