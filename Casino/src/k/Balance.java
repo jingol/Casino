@@ -2,9 +2,13 @@ package k;
 
 public class Balance {
 
-	public static int balance;
+	private static int balance;
 
-	public int getBalance() {
+	public static int getBalance() {
 		return balance;
+	}
+	
+	public static void setBalance(int balance){
+		Balance.balance = balance;
 	}
 }

@@ -36,6 +36,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	private Button poker;
 	public int positionCount = 185;
 	public int nextRow = 200;
+	private int balance = Balance.getBalance();
+	private TextLabel score;
 	
 	
 	public BJScreen(int width, int height) {
@@ -53,6 +55,9 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		player1 = new PlayerHand();
 		dealer1 = new Dealer();
 		deck1 = new Deck();
+		
+		score = new TextLabel(600, 400, 100, 100,"score is "+ balance);
+		viewObjects.add(score);
 		
 		card1 = new Graphic(100, 200, 60, 80, PlayerHand.hand.get(0).image1);
 		card1outline = new Box(100,200,60,80, Color.black, false);

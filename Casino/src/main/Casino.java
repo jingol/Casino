@@ -5,6 +5,7 @@ package main;
 
 import gui.GUIApplication;
 import k.BJScreen;
+import k.Balance;
 
 /**
  * @author Jason Lau
