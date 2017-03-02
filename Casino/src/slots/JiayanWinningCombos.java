@@ -30,7 +30,10 @@ public class JiayanWinningCombos implements RewardInterface{
 		{
 			for(int col = 0; col<list.get(0).size(); col++)
 			{
-				if(list.get(row).get(col).)
+				if(list.get(row).get(col).equals(source))
+				{
+					return true;
+				}
 					//how should i continue the statement to compare the sources?
 			}
 		}
@@ -101,12 +104,24 @@ public class JiayanWinningCombos implements RewardInterface{
 	}
 	public static void generateReward()
 	{
-		double nums [] = {0, 1.00, 1.25, 1.50, 1.75, 2.00, 10};
+		double nums [] = {0.5,0, 1.00, 1.25, 1.50, 1.75, 2.00, 10};
 		int i=0;
 		for(double n:nums)
 		{
 			multipliers[i] += n;
 			i++;
+		}
+		if(checkIndividual(slotsList, "resources/noc2.png"))
+		{
+			roundReward = multipliers[7] * betAmount;
+		}
+		if(checkIndividual(slotsList, "resources/noc1.png"))
+		{
+			roundReward = multipliers[2] * betAmount;
+		}
+		if(checkIndividual(slotsList, "resources/noc3.png"))
+		{
+			roundReward = multipliers[0] * betAmount;
 		}
 		if(checkHorizontalCombo(slotsList))
 		{
