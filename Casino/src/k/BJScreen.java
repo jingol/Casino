@@ -107,6 +107,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 			public void act(){
 				if(player1.getStandCall() == true){
 					player1.setStandCall();
+					viewObjects.add(new Graphic(600, 200, 60, 80, dealer1.dealerHand.get(0).image1));
+					viewObjects.add(new Graphic(600, 200, 60, 80, dealer1.dealerHand.get(1).image1));
 					dealer1.dealerTurn();
 				}
 			}
