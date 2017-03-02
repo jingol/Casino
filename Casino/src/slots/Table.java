@@ -49,7 +49,7 @@ public class Table extends Component {
 			} else if (boxes == 3) {
 				boxDimensionX = 100;
 				boxDimensionY = 160;
-				if (MatthewSlots.bets != null && MatthewSlots.bets.get(MatthewSlots.bets.size()-1) != null) {
+				if (MatthewSlots.bets != null){
 					text = "" + MatthewSlots.bets.get(MatthewSlots.bets.size()-1);
 				} else {
 					text = "";
@@ -57,7 +57,7 @@ public class Table extends Component {
 				update();
 				boxDimensionX = 150;
 				boxDimensionY = 160;
-				if (JiayanWinningCombos.rewardHistory != null && JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1) != null) {
+				if (JiayanWinningCombos.rewardHistory != null) {
 					text = "" + JiayanWinningCombos.rewardHistory.get(JiayanWinningCombos.rewardHistory.size() - 1);
 				} else {
 					text = "";
