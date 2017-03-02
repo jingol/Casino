@@ -101,10 +101,7 @@ public class BingoScreenSharon{
 		}
 		return playerBoolean;
 	}
-/*
-	public void initBoards() {	
-	}
-*/	
+
 	public static void initBingoCage(){ //add 50 balls to bingo cage
 		for (int i = 1; i < 51; i++) {
 			numBallList.add(i);
@@ -130,17 +127,25 @@ public class BingoScreenSharon{
 		return spinResult;
 	}
 
-	public void drawNumbers() {
-		MakinoonBingoGame.md.showNumber(randNumBallGenerator());
-		/*
-		try {
-			Thread.sleep((long)(2000*(2.0/(roundNum+2))));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		*/
+	public void start() {
+		Thread bingoStart=new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(true){
+					MakinoonBingoGame.md.showNumber(randNumBallGenerator());
+					
+					try {
+						Thread.sleep((long)(2000));
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
+					}
+			}
+		});
+		bingoStart.start();
 		
 	}
-	
 }
 
