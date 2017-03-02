@@ -25,7 +25,7 @@ public class MatthewSlots {
 	public static gui.components.Button blackjackButton;
 	public static gui.components.Button bingoButton;
 	public static int balance;
-	public static ArrayList bets;
+	public static ArrayList bets = new ArrayList();
 	public static int[][] gameHistory;
 	public Balance number = new Balance();
 
