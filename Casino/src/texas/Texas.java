@@ -252,7 +252,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					case 3: startBetting();theFlop(); break;
 					case 4: startBetting();theTurn(); break;
 					case 5: startBetting();theRiver(); break;
-					default: break;
+					default: break; 
 					}
 				}
 			}
