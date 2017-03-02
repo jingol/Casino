@@ -1,6 +1,6 @@
 package texas;
 /**
- * @author Ray C.
+ * @author Ray 
  *
  */
 public interface PlayingCardInterface {
