@@ -1,12 +1,6 @@
 package k;
 
 import java.util.ArrayList;
-
-/** 
- * 
- * @author Kristy
- *
- */ 
  
 public class PlayerHand {
 

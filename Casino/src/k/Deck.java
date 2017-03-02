@@ -2,11 +2,6 @@ package k;
 
 import java.util.ArrayList;
 
-/**
- * @author Kristy Tan
- *
- */ 
-
 public class Deck implements DeckInterface{
 
 	public static ArrayList <Card> deck;

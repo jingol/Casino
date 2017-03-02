@@ -12,11 +12,6 @@ import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
 
-/**
- *  
- * @author Kristy Tan
- *
- */
 public class BJScreen extends ClickableScreen implements Runnable {
 
 	private Deck deck1;
