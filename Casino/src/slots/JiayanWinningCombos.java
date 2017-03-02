@@ -17,17 +17,11 @@ public class JiayanWinningCombos implements RewardInterface{
 	private static int [] multipliers = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
-	public static ArrayList<Integer>rewardHistory = new ArrayList<Integer>();
+	public static ArrayList<Integer>rewardHistory;  
 	
-	/**
-	 * reward array will contain the multiplier: noc1 = 1.1, noc2 = 1.3/1.5, noc3 = 5, 
-	 *loop thru reward array to get final rewards
-	 * 
-	 * 
-	 *  multiple wins
-	 */
 	public JiayanWinningCombos() 
 	{
+		rewardHistory = new ArrayList<Integer>();
 		generateReward();
 	}
 	public static boolean checkHorizontalCombo(ArrayList<ArrayList<Slotpic>> list)
