@@ -103,7 +103,7 @@ public class BingoScreenSharon{
 	public void initBoards() {	
 	}
 */	
-	public void initBingoCage(){ //add 50 balls to bingo cage
+	public static void initBingoCage(){ //add 50 balls to bingo cage
 		for (int i = 1; i < 51; i++) {
 			numBallList.add(i);
 		}
@@ -126,6 +126,13 @@ public class BingoScreenSharon{
 
 	public void drawNumbers() {
 		MakinoonBingoGame.md.showNumber(randNumBallGenerator());
+		/*
+		try {
+			Thread.sleep((long)(2000*(2.0/(roundNum+2))));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		*/
 		
 	}
 	
