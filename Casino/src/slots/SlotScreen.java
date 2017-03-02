@@ -50,6 +50,15 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		Thread play = new Thread(this);
 		play.start();
 		
+		for(int a = 0; a < 3 ; a++){
+			for(int i = 0; i < 3; i++){
+				Slotpic sp = slots.get(a).get(i);
+				sp.setX(290+a*120);
+				System.out.println("the pic that was added has coordinates "+sp.getX()+", "+sp.getY());
+			}
+			System.out.println("wa");
+		}
+		
 	}
 
 	@Override
@@ -59,6 +68,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		
 		slots = new ArrayList <ArrayList<Slotpic>>();
 		title = new TextLabel(450,20,100,40,"Slots");
 		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
@@ -114,31 +124,23 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		});
 		
 		
-		ArrayList<Slotpic> set = new ArrayList<Slotpic>();
 		for(int i = 0; i < 3; i++){
-			slots.add(set);
+			slots.add(new ArrayList<Slotpic>());
 			System.out.println("hi");
 		}
 		
 		addPics();
 		
-		for(int i = 0; i < slots.size(); i++){
-			for(int a = 0; a < 9; a++){
-				viewObjects.add(slots.get(i).get(a));
-			}
-		}
-	
-//		for(int a = 0; a < 3 ; a++){
-//			for(int i = 0; i < 3; i++){
-//				viewObjects.add(slots.get(a).get(i));
-//				System.out.println("meh");
+//		for(int i = 0; i < slots.size(); i++){
+//			for(int a = 0; a < 9; a++){
+//				viewObjects.add(slots.get(i).get(a));
 //			}
-//			System.out.println("wa");
 //		}
-//		
 		
-		Table table = new Table(0,0,500,800);
-		viewObjects.add(table);
+		
+//		Table table = new Table(0,0,500,800);
+//		System.out.println("k u");
+//		viewObjects.add(table);
 		
 		
 		viewObjects.add(bg);
@@ -154,6 +156,14 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 		
 		moveToBack(bg);
+		
+		for(int a = 0; a < 3 ; a++){
+			for(int i = 0; i < 3; i++){
+				Slotpic sp = slots.get(a).get(i);
+				viewObjects.add(sp);
+			}
+			System.out.println("wa");
+		}
 	}
 	
 	
@@ -177,17 +187,17 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		demo.add(new Slotpic(50,0,100,100,"resources/gabe.jpg"));
 		demo.add(new Slotpic(50,0,100,100,"resources/cherry.jpg"));
 		demo.add(new Slotpic(50,0,100,100,"resources/bar.jpg"));
-		int x = 290;
+		int xPos = 290;
 		int y = 200;
 		int arrayidx = 0;
 		for(int i = 0; i < 9; i++){
 			Slotpic temp = demo.get(i);
-			temp.setX(x);
+			temp.setX(xPos);
 			temp.setY(y);
 			slots.get(arrayidx).add(temp);
 			y += 110;
-			if(i == 2 || i == 5 || i == 8){
-				x += 120;
+			if(i%3 == 2){
+				xPos += 120;
 				y = 200;
 				arrayidx++;
 				System.out.println(arrayidx);
