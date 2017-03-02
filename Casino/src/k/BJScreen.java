@@ -121,8 +121,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 //					viewObjects.add(new Graphic(630, 200, 60, 80, dealer1.dealerHand.get(1).image1));
 					dealer1.dealerTurn();
 					int pos = 600;
-					for(int i = 0; i < dealer1.dealerHand.size(); i++){
-						viewObjects.add(new Graphic(pos, 200, 60, 80, dealer1.dealerHand.get(i).image1));
+					for(int i = 0; i < Dealer.dealerHand.size(); i++){
+						viewObjects.add(new Graphic(pos, 200, 60, 80, Dealer.dealerHand.get(i).image1));
 						viewObjects.add(new Box(pos, 200,60, 80, Color.black, false));
 						pos += 30;
 					}
