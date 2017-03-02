@@ -82,6 +82,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		}
 		box = new Box(270, 368, 280, 40, Color.green, true);
 
+
 		//playerCT = new TextLabel(300, 50, 400, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
