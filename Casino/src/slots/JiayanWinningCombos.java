@@ -12,9 +12,9 @@ import java.util.List;
  */
 
 public class JiayanWinningCombos implements RewardInterface{
-	public static ArrayList<List<Slotpic>> slotsList = SlotScreen.slots;
+	public static ArrayList<ArrayList<Slotpic>> slotsList = SlotScreen.slots;
 	private static boolean nextRound;
-	private static int [] reward = new int [6];
+	private static int [] multipliers = new int [6];
 	private static int roundReward;
 	private static int betAmount = MatthewSlots.betAmount;
 	public static ArrayList<Integer>rewardHistory = new ArrayList<Integer>();
@@ -29,10 +29,10 @@ public class JiayanWinningCombos implements RewardInterface{
 	 */
 	public JiayanWinningCombos() 
 	{
-		generateReward();	  
+		
 	}
-
-	public static boolean checkHorizontalCombo(ArrayList<List<Slotpic>> list)
+	
+	public static boolean checkHorizontalCombo(ArrayList<ArrayList<Slotpic>> list)
 	{
 		for(int row=0; row<list.size();row++)
 		{
@@ -46,7 +46,7 @@ public class JiayanWinningCombos implements RewardInterface{
 		}
 		return false;
 	}
-	public static boolean checkVerticalCombo(ArrayList<List<Slotpic>> list)
+	public static boolean checkVerticalCombo(ArrayList<ArrayList<Slotpic>> list)
 	{
 		for(int row = 0; row<list.size(); row++)
 		{
@@ -61,7 +61,7 @@ public class JiayanWinningCombos implements RewardInterface{
 		
 	return false;
 	}
-	public static boolean checkDownDiagonalCombo(ArrayList<List<Slotpic>> list)
+	public static boolean checkDownDiagonalCombo(ArrayList<ArrayList<Slotpic>> list)
 	{
 		//this diagonal is \
 				for(int row = 0; row<list.size(); row++)
@@ -77,7 +77,7 @@ public class JiayanWinningCombos implements RewardInterface{
 				
 				return false;
 	}
-	public static boolean checkUpDiagonalCombo(ArrayList<List<Slotpic>> list)
+	public static boolean checkUpDiagonalCombo(ArrayList<ArrayList<Slotpic>> list)
 	{
 		 // this diagonal is /
 		for(int row = 0; row<list.size(); row++)
@@ -95,30 +95,36 @@ public class JiayanWinningCombos implements RewardInterface{
 	}
 	public static void generateReward()
 	{
+		double nums [] = {0, 1.00, 1.25, 1.50, 1.75, 2.00, 5};
+		int i=0;
+		for(double n:nums)
+		{
+			multipliers[i] += n;
+			i++;
+		}
 		 if(checkHorizontalCombo(slotsList))
 			{
-				roundReward = reward[0] * betAmount;
+				roundReward = multipliers[1] * betAmount;
 				nextRound =true;
 			}
 			else 
 			{
 				if(checkVerticalCombo(slotsList))
 				{
-					roundReward = reward[3] * betAmount;
+					roundReward = multipliers[5] * betAmount;
 					nextRound = true;
 				}
 				else 
 				{
 					if(checkDownDiagonalCombo(slotsList) || checkUpDiagonalCombo(slotsList))
 					{
-						roundReward = reward[6] * betAmount;
+						roundReward = multipliers[6] * betAmount;
 						nextRound = true;
 					}
 				}
 		}
 	}
 	
-
 	@Override
 	public ArrayList<Integer> getRewardHistory() {
 		// TODO Auto-generated method stub
