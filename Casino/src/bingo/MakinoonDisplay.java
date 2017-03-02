@@ -46,6 +46,10 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	//private TextArea gameScreen;
 	
 	
+	private Object aiBoolean;
+	private Object playerBoolean;
+	
+	
 	public MakinoonDisplay(MakinoonBingoBoard userBoard, MakinoonBingoBoard aiBoard, 
 			ArrayList<BingoGameHistory> gameHistoryList,
 			int width, int height) {
@@ -170,7 +174,8 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 				
 				public void act() {
 					System.out.print(" Begin/End ! ");
-					MakinoonBingoGame.backend.drawNumbers();
+					run();
+					//MakinoonBingoGame.backend.drawNumbers();
 				}
 			});
 			
@@ -187,8 +192,12 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			
 			history = new BingoBoxText(600, 230, rightComponentWidth, 250, "History", testStrings, true); 
 			lst.add(history);
+			
+			ArrayList<String> numbers = new ArrayList<String>();
+			numbers.add("4");
+			
 			numberCalled = 
-					new BingoBoxText(600, 100, 100, 100, "Number Called", testStrings, false);
+					new BingoBoxText(600, 100, 100, 100, "Number Called",numbers, false);
 			lst.add(numberCalled);
 			
 			
@@ -201,15 +210,17 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		
 	}
 
-
-
+	public int getNumberFromString(String number){
+		return Integer.parseInt(number);
+		
+		//use this to convert it 
+	}
 
 
 	public void showNumber(int randNumBallGenerator) {
-		// TODO Auto-generated method stub
-		
+		numberCalled.addLine(randNumBallGenerator + "");
 	}
 
-	}
+}
 
 
