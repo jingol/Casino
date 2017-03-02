@@ -18,7 +18,7 @@ import main.Casino;
 /**
  * @author Makinoon
  */
-public class MakinoonDisplay extends ClickableScreen implements Runnable {
+public class MakinoonDisplay extends ClickableScreen {
 	
 	private Graphic bg; 
 	private MakinoonBingoBoard userBoard; 
@@ -72,9 +72,9 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 //			}
 //		}
 		 
-		Thread app = new Thread(this);
-		
-		app.start();
+//		Thread app = new Thread(this);
+//		
+//		app.start();
 	}
 
 	
@@ -178,7 +178,7 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 				
 				public void act() {
 					System.out.print(" Begin/End ! ");
-					run();
+					//run();
 					//MakinoonBingoGame.backend.drawNumbers();
 				}
 			});
@@ -226,17 +226,16 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	}
 
 
-	@Override
-	public void run() {
-		playerTurn=false;
-		//change the display of numberball
-		//ai sets that number to true on aiBoolean & highlights that number on its board
-		SharonCheckForBingo.isBingo(aiBoolean); // aiBoolean has not been connected to the buttons
-		//update history
-		playerTurn=true;
-		SharonCheckForBingo.isBingo(playerBoolean); 
-		
-	}
+//	public void run() {
+//		playerTurn=false;
+//		//change the display of numberball
+//		//ai sets that number to true on aiBoolean & highlights that number on its board
+//		SharonCheckForBingo.isBingo(aiBoolean); // aiBoolean has not been connected to the buttons
+//		//update history
+//		playerTurn=true;
+//		SharonCheckForBingo.isBingo(playerBoolean); 
+//		
+//	}
 
 }
 
