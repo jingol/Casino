@@ -69,13 +69,13 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		
 		name = new Graphic(250, 50,	300, 100, "resources/sampleImages/BlackJack.png");
 		
-		PlayerHand.checkValue(); //adds the values of the first 2 cards
+		player1.checkValue(); //adds the values of the first 2 cards
 
-		if(PlayerHand.getPlayerTotal() == PlayerHand.get2ndTotal()){
-			playerCT = new TextLabel(280, 50, 260, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
+		if(player1.getPlayerTotal() == player1.get2ndTotal()){
+			playerCT = new TextLabel(280, 50, 260, 300, "Your current total is " + player1.getPlayerTotal()); //text label to show the total
 		}
 		else{
-			playerCT = new TextLabel(280, 50, 260, 300, "Your current total is " + PlayerHand.getPlayerTotal() + " or " + PlayerHand.get2ndTotal());
+			playerCT = new TextLabel(280, 50, 260, 300, "Your current total is " + player1.getPlayerTotal() + " or " + player1.get2ndTotal());
 		}
 		box = new Box(278, 318, 280, 40, Color.green, true);
 
@@ -83,15 +83,15 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
 			public void act() {
-				if(PlayerHand.getStandCall() == true){
-					if(PlayerHand.getPlayerTotal() < 21 || PlayerHand.get2ndTotal() < 21){
+				if(player1.getStandCall() == true){
+					if(player1.getPlayerTotal() < 21 || player1.get2ndTotal() < 21){
 						PlayerHand.hit();
 						positionCount += 85;
-						viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, PlayerHand.nextCard().image1));
+						viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, player1.nextCard().image1));
 						viewObjects.add(new Box(positionCount, nextRow, 60,80, Color.black, false));
 						checkPosition();
-						PlayerHand.checkValue();
-						if(PlayerHand.getPlayerTotal() > 21 && PlayerHand.get2ndTotal() > 21){
+						player1.checkValue();
+						if(player1.getPlayerTotal() > 21 && player1.get2ndTotal() > 21){
 							//dealer1.checkWinner();
 							playerCT.setText("");
 							changeText("Your total is over 21. You Lose.");
@@ -105,8 +105,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
-				if(PlayerHand.getStandCall() == true){
-					PlayerHand.setStandCall();
+				if(player1.getStandCall() == true){
+					player1.setStandCall();
 					dealer1.dealerTurn();
 				}
 			}
@@ -124,6 +124,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		viewObjects.add(hit);
 		viewObjects.add(stand);
 		viewObjects.add(playerCT);
+		
+		
 	}
 	
 	private void checkPosition(){
@@ -139,11 +141,11 @@ public class BJScreen extends ClickableScreen implements Runnable {
 
 	public void nextTotal() {
 		playerCT.setText("");
-		PlayerHand.checkValue();
-		if(PlayerHand.getPlayerTotal() != PlayerHand.get2ndTotal()){
-			changeText("Your current total is " + PlayerHand.getPlayerTotal() + " or " + PlayerHand.get2ndTotal());
+		player1.checkValue();
+		if(player1.getPlayerTotal() != player1.get2ndTotal()){
+			changeText("Your current total is " + player1.getPlayerTotal() + " or " + player1.get2ndTotal());
 		}else{
-			changeText("Your current total is " + PlayerHand.getPlayerTotal());
+			changeText("Your current total is " + player1.getPlayerTotal());
 		}
 	}
 

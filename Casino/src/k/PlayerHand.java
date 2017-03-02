@@ -2,7 +2,7 @@ package k;
 
 import java.util.ArrayList;
  
-public class PlayerHand {
+public class PlayerHand implements PlayerHandInterface {
 
 	public static ArrayList <Card> hand;
 	public static boolean player = true;
@@ -15,7 +15,7 @@ public class PlayerHand {
 		hand = new ArrayList <Card>();
 	}
 
-	public static void checkValue() {
+	public void checkValue() {
 		playerTotal = 0;
 		secondPlayerTotal = 0;
 		for(int i = 0; i < hand.size(); i++){
@@ -51,31 +51,31 @@ public class PlayerHand {
 			Deck.deck.remove(0);
 	}
 
-	public static Card nextCard(){
+	public Card nextCard(){
 		return nextCard;
 	}
 
-	public static int getPlayerTotal() {
+	public int getPlayerTotal() {
 		return PlayerHand.playerTotal;
 	}
 
-	public static void setPlayerTotal(int playerTotal) {
+	public void setPlayerTotal(int playerTotal) {
 		PlayerHand.playerTotal = playerTotal;
 	}
 	
-	public static int get2ndTotal(){
+	public int get2ndTotal(){
 		return PlayerHand.secondPlayerTotal;
 	}
 	
-	public static void set2ndTotal(int total){
+	public void set2ndTotal(int total){
 		PlayerHand.secondPlayerTotal = total;
 	}
 
-	public static void setStandCall() {
+	public void setStandCall() {
 		player = false;
 	}
 
-	public static boolean getStandCall() {
+	public boolean getStandCall() {
 		return player;
 	}
 }
