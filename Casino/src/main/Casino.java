@@ -4,6 +4,7 @@
 package main;
 
 import gui.GUIApplication;
+import k.BJScreen;
 
 /**
  * @author Jason Lau
@@ -15,6 +16,10 @@ public class Casino extends GUIApplication {
 	 * STATIC FIELDS
 	 */
 	public static Casino game;
+	public static BJScreen bjs;
+//	public static BingoScreen bs;
+//	public static PokerScreen ps;
+//	public static SlotsScreen ss;
 	
 	/**
 	 * @param width
@@ -31,7 +36,11 @@ public class Casino extends GUIApplication {
 	@Override
 	public void initScreen() {
 		// TODO Auto-generated method stub
-
+		bjs = new BJScreen(getWidth(), getHeight());
+		//Slots screen initiated
+		//Bingo screen initiated
+		//Poker screen initiated
+		setScreen(bjs);
 	}
 
 	/**
