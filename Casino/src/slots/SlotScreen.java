@@ -14,11 +14,10 @@ import gui.components.Graphic;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
-import main.BalanceInterface;
 import main.Casino;
 
 
-public class SlotScreen extends ClickableScreen implements Runnable,BalanceInterface,RewardInterface{
+public class SlotScreen extends ClickableScreen implements Runnable,RewardInterface{
 	
 	public static ArrayList <ArrayList<Slotpic>> slots;
 	
@@ -62,7 +61,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,BalanceInter
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		slots = new ArrayList <ArrayList<Slotpic>>();
 		title = new TextLabel(450,20,100,40,"Slots");
-		bet = new TextLabel(830,435,100,100,Integer.toString(betamount));
+		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
 		plus =  new Button(900,575,40,40,
@@ -168,13 +167,13 @@ public class SlotScreen extends ClickableScreen implements Runnable,BalanceInter
 		ArrayList<Slotpic> demo = new ArrayList<Slotpic>();
 		demo.add(new Slotpic(50,0,100,100,"resources/evilflow.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/gabe.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/java.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/java.jpg"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc1.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/noc2.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/cherry.png"));
-		demo.add(new Slotpic(50,0,100,100,"resources/bar.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/gabe.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/cherry.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/bar.jpg"));
 		int x = 290;
 		int y = 200;
 		int arrayidx = 0;
@@ -207,17 +206,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,BalanceInter
 		
 	}
 
-	@Override
-	public int getBalance() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setBalance(int newBalance) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 	
