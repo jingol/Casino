@@ -23,7 +23,10 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private Graphic bg; 
 	private MakinoonBingoBoard userBoard; 
 	private MakinoonBingoBoard aiBoard; 
+	
 	private TextLabel title;
+	private TextLabel aiTitle;
+	private TextLabel playerTitle;
 	private Button startEnd; 
 	private Button switchButton1;
 	private Button switchButton2; 
@@ -91,6 +94,15 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		title.setFont("Calibri");
 
 		lst.add(title);
+		aiTitle = 
+				new TextLabel(80, 200, 500, 40, "AI Board", Color.ORANGE);
+		lst.add(aiTitle);
+		
+		playerTitle = 
+				new TextLabel(330, 200, 500, 40, "Player Board", Color.ORANGE);
+		lst.add(playerTitle);
+		
+		
 		numberCalled = 
 				new TextLabel(300, 150, 500, 40, "Number Called: ", Color.BLACK);
 		numberCalled.setSize(45);
