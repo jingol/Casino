@@ -29,14 +29,15 @@ public class Texas extends ClickableScreen implements Runnable{
 	private Button raise;
 	private Button call;
 	private Button allIn;
-	private Button bet;
 	private Button start;
+	private Button done;
 	
 	private TextLabel[] moneyCounters;
 	private TextLabel playerMoney;
 	private TextLabel cMoney1;
 	private TextLabel cMoney2;
 	private TextLabel cMoney3;
+	private TextLabel betText;
 	
 	private Framer[] frames;
 	private Framer f1;
@@ -52,6 +53,7 @@ public class Texas extends ClickableScreen implements Runnable{
 	private boolean gameRunning;
 	private boolean canClick;
 	private int roundNum;
+	private int betValue;
 	
 	private final int BHEIGHT = 30;
 	private final int BWIDTH = 60;
@@ -59,8 +61,6 @@ public class Texas extends ClickableScreen implements Runnable{
 	private final int smallBlind = 10;
 	private final int bigBlind = 20;
 	private final int CARD_DELAY = 1100;
-	
-	
 			
 	public Texas(int width, int height) {
 		super(width, height);
@@ -72,27 +72,26 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 
 	private void theFlop() {
+		betValue = 0;
+		betText.setText("$"+betValue);
 		for(roundNum = 0; roundNum<3; roundNum++){
 			PlayingCard c = dealer.millCard();
 			remove(c);
 			addObject(c);
 			c.shiftCard(200+c.getX()+100*roundNum, c.getY());
 			c.flipCard();
+			System.out.println(200+c.getX()+100*roundNum);
 			try {
 				Thread.sleep(CARD_DELAY);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		if(gameRunning)
-			postFlopBetting();
-		else
-			flipAllCards();
+		roundNum++;
+		canClick = true;
 	}
 
 	private void finalTurn(){
-		
 		for(int i = 0; i<PLAYERS; i++){
 			if(players[i].isPlaying()){
 				//idk ill look at this lator
@@ -111,79 +110,72 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 	
 	//when round num is 3
-	private void postFlopBetting() {
+	private void startBetting() {
+		betValue = 0;
+		betText.setText("$"+betValue);
+		roundNum++;
 		for(int i = 1; i<players.length; i++){
 			if(players[i].isPlaying()){
-				//make each player choose bet, raise, fold using dealt hand method??
+				if(players[i].getMoney() >= betValue)
+					deductMoney(i,betValue);
+				else
+					deductMoney(i,players[i].getMoney());
 			}
 		}
-		if(gameRunning)
-			theTurn();
-		else
-			flipAllCards();
+		showOptions();
+		canClick = true;
 	}
 
 	//when round num is 4
 	private void theTurn(){
-		roundNum++;
+		betValue = 0;
+		betText.setText("$"+betValue);
 		PlayingCard c = dealer.millCard();
 		remove(c);
 		addObject(c);
 		pile.add(c);
-		c.shiftCard(200+c.getX()+100*roundNum, c.getY());
+		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
 		try {
 			Thread.sleep(CARD_DELAY);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i = 1; i<players.length; i++){
-			if(players[i].isPlaying()){
-				//make each player choose bet, raise, fold using dealt hand method??
-			}
-		}
-		if(gameRunning)
-			theRiver();
-		else
-			flipAllCards();
+		showOptions();
+		canClick = true;
 	}
 	
 	//when round num is 5
 	private void theRiver(){
-		roundNum++;
+		betValue = 0;
+		betText.setText("$"+betValue);
 		PlayingCard c = dealer.millCard();
 		remove(c);
 		addObject(c);
 		pile.add(c);
-		c.shiftCard(200+c.getX()+100*roundNum, c.getY());
+		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
 		try {
 			Thread.sleep(CARD_DELAY);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i = 1; i<players.length; i++){
-			if(players[i].isPlaying()){
-				//make each player choose bet, raise, fold using dealt hand method??
-			}
-		}
-			flipAllCards();
-			finalTurn();
+		showOptions();
+		canClick = true;
 	}
 	
 	private void preflop(){
 		//this should make the other two players either raise or call(bet same as last aggressive action or increase bet)
 		//kritty go do dis its a player method i think
+		roundNum = 2;
 		for(int i = 2; i<PLAYERS; i++){
-			players[i].setMoney(players[i].getMoney()-bigBlind);
-			table.increaseValue(bigBlind);
+			betValue = bigBlind;
+			if(Math.random() <= .2)
+				betValue *= 2;
+			deductMoney(i, betValue);
 		}
-		if(gameRunning)
-			theFlop();
-		else
-			flipAllCards();
+		canClick = true;
+		roundNum++;
 	}
 	
 	private void forcedBets(){
@@ -202,7 +194,6 @@ public class Texas extends ClickableScreen implements Runnable{
 				try {
 					Thread.sleep(CARD_DELAY);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if(i == 0)
@@ -213,6 +204,7 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 	
 	private void startGame(){
+		betValue = 0;
 		gameRunning = true;
 		canClick = false;
 		remove(start);
@@ -242,46 +234,94 @@ public class Texas extends ClickableScreen implements Runnable{
 		//THESE BUTTONS SHOULD DO SOMETHING DIFFERENT BASED ON ROUND NUM BECAUSE AI GOES AFTER PLAYER
 		fold = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 30, BWIDTH, BHEIGHT, "Fold", Color.green,new Action() {
 			public void act() {
-				if(canClick)
+				if(canClick){
 					gameRunning = false;
+					removeOptions();
+					canClick = false;
+				}
 			}
 			});
 		
 		call = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 60, BWIDTH, BHEIGHT, "Call", Color.green, new Action() {
 			public void act() {
 				if(canClick){
-					;
+					deductMoney(0, betValue);
+					removeOptions();
+					canClick = false;
+					switch(roundNum){
+					case 3: startBetting();theFlop(); break;
+					case 4: startBetting();theTurn(); break;
+					case 5: startBetting();theRiver(); break;
+					default: break;
+					}
 				}
 			}
 			});
-		raise = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 90, BWIDTH, BHEIGHT, "Raise", Color.green,new Action() {
+		raise = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 90, BWIDTH, BHEIGHT, "Raise or Bet", Color.green,new Action() {
 			public void act() {
 				if(canClick){
-					;
+					betValue = betValue +50;
+					betText.setText("$"+betValue);
 				}
 			}
 			});
 		allIn = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 120, BWIDTH, BHEIGHT, "All In", Color.green,new Action() {
 			public void act() {
 				if(canClick){
-					;
-				deductMoney(0, TexasDemo.money);
+					removeOptions();
+					canClick = false;
+					deductMoney(0, TexasDemo.money);
+					if(roundNum == 3){
+						startBetting();theFlop();}
+					else if(roundNum == 4){
+						startBetting();theTurn();
+					}
+					else if(roundNum == 5){
+						startBetting();theRiver();
+					}
 				}
 			}
 			});
-		bet = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 150, BWIDTH, BHEIGHT, "Bet", Color.green,new Action() {
+		done = new Button((int)(TexasDemo.WIDTH*((double)9/10)), 150, BWIDTH, BHEIGHT, "Done Betting", Color.green,new Action() {
 			public void act() {
 				if(canClick){
-					;
+					deductMoney(0, betValue);
+					removeOptions();
+					canClick = false;
+					if(roundNum == 3){
+						startBetting();theFlop();}
+					else if(roundNum == 4){
+						startBetting();theTurn();
+					}
+					else if(roundNum == 5){
+						startBetting();theRiver();
+					}
+					System.out.println(roundNum);
 				}
 			}
 			});
+		betText = new TextLabel((int)(TexasDemo.WIDTH*((double)9/10))-BWIDTH-20, 90, BWIDTH, BHEIGHT, "$"+betValue);
+		
+		showOptions();
+		forcedBets();
+	}
+	
+	private void showOptions(){
 		addObject(fold);
 		addObject(call);
 		addObject(allIn);
 		addObject(raise);
-		addObject(bet);
-		forcedBets();
+		addObject(done);
+		addObject(betText);
+	}
+	
+	private void removeOptions(){
+		remove(fold);
+		remove(call);
+		remove(allIn);
+		remove(raise);
+		remove(done);
+		remove(betText);
 	}
 	
 	@Override
