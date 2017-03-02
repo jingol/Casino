@@ -48,6 +48,7 @@ public class Casino extends GUIApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Balance.setBalance(10000);
 		game = new Casino(800,600);
 		Thread play = new Thread(game);
 		play.start();

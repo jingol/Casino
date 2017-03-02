@@ -17,7 +17,6 @@ public class BJGame extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		Balance.setBalance(10000);
 		BJScreen game = new BJScreen(getWidth(), getHeight());
 		setScreen(game);
 	}
