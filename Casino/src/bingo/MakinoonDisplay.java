@@ -35,7 +35,9 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 	private TextArea currentNumber; 
 	private TextArea gameHistoryBox; 
 	private BingoBoxText history; 
-	private TextLabel numberCalled; 
+	private BingoBoxText numberCalled; 
+	
+	//private TextLabel numberCalled; 
 	//private SharonBingoButton sampleButton; 
 	
 	private ArrayList<BingoGameHistory> gameHistoryList; 
@@ -95,20 +97,14 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 
 		lst.add(title);
 		aiTitle = 
-				new TextLabel(80, 200, 500, 40, "AI Board", Color.ORANGE);
+				new TextLabel(80, 200, 500, 40, "AI Board", Color.RED);
 		lst.add(aiTitle);
 		
 		playerTitle = 
-				new TextLabel(330, 200, 500, 40, "Player Board", Color.ORANGE);
+				new TextLabel(330, 200, 500, 40, "Player Board", Color.RED);
 		lst.add(playerTitle);
 		
 		
-		numberCalled = 
-				new TextLabel(300, 150, 500, 40, "Number Called: ", Color.BLACK);
-		numberCalled.setSize(45);
-		numberCalled.setFont("Calibri");
-
-		lst.add(numberCalled);
 		switchButton1 = new Button(30,580,150,40,
 				"PLAY SLOTS",Color.GREEN,
 				
@@ -167,9 +163,13 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 			lst.add(currentBalance);
 			ArrayList<String> testStrings = new ArrayList<String>();
 			testStrings.add("Winner" );
+			//testStrings.add("Test Number");
 			
 			history = new BingoBoxText(600, 230, rightComponentWidth, 250, "History", testStrings, true); 
 			lst.add(history);
+			numberCalled = 
+					new BingoBoxText(600, 100, 100, 100, "Number Called", testStrings, false);
+			lst.add(numberCalled);
 			
 			
 			
@@ -190,6 +190,20 @@ public class MakinoonDisplay extends ClickableScreen implements Runnable {
 		
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
