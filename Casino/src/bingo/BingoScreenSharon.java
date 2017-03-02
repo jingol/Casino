@@ -31,6 +31,8 @@ public class BingoScreenSharon{
 	public static boolean[][] aiBoolean = new boolean[5][5];
 	public static boolean[][] playerBoolean = new boolean[5][5];
 	private static ArrayList<BingoGameHistory> gameHistory;
+	
+	public static int runCount=0;
 
 	public BingoScreenSharon(){
 		spinner= new ArrayList<Integer>();
@@ -116,6 +118,10 @@ public class BingoScreenSharon{
 			numBallList.add(i);
 		}
 		*/
+		if (runCount<1){
+			initBingoCage();
+			runCount++;
+		}
 		int numsLeft= numBallList.size();
 		int randomIndex= randNumGenerator(numsLeft-1);
 		
