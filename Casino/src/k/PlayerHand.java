@@ -29,8 +29,8 @@ public class PlayerHand implements PlayerHandInterface {
 			
 		}
 		
-		System.out.println(playerTotal);
-		System.out.println(secondPlayerTotal);
+		//System.out.println(playerTotal);
+		//System.out.println(secondPlayerTotal);
 		
 		set2ndTotal(secondPlayerTotal);
 		setPlayerTotal(playerTotal);
