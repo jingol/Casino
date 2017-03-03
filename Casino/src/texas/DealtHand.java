@@ -23,17 +23,28 @@ public abstract class DealtHand {
 	public void addCard(PlayingCard c, int index){
 		getHand().add(index, c);
 	}
+	public int[] getFaceValues(){
+		int[] faceValues = new int[hand.size()];
+		for(int i = 0; i<faceValues.length; i++){
+			faceValues[i] = hand.get(i).getCardValue();
+		}
+		Arrays.sort(faceValues);
+		return faceValues;
+	}
+	public String[] getSuits(){
+		String[] suits = new String[hand.size()];
+		for(int i = 0; i<suits.length; i++){
+			suits[i] = hand.get(i).getSuit();
+		}
+		Arrays.sort(suits);
+		return suits;
+	}
 	public int getWinHand(){
 		//iterate thru "player's hand"
 		//get the face values of each of them and put them in order to compare
 		//also an array for suits is helpful
-		int[] faceValues = new int[hand.size()];
-		String[] suits = new String[hand.size()];
-		for(int i = 0; i<faceValues.length; i++){
-			faceValues[i] = hand.get(i).getCardValue();
-			suits[i] = hand.get(i).getSuit();
-		}
-		Arrays.sort(faceValues);
+		int[] faceValues = getFaceValues();
+		String[] suits = getSuits();
 		//to make checking easier later, check for same suit and check if the values are consecutive
 		boolean sameSuit = isSameSuit(suits);
 		boolean consecutiveValues = hasAllConsec(faceValues);
@@ -82,17 +93,21 @@ public abstract class DealtHand {
 	}
 	//checks if full house
 	private boolean isFullHouse(int[] arr) {
-		for(int i = 0; i<arr.length-4; i++){
-			if(arr[i] == arr[i+1] && arr[i+2] == arr[i+3] && arr[i+3] == arr[i+4])
+		int trip = 0;
+		for(int i = 0; i<arr.length-3; i++){
+			if(arr[i] == arr[i+1] && arr[i+2] == arr[i+3])
+				trip = arr[i];
+		}
+		for(int i = 0; i<arr.length-2; i++){
+			if(arr[i] != trip && arr[i] == arr[i+1])
 				return true;
 		}
 		return false;
 	}
 	private boolean isSameSuit(String[] suits) {
-		String compSuit = suits[0];
-		for(int i = 1; i<suits.length; i++){
-			if(!suits[i].equals(compSuit))
-				return false;
+		for(int i = 0; i<suits.length-4; i++){
+			if(suits[i].equals(suits[i+1]) && suits[i+1].equals(suits[i+2]) && suits[i+2].equals(suits[i+3]) && suits[i+3].equals(suits[i+4]))
+				return true;
 		}
 		return true;
 	}
@@ -119,6 +134,6 @@ public abstract class DealtHand {
 		}
 		return chain;
 	}
-	abstract ArrayList<PlayingCard> getTieHand();
+	abstract ArrayList<Integer> getTieHand();
 
 }
