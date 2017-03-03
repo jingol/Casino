@@ -2,17 +2,16 @@ package main;
 
 public class Balance {
 
-	/**
-	 * Makinoon Sami 
-	 */
 
-	public int balance;
+		/**
+		 * @author Makinoon Sami
+		 */
 
-	public int getBalance() {
-		return balance;
+		public static int balance;
+
+		public int getBalance() {
+			return balance;
+		}
 	}
 
-	public void setBalance(int newBalance) {
-		balance = newBalance;
-	}
-}
+
