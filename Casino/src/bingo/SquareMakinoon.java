@@ -17,7 +17,7 @@ import guiCompononets.Component;
 //arraylist, button
 public class SquareMakinoon extends TextLabel
 implements Clickable {
-	private boolean highlighted; 
+	public static boolean highlighted; 
 	private Color color; 
 	private boolean isClicked; 
 	private int number; 
@@ -105,10 +105,10 @@ implements Clickable {
 	@Override
 	public void act() {
 		System.out.println("act" + this.number);
+		//BingoScreenSharon.makeAiMove(number);
 		//check if number is correctly clicked
-		highlighted = true;
 		MakinoonBingoGame.backend.buttonClick(number);
-		//checking function bingosharonscreen.initbingocage();
+		
 		update();
 	}
 

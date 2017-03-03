@@ -14,7 +14,7 @@ import guiScreens.ClickableScreen;
 /**
  * @author Sharon
  */
-public class BingoScreenSharon implements Runnable{
+public class BingoScreenSharon{
 	// FIELDS
 
 	public static ArrayList<Integer> spinner;
@@ -148,26 +148,38 @@ public class BingoScreenSharon implements Runnable{
 //		});
 //		bingoStart.start();
 		drawNewNumber();
+		
 	}
-	
+	/*
+	public MakinoonBingoBoard compBoard;
+	static void makeAiMove(int number) {
+		//ai board highlights square with that number
+		MakinoonBingoBoard.compBoard.
+	}
+*/
 	public void drawNewNumber(){
 		MakinoonBingoGame.md.showNumber(randNumBallGenerator());
 	}
 
 	public void buttonClick(int numOfSpace){ //numOfSpace= number on button clicked
 		System.out.println("Drawn =" +pickedNumBalls.get(pickedNumBalls.size()-1)+", numSpace ="+numOfSpace);
-		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()==numOfSpace){
-			//if number is the num ball
+		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()==numOfSpace){//if number is the num ball
+		SquareMakinoon.highlighted=true;
 		drawNewNumber();
 		}
+//		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()!=numOfSpace){
+//			//update history with player loss
+//			}
 		
 	}
-	
+	/*
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
 	}
+	*/
+	
 }
 
 

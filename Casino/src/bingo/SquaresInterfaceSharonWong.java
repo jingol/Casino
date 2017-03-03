@@ -13,12 +13,8 @@ import guiCompononets.Clickable;
  */
 public interface SquaresInterfaceSharonWong extends Clickable{
 	void setColor(Color color); //initial: white
-
-	void setX(int i);
-
-	void setY(int i);
 	
-	void setAction(Action a);
+	void setAction(Action act);
 
 	void highlight(); //color turns red
 	
