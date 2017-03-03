@@ -184,10 +184,10 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	public void nextTotal() {
 		playerCT.setText("");
 		player1.checkValue();
-		if(player1.getPlayerTotal() != player1.get2ndTotal()){
-			changeText("Your current total is " + player1.getPlayerTotal() + " or " + player1.get2ndTotal());
+		if(PlayerHand.getPlayerTotal() != PlayerHand.get2ndTotal()){
+			changeText("Your current total is " + PlayerHand.getPlayerTotal() + " or " + PlayerHand.get2ndTotal());
 		}else{
-			changeText("Your current total is " + player1.getPlayerTotal());
+			changeText("Your current total is " + PlayerHand.getPlayerTotal());
 		}
 	}
 
