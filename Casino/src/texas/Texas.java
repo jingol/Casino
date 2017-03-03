@@ -129,10 +129,10 @@ public class Texas extends ClickableScreen implements Runnable{
 			System.out.println("CPU 3 wins");
 			players[3].setMoney(players[3].getMoney()+ table.getMoney());
 		}
-		// reset the table money to 0
+		table.money =0;
 		// return all cards 
 		Dealer.shuffleDeck();// shuffle 
-		// start the game again
+		startGame();
 	}
 	private void aiTurn()
 	{
@@ -146,7 +146,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					}
 				
 				else
-				if (DealtHand.getWinHand(players[i].getHand()> 5 && DealtHand.getWinHand(players[i].getHand()<7)
+				if (Dealthand.getWinHand( players[i].getHand())> 5 && DealtHand.getWinHand(players[i].getHand()<7)
 					{ // raise; 
 					
 					}
