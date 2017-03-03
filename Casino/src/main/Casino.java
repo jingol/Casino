@@ -5,6 +5,8 @@ package main;
 
 import gui.GUIApplication;
 import texas.Texas;
+import bingo.MakinoonDisplay;
+import slots.SlotScreen;
 
 /**
  * @author Jason Lau
@@ -12,6 +14,8 @@ import texas.Texas;
  */
 public class Casino extends GUIApplication {
 	public static Texas texas;
+	public static MakinoonDisplay bingo;
+	public static SlotScreen slot;
 	/**
 	 * STATIC FIELDS
 	 */
@@ -33,7 +37,9 @@ public class Casino extends GUIApplication {
 	@Override
 	public void initScreen() {
 		texas = new Texas(getWidth(), getHeight());
-		setScreen(texas);
+		bingo = new MakinoonDisplay();
+		slot = new SlotScreen();
+		
 	}
 
 	/**
