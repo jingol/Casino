@@ -80,28 +80,28 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		
 		player1.checkValue(); //adds the values of the first 2 cards
 
-		if(player1.getPlayerTotal() == player1.get2ndTotal()){
-			playerCT = new TextLabel(280, 100, 260, 300, "Your current total is " + player1.getPlayerTotal()); //text label to show the total
+		if(PlayerHand.getPlayerTotal() == PlayerHand.get2ndTotal()){
+			playerCT = new TextLabel(280, 100, 285, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
 		}
 		else{
-			playerCT = new TextLabel(280, 100, 260, 300, "Your current total is " + player1.getPlayerTotal() + " or " + player1.get2ndTotal());
+			playerCT = new TextLabel(280, 100, 285, 300, "Your current total is " + PlayerHand.getPlayerTotal() + " or " + PlayerHand.get2ndTotal());
 		}
-		box = new Box(270, 368, 280, 40, Color.green, true);
+		box = new Box(270, 368, 300, 40, Color.green, true);
 
 
 		//playerCT = new TextLabel(300, 50, 400, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
 			public void act() {
-				if(player1.getStandCall() == true){
-					if(player1.getPlayerTotal() < 21 || player1.get2ndTotal() < 21){
+				if(PlayerHand.getStandCall() == true){
+					if(PlayerHand.getPlayerTotal() < 21 || PlayerHand.get2ndTotal() < 21){
 						PlayerHand.hit();
 						positionCount += 85;
 						viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, player1.nextCard().image1));
 						viewObjects.add(new Box(positionCount, nextRow, 60,80, Color.black, false));
 						checkPosition();
 						player1.checkValue();
-						if(player1.getPlayerTotal() > 21 && player1.get2ndTotal() > 21){
+						if(PlayerHand.getPlayerTotal() > 21 && PlayerHand.get2ndTotal() > 21){
 							//dealer1.checkWinner();
 							playerCT.setText("");
 							changeText("Your total is over 21. You Lose.");
@@ -115,7 +115,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
-				if(player1.getStandCall() == true){
+				if(PlayerHand.getStandCall() == true){
 					player1.setStandCall();
 //					viewObjects.add(new Graphic(600, 200, 60, 80, dealer1.dealerHand.get(0).image1));
 //					viewObjects.add(new Graphic(630, 200, 60, 80, dealer1.dealerHand.get(1).image1));
@@ -127,17 +127,21 @@ public class BJScreen extends ClickableScreen implements Runnable {
 						pos += 30;
 					}
 					dealer1.checkWinner();
+					System.out.println("hi");
+					playerCT.setText("");
+					if(dealer1.getWinner().equals("true")){
+						changeText("You Lose.");
+					}
+					else if(dealer1.getWinner().equals("false")){
+						changeText("You Win!");
+					}
+					else if(dealer1.getWinner().equals("tie")){
+						changeText("It is a tie.");
+					}
 				} 
 			}
 		});
 		
-		restart = new Button(700, 350, 75, 40, "Restart", Color.green, new Action() {
-			public void act(){
-				initAllObjects(viewObjects);
-			}
-		});
-		
-		viewObjects.add(restart);
 		viewObjects.add(box);
 		viewObjects.add(name);
 		viewObjects.add(hit);

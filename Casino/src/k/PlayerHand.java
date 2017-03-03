@@ -55,7 +55,7 @@ public class PlayerHand implements PlayerHandInterface {
 		return nextCard;
 	}
 
-	public int getPlayerTotal() {
+	public static int getPlayerTotal() {
 		return PlayerHand.playerTotal;
 	}
 
@@ -63,7 +63,7 @@ public class PlayerHand implements PlayerHandInterface {
 		PlayerHand.playerTotal = playerTotal;
 	}
 	
-	public int get2ndTotal(){
+	public static int get2ndTotal(){
 		return PlayerHand.secondPlayerTotal;
 	}
 	
@@ -75,7 +75,7 @@ public class PlayerHand implements PlayerHandInterface {
 		player = false;
 	}
 
-	public boolean getStandCall() {
+	public static boolean getStandCall() {
 		return player;
 	}
 }

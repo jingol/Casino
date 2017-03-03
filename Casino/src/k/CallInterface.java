@@ -7,9 +7,11 @@ public interface CallInterface {
 	public void hit();
 	public int checkValue();
 	public boolean stand();
-	public boolean getStandCall();
 	public void setStandCall();
+	public boolean getStandCall();
 	public int getTotal();
 	public void setTotal();
+	public String getWinner();
+	public void setWinner(String win);
 }
   

@@ -9,8 +9,8 @@ public class Dealer implements CallInterface {
 	public boolean dealerPlaying;
 	public int finalCTotal;
 	public int rewards;
-	private PlayerHand playerhand;
-	private int secondTotal; 
+	private int secondTotal;
+	private String computerWinner; 
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
@@ -28,23 +28,32 @@ public class Dealer implements CallInterface {
 	
 	public void checkWinner(){
 		checkValue();
-		if(!dealerPlaying && ! playerhand.getStandCall()){
-			if(getTotal() >  playerhand.getPlayerTotal() && getTotal() >  playerhand.get2ndTotal()){
-				//computer wins and player loses money
+		if(dealerPlaying == false && PlayerHand.getStandCall() == false){
+			if(getTotal() < 22 || get2ndTotal() < 22){
+				if(getTotal() >  PlayerHand.getPlayerTotal() && getTotal() >  PlayerHand.get2ndTotal()){
+					//computer wins and player loses money
+					setWinner("true");
+				}
+				else if(get2ndTotal() > PlayerHand.getPlayerTotal() && get2ndTotal() > PlayerHand.get2ndTotal()){
+					//computer wins and player loses money
+					setWinner("true");
+				}
+				else if(getTotal() < PlayerHand.getPlayerTotal() && get2ndTotal() < PlayerHand.getPlayerTotal()){
+					//player wins and player wins money
+					setWinner("false");
+				}
+				else if(get2ndTotal() < PlayerHand.get2ndTotal() && getTotal() < PlayerHand.get2ndTotal()){
+					//player wins and player wins money
+					setWinner("false");
+				}
+				else if(getTotal() == PlayerHand.getPlayerTotal() || getTotal() == PlayerHand.get2ndTotal() || 
+						get2ndTotal() == PlayerHand.getPlayerTotal() || get2ndTotal() == PlayerHand.get2ndTotal()){
+					//tie 
+					setWinner("tie");
+				}
 			}
-			else if(get2ndTotal() > playerhand.getPlayerTotal() && get2ndTotal() > playerhand.get2ndTotal()){
-				//computer wins and player loses money
-			}
-			else if(getTotal() < playerhand.getPlayerTotal() && get2ndTotal() < playerhand.getPlayerTotal()){
-
-				//player wins and player wins money
-			}
-			else if(get2ndTotal() < playerhand.get2ndTotal() && getTotal() < playerhand.get2ndTotal()){
-
-				//player wins and player wins money
-			}
-			else if(getTotal() == playerhand.getPlayerTotal() || getTotal() == playerhand.get2ndTotal() || get2ndTotal() == playerhand.getPlayerTotal() || get2ndTotal() ==playerhand.get2ndTotal()){
-				//tie 
+			else{
+				setWinner("false");
 			}
 		}
 	}
@@ -150,5 +159,15 @@ public class Dealer implements CallInterface {
 	
 	public void set2ndTotal(int num1){
 		secondTotal = num1;
+	}
+
+	@Override
+	public String getWinner() {
+		return computerWinner;
+	}
+
+	@Override
+	public void setWinner(String win) {
+		computerWinner = win;
 	}
 }
