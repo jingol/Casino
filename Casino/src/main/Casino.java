@@ -4,17 +4,18 @@
 package main;
 
 import gui.GUIApplication;
+
 import k.BJScreen;
 import k.Balance;
 import texas.Texas;
 import slots.SlotScreen;
+
 
 /**
  * @author Jason Lau
  *
  */
 public class Casino extends GUIApplication {
-
 	/**
 	 * STATIC FIELDS
 	 */
@@ -23,21 +24,15 @@ public class Casino extends GUIApplication {
 //	public static BingoScreen bs;
 	public static Texas ps;
 	public static SlotScreen ss;
-	
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 600;
 	/**
 	 * @param width
 	 * @param height
 	 */
-	public Casino(int width, int height) {
-		super(width, height);
-		// TODO Auto-generated constructor stub
-	}
-
-	/* (non-Javadoc)
-	 * @see gui.GUIapp#initScreen()
-	 */
 	@Override
 	public void initScreen() {
+
 		// TODO Auto-generated method stub
 		bjs = new BJScreen(getWidth(), getHeight());
 		ss = new SlotScreen(getWidth(), getHeight());
@@ -53,6 +48,5 @@ public class Casino extends GUIApplication {
 		game = new Casino(800,600);
 		Thread play = new Thread(game);
 		play.start();
-	}
-
+  }
 }
