@@ -6,7 +6,7 @@ package bingo;
 public class BingoGameHistory {
 
 	/**
-	 * 
+	 * Makinoon Sami 
 	 */
 	private String playerName; 
 	private String winner; 
@@ -24,7 +24,7 @@ public class BingoGameHistory {
 	}
 	public String getSummary(){
 	
-		return winner + " " + winningAmount + " " + endMoney;
+		return playerName + " played Ai";
 	}
 
 	public String getPlayerName() {

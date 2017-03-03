@@ -13,6 +13,7 @@ import guiCasino.screens.ClickableScreen;
 import guiCompononets.Graphic;
 import guiCasino.screens.TextArea;
 import guiCompononets.Visible;
+import main.Balance;
 import main.Casino;
 
 /**
@@ -31,7 +32,7 @@ public class MakinoonDisplay extends ClickableScreen {
 	private Button switchButton1;
 	private Button switchButton2; 
 	private Button switchButton3; 
-	private TextLabel currentBalance;  
+	private BingoBoxText currentBalance;  
 	private TextArea currentNumber; 
 	private TextArea gameHistoryBox; 
 	private BingoBoxText history; 
@@ -113,23 +114,28 @@ public class MakinoonDisplay extends ClickableScreen {
 	
 	public void initAllObjects(ArrayList<Visible> lst) {
 		//super.initObjects(lst);
-		bg = new Graphic(0, 0, 1000, 700, "imagesBingo/casinobg.jpg");
+		bg = new Graphic(0, 0, 1000, 700, "imagesBingo/back.jpg");
 		
 
 		lst.add(bg);
 		//gameScreen = new TextArea(0, 0, 800, 800, "");
 		title = 
-				new TextLabel(300, 90, 500, 40, "BINGO", Color.BLACK);
-		title.setSize(45);
-		title.setFont("Calibri");
+				new TextLabel(100, 120, 500, 40, "BINGO", Color.BLACK);
+		title.setSize(50);
+		title.setFont("Helvetica");
 
 		lst.add(title);
 		aiTitle = 
 				new TextLabel(80, 200, 500, 40, "AI Board", Color.RED);
+		aiTitle.setSize(25);
+		aiTitle.setFont("Helvetica");
 		lst.add(aiTitle);
 		
 		playerTitle = 
 				new TextLabel(330, 200, 500, 40, "Player Board", Color.RED);
+		playerTitle.setSize(25);
+		playerTitle.setFont("Helvetica");
+		
 		lst.add(playerTitle);
 		
 		
@@ -170,25 +176,28 @@ public class MakinoonDisplay extends ClickableScreen {
 			
 					lst.add(switchButton3);							
 		
-					
-			startEnd = new Button(30,50,100,50,
-					"BEGIN",Color.GREEN,
-					
-					new Action() {
-				
-				public void act() {
-					System.out.print(" Begin/End ! ");
-					//run();
-					//MakinoonBingoGame.backend.drawNumbers();
-				}
-			});
-			
-					lst.add(startEnd);	
+//					
+//			startEnd = new Button(30,50,100,50,
+//					"BEGIN",Color.GREEN,
+//					
+//					new Action() {
+//				
+//				public void act() {
+//					System.out.print(" Begin/End ! ");
+//					//run();
+//					//MakinoonBingoGame.backend.drawNumbers();
+//				}
+//			});
+//			
+//					lst.add(startEnd);	
 					
 					int rightComponentWidth = 250; 
 					
-			currentBalance = new TextLabel(500, 80, rightComponentWidth, 50, "CurrentBalance: "
-					, Color.BLACK);
+			currentBalance = new BingoBoxText(750, 120, 100, 80, "Balance", null, false);
+					//(650, 120, rightComponentWidth, 50, "CurrentBalance: "
+					/* , Color.BLACK);
+					 * 
+					 */
 			lst.add(currentBalance);
 			ArrayList<String> testStrings = new ArrayList<String>();
 			testStrings.add("Winner" );
@@ -201,7 +210,7 @@ public class MakinoonDisplay extends ClickableScreen {
 			numbers.add(BingoScreenSharon.randNumBallGenerator() + "");
 			
 			numberCalled = 
-					new BingoBoxText(650, 120, 100, 100, "Number", numbers, false);
+					new BingoBoxText(600, 120, 100, 80, "Number", numbers, false);
 			lst.add(numberCalled);
 			
 			
@@ -223,19 +232,10 @@ public class MakinoonDisplay extends ClickableScreen {
 
 	public void showNumber(int randNumBallGenerator) {
 		numberCalled.clearAndAddLine( randNumBallGenerator + "");
+		
 	}
 
 
-//	public void run() {
-//		playerTurn=false;
-//		//change the display of numberball
-//		//ai sets that number to true on aiBoolean & highlights that number on its board
-//		SharonCheckForBingo.isBingo(aiBoolean); // aiBoolean has not been connected to the buttons
-//		//update history
-//		playerTurn=true;
-//		SharonCheckForBingo.isBingo(playerBoolean); 
-//		
-//	}
 
 }
 

@@ -1,6 +1,6 @@
 package main;
 
-public class Balance implements BalanceInterface {
+public class Balance {
 
 	/**
 	 * Makinoon Sami 

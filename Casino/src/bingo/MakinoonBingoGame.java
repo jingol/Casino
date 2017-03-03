@@ -1,5 +1,7 @@
 package bingo;
-
+/*
+ * Makinoon Sami
+ */
 import java.util.ArrayList;
 
 public class MakinoonBingoGame extends GUIApplication{

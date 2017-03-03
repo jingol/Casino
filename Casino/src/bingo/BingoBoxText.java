@@ -26,7 +26,7 @@ public class BingoBoxText extends Component {
 	private Rectangle rectBox;
 	private ArrayList<String> boxContent; 
 	private boolean multipleLines; 
-	private static final int _BORDER_WIDTH = 10; 
+	private static final int _BORDER_WIDTH = 4; 
 	
 	/**
 	 * @param x
