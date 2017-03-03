@@ -10,7 +10,7 @@ public interface CallInterface {
 	public void setStandCall();
 	public boolean getStandCall();
 	public int getTotal();
-	public void setTotal();
+	public void setTotal(int now);
 	public String getWinner();
 	public void setWinner(String win);
 }

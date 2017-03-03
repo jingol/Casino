@@ -56,8 +56,8 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		dealer1 = new Dealer();
 		deck1 = new Deck();
 		
-		score = new TextLabel(600, 400, 100, 100,"score is "+ balance);
-		viewObjects.add(score);
+//		score = new TextLabel(600, 400, 100, 100,"score is "+ balance);
+//		viewObjects.add(score);
 		
 		card1 = new Graphic(100, 200, 60, 80, PlayerHand.hand.get(0).image1);
 		card1outline = new Box(100,200,60,80, Color.black, false);
@@ -117,8 +117,6 @@ public class BJScreen extends ClickableScreen implements Runnable {
 			public void act(){
 				if(PlayerHand.getStandCall() == true){
 					player1.setStandCall();
-//					viewObjects.add(new Graphic(600, 200, 60, 80, dealer1.dealerHand.get(0).image1));
-//					viewObjects.add(new Graphic(630, 200, 60, 80, dealer1.dealerHand.get(1).image1));
 					dealer1.dealerTurn();
 					int pos = 600;
 					for(int i = 0; i < Dealer.dealerHand.size(); i++){
@@ -126,9 +124,22 @@ public class BJScreen extends ClickableScreen implements Runnable {
 						viewObjects.add(new Box(pos, 200,60, 80, Color.black, false));
 						pos += 30;
 					}
+					
+					if(PlayerHand.getPlayerTotal() > 21){
+						player1.setPlayerTotal(0);
+					}
+					if(PlayerHand.get2ndTotal() > 21){
+						player1.set2ndTotal(0);
+					}
+					if(dealer1.getTotal() > 21){
+						dealer1.setTotal(0);
+					}
+					if(dealer1.get2ndTotal() > 21){
+						dealer1.set2ndTotal(0);
+					}
+					
 					dealer1.checkWinner();
-					System.out.println("hi");
-					playerCT.setText("");
+					
 					if(dealer1.getWinner().equals("true")){
 						changeText("You Lose.");
 					}
@@ -142,6 +153,20 @@ public class BJScreen extends ClickableScreen implements Runnable {
 			}
 		});
 		
+		restart = new Button(400, 500,70,40,"Restart", Color.green, new Action() {
+			@Override
+			public void act() {
+				positionCount = 185;
+				nextRow = 200;
+				player1.player = true;
+				dealer1.dealerPlaying = false;
+				dealer1.setWinner("");
+				
+				initAllObjects(viewObjects);
+			} 
+		});
+		
+		viewObjects.add(restart);
 		viewObjects.add(box);
 		viewObjects.add(name);
 		viewObjects.add(hit);

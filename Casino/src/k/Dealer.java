@@ -10,7 +10,7 @@ public class Dealer implements CallInterface {
 	public int finalCTotal;
 	public int rewards;
 	private int secondTotal;
-	private String computerWinner; 
+	private String computerWinner = ""; 
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
@@ -19,43 +19,114 @@ public class Dealer implements CallInterface {
 	
 	public void dealerTurn(){
 		dealerPlaying = true;
+		currentTotal = 0;
+		secondTotal = 0;
 		while(dealerPlaying){ //computer plays
 			checkValue(); //checkValue
 			chance(); //take a chance
 		}
-		//checkWinner();
+	//	checkWinner();
 	}
 	
 	public void checkWinner(){
 		checkValue();
+		computerWinner = "";
 		if(dealerPlaying == false && PlayerHand.getStandCall() == false){
 			if(getTotal() < 22 || get2ndTotal() < 22){
-				if(getTotal() >  PlayerHand.getPlayerTotal() && getTotal() >  PlayerHand.get2ndTotal()){
-					//computer wins and player loses money
-					setWinner("true");
+				if(getTotal() < 22 && (getTotal() > get2ndTotal() || getTotal() == get2ndTotal())){
+					if(PlayerHand.getPlayerTotal() < 22 && (PlayerHand.getPlayerTotal() > PlayerHand.get2ndTotal() || PlayerHand.getPlayerTotal() == PlayerHand.get2ndTotal())){
+						if(getTotal() > PlayerHand.getPlayerTotal()){
+							setWinner("true");
+							System.out.println("1t");
+						}	
+						else if(getTotal() == PlayerHand.getPlayerTotal()){
+							setWinner("tie");
+							System.out.println("1e");
+						}
+						else if(getTotal() != PlayerHand.getPlayerTotal() && getTotal() < PlayerHand.getPlayerTotal()){
+							setWinner("false");
+							System.out.println("1f");
+						}
+					}
+					else if(PlayerHand.get2ndTotal() < 22 && (PlayerHand.get2ndTotal() > PlayerHand.getPlayerTotal() || PlayerHand.get2ndTotal() == PlayerHand.getPlayerTotal())){
+						if(getTotal() > PlayerHand.get2ndTotal()){
+							setWinner("true");
+							System.out.println("12t");
+						}
+						else if(getTotal() == PlayerHand.get2ndTotal()){
+							setWinner("tie");
+							System.out.println("12e");
+						}
+						else if(getTotal() != PlayerHand.get2ndTotal() && getTotal() < PlayerHand.get2ndTotal()){
+							setWinner("false");
+							System.out.println("12f");
+						}
+					}
 				}
-				else if(get2ndTotal() > PlayerHand.getPlayerTotal() && get2ndTotal() > PlayerHand.get2ndTotal()){
-					//computer wins and player loses money
-					setWinner("true");
-				}
-				else if(getTotal() < PlayerHand.getPlayerTotal() && get2ndTotal() < PlayerHand.getPlayerTotal()){
-					//player wins and player wins money
-					setWinner("false");
-				}
-				else if(get2ndTotal() < PlayerHand.get2ndTotal() && getTotal() < PlayerHand.get2ndTotal()){
-					//player wins and player wins money
-					setWinner("false");
-				}
-				else if(getTotal() == PlayerHand.getPlayerTotal() || getTotal() == PlayerHand.get2ndTotal() || 
-						get2ndTotal() == PlayerHand.getPlayerTotal() || get2ndTotal() == PlayerHand.get2ndTotal()){
-					//tie 
-					setWinner("tie");
-				}
-			}
+				else if(get2ndTotal() < 22 && get2ndTotal() > getTotal()){
+						if(PlayerHand.getPlayerTotal() < 22 && (PlayerHand.getPlayerTotal() > PlayerHand.get2ndTotal() || PlayerHand.getPlayerTotal() == PlayerHand.get2ndTotal())){
+							if(get2ndTotal() > PlayerHand.getPlayerTotal()){
+								setWinner("true");
+								System.out.println("2t");
+							}	
+							else if(get2ndTotal() == PlayerHand.getPlayerTotal()){
+								setWinner("tie");
+								System.out.println("2e");
+							}
+							else if(get2ndTotal() != PlayerHand.getPlayerTotal() && get2ndTotal() < PlayerHand.getPlayerTotal()){
+								setWinner("false");
+								System.out.println("2f");
+							}
+						}
+						else if(PlayerHand.get2ndTotal() < 22 && (PlayerHand.get2ndTotal() > PlayerHand.getPlayerTotal() || PlayerHand.get2ndTotal() == PlayerHand.getPlayerTotal())){
+							if(get2ndTotal() > PlayerHand.get2ndTotal()){
+								setWinner("true");
+								System.out.println("22t");
+							}
+							else if(get2ndTotal() == PlayerHand.get2ndTotal()){
+								setWinner("tie");
+								System.out.println("22e");
+							}
+							else if(get2ndTotal() != PlayerHand.get2ndTotal() && get2ndTotal() < PlayerHand.get2ndTotal()){
+								setWinner("false");
+								System.out.println("22f");
+							}
+						}
+					}
+			}	
 			else{
 				setWinner("false");
+				System.out.println("auto loss");
 			}
-		}
+	}
+//		if(dealerPlaying == false && PlayerHand.getStandCall() == false){
+//			if(getTotal() < 22 || get2ndTotal() < 22){
+//				if(getTotal() >  PlayerHand.getPlayerTotal() && getTotal() >  PlayerHand.get2ndTotal()){
+//					//computer wins and player loses money
+//					setWinner("true");
+//				}
+//				else if(get2ndTotal() > PlayerHand.getPlayerTotal() && get2ndTotal() > PlayerHand.get2ndTotal()){
+//					//computer wins and player loses money
+//					setWinner("true");
+//				}
+//				else if(getTotal() < PlayerHand.getPlayerTotal() && get2ndTotal() < PlayerHand.getPlayerTotal()){
+//					//player wins and player wins money
+//					setWinner("false");
+//				}
+//				else if(get2ndTotal() < PlayerHand.get2ndTotal() && getTotal() < PlayerHand.get2ndTotal()){
+//					//player wins and player wins money
+//					setWinner("false");
+//				}
+//				else if(getTotal() == PlayerHand.getPlayerTotal() || getTotal() == PlayerHand.get2ndTotal() || 
+//						get2ndTotal() == PlayerHand.getPlayerTotal() || get2ndTotal() == PlayerHand.get2ndTotal()){
+//					//tie 
+//					setWinner("tie");
+//				}
+//			}
+//			else{
+//				setWinner("false");
+//			}
+//		}
 	}
 	
 	public void chance(){
@@ -144,12 +215,12 @@ public class Dealer implements CallInterface {
 
 	@Override
 	public int getTotal() {
-		return finalCTotal;
+		return currentTotal;
 	}
 
 	@Override
-	public void setTotal() {
-		finalCTotal = currentTotal;
+	public void setTotal(int now) {
+		currentTotal = now;
 	}
 	
 	public int get2ndTotal(){
@@ -163,11 +234,12 @@ public class Dealer implements CallInterface {
 
 	@Override
 	public String getWinner() {
+		System.out.println("result: " +computerWinner);
 		return computerWinner;
 	}
 
 	@Override
-	public void setWinner(String win) {
-		computerWinner = win;
+	public void setWinner(String outcome) {
+		computerWinner = outcome;
 	}
 }
