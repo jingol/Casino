@@ -371,7 +371,6 @@ public class Table extends Component {
 		g.setFont(new Font("Helvetica", Font.PLAIN, 15));
 		FontMetrics fm = g.getFontMetrics();
 		g.setColor(Color.white);
-		System.out.println(chooseText().getText());
 		String t = chooseText().getText();
 		int cutoff = t.length();
 		while (cutoff > 0 && fm.stringWidth(t) > getWidth()) {
