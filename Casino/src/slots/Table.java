@@ -371,13 +371,15 @@ public class Table extends Component {
 		g.setFont(new Font("Helvetica", Font.PLAIN, 15));
 		FontMetrics fm = g.getFontMetrics();
 		g.setColor(Color.white);
-		String t = chooseText().getText();
-		int cutoff = t.length();
-		while (cutoff > 0 && fm.stringWidth(t) > getWidth()) {
-			cutoff--;
-			t = t.substring(0, cutoff);
+		if (chooseText() != null) {
+			String t = chooseText().getText();
+			int cutoff = t.length();
+			while (cutoff > 0 && fm.stringWidth(t) > getWidth()) {
+				cutoff--;
+				t = t.substring(0, cutoff);
+			}
+			g.drawString(t, (50 - fm.stringWidth(t)) / 2, (30 + fm.getDescent()) / 2);
 		}
-		g.drawString(t, (50 - fm.stringWidth(t)) / 2, (30 + fm.getDescent()) / 2);
 	}
 
 }
