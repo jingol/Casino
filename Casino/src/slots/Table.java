@@ -1,6 +1,3 @@
-/**
- * 
- */
 package slots;
 
 import java.awt.Color;
@@ -42,8 +39,6 @@ public class Table extends Component {
 	private TextLabel text21;
 	private TextLabel text22;
 	private TextLabel text23;
-	private TextLabel text24;
-	private TextLabel text25;
 	private int boxDimensionX;
 	private int boxDimensionY;
 	private int counter;
