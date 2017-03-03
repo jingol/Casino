@@ -175,12 +175,12 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		
 		slots = new Button(50, 500, 65, 40, "Slots", Color.green, new Action() {
 			public void act(){
-				//Casino.game.setScreen(Casino.ss);
+				Casino.game.setScreen(Casino.ss);
 			}
 		});
 		poker = new Button(130, 500, 65, 40, "Poker", Color.green, new Action() {
 			public void act(){
-				//Casino.game.setScreen(Casino.ps);
+				Casino.game.setScreen(Casino.ps);
 			}
 		});
 		bingo = new Button(210, 500, 65, 40, "Bingo", Color.green, new Action() {
