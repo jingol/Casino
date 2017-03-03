@@ -83,7 +83,6 @@ public class Table extends Component {
 			if (boxes == 1) {
 				boxDimensionX = 100;
 				boxDimensionY = 100;
-				counter++;
 				update();
 				boxes++;
 			} else if (boxes == 2) {
