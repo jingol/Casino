@@ -200,9 +200,7 @@ public class MakinoonDisplay extends ClickableScreen {
 					 */
 			lst.add(currentBalance);
 			ArrayList<String> testStrings = new ArrayList<String>();
-			testStrings.add("Winner" );
-			//testStrings.add("Test Number");
-			
+			//testStrings.add("Winner" );
 			history = new BingoBoxText(600, 230, rightComponentWidth, 250, "History", testStrings, true); 
 			lst.add(history);
 			
@@ -211,6 +209,7 @@ public class MakinoonDisplay extends ClickableScreen {
 			
 			numberCalled = 
 					new BingoBoxText(600, 120, 100, 80, "Number", numbers, false);
+			//testStrings.add("Number called was "  + numbers.get(0));
 			lst.add(numberCalled);
 			
 			
