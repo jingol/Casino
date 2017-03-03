@@ -54,6 +54,11 @@ public class Texas extends ClickableScreen implements Runnable{
 	private boolean canClick;
 	private int roundNum;
 	private int betValue;
+	private int finalScore0;
+	private int finalScore1;
+	private int finalScore2;
+	private int finalScore3;
+	
 	
 	private final int BHEIGHT = 30;
 	private final int BWIDTH = 60;
@@ -90,6 +95,74 @@ public class Texas extends ClickableScreen implements Runnable{
 		for(int i = 0; i<PLAYERS; i++){
 			if(players[i].isPlaying()){
 				//idk ill look at this lator
+			}
+		}
+	}
+	private void endGame()
+	{
+		finalScore0 = 0;
+		finalScore1 = 0;
+		finalScore2 = 0;
+		finalScore3 = 0;
+		for (int i =0; i<PLAYERS; i++)
+		{
+			finalScore+i = DealtHand.getWinHand(players[i].getHand()); 
+		}
+		if (finalScore0 > finalScore1 && finalScore0 > finalScore2 && finalScore0 > finalScore3)
+		{
+			System.out.println("You win");
+			players[0].setMoney(players[0].getMoney()+table.getMoney());
+			
+		}
+		else if (finalScore1 > finalScore0 && finalScore1 > finalScore2 && finalScore1 > finalScore3)
+		{
+			System.out.println("CPU 1 wins");
+			players[1].setMoney(players[1].getMoney()+table.getMoney());
+		}
+		else if (finalScore2 > finalScore0 &&finalScore2 > finalScore1 &&finalScore2 > finalScore3)
+		{
+			System.out.println("CPU 2 wins");
+			players[2].setMoney(players[2].getMoney()+table.getMoney());
+		}
+		else if (finalScore3 > finalScore0 && finalScore3 > finalScore1 && finalScore3 > finalScore2)
+		{
+			System.out.println("CPU 3 wins");
+			players[3].setMoney(players[3].getMoney()+ table.getMoney());
+		}
+		// reset the table money to 0
+		// return all cards 
+		Dealer.shuffleDeck();// shuffle 
+		// start the game again
+	}
+	private void aiTurn()
+	{
+		for (int i =0; i<PLAYERS; i++)
+		{
+			if (players[i].getMoney() > betValue)
+			{
+				if(DealtHand.getWinHand(players[i].getHand() =8)
+					{ // royal flush; allin
+					
+					}
+				
+				else
+				if (DealtHand.getWinHand(players[i].getHand()> 5 && DealtHand.getWinHand(players[i].getHand()<7)
+					{ // raise; 
+					
+					}
+				else if (DealtHand.getWinHand(players[i].getHand() > 2 && DealtHand.getWinHand(players[i].getHand() < 5) 
+						{
+							// call
+						}
+				else if (DealtHand.getWinHand(players[i].getHand()= 1)
+						if (betValue > players[i].getMoney()/2)
+						{
+							//fold
+						}
+						else
+						{
+							//call
+						}
 			}
 		}
 	}
@@ -350,6 +423,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		moneyCounters[playerIndex].setText("$"+(players[playerIndex].getMoney()));
 		table.increaseValue(money);
 	}
+	
 
 
 
