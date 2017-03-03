@@ -135,9 +135,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	
 		
 		
-//		Table table = new Table(0,0,500,800);
-//		System.out.println("k u");
-//		viewObjects.add(table);
+		Table table = new Table(0,0,500,800);
+		System.out.println("k u");
+		viewObjects.add(table);
 		
 		
 		viewObjects.add(bg);
@@ -180,6 +180,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	}
 	
 	public void addPics(){
+		//there can only be one copy of an image, so  that why the images in other arraylists dont show
 		ArrayList<Slotpic> demo = new ArrayList<Slotpic>();
 		demo.add(new Slotpic(50,0,100,100,"resources/evilflow.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
