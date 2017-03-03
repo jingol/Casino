@@ -80,12 +80,7 @@ public class Texas extends ClickableScreen implements Runnable{
 			addObject(c);
 			c.shiftCard(200+c.getX()+100*roundNum, c.getY());
 			c.flipCard();
-			System.out.println(200+c.getX()+100*roundNum);
-			try {
-				Thread.sleep(CARD_DELAY);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			//delay??
 		}
 		roundNum++;
 		canClick = true;
@@ -136,11 +131,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		pile.add(c);
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
-		try {
-			Thread.sleep(CARD_DELAY);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		//add delay later??
 		showOptions();
 		canClick = true;
 	}
@@ -155,11 +146,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		pile.add(c);
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
-		try {
-			Thread.sleep(CARD_DELAY);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		//add delay later??
 		showOptions();
 		canClick = true;
 	}
@@ -296,12 +283,10 @@ public class Texas extends ClickableScreen implements Runnable{
 					else if(roundNum == 5){
 						startBetting();theRiver();
 					}
-					System.out.println(roundNum);
 				}
 			}
 			});
 		betText = new TextLabel((int)(TexasDemo.WIDTH*((double)9/10))-BWIDTH-20, 90, BWIDTH, BHEIGHT, "$"+betValue);
-		
 		showOptions();
 		forcedBets();
 	}
