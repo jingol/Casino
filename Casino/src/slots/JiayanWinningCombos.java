@@ -97,41 +97,49 @@ public class JiayanWinningCombos implements RewardInterface{
 			if(image.equals("resources/noc1.png"))
 			{
 				roundReward = multipliers[4]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/noc2.png"))
 			{
 				roundReward = multipliers[7]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/noc3.png"))
 			{
 				roundReward = multipliers[0]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/java.jpg"))
 			{
 				roundReward = multipliers[3]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/flow.png"))
 			{
 				roundReward = multipliers[2]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/evilflow.png"))
 			{
 				roundReward = multipliers[1]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/gabe.jpg"))
 			{
 				roundReward = multipliers[5]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 			if(image.equals("resources/cherry.jpg"))
 			{
 				roundReward = multipliers[6]*betAmount;
+				rewardHistory.add(roundReward);
 				nextRound = true;
 			}
 		}
