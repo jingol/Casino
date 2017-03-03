@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public abstract class DealtHand {
 	private ArrayList<PlayingCard> hand;
+	private ArrayList<PlayingCard> cHand;
 	private final int HIGH_CARD = 0;
 	private final int PAIR = 1;
 	private final int TWO_PAIR = 2;
@@ -14,8 +15,11 @@ public abstract class DealtHand {
 	private final int FULL_HOUSE = 6;
 	private final int BOMB = 7;
 	private final int STRAIGHT_FLUSH = 8;
-	public DealtHand() {
+	public DealtHand(ArrayList<PlayingCard> pileCards) {
 		setHand(new ArrayList<PlayingCard>());
+		cHand = new ArrayList<PlayingCard>();
+		cHand.addAll(getHand());
+		cHand.addAll(pileCards);
 	}
 	public void addCard(PlayingCard c){
 		getHand().add(c);
@@ -23,13 +27,8 @@ public abstract class DealtHand {
 	public void addCard(PlayingCard c, int index){
 		getHand().add(index, c);
 	}
-	public int getWinHand(ArrayList<PlayingCard> pileCards){
-		//returns the highest poker hand that can be won given an arraylist and players current hand
-		//first get the entire list of cards being used
-		ArrayList<PlayingCard> cHand = new ArrayList<PlayingCard>();
-		cHand.addAll(getHand());
-		cHand.addAll(pileCards);
-		//next get the face values of each of them and put them in order to compare
+	public int getWinHand(){
+		//get the face values of each of them and put them in order to compare
 		//also an array for suits is helpful
 		int[] faceValues = new int[cHand.size()];
 		String[] suits = new String[cHand.size()];
@@ -44,10 +43,13 @@ public abstract class DealtHand {
 		//additionally, check for number of consecutive values
 		int consecutives = consecutiveChainOfValues(faceValues);
 		//check for straight flush first
+		//dont need to compare
 		if(sameSuit && consecutiveValues)
 			return STRAIGHT_FLUSH;
+		//dont need to compare
 		if(consecutives == 4)
 			return BOMB;
+		//dont need to compare
 		if(isFullHouse(faceValues))
 			return FULL_HOUSE;
 		if(sameSuit)

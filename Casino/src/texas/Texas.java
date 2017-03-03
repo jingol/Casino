@@ -100,7 +100,7 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 	private void endGame()
 	{
-		finalScore0 = 0;
+		/*finalScore0 = 0;
 		finalScore1 = 0;
 		finalScore2 = 0;
 		finalScore3 = 0;
@@ -132,11 +132,16 @@ public class Texas extends ClickableScreen implements Runnable{
 		table.money =0;
 		// return all cards 
 		Dealer.shuffleDeck();// shuffle 
-		startGame();
+		startGame();*/
 	}
+	
+	private void finalScore(Player p){
+		
+	}
+	
 	private void aiTurn()
 	{
-		for (int i =0; i<PLAYERS; i++)
+		/*for (int i =0; i<PLAYERS; i++)
 		{
 			if (players[i].getMoney() > betValue)
 			{
@@ -164,7 +169,7 @@ public class Texas extends ClickableScreen implements Runnable{
 							//call
 						}
 			}
-		}
+		}*/
 	}
 	
 	private void flipAllCards(){
