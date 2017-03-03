@@ -167,9 +167,10 @@ public class BingoScreenSharon{
 		SquareMakinoon.highlighted=true;
 		drawNewNumber();
 		}
-//		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()!=numOfSpace){
-//			//update history with player loss
-//			}
+		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()!=numOfSpace){
+			//update history with player loss
+			//BingoGameHistory.setWinner("AI");
+			}
 		
 	}
 	/*

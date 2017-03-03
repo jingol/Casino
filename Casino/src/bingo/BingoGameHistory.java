@@ -3,10 +3,6 @@
  */
 package bingo;
 
-/**
- * @author Makinoon Sami
- *
- */
 public class BingoGameHistory {
 
 	/**
@@ -27,11 +23,7 @@ public class BingoGameHistory {
 			this.winningAmount = winningAmount; 
 	}
 	public String getSummary(){
-		
-//		return playerName + " played the game and " + winner + "won. "
-//				+ "\n" + playerName + "had " + previousMoney + 
-//				"and now has " + endMoney;
-//		
+	
 		return winner + " " + winningAmount + " " + endMoney;
 	}
 
@@ -47,8 +39,8 @@ public class BingoGameHistory {
 		return winner;
 	}
 
-	public void setWinner(String winner) {
-		this.winner = winner;
+	public static String setWinner(String winner) {
+		return winner;
 	}
 
 	public double getPreviousMoney() {
