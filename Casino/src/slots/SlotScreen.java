@@ -41,6 +41,12 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	private Thread barrel3;
 	
 	private volatile boolean running = false;
+
+	private Graphic ack;
+
+	private Graphic rek;
+
+	private Graphic meh;
 	
 	private static Table table;
 	
@@ -67,6 +73,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
+		
+		
+		
 		plus =  new Button(900,575,40,40,
 				"+",Color.BLACK,
 				new Action() {
@@ -126,12 +135,13 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	
 		
 		
-		Table table = new Table(0,0,500,800);
-		System.out.println("k u");
-		viewObjects.add(table);
+//		Table table = new Table(0,0,500,800);
+//		System.out.println("k u");
+//		viewObjects.add(table);
 		
 		
 		viewObjects.add(bg);
+		
 		viewObjects.add(plus);
 		viewObjects.add(minus);
 		viewObjects.add(title);
@@ -145,12 +155,18 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 		moveToBack(bg);
 		
-		for(int a = 0; a < 3 ; a++){
-			for(int i = 0; i < 3; i++){
-				Slotpic sp = slots.get(a).get(i);
-				viewObjects.add(sp);
-			}
+		for(int a = 0; a < 9 ; a++){
+			viewObjects.add(slots.get(0).get(a));
 		}
+		System.out.println("ugh");
+		for(int a = 0; a < 9 ; a++){
+			viewObjects.add(slots.get(1).get(a));
+		}
+		System.out.println("ugh");
+		for(int a = 0; a < 9 ; a++){
+			viewObjects.add(slots.get(2).get(a));
+		}
+		System.out.println("ugh");
 	}
 	
 	
@@ -177,22 +193,24 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		int xPos = 290;
 		int y = 200;
 		int arrayidx = 0;
-		for(int i = 0; i < 9; i++){
-			Slotpic temp = demo.get(i);
-			temp.setX(xPos);
-			temp.setY(y);
-			slots.get(arrayidx).add(temp);
-			y += 110;
-			if(i%3 == 2){
-				xPos += 120;
-				y = 200;
-				arrayidx++;
-				System.out.println(arrayidx);
+		for(int a = 0; a < 3; a++){
+			for(int i = 0; i < 9; i++){
+				Slotpic temp = demo.get(i);
+				temp.setX(xPos);
+				temp.setY(y);
+				slots.get(a).add(temp);
+				y += 20;
+				System.out.println(temp.getY() + ", " + temp.getX());
 			}
+			System.out.println(y + ", " + xPos);
+			y = 200;
+			xPos += 10;
 			
 		}
 
 	}
+	
+	
 
 	@Override
 	public ArrayList<Integer> getRewardHistory() {
