@@ -1,6 +1,3 @@
-/**
- * 
- */
 package texas;
 
 import java.awt.Color;
@@ -54,10 +51,6 @@ public class Texas extends ClickableScreen implements Runnable{
 	private boolean canClick;
 	private int roundNum;
 	private int betValue;
-	private int finalScore0;
-	private int finalScore1;
-	private int finalScore2;
-	private int finalScore3;
 	
 	
 	private final int BHEIGHT = 30;
@@ -65,7 +58,7 @@ public class Texas extends ClickableScreen implements Runnable{
 	private final int PLAYERS = 4;
 	private final int smallBlind = 10;
 	private final int bigBlind = 20;
-	private final int CARD_DELAY = 1100;
+	private final int CARD_DELAY = 600;
 			
 	public Texas(int width, int height) {
 		super(width, height);
@@ -429,6 +422,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		frames[1] = f2;
 		frames[2] = f3;
 		frames[3] = f4;
+		
 	}
 	private void deductMoney(int playerIndex, int money){
 		if(playerIndex == 0)

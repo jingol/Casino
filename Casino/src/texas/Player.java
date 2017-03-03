@@ -102,13 +102,13 @@ public class Player extends DealtHand{
 			}
 			tHand.add(b);
 			for(int i = values.length-1; i>-1; i--){
-				if(i != a && i != b)
-					tHand.add(i);
+				if(values[i] != a && values[i] != b)
+					tHand.add(values[i]);
 			}
 			return tHand;
 		//if flush
 		case 5:
-			for(int i = 0; i<suitArr.length; i++){
+			for(int i = 0; i<suitArr.length-4; i++){
 				if(suitArr[i].equals(suitArr[i+1]) && suitArr[i+1].equals(suitArr[i+2]) && suitArr[i+2].equals(suitArr[i+3]) && suitArr[i+3].equals(suitArr[i+4]))
 					suit = suitArr[i];
 			}
@@ -125,12 +125,11 @@ public class Player extends DealtHand{
 			return tHand;
 		//if straight
 		case 4:
-			for(int i = values.length-1; i>4; i--){
+			for(int i = values.length-1; i>3; i--){
 				if(values[i] == values[i-1]+1 && values[i-1] == values[i-2]+1 && values[i-2] == values[i-3]+1 && values[i-3] == values[i-4]+1){
 					for(int j = 0; j<5; j++){
-						tHand.add(values[i-j]);
+						tHand.add(values[i]-j);
 					}
-				break;
 				}
 			}
 			return tHand;
@@ -141,29 +140,50 @@ public class Player extends DealtHand{
 						a = values[i];
 						break;
 					}
-					tHand.add(a);
 				}
+				tHand.add(a);
 				for(int j = values.length-1; j>-1; j--){
 					if(values[j] != a)
 						tHand.add(values[j]);
 				}
 				return tHand;
-		//if double
+		//if two pair
 			case 2: 
 				for(int i = values.length-1; i>1; i--){
 					if(values[i] == values[i-1]){
 						a = values[i];
 						break;
 					}
-					tHand.add(a);
 				}
+				tHand.add(a);
+				for(int j = values.length-1; j>1; j--){
+					if(values[j] != a && values[j] == values[j-1]){
+						b = values[j];
+					}
+				}
+				tHand.add(b);
+				for(int k = values.length-1; k>-1; k--){
+					if(values[k] != a && values[k] != b)
+						tHand.add(values[k]);
+				}
+				return tHand;
+				
+		//if double
+			case 1: 
+				for(int i = values.length-1; i>1; i--){
+					if(values[i] == values[i-1]){
+						a = values[i];
+						break;
+					}
+				}
+				tHand.add(a);
 				for(int j = values.length-1; j>-1; j--){
 					if(values[j] != a)
 						tHand.add(values[j]);
 				}
 				return tHand;
 		//if hi card
-			case 1: 
+			case 0: 
 				for(int i = values.length-1; i>-1; i--){
 					tHand.add(values[i]);
 				}

@@ -44,7 +44,9 @@ public abstract class DealtHand {
 		//get the face values of each of them and put them in order to compare
 		//also an array for suits is helpful
 		int[] faceValues = getFaceValues();
+		System.out.println(Arrays.toString(faceValues));
 		String[] suits = getSuits();
+		System.out.println(Arrays.toString(suits));
 		//to make checking easier later, check for same suit and check if the values are consecutive
 		boolean sameSuit = isSameSuit(suits);
 		boolean consecutiveValues = hasAllConsec(faceValues);
@@ -84,7 +86,7 @@ public abstract class DealtHand {
 		for(int i = 0; i<arr.length-1; i++){
 			if(arr[i] == arr[i+1]){
 				pairNum++;
-				i+=2;
+				i+=1;
 			}
 			if(pairNum == 2)
 				break;
@@ -95,13 +97,15 @@ public abstract class DealtHand {
 	private boolean isFullHouse(int[] arr) {
 		int trip = 0;
 		for(int i = 0; i<arr.length-3; i++){
-			if(arr[i] == arr[i+1] && arr[i+2] == arr[i+3])
+			if(arr[i] == arr[i+1] && arr[i+1] == arr[i+2]){
 				trip = arr[i];
+				for(int j = 0; j<arr.length-2; j++){
+					if(arr[j] != trip && arr[j] == arr[j+1])
+						return true;
+				}
+			}
 		}
-		for(int i = 0; i<arr.length-2; i++){
-			if(arr[i] != trip && arr[i] == arr[i+1])
-				return true;
-		}
+		
 		return false;
 	}
 	private boolean isSameSuit(String[] suits) {
@@ -109,28 +113,29 @@ public abstract class DealtHand {
 			if(suits[i].equals(suits[i+1]) && suits[i+1].equals(suits[i+2]) && suits[i+2].equals(suits[i+3]) && suits[i+3].equals(suits[i+4]))
 				return true;
 		}
-		return true;
+		return false;
 	}
-	//checks if all values in array are consecutive
+	//checks if has 5 consecutive values
 	private boolean hasAllConsec(int[] arr) {
+		int consec = 0;
 		for(int i = 0; i<arr.length-1; i++){
-			if(arr[i]+1 != arr[i+1]){
-				return false;
+			if(arr[i]+1 == arr[i+1]){
+				consec++;
 			}
 		}
-		return true;
+		return consec == 5;
 	}
 	//checks longest chain of same values
 	private int consecutiveChainOfValues(int[] arr){
 		int chain = 1;
-		int cChain = 0;
+		int cChain = 1;
 		for(int i = 0; i<arr.length-1; i++){
 			if(arr[i] == arr[i+1]){
 				cChain++;
 				if(cChain > chain)
 					chain = cChain;
 			}
-			else cChain = 0;
+			else cChain = 1;
 		}
 		return chain;
 	}
