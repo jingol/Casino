@@ -29,6 +29,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	private static Button minus
 	;
 	private Graphic bg;
+	private Graphic i1;
+	private Graphic i2;
+	private Graphic i3;
 	
 	private TextLabel title;
 	private static TextLabel balance;
@@ -55,7 +58,6 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		super(width, height);
 		Thread play = new Thread(this);
 		play.start();
-		
 
 		
 	}
@@ -74,7 +76,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
 		
-		
+		i1 = new Graphic(20,20,300,300,"resources/cherry.jpg");
+		i2 = new Graphic(20,20,400,400,"resources/cherry.jpg");
+		i3 = new Graphic(20,20,500,500,"resources/cherry.jpg");
 		
 		plus =  new Button(900,575,40,40,
 				"+",Color.BLACK,
@@ -141,6 +145,10 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 		
 		viewObjects.add(bg);
+		viewObjects.add(i3);
+		viewObjects.add(i2);
+		viewObjects.add(i1);
+		
 		
 		viewObjects.add(plus);
 		viewObjects.add(minus);
@@ -156,11 +164,15 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		moveToBack(bg);
 		
 		for(int a = 0; a < 9 ; a++){
+			Slotpic temp = (slots.get(0).get(a));
 			viewObjects.add(slots.get(0).get(a));
+			System.out.println("added at " + temp.getX() + ", " + temp.getY());
 		}
-		System.out.println("ugh");
 		for(int a = 0; a < 9 ; a++){
+			Slotpic temp = (slots.get(1).get(a));
 			viewObjects.add(slots.get(1).get(a));
+			System.out.println();
+			System.out.println("added at " + temp.getX() + ", " + temp.getY());
 		}
 		System.out.println("ugh");
 		for(int a = 0; a < 9 ; a++){
@@ -201,7 +213,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				temp.setY(y);
 				slots.get(a).add(temp);
 				y += 20;
-				System.out.println(temp.getY() + ", " + temp.getX());
+				System.out.println(temp.getX() + ", " + temp.getY());
 			}
 			System.out.println(y + ", " + xPos);
 			y = 200;
