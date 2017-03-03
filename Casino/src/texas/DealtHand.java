@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public abstract class DealtHand {
 	private ArrayList<PlayingCard> hand;
-	private ArrayList<PlayingCard> cHand;
 	private final int HIGH_CARD = 0;
 	private final int PAIR = 1;
 	private final int TWO_PAIR = 2;
@@ -15,11 +14,8 @@ public abstract class DealtHand {
 	private final int FULL_HOUSE = 6;
 	private final int BOMB = 7;
 	private final int STRAIGHT_FLUSH = 8;
-	public DealtHand(ArrayList<PlayingCard> pileCards) {
+	public DealtHand() {
 		setHand(new ArrayList<PlayingCard>());
-		cHand = new ArrayList<PlayingCard>();
-		cHand.addAll(getHand());
-		cHand.addAll(pileCards);
 	}
 	public void addCard(PlayingCard c){
 		getHand().add(c);
@@ -28,13 +24,14 @@ public abstract class DealtHand {
 		getHand().add(index, c);
 	}
 	public int getWinHand(){
+		//iterate thru "player's hand"
 		//get the face values of each of them and put them in order to compare
 		//also an array for suits is helpful
-		int[] faceValues = new int[cHand.size()];
-		String[] suits = new String[cHand.size()];
+		int[] faceValues = new int[hand.size()];
+		String[] suits = new String[hand.size()];
 		for(int i = 0; i<faceValues.length; i++){
-			faceValues[i] = cHand.get(i).getCardValue();
-			suits[i] = cHand.get(i).getSuit();
+			faceValues[i] = hand.get(i).getCardValue();
+			suits[i] = hand.get(i).getSuit();
 		}
 		Arrays.sort(faceValues);
 		//to make checking easier later, check for same suit and check if the values are consecutive

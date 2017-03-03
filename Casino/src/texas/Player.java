@@ -59,7 +59,7 @@ public class Player extends DealtHand{
 
 	@Override
 	public ArrayList<PlayingCard> getTieHand() {
-		int num = getWinHand(getHand());
+		int num = getWinHand();
 		return null;
 	}
 	

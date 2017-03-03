@@ -85,6 +85,7 @@ public class Texas extends ClickableScreen implements Runnable{
 			addObject(c);
 			c.shiftCard(200+c.getX()+100*roundNum, c.getY());
 			c.flipCard();
+			addCardToPlayers(c);
 			//delay??
 		}
 		roundNum++;
@@ -209,6 +210,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		pile.add(c);
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
+		addCardToPlayers(c);
 		//add delay later??
 		showOptions();
 		canClick = true;
@@ -224,6 +226,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		pile.add(c);
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
+		addCardToPlayers(c);
 		//add delay later??
 		showOptions();
 		canClick = true;
@@ -266,6 +269,12 @@ public class Texas extends ClickableScreen implements Runnable{
 			}
 		}
 		preflop();
+	}
+	
+	private void addCardToPlayers(PlayingCard p){
+		for(int i = 0; i<PLAYERS; i++){
+			players[i].addCard(p);
+		}
 	}
 	
 	private void startGame(){
@@ -429,7 +438,6 @@ public class Texas extends ClickableScreen implements Runnable{
 		table.increaseValue(money);
 	}
 	
-
 
 
 
