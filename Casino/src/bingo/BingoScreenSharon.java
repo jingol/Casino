@@ -31,7 +31,7 @@ public class BingoScreenSharon{
 	public static boolean[][] aiBoolean = new boolean[5][5];
 	public static boolean[][] playerBoolean = new boolean[5][5];
 	private static ArrayList<BingoGameHistory> gameHistory;
-	
+
 	public static int runCount=0;
 
 	public BingoScreenSharon(){
@@ -43,13 +43,13 @@ public class BingoScreenSharon{
 
 	public static int randNumGenerator(int s) { 
 		//random.nextInt(max - min + 1) + min
-	
+
 		Random rand = new Random();
 		int roll= rand.nextInt(s+1);
-		
+
 		return roll; //if s=50, this GENERATES NUM BETWEEN 0-50
 	}
-	
+
 	public int[][] createAiNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
@@ -59,14 +59,14 @@ public class BingoScreenSharon{
 			for (int j = 0; j < aiBoard[i].length; j++) {
 				int randGenSize = spinner.size();
 				int roll = randNumGenerator(randGenSize-1); // get a random index from current length to choose from
-				
+
 				aiBoard[i][j] = spinner.get(roll);
 				spinner.remove(roll);
 			}
 
 		}
 		return aiBoard;
-		
+
 	}
 	public boolean[][] createAiBoolBoard(){
 		for (int i = 0; i < aiBoolean.length; i++) {
@@ -76,7 +76,7 @@ public class BingoScreenSharon{
 		}
 		return aiBoolean;
 	}
-	
+
 	public int[][] createPlayerNumBoard(){
 		for (int i = 1; i < 51; i++) {
 			spinner.add(i);
@@ -86,7 +86,7 @@ public class BingoScreenSharon{
 			for (int j = 0; j < playerBoard[i].length; j++) {
 				int randGenSize = spinner.size();
 				int roll = randNumGenerator(randGenSize-1); // get a random index from current length to choose from
-				
+
 				playerBoard[i][j] = spinner.get(roll);
 				spinner.remove(roll);
 			}
@@ -108,21 +108,21 @@ public class BingoScreenSharon{
 			numBallList.add(i);
 		}
 	}
-	
+
 	public static int randNumBallGenerator() {//Once a number ball is called, it is removed from the bingo cage.
 		//ArrayList<Integer> numBallList = new ArrayList<>();
 		/*
 		for (int i = 1; i < 51; i++) {
 			numBallList.add(i);
 		}
-		*/
+		 */
 		if (runCount<1){
 			initBingoCage();
 			runCount++;
 		}
 		int numsLeft= numBallList.size();
 		int randomIndex= randNumGenerator(numsLeft-1);
-		
+
 		int spinResult= numBallList.get(randomIndex);
 		numBallList.remove(randomIndex);
 		pickedNumBalls.add(spinResult);
@@ -130,25 +130,25 @@ public class BingoScreenSharon{
 	}
 
 	public void start() {
-//		Thread bingoStart=new Thread(new Runnable() {
-//			
-//			@Override
-//			public void run() {
-//				while(true){
-//					MakinoonBingoGame.md.showNumber(randNumBallGenerator());
-//					
-//					try {
-//						Thread.sleep((long)(2000));
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					
-//					}
-//			}
-//		});
-//		bingoStart.start();
+		//		Thread bingoStart=new Thread(new Runnable() {
+		//			
+		//			@Override
+		//			public void run() {
+		//				while(true){
+		//					MakinoonBingoGame.md.showNumber(randNumBallGenerator());
+		//					
+		//					try {
+		//						Thread.sleep((long)(2000));
+		//					} catch (InterruptedException e) {
+		//						e.printStackTrace();
+		//					}
+		//					
+		//					}
+		//			}
+		//		});
+		//		bingoStart.start();
 		drawNewNumber();
-		
+
 	}
 	/*
 	public MakinoonBingoBoard compBoard;
@@ -156,7 +156,7 @@ public class BingoScreenSharon{
 		//ai board highlights square with that number
 		MakinoonBingoBoard.compBoard.
 	}
-*/
+	 */
 	public void drawNewNumber(){
 		MakinoonBingoGame.md.showNumber(randNumBallGenerator());
 	}
@@ -164,23 +164,42 @@ public class BingoScreenSharon{
 	public void buttonClick(int numOfSpace){ //numOfSpace= number on button clicked
 		System.out.println("Drawn =" +pickedNumBalls.get(pickedNumBalls.size()-1)+", numSpace ="+numOfSpace);
 		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()==numOfSpace){//if number is the num ball
-		SquareMakinoon.highlighted=true;
-		drawNewNumber();
-		}
-		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()!=numOfSpace){
-			//update history with player loss
-			//BingoGameHistory.setWinner("AI");
+			//
+			for(int r=0;r<MakinoonBingoGame.bingoGame.userBoard.getGrid().length;r++){
+				for(int c = 0; c < MakinoonBingoGame.bingoGame.userBoard.getGrid()[0].length; c++){
+					if(MakinoonBingoGame.bingoGame.userBoard.getGrid()[r][c].getNumber()==numOfSpace){
+						MakinoonBingoGame.bingoGame.userBoard.getGrid()[r][c].setHighlighted(true);
+					}
+				}
 			}
-		
+			
+			//SharonCheckForBingo.isBingo(playerBoard);
+			//checkWinConditions();
+			drawNewNumber();
+		}
+
 	}
 	/*
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	*/
-	
+	 */
+
+//	private void checkWinConditions() {
+//		
+//		for (int i = 0; i < MakinoonBingoGame.bingoGame.userBoard.getGrid().length;i++) {
+//			for (int j = 0; j < MakinoonBingoGame.bingoGame.userBoard.getGrid()[0].length; j++) {
+//				//if square is highlighted, set boolean to true
+//				if ()
+//				
+//			}
+//		}
+//		
+//		boolean UserWin = SharonCheckForBingo.isBingo(MakinoonBingoGame.bingoGame.userBoard.booleanArray);
+//	}
+
 }
 
 

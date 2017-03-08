@@ -17,7 +17,7 @@ import guiCompononets.Component;
 //arraylist, button
 public class SquareMakinoon extends TextLabel
 implements Clickable {
-	public static boolean highlighted; 
+	public boolean highlighted; 
 	private Color color; 
 	private boolean isClicked; 
 	private int number; 
@@ -50,6 +50,14 @@ implements Clickable {
 	}
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+	public boolean isHighlighted() {
+		return highlighted;
+	}
+
+	public void setHighlighted(boolean highlighted) {
+		this.highlighted = highlighted;
 	}
 
 	@Override
