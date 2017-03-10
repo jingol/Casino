@@ -40,7 +40,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	private static TextLabel balance;
 	private static TextLabel bet;
 	
-	private static int betamount;
+	private static int betamount = 500;
 	
 	private Thread barrel1;
 	private Thread barrel2;
@@ -62,7 +62,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 
 	@Override
 	public void run() {
-		spin();
+//		spin();
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		slots = new ArrayList <ArrayList<Slotpic>>();
 		title = new TextLabel(450,20,100,40,"Slots");
 		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
-		balance = new TextLabel(10,20,200,40,"Balance:$0");
+		balance = new TextLabel(10,20,200,40,"Balance:$" + betamount);
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
 		
 		
@@ -88,6 +88,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
+				
 			}
 		});
 		button1 = new Button(275,575,100,40,
@@ -113,7 +114,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				System.out.println("hah");
+				
 			}
 		});
 		start = new Button(75,375,100,40,
@@ -132,7 +133,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 		addPics();
 	
-		
+
 		
 //		Table table = new Table(0,0,500,800);
 //		System.out.println("k u");
