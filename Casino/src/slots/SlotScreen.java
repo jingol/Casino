@@ -20,18 +20,21 @@ import main.Casino;
 public class SlotScreen extends ClickableScreen implements Runnable,RewardInterface{
 	
 	public static ArrayList <ArrayList<Slotpic>> slots;
+	private static int[] mirror1 = new int[9];
+	private static int[] mirror2 = new int[9];
+	private static int[] mirror3 = new int[9];
+	private static String[] images1 = new String[9];
+	private static String[] images2 = new String[9];
+	private static String[] images3 = new String[9];
 	
 	private static Button button1;
 	private static Button button2;
 	private static Button button3;
 	private static Button start;
 	private static Button plus;
-	private static Button minus
-	;
+	private static Button minus;
 	private Graphic bg;
-	private Graphic i1;
-	private Graphic i2;
-	private Graphic i3;
+	
 	
 	private TextLabel title;
 	private static TextLabel balance;
@@ -40,16 +43,11 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	private static int betamount;
 	
 	private Thread barrel1;
-	private Thread barrel;
+	private Thread barrel2;
 	private Thread barrel3;
 	
-	private volatile boolean running = false;
+	private volatile boolean running = true;
 
-	private Graphic ack;
-
-	private Graphic rek;
-
-	private Graphic meh;
 	
 	private static Table table;
 	
@@ -64,7 +62,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 
 	@Override
 	public void run() {
-	
+		spin();
 	}
 
 	@Override
@@ -76,16 +74,13 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		balance = new TextLabel(10,20,200,40,"Balance:$0");
 		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
 		
-		i1 = new Graphic(20,20,300,300,"resources/cherry.jpg");
-		i2 = new Graphic(20,20,400,400,"resources/cherry.jpg");
-		i3 = new Graphic(20,20,500,500,"resources/cherry.jpg");
 		
 		plus =  new Button(900,575,40,40,
 				"+",Color.BLACK,
 				new Action() {
 			
 			public void act() {
-				changeText(Integer.toString(betamount));
+				
 			}
 		});
 		minus =  new Button(775,575,40,40,
@@ -93,7 +88,6 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
 			}
 		});
 		button1 = new Button(275,575,100,40,
@@ -101,6 +95,8 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
+				System.out.println("hah");
+				
 				
 			}
 		});
@@ -109,7 +105,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				System.out.println("hah");
 			}
 		});
 		button3 = new Button(575,575,100,40,
@@ -117,11 +113,11 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				System.out.println("hah");
 			}
 		});
 		start = new Button(75,375,100,40,
-				"Spin!",Color.PINK,
+				"Spin!",Color.GREEN,
 				new Action() {
 			
 			public void act() {
@@ -132,22 +128,18 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 		for(int i = 0; i < 3; i++){
 			slots.add(new ArrayList<Slotpic>());
-			System.out.println("hi");
 		}
 		
 		addPics();
 	
 		
 		
-		Table table = new Table(0,0,500,800);
-		System.out.println("k u");
-		viewObjects.add(table);
+//		Table table = new Table(0,0,500,800);
+//		System.out.println("k u");
+//		viewObjects.add(table);
 		
 		
 		viewObjects.add(bg);
-		viewObjects.add(i3);
-		viewObjects.add(i2);
-		viewObjects.add(i1);
 		
 		
 		viewObjects.add(plus);
@@ -163,22 +155,18 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 		moveToBack(bg);
 		
-		for(int a = 0; a < 9 ; a++){
-			Slotpic temp = (slots.get(0).get(a));
+		
+		for(int a = 0; a < 3 ; a++){
 			viewObjects.add(slots.get(0).get(a));
-			System.out.println("added at " + temp.getX() + ", " + temp.getY());
-		}
-		for(int a = 0; a < 9 ; a++){
-			Slotpic temp = (slots.get(1).get(a));
 			viewObjects.add(slots.get(1).get(a));
-			System.out.println();
-			System.out.println("added at " + temp.getX() + ", " + temp.getY());
-		}
-		System.out.println("ugh");
-		for(int a = 0; a < 9 ; a++){
 			viewObjects.add(slots.get(2).get(a));
 		}
-		System.out.println("ugh");
+		
+		populateArrays();
+		
+		
+	
+	
 	}
 	
 	
@@ -186,9 +174,26 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		
 	}
 	
+	public void populateArrays(){
+		String[] paths = {"evilflow.png","flow.png","noc3.png","java.png","noc1.png","noc2.png","gabe.jpg","cherry.jpg","bar.jpg"};
+		for(int i = 0; i < 9; i++){
+			mirror1[i] = i;
+			mirror2[i] = i;
+			mirror3[i] = 1;
+			images1[i] = paths[i];
+			images2[i] = paths[i];
+			images3[i] = paths[i];
+		}
+	}
+	
 	private void changeText(String string) {
 		bet.setText(string);
-		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void addPics(){
@@ -203,21 +208,40 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		demo.add(new Slotpic(50,0,100,100,"resources/gabe.jpg"));
 		demo.add(new Slotpic(50,0,100,100,"resources/cherry.jpg"));
 		demo.add(new Slotpic(50,0,100,100,"resources/bar.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/evilflow.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/java.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc1.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc2.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/gabe.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/cherry.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/bar.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/evilflow.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc3.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/java.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc1.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/noc2.png"));
+		demo.add(new Slotpic(50,0,100,100,"resources/gabe.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/cherry.jpg"));
+		demo.add(new Slotpic(50,0,100,100,"resources/bar.jpg"));
 		int xPos = 290;
-		int y = 200;
+		int y = 175;
 		int arrayidx = 0;
+		int itemidx = 0;
 		for(int a = 0; a < 3; a++){
 			for(int i = 0; i < 9; i++){
-				Slotpic temp = demo.get(i);
+				Slotpic temp = demo.get(itemidx);
 				temp.setX(xPos);
 				temp.setY(y);
-				slots.get(a).add(temp);
-				y += 20;
-				System.out.println(temp.getX() + ", " + temp.getY());
+				slots.get(arrayidx).add(temp);
+				y += 120;
+				itemidx++;
 			}
-			System.out.println(y + ", " + xPos);
-			y = 200;
-			xPos += 10;
+			arrayidx++;
+			y = 175;
+			xPos += 140;
 			
 		}
 
