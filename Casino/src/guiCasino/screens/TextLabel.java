@@ -6,7 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import guiCompononets.Component;
+import guiMakinoonComp.Component;
 
 public class TextLabel extends Component {
 

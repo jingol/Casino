@@ -4,9 +4,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import gui.Screen;
-import guiCompononets.Clickable;
-import guiCompononets.Visible;
+import bingo.Screen;
+import guiMakinoonComp.Clickable;
+import guiMakinoonComp.Visible;
 
 public abstract class ClickableScreen extends Screen implements MouseListener{
 	private ArrayList<Clickable> clickables;

@@ -10,9 +10,9 @@ import guiCasino.screens.Action;
 //import gui.sampleGames.MouseFollower;
 import guiCasino.screens.TextLabel;
 import guiCasino.screens.ClickableScreen;
-import guiCompononets.Graphic;
+import guiMakinoonComp.Graphic;
 import guiCasino.screens.TextArea;
-import guiCompononets.Visible;
+import guiMakinoonComp.Visible;
 import main.Casino;
 
 /**

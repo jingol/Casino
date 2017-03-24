@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import guiCompononets.Visible;
-import guiScreens.ClickableScreen;
+import guiMakinoonComp.Visible;
+import guiCasino.screens.ClickableScreen;
 
 /**
  * @author Sharon

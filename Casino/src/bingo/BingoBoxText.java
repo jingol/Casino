@@ -13,7 +13,7 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 
 import guiCasino.screens.TextLabel;
-import guiCompononets.Component;
+import guiMakinoonComp.Component;
 
 /**
  * @author Makinoon

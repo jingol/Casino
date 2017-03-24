@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 import guiCasino.screens.TextLabel;
-import guiCompononets.Clickable;
-import guiCompononets.Component;
+import guiMakinoonComp.Clickable;
+import guiMakinoonComp.Component;
 
 
 /**

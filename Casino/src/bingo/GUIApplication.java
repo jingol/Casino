@@ -11,7 +11,7 @@ import gui.Screen;
 public abstract class GUIApplication extends JFrame implements Runnable{
 
 	//FIELDS
-	private Screen currentScreen;
+	private MakinoonDisplay currentScreen;
 	
 
 	public GUIApplication(int width, int height) {
@@ -30,7 +30,7 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 		g.drawImage(currentScreen.getImage(), 0, 0, null);
 	}
 
-	public void setScreen(Screen s){
+	public void setScreen(MakinoonDisplay md){
 		//stop listening to previous screen
 		if(currentScreen!=null){
 			MouseListener ml= currentScreen.getMouseListener();
@@ -38,7 +38,7 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 			MouseMotionListener mml = currentScreen.getMouseMotionListener();
 			if(mml!=null)removeMouseMotionListener(mml);
 		}
-		currentScreen = s;
+		currentScreen = md;
 		//start listening to new screen
 		if(currentScreen != null){
 			addMouseListener(currentScreen.getMouseListener());
