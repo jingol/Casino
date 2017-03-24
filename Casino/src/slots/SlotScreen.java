@@ -65,110 +65,109 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 //		spin();
 	}
 
-	@Override
-	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		
-		slots = new ArrayList <ArrayList<Slotpic>>();
-		title = new TextLabel(450,20,100,40,"Slots");
-		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
-		balance = new TextLabel(10,20,200,40,"Balance:$" + betamount);
-		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
-		
-		
-		plus =  new Button(900,575,40,40,
-				"+",Color.BLACK,
-				new Action() {
-			
-			public void act() {
-				
-			}
-		});
-		minus =  new Button(775,575,40,40,
-				"-",Color.RED,
-				new Action() {
-			
-			public void act() {
-				
-			}
-		});
-		button1 = new Button(275,575,100,40,
-				"STOP",Color.RED,
-				new Action() {
-			
-			public void act() {
-				System.out.println("hah");
-				
-				
-			}
-		});
-		button2 = new Button(425,575,100,40,
-				"STOP",Color.RED,
-				new Action() {
-			
-			public void act() {
-				System.out.println("hah");
-			}
-		});
-		button3 = new Button(575,575,100,40,
-				"STOP",Color.RED,
-				new Action() {
-			
-			public void act() {
-				
-			}
-		});
-		start = new Button(75,375,100,40,
-				"Spin!",Color.GREEN,
-				new Action() {
-			
-			public void act() {
-				
-			}
-		});
-		
-		
-		for(int i = 0; i < 3; i++){
-			slots.add(new ArrayList<Slotpic>());
-		}
-		
-		addPics();
-	
-
-		
-		Table table = new Table(0,0,500,800);
-		System.out.println("k u");
-		viewObjects.add(table);
-		
-		
-		viewObjects.add(bg);
-		
-		
-		viewObjects.add(plus);
-		viewObjects.add(minus);
-		viewObjects.add(title);
-		viewObjects.add(bet);
-		viewObjects.add(balance);
-		viewObjects.add(start);
-		viewObjects.add(button1);
-		viewObjects.add(button2);
-		viewObjects.add(button3);
-		
-		
-		moveToBack(bg);
-		
-		
-		for(int a = 0; a < 3 ; a++){
-			viewObjects.add(slots.get(0).get(a));
-			viewObjects.add(slots.get(1).get(a));
-			viewObjects.add(slots.get(2).get(a));
-		}
-		
-		populateArrays();
-		
-		
-	
-	
-	}
+//	public void initAllObjects(ArrayList<Visible> viewObjects) {
+//		
+//		slots = new ArrayList <ArrayList<Slotpic>>();
+//		title = new TextLabel(450,20,100,40,"Slots");
+//		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
+//		balance = new TextLabel(10,20,200,40,"Balance:$" + betamount);
+//		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
+//		
+//		
+//		plus =  new Button(900,575,40,40,
+//				"+",Color.BLACK,
+//				new Action() {
+//			
+//			public void act() {
+//				
+//			}
+//		});
+//		minus =  new Button(775,575,40,40,
+//				"-",Color.RED,
+//				new Action() {
+//			
+//			public void act() {
+//				
+//			}
+//		});
+//		button1 = new Button(275,575,100,40,
+//				"STOP",Color.RED,
+//				new Action() {
+//			
+//			public void act() {
+//				System.out.println("hah");
+//				
+//				
+//			}
+//		});
+//		button2 = new Button(425,575,100,40,
+//				"STOP",Color.RED,
+//				new Action() {
+//			
+//			public void act() {
+//				System.out.println("hah");
+//			}
+//		});
+//		button3 = new Button(575,575,100,40,
+//				"STOP",Color.RED,
+//				new Action() {
+//			
+//			public void act() {
+//				
+//			}
+//		});
+//		start = new Button(75,375,100,40,
+//				"Spin!",Color.GREEN,
+//				new Action() {
+//			
+//			public void act() {
+//				
+//			}
+//		});
+//		
+//		
+//		for(int i = 0; i < 3; i++){
+//			slots.add(new ArrayList<Slotpic>());
+//		}
+//		
+//		addPics();
+//	
+//
+//		
+//		Table table = new Table(0,0,500,800);
+//		System.out.println("k u");
+//		viewObjects.add(table);
+//		
+//		
+//		viewObjects.add(bg);
+//		
+//		
+//		viewObjects.add(plus);
+//		viewObjects.add(minus);
+//		viewObjects.add(title);
+//		viewObjects.add(bet);
+//		viewObjects.add(balance);
+//		viewObjects.add(start);
+//		viewObjects.add(button1);
+//		viewObjects.add(button2);
+//		viewObjects.add(button3);
+//		
+//		
+//		moveToBack(bg);
+//		
+//		
+//		for(int a = 0; a < 3 ; a++){
+//			viewObjects.add(slots.get(0).get(a));
+//			viewObjects.add(slots.get(1).get(a));
+//			viewObjects.add(slots.get(2).get(a));
+//		}
+//		
+//		populateArrays();
+//		
+//		
+//	
+//	
+//	}
 	
 	
 	public void spin(){
@@ -259,6 +258,107 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	@Override
 	public void setRewardHistory(ArrayList<Integer> rewardList) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initAllObjects(List<Visible> viewObjects) {
+		slots = new ArrayList <ArrayList<Slotpic>>();
+		title = new TextLabel(450,20,100,40,"Slots");
+		bet = new TextLabel(840,515,100,100,Integer.toString(betamount));
+		balance = new TextLabel(10,20,200,40,"Balance:$" + betamount);
+		bg = new Graphic(0, 0,1000,800, "resources/back.jpg");
+		
+		
+		plus =  new Button(900,575,40,40,
+				"+",Color.BLACK,
+				new Action() {
+			
+			public void act() {
+				
+			}
+		});
+		minus =  new Button(775,575,40,40,
+				"-",Color.RED,
+				new Action() {
+			
+			public void act() {
+				
+			}
+		});
+		button1 = new Button(275,575,100,40,
+				"STOP",Color.RED,
+				new Action() {
+			
+			public void act() {
+				System.out.println("hah");
+				
+				
+			}
+		});
+		button2 = new Button(425,575,100,40,
+				"STOP",Color.RED,
+				new Action() {
+			
+			public void act() {
+				System.out.println("hah");
+			}
+		});
+		button3 = new Button(575,575,100,40,
+				"STOP",Color.RED,
+				new Action() {
+			
+			public void act() {
+				
+			}
+		});
+		start = new Button(75,375,100,40,
+				"Spin!",Color.GREEN,
+				new Action() {
+			
+			public void act() {
+				
+			}
+		});
+		
+		
+		for(int i = 0; i < 3; i++){
+			slots.add(new ArrayList<Slotpic>());
+		}
+		
+		addPics();
+	
+
+		
+		Table table = new Table(0,0,500,800);
+		viewObjects.add(table);
+		
+		
+		viewObjects.add(bg);
+		
+		
+		viewObjects.add(plus);
+		viewObjects.add(minus);
+		viewObjects.add(title);
+		viewObjects.add(bet);
+		viewObjects.add(balance);
+		viewObjects.add(start);
+		viewObjects.add(button1);
+		viewObjects.add(button2);
+		viewObjects.add(button3);
+		
+		
+		moveToBack(bg);
+		
+		
+		for(int a = 0; a < 3 ; a++){
+			viewObjects.add(slots.get(0).get(a));
+			viewObjects.add(slots.get(1).get(a));
+			viewObjects.add(slots.get(2).get(a));
+		}
+		
+		populateArrays();
+		
 		
 	}
 
