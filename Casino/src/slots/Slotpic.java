@@ -1,12 +1,21 @@
 package slots;
 
-import guiCompononets.Graphic;
+import gui.components.Graphic;
 
 public class Slotpic extends Graphic {
 
-	public Slotpic(int x, int y, String imageLocation) {
-		super(x, y, imageLocation);
+	public Slotpic(int x, int y, int w, int h, String imageLocation) {
+		super(x, y, w, h, imageLocation);
+		// TODO Auto-generated constructor stub
 	}
+
+	public void setPath(Slotpic temp) {
+		
+	}
+
+	
+	
+	
 
 	
 
