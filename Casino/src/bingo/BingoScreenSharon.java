@@ -220,7 +220,6 @@ private void checkAIkWinConditions() {
 			for (int j = 0; j < MakinoonBingoGame.bingoGame.aiBoard.getGrid()[0].length; j++) {
 				//if square is highlighted, set boolean to true
 				if (MakinoonBingoGame.bingoGame.aiBoard.getGrid()[i][j].highlighted){
-					//playerBoolean[i][j]=true;
 					MakinoonBingoGame.bingoGame.aiBoard.booleanArray[i][j]=true;
 					
 				}
