@@ -80,7 +80,9 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				if(betamount < 1000){
+					
+				}
 			}
 		});
 		minus =  new Button(775,575,40,40,
@@ -88,7 +90,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				System.out.println("ugh");
 			}
 		});
 		button1 = new Button(275,575,100,40,
@@ -96,9 +98,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				System.out.println("hah");
-				
-				
+				System.out.println("ugh");
 			}
 		});
 		button2 = new Button(425,575,100,40,
@@ -114,7 +114,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				System.out.println("ugh");
 			}
 		});
 		start = new Button(75,375,100,40,
@@ -122,7 +122,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				System.out.println("ugh");
 			}
 		});
 		
@@ -138,6 +138,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 //		Table table = new Table(0,0,500,800);
 //		System.out.println("k u");
 //		viewObjects.add(table);
+		
 		
 		
 		viewObjects.add(bg);
@@ -187,18 +188,17 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 		}
 	}
 	
-	private void changeText(String string) {
-		bet.setText(string);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	private void changeText(String string) {
+//		bet.setText(string);
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public void addPics(){
-		//there can only be one copy of an image, so  that why the images in other arraylists dont show
 		ArrayList<Slotpic> demo = new ArrayList<Slotpic>();
 		demo.add(new Slotpic(50,0,100,100,"resources/evilflow.png"));
 		demo.add(new Slotpic(50,0,100,100,"resources/flow.png"));
