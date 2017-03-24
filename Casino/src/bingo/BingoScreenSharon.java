@@ -174,7 +174,7 @@ public class BingoScreenSharon{
 			}
 			
 			//SharonCheckForBingo.isBingo(playerBoard);
-			//checkWinConditions();
+			//checkPlayerWinConditions();
 			
 			int aiAutoRoll=randNumBallGenerator();
 			//after new number is drawn automatically highlight that button on aiBoard to signify ai has gone
@@ -198,18 +198,38 @@ public class BingoScreenSharon{
 	}
 	 */
 
-//	private void checkWinConditions() {
-//		
-//		for (int i = 0; i < MakinoonBingoGame.bingoGame.userBoard.getGrid().length;i++) {
-//			for (int j = 0; j < MakinoonBingoGame.bingoGame.userBoard.getGrid()[0].length; j++) {
-//				//if square is highlighted, set boolean to true
-//				if ()
-//				
-//			}
-//		}
-//		
-//		boolean UserWin = SharonCheckForBingo.isBingo(MakinoonBingoGame.bingoGame.userBoard.booleanArray);
-//	}
+	private void checkPlayerkWinConditions() {
+		
+		for (int i = 0; i < MakinoonBingoGame.bingoGame.userBoard.getGrid().length;i++) {
+			for (int j = 0; j < MakinoonBingoGame.bingoGame.userBoard.getGrid()[0].length; j++) {
+				//if square is highlighted, set boolean to true
+				if (MakinoonBingoGame.bingoGame.userBoard.getGrid()[i][j].highlighted){
+					//playerBoolean[i][j]=true;
+					MakinoonBingoGame.bingoGame.userBoard.booleanArray[i][j]=true;
+					
+				}
+				
+			}
+		}
+		
+		boolean UserWin = SharonCheckForBingo.isBingo(MakinoonBingoGame.bingoGame.userBoard.booleanArray);
+	}
+private void checkAIkWinConditions() {
+		
+		for (int i = 0; i < MakinoonBingoGame.bingoGame.aiBoard.getGrid().length;i++) {
+			for (int j = 0; j < MakinoonBingoGame.bingoGame.aiBoard.getGrid()[0].length; j++) {
+				//if square is highlighted, set boolean to true
+				if (MakinoonBingoGame.bingoGame.aiBoard.getGrid()[i][j].highlighted){
+					//playerBoolean[i][j]=true;
+					MakinoonBingoGame.bingoGame.aiBoard.booleanArray[i][j]=true;
+					
+				}
+				
+			}
+		}
+		
+		boolean AiWin = SharonCheckForBingo.isBingo(MakinoonBingoGame.bingoGame.userBoard.booleanArray);
+	}
 
 }
 //
