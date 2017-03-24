@@ -164,7 +164,7 @@ public class BingoScreenSharon{
 	public void buttonClick(int numOfSpace){ //numOfSpace= number on button clicked
 		System.out.println("Drawn =" +pickedNumBalls.get(pickedNumBalls.size()-1)+", numSpace ="+numOfSpace);
 		if(pickedNumBalls.get(pickedNumBalls.size()-1).intValue()==numOfSpace){//if number is the num ball
-			//
+			// if user clicks on the right button
 			for(int r=0;r<MakinoonBingoGame.bingoGame.userBoard.getGrid().length;r++){
 				for(int c = 0; c < MakinoonBingoGame.bingoGame.userBoard.getGrid()[0].length; c++){
 					if(MakinoonBingoGame.bingoGame.userBoard.getGrid()[r][c].getNumber()==numOfSpace){
@@ -175,6 +175,17 @@ public class BingoScreenSharon{
 			
 			//SharonCheckForBingo.isBingo(playerBoard);
 			//checkWinConditions();
+			
+			int aiAutoRoll=randNumBallGenerator();
+			//after new number is drawn automatically highlight that button on aiBoard to signify ai has gone
+			for(int r=0;r<MakinoonBingoGame.bingoGame.aiBoard.getGrid().length;r++){
+				for(int c = 0; c < MakinoonBingoGame.bingoGame.aiBoard.getGrid()[0].length; c++){
+					if(MakinoonBingoGame.bingoGame.aiBoard.getGrid()[r][c].getNumber()==aiAutoRoll){
+						MakinoonBingoGame.bingoGame.aiBoard.getGrid()[r][c].setHighlighted(true);
+					}
+				}
+			}
+			System.out.println("Ai has gone. New Number ball is called");
 			drawNewNumber();
 		}
 
