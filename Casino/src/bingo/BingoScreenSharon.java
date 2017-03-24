@@ -228,7 +228,7 @@ private void checkAIkWinConditions() {
 			}
 		}
 		
-		boolean AiWin = SharonCheckForBingo.isBingo(MakinoonBingoGame.bingoGame.userBoard.booleanArray);
+		boolean AiWin = SharonCheckForBingo.isBingo(MakinoonBingoGame.bingoGame.aiBoard.booleanArray);
 	}
 
 }
