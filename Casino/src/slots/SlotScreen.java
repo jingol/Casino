@@ -188,12 +188,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	
 	private void changeText(String string) {
 		bet.setText(string);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public void addPics(){
@@ -275,7 +270,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				changeText(Integer.toString(betamount += 500));
 			}
 		});
 		minus =  new Button(775,575,40,40,
@@ -283,7 +278,7 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 				new Action() {
 			
 			public void act() {
-				
+				changeText(Integer.toString(betamount -= 500));
 			}
 		});
 		button1 = new Button(275,575,100,40,
@@ -330,13 +325,11 @@ public class SlotScreen extends ClickableScreen implements Runnable,RewardInterf
 	
 
 		
-		Table table = new Table(0,0,500,800);
+		Table table = new Table(700,0,500,800);
 		viewObjects.add(table);
 		
 		
 		viewObjects.add(bg);
-		
-		
 		viewObjects.add(plus);
 		viewObjects.add(minus);
 		viewObjects.add(title);
