@@ -92,7 +92,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		removeOptions();
 		gameRunning = false;
 		for(int i = 0; i<PLAYERS; i++){
-			sum[i] = players[i].getWinHand(players[i].getHand());
+			sum[i] = players[i].getWinHand();
 		}
 		for(int i = 0; i<PLAYERS; i++){
 			if ((i+1)< PLAYERS && sum[i]>sum[i+1])
@@ -108,7 +108,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		}
 		if (big != 0)
 		{
-			System.out.println("player" + (big+1)+ "won");
+			System.out.println("player" + (big)+ "won");
 		}
 		else
 			System.out.println("you win");
