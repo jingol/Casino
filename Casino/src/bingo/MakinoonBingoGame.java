@@ -3,10 +3,10 @@ package bingo;
 import java.util.ArrayList;
 
 public class MakinoonBingoGame extends GUIApplication{
-	public MakinoonBingoBoard userBoard;
-	public MakinoonBingoBoard aiBoard;
+	public static MakinoonBingoBoard userBoard;
+	public static MakinoonBingoBoard aiBoard;
 	public static BingoScreenSharon backend;
-	public  MakinoonBingoGame bingoGame;
+	public static MakinoonBingoGame bingoGame;
 	public static MakinoonDisplay md;
 	public static ArrayList<BingoGameHistory> gameHistory; 
 	
@@ -16,6 +16,7 @@ public class MakinoonBingoGame extends GUIApplication{
 	
 	public MakinoonBingoGame(MakinoonBingoBoard userBoard, MakinoonBingoBoard aiBoard, ArrayList<BingoGameHistory> gameHistory, int width, int height) {
 		super(width, height);
+		this.bingoGame=this;
 		this.userBoard = userBoard;
 		this.aiBoard = aiBoard; 
 		this.gameHistory = gameHistory;

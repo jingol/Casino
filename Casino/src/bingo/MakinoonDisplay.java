@@ -64,53 +64,10 @@ public class MakinoonDisplay extends ClickableScreen {
 		this.userBoard = userBoard; 
 		this.aiBoard = aiBoard; 
 		this.gameHistoryList = new ArrayList<BingoGameHistory>();
-//	SquareMakinoon[][] temp  = userBoard.getGrid();
-//		
-//		for(int r = 0; r < temp.length; r++){
-//			for( int c = 0; c < temp[0].length; c++ ){
-//				this.addObject(temp[r][c]);
-//			}
-//		}
-		 
-//		Thread app = new Thread(this);
-//		
-//		app.start();
+
 	}
 
-	
-/*
- * 
- * 
- * 
- * 
- *------------ HAVE TO WORK ON THE ROUNDS---------------
- * 
- * 
- * 
- */
 
-
-	@Override
-//	public void run() {
-//		//once opened, the game starts.
-//		nextRound();
-//		
-//	}
-
-//	private void nextRound() {
-//		playerTurn=false;
-//		//change the display of numberball
-//		//ai sets that number to true on aiBoolean & highlights that number on its board
-//		SharonCheckForBingo(aiBoolean); // aiBoolean has not been connected to the buttons
-//		//update history
-//		playerTurn=true;
-//		SharonCheckForBingo(playerBoolean); //playerBooean has not been connected to the buttons
-//	}
-
-
-	
-	
-	
 	public void initAllObjects(ArrayList<Visible> lst) {
 		//super.initObjects(lst);
 		bg = new Graphic(0, 0, 1000, 700, "imagesBingo/casinobg.jpg");
