@@ -86,13 +86,7 @@ public class Texas extends ClickableScreen implements Runnable{
 	}
 
 	private void finalTurn(){
-		for(int i = 0; i<PLAYERS; i++){
-			if(players[i].isPlaying()){
-				//idk ill look at this lator
-			}
-		}
-	}
-	int[] sum = new int[PLAYERS];
+		int[] sum = new int[PLAYERS];
 		int big =0;
 		flipAllCards();
 		removeOptions();
@@ -119,6 +113,8 @@ public class Texas extends ClickableScreen implements Runnable{
 		else
 			System.out.println("you win");
 		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);
+	}
+	
 	
 	private void aiTurn()
 	{
