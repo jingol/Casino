@@ -92,46 +92,33 @@ public class Texas extends ClickableScreen implements Runnable{
 			}
 		}
 	}
-	private void endGame()
-	{
-		/*finalScore0 = 0;
-		finalScore1 = 0;
-		finalScore2 = 0;
-		finalScore3 = 0;
-		for (int i =0; i<PLAYERS; i++)
-		{
-			finalScore+i = DealtHand.getWinHand(players[i].getHand()); 
+	int[] sum = new int[PLAYERS];
+		int big =0;
+		flipAllCards();
+		removeOptions();
+		gameRunning = false;
+		for(int i = 0; i<PLAYERS; i++){
+			sum[i] = players[i].getWinHand(players[i].getHand());
 		}
-		if (finalScore0 > finalScore1 && finalScore0 > finalScore2 && finalScore0 > finalScore3)
-		{
-			System.out.println("You win");
-			players[0].setMoney(players[0].getMoney()+table.getMoney());
-			
+		for(int i = 0; i<PLAYERS; i++){
+			if ((i+1)< PLAYERS && sum[i]>sum[i+1])
+			{
+				if(sum[i] != big)
+					big = i;
+				else
+					if ( players[big].getWinHand(players[big].getTieHand())< players[big].getWinHand(players[i].getTieHand()));
+				{
+					big = i;
+				}
+			}
 		}
-		else if (finalScore1 > finalScore0 && finalScore1 > finalScore2 && finalScore1 > finalScore3)
+		if (big != 0)
 		{
-			System.out.println("CPU 1 wins");
-			players[1].setMoney(players[1].getMoney()+table.getMoney());
+			System.out.println("player" + (big+1)+ "won");
 		}
-		else if (finalScore2 > finalScore0 &&finalScore2 > finalScore1 &&finalScore2 > finalScore3)
-		{
-			System.out.println("CPU 2 wins");
-			players[2].setMoney(players[2].getMoney()+table.getMoney());
-		}
-		else if (finalScore3 > finalScore0 && finalScore3 > finalScore1 && finalScore3 > finalScore2)
-		{
-			System.out.println("CPU 3 wins");
-			players[3].setMoney(players[3].getMoney()+ table.getMoney());
-		}
-		table.money =0;
-		// return all cards 
-		Dealer.shuffleDeck();// shuffle 
-		startGame();*/
-	}
-	
-	private void finalScore(Player p){
-		
-	}
+		else
+			System.out.println("you win");
+		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);
 	
 	private void aiTurn()
 	{
