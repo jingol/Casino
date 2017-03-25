@@ -112,8 +112,13 @@ public class Texas extends ClickableScreen implements Runnable{
 				}
 			}
 		}
-		System.out.println("player" + (big+1)+ "won");
-		players[big+1].setMoney(players[big+1].getMoney()+ TexasDemo.money);
+		if (big != 0)
+		{
+			System.out.println("player" + (big+1)+ "won");
+		}
+		else
+			System.out.println("you win");
+		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);;
 	}
 	
 	private void flipAllCards(){
