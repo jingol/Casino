@@ -85,9 +85,10 @@ public class Texas extends ClickableScreen implements Runnable{
 		canClick = true;
 	}
 
-	private void finalTurn(){
+	private String finalTurn(){
 		int[] sum = new int[PLAYERS];
 		int big =0;
+		int tie =0;
 		flipAllCards();
 		removeOptions();
 		gameRunning = false;
@@ -95,24 +96,55 @@ public class Texas extends ClickableScreen implements Runnable{
 			sum[i] = players[i].getWinHand();
 		}
 		for(int i = 0; i<PLAYERS; i++){
-			if ((i+1)< PLAYERS && sum[i]>sum[i+1])
-			{
-				if(sum[i] != big)
-					big = i;
-				else
-					if ( players[big].getWinHand(players[big].getTieHand())< players[big].getWinHand(players[i].getTieHand()));
+				if(i==0)
 				{
 					big = i;
+				}
+				else if  (((i+1)< PLAYERS && sum[i]>sum[i+1]))
+				{
+					if(sum[i] != big)
+					big = i;
+					else
+					{
+					tie = i;
+					}
+				}
+			if (tie != 0)
+			{
+				for (int j=0;j<players[big].getHand().size();j++)
+				{
+					if (players[big].getTieHand()[i]>players[tie].getTieHand()[i])
+					{
+						break;
+					}
+					else if (players[big].getTieHand()[i]<players[tie].getTieHand()[i])
+					{
+						big = tie;
+						break;
+					}
+					else 
+					{
+						return "players" + big +"&"+tie;
+					}
 				}
 			}
 		}
 		if (big != 0)
 		{
-			System.out.println("player" + (big)+ "won");
+			return "player" + big+ "won";
 		}
 		else
-			System.out.println("you win");
-		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);
+			return "you win";
+			players[big].setMoney(players[big].getMoney()+ TexasDemo.money);;
+	}
+	private void endGame(String word)
+	{
+		
+		System.out.println(word);
+	}
+	private void check()
+	{
+		endGame(finalTurn());
 	}
 	
 	
