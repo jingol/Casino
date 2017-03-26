@@ -141,6 +141,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					
 				}
 			}
+			return "tie";
 		}
 		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);
 		if (big != 0)
