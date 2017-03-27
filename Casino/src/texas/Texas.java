@@ -350,6 +350,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					case 3: startBetting();theFlop(); break;
 					case 4: startBetting();theTurn(); break;
 					case 5: startBetting();theRiver(); break;
+					case 6: finalTurn(); break;
 					default: break; 
 					}
 				}
@@ -369,13 +370,12 @@ public class Texas extends ClickableScreen implements Runnable{
 					removeOptions();
 					canClick = false;
 					deductMoney(0, TexasDemo.money);
-					if(roundNum == 3){
-						startBetting();theFlop();}
-					else if(roundNum == 4){
-						startBetting();theTurn();
-					}
-					else if(roundNum == 5){
-						startBetting();theRiver();
+					switch(roundNum){
+					case 3: startBetting();theFlop(); break;
+					case 4: startBetting();theTurn(); break;
+					case 5: startBetting();theRiver(); break;
+					case 6: finalTurn(); break;
+					default: break; 
 					}
 				}
 			}
@@ -386,13 +386,12 @@ public class Texas extends ClickableScreen implements Runnable{
 					deductMoney(0, betValue);
 					removeOptions();
 					canClick = false;
-					if(roundNum == 3){
-						startBetting();theFlop();}
-					else if(roundNum == 4){
-						startBetting();theTurn();
-					}
-					else if(roundNum == 5){
-						startBetting();theRiver();
+					switch(roundNum){
+					case 3: startBetting();theFlop(); break;
+					case 4: startBetting();theTurn(); break;
+					case 5: startBetting();theRiver(); break;
+					case 6: finalTurn(); break;
+					default: break; 
 					}
 				}
 			}
