@@ -58,11 +58,167 @@ public class Player extends DealtHand{
 	}
 
 	@Override
-	public ArrayList<PlayingCard> getTieHand() {
-		int num = getWinHand(getHand());
-		return null;
+	public ArrayList<Integer> getTieHand() {
+		//the array this method will return has the first index as the value of the win hand 
+		//aka if bomb then return the numeric value of the bomb
+		//checks the best win condition of the hand
+		ArrayList<Integer> tHand = new ArrayList<Integer>();
+		ArrayList<PlayingCard> cardHand = getHand();
+		int hand = getWinHand();
+		String[] suitArr = getSuits();
+		int[] values = getFaceValues();
+		int a = 0;
+		int b = 0;
+		String suit = "";
+		switch(hand){
+		//if its a bomb
+		case 7: 
+			for(int i = 0; i<values.length-4; i++){
+				if(values[i] == values[i+1] && values[i+1] == values[i+2] && values[i+2] == values[i+3]){
+					a = values[i];
+					break;
+				}
+			}
+			tHand.add(a);
+			for(int i = values.length-1; i>-1; i--){
+				if(values[i] != a)
+					tHand.add(values[i]);
+			}
+			return tHand;
+		//if full house
+		case 6:
+			for(int i = values.length-1; i>1; i--){
+				if(values[i] == values[i-1] && values[i-1] == values[i-2]){
+					a = values[i];
+					break;
+				}
+			}
+			tHand.add(a);
+			for(int i = values.length-1; i>0; i--){
+				if(values[i] != a && values[i] == values[i-1]){
+					b = values[i];
+					break;
+				}
+			}
+			tHand.add(b);
+			for(int i = values.length-1; i>-1; i--){
+				if(values[i] != a && values[i] != b)
+					tHand.add(values[i]);
+			}
+			return tHand;
+		//if flush
+		case 5:
+			for(int i = 0; i<suitArr.length-4; i++){
+				if(suitArr[i].equals(suitArr[i+1]) && suitArr[i+1].equals(suitArr[i+2]) && suitArr[i+2].equals(suitArr[i+3]) && suitArr[i+3].equals(suitArr[i+4]))
+					suit = suitArr[i];
+			}
+			int count = 0;
+			for(int i = cardHand.size()-1; i>-1; i--){
+				if(count<5 && cardHand.get(i).getSuit().equals(suit)){
+					tHand.add(cardHand.get(i).getCardValue());
+				}
+			}
+			for(int i = cardHand.size()-1; i>-1; i--){
+				if(!cardHand.get(i).getSuit().equals(suit))
+					tHand.add(cardHand.get(i).getCardValue());
+			}
+			return tHand;
+		//if straight
+		case 4:
+			for(int i = values.length-1; i>3; i--){
+				if(values[i] == values[i-1]+1 && values[i-1] == values[i-2]+1 && values[i-2] == values[i-3]+1 && values[i-3] == values[i-4]+1){
+					for(int j = 0; j<5; j++){
+						tHand.add(values[i]-j);
+					}
+				}
+			}
+			return tHand;
+		//if triple
+			case 3: 
+				for(int i = values.length-1; i>2; i--){
+					if(values[i] == values[i-1] && values[i-1] == values[i-2]){
+						a = values[i];
+						break;
+					}
+				}
+				tHand.add(a);
+				for(int j = values.length-1; j>-1; j--){
+					if(values[j] != a)
+						tHand.add(values[j]);
+				}
+				return tHand;
+		//if two pair
+			case 2: 
+				for(int i = values.length-1; i>1; i--){
+					if(values[i] == values[i-1]){
+						a = values[i];
+						break;
+					}
+				}
+				tHand.add(a);
+				for(int j = values.length-1; j>1; j--){
+					if(values[j] != a && values[j] == values[j-1]){
+						b = values[j];
+					}
+				}
+				tHand.add(b);
+				for(int k = values.length-1; k>-1; k--){
+					if(values[k] != a && values[k] != b)
+						tHand.add(values[k]);
+				}
+				return tHand;
+				
+		//if double
+			case 1: 
+				for(int i = values.length-1; i>1; i--){
+					if(values[i] == values[i-1]){
+						a = values[i];
+						break;
+					}
+				}
+				tHand.add(a);
+				for(int j = values.length-1; j>-1; j--){
+					if(values[j] != a)
+						tHand.add(values[j]);
+				}
+				return tHand;
+		//if hi card
+			case 0: 
+				for(int i = values.length-1; i>-1; i--){
+					tHand.add(values[i]);
+				}
+				return tHand;
+			default: return tHand;
+			
 	}
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
 }
