@@ -44,9 +44,7 @@ public abstract class DealtHand {
 		//get the face values of each of them and put them in order to compare
 		//also an array for suits is helpful
 		int[] faceValues = getFaceValues();
-		System.out.println(Arrays.toString(faceValues));
 		String[] suits = getSuits();
-		System.out.println(Arrays.toString(suits));
 		//to make checking easier later, check for same suit and check if the values are consecutive
 		boolean sameSuit = isSameSuit(suits);
 		boolean consecutiveValues = hasAllConsec(faceValues);
