@@ -23,31 +23,41 @@ public abstract class DealtHand {
 	public void addCard(PlayingCard c, int index){
 		getHand().add(index, c);
 	}
-	public int getWinHand(ArrayList<PlayingCard> pileCards){
-		//returns the highest poker hand that can be won given an arraylist and players current hand
-		//first get the entire list of cards being used
-		ArrayList<PlayingCard> cHand = new ArrayList<PlayingCard>();
-		cHand.addAll(getHand());
-		cHand.addAll(pileCards);
-		//next get the face values of each of them and put them in order to compare
-		//also an array for suits is helpful
-		int[] faceValues = new int[cHand.size()];
-		String[] suits = new String[cHand.size()];
+	public int[] getFaceValues(){
+		int[] faceValues = new int[hand.size()];
 		for(int i = 0; i<faceValues.length; i++){
-			faceValues[i] = cHand.get(i).getCardValue();
-			suits[i] = cHand.get(i).getSuit();
+			faceValues[i] = hand.get(i).getCardValue();
 		}
 		Arrays.sort(faceValues);
+		return faceValues;
+	}
+	public String[] getSuits(){
+		String[] suits = new String[hand.size()];
+		for(int i = 0; i<suits.length; i++){
+			suits[i] = hand.get(i).getSuit();
+		}
+		Arrays.sort(suits);
+		return suits;
+	}
+	public int getWinHand(){
+		//iterate thru "player's hand"
+		//get the face values of each of them and put them in order to compare
+		//also an array for suits is helpful
+		int[] faceValues = getFaceValues();
+		String[] suits = getSuits();
 		//to make checking easier later, check for same suit and check if the values are consecutive
 		boolean sameSuit = isSameSuit(suits);
 		boolean consecutiveValues = hasAllConsec(faceValues);
 		//additionally, check for number of consecutive values
 		int consecutives = consecutiveChainOfValues(faceValues);
 		//check for straight flush first
+		//dont need to compare
 		if(sameSuit && consecutiveValues)
 			return STRAIGHT_FLUSH;
+		//dont need to compare
 		if(consecutives == 4)
 			return BOMB;
+		//dont need to compare
 		if(isFullHouse(faceValues))
 			return FULL_HOUSE;
 		if(sameSuit)
@@ -74,7 +84,7 @@ public abstract class DealtHand {
 		for(int i = 0; i<arr.length-1; i++){
 			if(arr[i] == arr[i+1]){
 				pairNum++;
-				i+=2;
+				i+=1;
 			}
 			if(pairNum == 2)
 				break;
@@ -83,43 +93,50 @@ public abstract class DealtHand {
 	}
 	//checks if full house
 	private boolean isFullHouse(int[] arr) {
-		for(int i = 0; i<arr.length-4; i++){
-			if(arr[i] == arr[i+1] && arr[i+2] == arr[i+3] && arr[i+3] == arr[i+4])
+		int trip = 0;
+		for(int i = 0; i<arr.length-3; i++){
+			if(arr[i] == arr[i+1] && arr[i+1] == arr[i+2]){
+				trip = arr[i];
+				for(int j = 0; j<arr.length-2; j++){
+					if(arr[j] != trip && arr[j] == arr[j+1])
+						return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	private boolean isSameSuit(String[] suits) {
+		for(int i = 0; i<suits.length-4; i++){
+			if(suits[i].equals(suits[i+1]) && suits[i+1].equals(suits[i+2]) && suits[i+2].equals(suits[i+3]) && suits[i+3].equals(suits[i+4]))
 				return true;
 		}
 		return false;
 	}
-	private boolean isSameSuit(String[] suits) {
-		String compSuit = suits[0];
-		for(int i = 1; i<suits.length; i++){
-			if(!suits[i].equals(compSuit))
-				return false;
-		}
-		return true;
-	}
-	//checks if all values in array are consecutive
+	//checks if has 5 consecutive values
 	private boolean hasAllConsec(int[] arr) {
+		int consec = 0;
 		for(int i = 0; i<arr.length-1; i++){
-			if(arr[i]+1 != arr[i+1]){
-				return false;
+			if(arr[i]+1 == arr[i+1]){
+				consec++;
 			}
 		}
-		return true;
+		return consec == 5;
 	}
 	//checks longest chain of same values
 	private int consecutiveChainOfValues(int[] arr){
 		int chain = 1;
-		int cChain = 0;
+		int cChain = 1;
 		for(int i = 0; i<arr.length-1; i++){
 			if(arr[i] == arr[i+1]){
 				cChain++;
 				if(cChain > chain)
 					chain = cChain;
 			}
-			else cChain = 0;
+			else cChain = 1;
 		}
 		return chain;
 	}
-	abstract ArrayList<PlayingCard> getTieHand();
+	abstract ArrayList<Integer> getTieHand();
 
 }
