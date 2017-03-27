@@ -201,7 +201,8 @@ public class Texas extends ClickableScreen implements Runnable{
 		for(int i = 1; i<PLAYERS; i++){
 			if(players[i].isPlaying()){
 				for(int j = 0; j<players[i].getHand().size(); j++){
-					players[i].getHand().get(j).flipCard();
+					if(players[i].getHand().get(j).isFaceDown())
+						players[i].getHand().get(j).flipCard();
 				}
 			}
 		}
@@ -350,7 +351,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					case 3: startBetting();theFlop(); break;
 					case 4: startBetting();theTurn(); break;
 					case 5: startBetting();theRiver(); break;
-					case 6: finalTurn(); break;
+					case 6: check(); break;
 					default: break; 
 					}
 				}
@@ -374,7 +375,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					case 3: startBetting();theFlop(); break;
 					case 4: startBetting();theTurn(); break;
 					case 5: startBetting();theRiver(); break;
-					case 6: finalTurn(); break;
+					case 6: check(); break;
 					default: break; 
 					}
 				}
@@ -390,7 +391,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					case 3: startBetting();theFlop(); break;
 					case 4: startBetting();theTurn(); break;
 					case 5: startBetting();theRiver(); break;
-					case 6: finalTurn(); break;
+					case 6: check(); break;
 					default: break; 
 					}
 				}

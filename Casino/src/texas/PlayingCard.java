@@ -34,6 +34,10 @@ public class PlayingCard extends MovingComponent implements PlayingCardInterface
 		update();
 	}
 
+	public boolean isFaceDown(){
+		return faceDown;
+	}
+	
 	@Override
 	public void flipCard() {
 		faceDown = !faceDown;
