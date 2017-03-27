@@ -176,7 +176,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					}
 				
 				else
-				if (players[i].getWinHand()> 5 && players[i].getWinHand()<7)
+				if (players[i].getWinHand()> 5 && players[i].getWinHand()<=7)
 					{ deductMoney(i,betValue+50);
 					
 					}
