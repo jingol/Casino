@@ -94,6 +94,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		flipAllCards();
 		removeOptions();
 		gameRunning = false;
+		aiTurn();
 		for(int i = 0; i<PLAYERS; i++){
 			sum[i] = players[i].getWinHand();
 		}
@@ -213,14 +214,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		betValue = 0;
 		betText.setText("$"+betValue);
 		roundNum++;
-		for(int i = 1; i<players.length; i++){
-			if(players[i].isPlaying()){
-				if(players[i].getMoney() >= betValue)
-					deductMoney(i,betValue);
-				else
-					deductMoney(i,players[i].getMoney());
-			}
-		}
+		aiTurn();
 		showOptions();
 		canClick = true;
 	}
@@ -236,6 +230,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
 		addCardToPlayers(c);
+		aiTurn();
 		showOptions();
 		canClick = true;
 	}
@@ -251,6 +246,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
 		addCardToPlayers(c);
+		aiTurn();
 		showOptions();
 		canClick = true;
 	}
