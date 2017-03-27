@@ -194,7 +194,7 @@ public class Texas extends ClickableScreen implements Runnable{
 							deductMoney(i,betValue);
 						}
 			}
-			players[i].setPlaying(false);
+			
 		}
 	}
 	
