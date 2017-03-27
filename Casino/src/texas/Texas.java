@@ -79,7 +79,6 @@ public class Texas extends ClickableScreen implements Runnable{
 			c.shiftCard(200+c.getX()+100*roundNum, c.getY());
 			c.flipCard();
 			addCardToPlayers(c);
-			//maybe delay??
 		}
 		roundNum++;
 		canClick = true;
@@ -237,7 +236,6 @@ public class Texas extends ClickableScreen implements Runnable{
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
 		addCardToPlayers(c);
-		//add delay later??
 		showOptions();
 		canClick = true;
 	}
@@ -253,7 +251,6 @@ public class Texas extends ClickableScreen implements Runnable{
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
 		addCardToPlayers(c);
-		//add delay later??
 		showOptions();
 		canClick = true;
 	}
