@@ -117,32 +117,34 @@ public class Texas extends ClickableScreen implements Runnable{
 					}
 					count++;
 				}
+		}
+			
 			if (tie != 0)
 			{
+				int[] hand = new int[draw.length];
+				big=0;
 				for (int j=0;j<players[big].getHand().size();j++)
 				{
 					for (int k=0;k<draw.length;k++)
 					{
-						players[draw[k]].getTieHand().get(j);
+						hand[k]= players[draw[k]].getTieHand().get(j).getCardValue();
 					}
-//					if (players[big].getTieHand().get(i)>players[tie].getTieHand().get(i))
-//					{
-//						break;
-//					}
-//					else if (players[big].getTieHand().get(i)<players[tie].getTieHand().get(i))
-//					{
-//						big = tie;
-//						break;
-//					}
-//					else 
-//					{
-//						return "players" + big +"&"+tie;
-//					}
-					
+					for (int k=0;k<hand.length;k++)
+					{
+						if  (((k+1)< PLAYERS && hand[k]>hand[k+1]))
+						{
+							
+								big = k;
+							
+						}
+					}
+				}
+				if (big == 0)
+				{
+					return "tie";
 				}
 			}
-			return "tie";
-		}
+		
 		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);
 		if (big != 0)
 		{
