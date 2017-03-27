@@ -24,7 +24,7 @@ public class PlayingCard extends MovingComponent implements PlayingCardInterface
 	public static final int HEIGHT= 87;
 	private String suit;
 	private int value;
-	private final int slowdown = 60;
+	private final int slowdown = 30;
 	
 	public PlayingCard(int x, int y, int value, String suit) {
 		super(x, y, WIDTH, HEIGHT);
@@ -34,6 +34,10 @@ public class PlayingCard extends MovingComponent implements PlayingCardInterface
 		update();
 	}
 
+	public boolean isFaceDown(){
+		return faceDown;
+	}
+	
 	@Override
 	public void flipCard() {
 		faceDown = !faceDown;
@@ -127,7 +131,6 @@ public class PlayingCard extends MovingComponent implements PlayingCardInterface
 	}
 
 }
-
 
 
 
