@@ -1,6 +1,3 @@
-/**
- * 
- */
 package texas;
 
 import java.awt.Color;
@@ -55,12 +52,13 @@ public class Texas extends ClickableScreen implements Runnable{
 	private int roundNum;
 	private int betValue;
 	
+	
 	private final int BHEIGHT = 30;
 	private final int BWIDTH = 60;
 	private final int PLAYERS = 4;
 	private final int smallBlind = 10;
 	private final int bigBlind = 20;
-	private final int CARD_DELAY = 1100;
+	private final int CARD_DELAY = 600;
 			
 	public Texas(int width, int height) {
 		super(width, height);
@@ -80,52 +78,132 @@ public class Texas extends ClickableScreen implements Runnable{
 			addObject(c);
 			c.shiftCard(200+c.getX()+100*roundNum, c.getY());
 			c.flipCard();
-			System.out.println(200+c.getX()+100*roundNum);
-			try {
-				Thread.sleep(CARD_DELAY);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			addCardToPlayers(c);
 		}
 		roundNum++;
 		canClick = true;
 	}
 
-	private void finalTurn(){
+	private String finalTurn(){
 		int[] sum = new int[PLAYERS];
+		int[] draw = new int[PLAYERS];
 		int big =0;
+		
+		int tie =0;
+		int count =0;
 		flipAllCards();
 		removeOptions();
 		gameRunning = false;
+		aiTurn();
 		for(int i = 0; i<PLAYERS; i++){
-			sum[i] = players[i].getWinHand(players[i].getHand());
+			sum[i] = players[i].getWinHand();
 		}
 		for(int i = 0; i<PLAYERS; i++){
-			if ((i+1)< PLAYERS && sum[i]>sum[i+1])
-			{
-				if(sum[i] != big)
-					big = i;
-				else
-					if ( players[big].getWinHand(players[big].getTieHand())< players[big].getWinHand(players[i].getTieHand()));
+				if(i==0)
 				{
 					big = i;
 				}
-			}
+				else if  (((i+1)< PLAYERS && sum[i]>sum[i+1]))
+				{
+					if(sum[i] != big)
+					{
+					big = i;
+					draw[count]=big;
+					
+					}else
+					{
+						tie++;
+						draw[count]= i;
+					}
+					count++;
+				}
 		}
+			
+			if (tie != 0)
+			{
+				int[] hand = new int[draw.length];
+				big=0;
+				for (int j=0;j<players[big].getHand().size();j++)
+				{
+					for (int k=0;k<draw.length;k++)
+					{
+						hand[k]= players[draw[k]].getTieHand().get(j);
+					}
+					for (int k=0;k<hand.length;k++)
+					{
+						if  (((k+1)< PLAYERS && hand[k]>hand[k+1]))
+						{
+							
+								big = k;
+							
+						}
+					}
+				}
+				if (big == 0)
+				{
+					return "tie";
+				}
+			}
+		
+		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);
 		if (big != 0)
 		{
-			System.out.println("player" + (big+1)+ "won");
+			return "player" + big+ "won";
 		}
 		else
-			System.out.println("you win");
-		players[big].setMoney(players[big].getMoney()+ TexasDemo.money);;
+			return "you win";
+	}
+	private void endGame(String word)
+	{
+		
+		System.out.println(word);
+	}
+	private void check()
+	{
+		endGame(finalTurn());
+	}
+	
+	
+	private void aiTurn()
+	{
+		for (int i =1; i<PLAYERS; i++)
+		{
+			if (players[i].getMoney() > betValue  &&players[i].isPlaying())
+			{
+				if(players[i].getWinHand()==8)
+					{ deductMoney(i,players[i].getMoney());
+					
+					}
+				
+				else
+				if (players[i].getWinHand()> 5 && players[i].getWinHand()<=7)
+					{ deductMoney(i,betValue+50);
+					
+					}
+				else if (players[i].getWinHand()> 2 && players[i].getWinHand()<= 5) 
+						{
+							deductMoney(i,betValue);
+						}
+				else if (players[i].getWinHand() <= 2)
+						if (betValue > players[i].getMoney()/2)
+						{
+							players[i].setPlaying(false);
+						}
+						else
+						{
+							deductMoney(i,betValue);
+						}
+			}
+			
+		}
 	}
 	
 	private void flipAllCards(){
 		for(int i = 1; i<PLAYERS; i++){
 			if(players[i].isPlaying()){
 				for(int j = 0; j<players[i].getHand().size(); j++){
-					players[i].getHand().get(j).flipCard();
+					if(players[i].getHand().get(j).isFaceDown())
+						players[i].getHand().get(j).flipCard();
 				}
 			}
 		}
@@ -136,14 +214,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		betValue = 0;
 		betText.setText("$"+betValue);
 		roundNum++;
-		for(int i = 1; i<players.length; i++){
-			if(players[i].isPlaying()){
-				if(players[i].getMoney() >= betValue)
-					deductMoney(i,betValue);
-				else
-					deductMoney(i,players[i].getMoney());
-			}
-		}
+		aiTurn();
 		showOptions();
 		canClick = true;
 	}
@@ -158,11 +229,8 @@ public class Texas extends ClickableScreen implements Runnable{
 		pile.add(c);
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
-		try {
-			Thread.sleep(CARD_DELAY);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		addCardToPlayers(c);
+		aiTurn();
 		showOptions();
 		canClick = true;
 	}
@@ -177,11 +245,8 @@ public class Texas extends ClickableScreen implements Runnable{
 		pile.add(c);
 		c.shiftCard(200+c.getX()+100*(roundNum-2), c.getY());
 		c.flipCard();
-		try {
-			Thread.sleep(CARD_DELAY);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		addCardToPlayers(c);
+		aiTurn();
 		showOptions();
 		canClick = true;
 	}
@@ -223,6 +288,12 @@ public class Texas extends ClickableScreen implements Runnable{
 			}
 		}
 		preflop();
+	}
+	
+	private void addCardToPlayers(PlayingCard p){
+		for(int i = 0; i<PLAYERS; i++){
+			players[i].addCard(p);
+		}
 	}
 	
 	private void startGame(){
@@ -274,6 +345,7 @@ public class Texas extends ClickableScreen implements Runnable{
 					case 3: startBetting();theFlop(); break;
 					case 4: startBetting();theTurn(); break;
 					case 5: startBetting();theRiver(); break;
+					case 6: check(); break;
 					default: break; 
 					}
 				}
@@ -293,13 +365,12 @@ public class Texas extends ClickableScreen implements Runnable{
 					removeOptions();
 					canClick = false;
 					deductMoney(0, TexasDemo.money);
-					if(roundNum == 3){
-						startBetting();theFlop();}
-					else if(roundNum == 4){
-						startBetting();theTurn();
-					}
-					else if(roundNum == 5){
-						startBetting();theRiver();
+					switch(roundNum){
+					case 3: startBetting();theFlop(); break;
+					case 4: startBetting();theTurn(); break;
+					case 5: startBetting();theRiver(); break;
+					case 6: check(); break;
+					default: break; 
 					}
 				}
 			}
@@ -310,20 +381,17 @@ public class Texas extends ClickableScreen implements Runnable{
 					deductMoney(0, betValue);
 					removeOptions();
 					canClick = false;
-					if(roundNum == 3){
-						startBetting();theFlop();}
-					else if(roundNum == 4){
-						startBetting();theTurn();
+					switch(roundNum){
+					case 3: startBetting();theFlop(); break;
+					case 4: startBetting();theTurn(); break;
+					case 5: startBetting();theRiver(); break;
+					case 6: check(); break;
+					default: break; 
 					}
-					else if(roundNum == 5){
-						startBetting();theRiver();
-					}
-					System.out.println(roundNum);
 				}
 			}
 			});
 		betText = new TextLabel((int)(TexasDemo.WIDTH*((double)9/10))-BWIDTH-20, 90, BWIDTH, BHEIGHT, "$"+betValue);
-		
 		showOptions();
 		forcedBets();
 	}
@@ -379,6 +447,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		frames[1] = f2;
 		frames[2] = f3;
 		frames[3] = f4;
+		
 	}
 	private void deductMoney(int playerIndex, int money){
 		if(playerIndex == 0)
@@ -387,7 +456,7 @@ public class Texas extends ClickableScreen implements Runnable{
 		moneyCounters[playerIndex].setText("$"+(players[playerIndex].getMoney()));
 		table.increaseValue(money);
 	}
-
+	
 
 
 
