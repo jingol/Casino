@@ -127,7 +127,7 @@ public class Texas extends ClickableScreen implements Runnable{
 				{
 					for (int k=0;k<draw.length;k++)
 					{
-						hand[k]= players[draw[k]].getTieHand().get(j).getCardValue();
+						hand[k]= players[draw[k]].getTieHand().get(j);
 					}
 					for (int k=0;k<hand.length;k++)
 					{
