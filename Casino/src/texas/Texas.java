@@ -166,35 +166,36 @@ public class Texas extends ClickableScreen implements Runnable{
 	
 	private void aiTurn()
 	{
-		/*for (int i =0; i<PLAYERS; i++)
+		for (int i =1; i<PLAYERS; i++)
 		{
 			if (players[i].getMoney() > betValue)
 			{
-				if(DealtHand.getWinHand(players[i].getHand() =8)
-					{ // royal flush; allin
+				if(players[i].getWinHand()==8)
+					{ deductMoney(i,players[i].getMoney());
 					
 					}
 				
 				else
-				if (Dealthand.getWinHand( players[i].getHand())> 5 && DealtHand.getWinHand(players[i].getHand()<7)
-					{ // raise; 
+				if (players[i].getWinHand()> 5 && players[i].getWinHand()<7)
+					{ deductMoney(i,betValue+50);
 					
 					}
-				else if (DealtHand.getWinHand(players[i].getHand() > 2 && DealtHand.getWinHand(players[i].getHand() < 5) 
+				else if (players[i].getWinHand()> 2 && players[i].getWinHand()<= 5) 
 						{
-							// call
+							deductMoney(i,betValue);
 						}
-				else if (DealtHand.getWinHand(players[i].getHand()= 1)
+				else if (players[i].getWinHand() <= 2)
 						if (betValue > players[i].getMoney()/2)
 						{
-							//fold
+							players[i].setPlaying(false);
 						}
 						else
 						{
-							//call
+							deductMoney(i,betValue);
 						}
 			}
-		}*/
+			players[i].setPlaying(false);
+		}
 	}
 	
 	private void flipAllCards(){
